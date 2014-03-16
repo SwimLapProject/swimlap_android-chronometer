@@ -8,4 +8,5 @@
 package com.dim.swimlap.db;
 
 public class DbSwimmers {
+    //todo
 }
