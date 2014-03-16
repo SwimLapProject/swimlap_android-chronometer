@@ -1,0 +1,2482 @@
+<?xml version="1.0"?>
+<FFNEX type="competition" version="1.0.17">
+    <ORIGIN name="extraNat-Pocket" version="4.1.7">
+        <CONTACT name="Olivier DUPAS" zip="93508" address="14, rue Scandicci" city="Pantin Cedex"
+                 email="ffn@ffnatation.fr" internet="http://www.ffnatation.fr"
+                 phone="+33 (0)1.41.83.87.70" fax="+33 (0)1.41.83.87.69"/>
+    </ORIGIN>
+    <MEETS>
+        <MEET id="6260" name="Interclubs R&#xE9;gional Benjamins (plot 2)" city="TULLE"
+              startdate="2013-02-03" stopdate="2013-02-03" nation="FRA" typeid="128"
+              disciplineid="1" regionid="15" timingid="1" byteam="true">
+            <POINTTABLE name="Cotation FFN" version="2004"/>
+            <POOL lanes="5" size="25"/>
+            <OFFICIALS>
+                <OFFICIAL id="-506" firstname="CITERNE Anne"/>
+                <OFFICIAL id="-545" firstname="CITERNE Anne"/>
+                <OFFICIAL id="-543" firstname="COURIVAUD Isabelle"/>
+                <OFFICIAL id="-582" firstname="COURIVAUD Isabelle"/>
+                <OFFICIAL id="-546" firstname="NARDOUX Emmanuel"/>
+                <OFFICIAL id="-507" firstname="NARDOUX Emmanuel"/>
+                <OFFICIAL id="-544" firstname="PILOT Val&#xE9;rie"/>
+                <OFFICIAL id="-583" firstname="PILOT Val&#xE9;rie"/>
+                <OFFICIAL id="1550607" firstname="Marie-Helene" lastname="ALIBERT" gender="F"
+                          nation="FRA" birthdate="1970-05-12"/>
+                <OFFICIAL id="272472" firstname="Bernard" lastname="ARNOLD" gender="M" nation="FRA"
+                          birthdate="1950-08-21"/>
+                <OFFICIAL id="272477" firstname="Danielle" lastname="ARNOLD" gender="F" nation="FRA"
+                          birthdate="1949-08-13"/>
+                <OFFICIAL id="1365349" firstname="Gilles" lastname="AULIDI" gender="M" nation="FRA"
+                          birthdate="1960-03-13"/>
+                <OFFICIAL id="176874" firstname="Daniel" lastname="BEGUIER" gender="M" nation="FRA"
+                          birthdate="1955-12-30"/>
+                <OFFICIAL id="691440" firstname="Fabienne" lastname="BELLARDIE" gender="F"
+                          nation="FRA" birthdate="1972-01-26"/>
+                <OFFICIAL id="1736882" firstname="Pierre" lastname="BESSINETON" gender="M"
+                          nation="FRA" birthdate="1964-07-04"/>
+                <OFFICIAL id="48960" firstname="Nathalie" lastname="BODIN" gender="F" nation="FRA"
+                          birthdate="1964-10-28"/>
+                <OFFICIAL id="1160459" firstname="Jacques" lastname="BOULESTEIX" gender="M"
+                          nation="FRA" birthdate="1952-04-03"/>
+                <OFFICIAL id="1075311" firstname="Christele" lastname="CABROL" gender="F"
+                          nation="FRA" birthdate="1971-08-27"/>
+                <OFFICIAL id="1628775" firstname="Frederic" lastname="CHAMPEVAL" gender="M"
+                          nation="FRA" birthdate="1966-08-19"/>
+                <OFFICIAL id="1551110" firstname="Phaly" lastname="CHUM" gender="M" nation="FRA"
+                          birthdate="1973-06-01"/>
+                <OFFICIAL id="736824" firstname="Carole" lastname="COLIN NOAILHAC" gender="F"
+                          nation="FRA" birthdate="1958-11-22"/>
+                <OFFICIAL id="1718762" firstname="Christophe" lastname="COUDERT" gender="M"
+                          nation="FRA" birthdate="1968-03-14"/>
+                <OFFICIAL id="128267" firstname="Fran&#xE7;oise" lastname="COURTIN" gender="F"
+                          nation="FRA" birthdate="1953-08-24"/>
+                <OFFICIAL id="1634278" firstname="Laurent" lastname="DUBOIS" gender="M" nation="FRA"
+                          birthdate="1965-12-27"/>
+                <OFFICIAL id="58557" firstname="Armand" lastname="DUTHEIL" gender="M" nation="FRA"
+                          birthdate="1949-05-25"/>
+                <OFFICIAL id="1448091" firstname="St&#xE9;phanie" lastname="FABRE" gender="F"
+                          nation="FRA" birthdate="1973-04-18"/>
+                <OFFICIAL id="75751" firstname="Charles" lastname="FREBY" gender="M" nation="FRA"
+                          birthdate="1978-03-11"/>
+                <OFFICIAL id="904987" firstname="Jean-Pierre" lastname="GANIERE" gender="M"
+                          nation="FRA" birthdate="1937-12-23"/>
+                <OFFICIAL id="1252592" firstname="Didier" lastname="HEBERT" gender="M" nation="FRA"
+                          birthdate="1955-09-09"/>
+                <OFFICIAL id="1648926" firstname="V&#xE9;ronique" lastname="JUILLARD" gender="F"
+                          nation="FRA" birthdate="1975-04-16"/>
+                <OFFICIAL id="1650172" firstname="Laurent" lastname="LAMANILEVE" gender="M"
+                          nation="FRA" birthdate="1966-02-09"/>
+                <OFFICIAL id="1318356" firstname="Nathalie" lastname="LEVEQUE" gender="F"
+                          nation="FRA" birthdate="1969-04-21"/>
+                <OFFICIAL id="1667426" firstname="Patrick" lastname="MAGALHAES" gender="M"
+                          nation="FRA" birthdate="1975-04-22"/>
+                <OFFICIAL id="1609907" firstname="Patricia" lastname="MALGOUYRE" gender="F"
+                          nation="FRA" birthdate="1970-01-20"/>
+                <OFFICIAL id="1676112" firstname="St&#xE9;phane" lastname="MANDON" gender="M"
+                          nation="FRA" birthdate="1972-06-06"/>
+                <OFFICIAL id="1609913" firstname="Laurent" lastname="MANGUIN" gender="M"
+                          nation="FRA" birthdate="1969-08-18"/>
+                <OFFICIAL id="421009" firstname="Catherine" lastname="MARCHAND" gender="F"
+                          nation="FRA" birthdate="1963-06-18"/>
+                <OFFICIAL id="1421277" firstname="Virginie" lastname="MEYERE" gender="F"
+                          nation="FRA" birthdate="1967-05-23"/>
+                <OFFICIAL id="1718337" firstname="Thierry" lastname="NADAUD" gender="M" nation="FRA"
+                          birthdate="1972-07-17"/>
+                <OFFICIAL id="1682593" firstname="Laurence" lastname="OMIEL" gender="F" nation="FRA"
+                          birthdate="1971-03-30"/>
+                <OFFICIAL id="933780" firstname="Franck" lastname="PAQUET" gender="M" nation="FRA"
+                          birthdate="1965-01-26"/>
+                <OFFICIAL id="1286999" firstname="Manuella" lastname="PHILIPPON" gender="F"
+                          nation="FRA" birthdate="1973-05-24"/>
+            </OFFICIALS>
+            <CLUBS>
+                <CLUB id="24" name="CERCLE DES NAGEURS GUERETOIS" code="150230025" nation="FRA"
+                      typeid="3"/>
+                <CLUB id="132" name="CLUB DES NAGEURS DE BRIVE" code="150190228" nation="FRA"
+                      typeid="3"/>
+                <CLUB id="168" name="CLUB NAUT. LA SOUTERRAINE" code="150230333" nation="FRA"
+                      typeid="3"/>
+                <CLUB id="319" name="ASPTT LIMOGES" code="150871945" nation="FRA" typeid="3"/>
+                <CLUB id="657" name="CLUB DAUPHINS USSELLOIS" code="150193301" nation="FRA"
+                      typeid="3"/>
+                <CLUB id="865" name="LES DAUPHINS AIXOIS" code="150873741" nation="FRA" typeid="3"/>
+                <CLUB id="1323" name="CAPO.CSL RVI LIMOGES NATATION" code="150879314" nation="FRA"
+                      typeid="3"/>
+                <CLUB id="1583" name="LIMOUSIN" code="150000000" nation="FRA" typeid="1"/>
+                <CLUB id="1793" name="ASSJ NATATION VIENNE GLANE" code="150870001" nation="FRA"
+                      typeid="3"/>
+                <CLUB id="2266" name="CLUB DES NAGEURS DE TULLE" code="150190001" nation="FRA"
+                      typeid="3"/>
+            </CLUBS>
+            <SWIMMERS>
+                <SWIMMER id="1052936" firstname="Mathilde" lastname="ANTOINE" gender="F"
+                         birthdate="2001-03-05" nation="FRA" clubid="319"/>
+                <SWIMMER id="1345425" firstname="Juliette" lastname="BADIN" gender="F"
+                         birthdate="2000-11-01" nation="FRA" clubid="1323"/>
+                <SWIMMER id="1363896" firstname="Margaux" lastname="BATTOUX-VERNEJOUX" gender="F"
+                         birthdate="2001-09-15" nation="FRA" clubid="1793"/>
+                <SWIMMER id="1431242" firstname="Maxime" lastname="BATTUT" gender="M"
+                         birthdate="2000-12-19" nation="FRA" clubid="657"/>
+                <SWIMMER id="1086176" firstname="Claire" lastname="BELLARDIE" gender="F"
+                         birthdate="2000-10-15" nation="FRA" clubid="2266"/>
+                <SWIMMER id="1586119" firstname="Selma" lastname="BIZARRA" gender="F"
+                         birthdate="2001-04-10" nation="FRA" clubid="132"/>
+                <SWIMMER id="1046895" firstname="Soline" lastname="BRAULT" gender="F"
+                         birthdate="2000-01-17" nation="FRA" clubid="24"/>
+                <SWIMMER id="1168480" firstname="Nathan" lastname="CHAPUT" gender="M"
+                         birthdate="2000-10-12" nation="FRA" clubid="168"/>
+                <SWIMMER id="1080595" firstname="Hugo" lastname="CHASTANG" gender="M"
+                         birthdate="2001-05-25" nation="FRA" clubid="657"/>
+                <SWIMMER id="1205228" firstname="Lucie" lastname="CHAVANT" gender="F"
+                         birthdate="2001-02-02" nation="FRA" clubid="24"/>
+                <SWIMMER id="1377865" firstname="Quentin" lastname="CHUM" gender="M"
+                         birthdate="2001-03-27" nation="FRA" clubid="865"/>
+                <SWIMMER id="1637595" firstname="Jessie" lastname="CLAUS" gender="F"
+                         birthdate="2001-12-02" nation="FRA" clubid="168"/>
+                <SWIMMER id="1424925" firstname="Hugo" lastname="COUDERT" gender="M"
+                         birthdate="2001-08-10" nation="FRA" clubid="657"/>
+                <SWIMMER id="1327604" firstname="Elisa" lastname="DARTHOUT" gender="F"
+                         birthdate="2001-08-08" nation="FRA" clubid="319"/>
+                <SWIMMER id="1593641" firstname="Isaline" lastname="DE AZEVEDO" gender="F"
+                         birthdate="2001-04-08" nation="FRA" clubid="2266"/>
+                <SWIMMER id="1128945" firstname="Maximilien" lastname="DEDELOT" gender="M"
+                         birthdate="2000-09-21" nation="FRA" clubid="24"/>
+                <SWIMMER id="1328394" firstname="Jade" lastname="DORTIGNAC" gender="F"
+                         birthdate="2001-01-02" nation="FRA" clubid="319"/>
+                <SWIMMER id="1205372" firstname="Manon" lastname="DUJARDIN" gender="F"
+                         birthdate="2001-01-30" nation="FRA" clubid="24"/>
+                <SWIMMER id="1282449" firstname="Lucas" lastname="DUMAS" gender="M"
+                         birthdate="2001-12-01" nation="FRA" clubid="1323"/>
+                <SWIMMER id="1046905" firstname="Tom" lastname="FABRE" gender="M"
+                         birthdate="2001-10-22" nation="FRA" clubid="24"/>
+                <SWIMMER id="1525554" firstname="Margaux" lastname="FAUCHER" gender="F"
+                         birthdate="2001-04-27" nation="FRA" clubid="1323"/>
+                <SWIMMER id="1075305" firstname="Lenny" lastname="FEUGEAS" gender="M"
+                         birthdate="2001-07-30" nation="FRA" clubid="132"/>
+                <SWIMMER id="1283404" firstname="Jeanne" lastname="FISCHER" gender="F"
+                         birthdate="2001-03-15" nation="FRA" clubid="132"/>
+                <SWIMMER id="1211436" firstname="Laurie" lastname="GIRAULT" gender="F"
+                         birthdate="2001-11-04" nation="FRA" clubid="865"/>
+                <SWIMMER id="1537767" firstname="Gwendoline" lastname="GUERAUD" gender="F"
+                         birthdate="2001-09-27" nation="FRA" clubid="319"/>
+                <SWIMMER id="1204351" firstname="Agathe" lastname="GUILLOUX" gender="F"
+                         birthdate="2000-03-24" nation="FRA" clubid="132"/>
+                <SWIMMER id="1312967" firstname="Emma" lastname="HIVERT" gender="F"
+                         birthdate="2000-04-11" nation="FRA" clubid="1793"/>
+                <SWIMMER id="1091537" firstname="Manon" lastname="JALLET" gender="F"
+                         birthdate="2000-03-08" nation="FRA" clubid="168"/>
+                <SWIMMER id="1391408" firstname="Mathilde" lastname="LACROIX" gender="F"
+                         birthdate="2001-10-10" nation="FRA" clubid="2266"/>
+                <SWIMMER id="1268382" firstname="Oceane" lastname="LAGIER" gender="F"
+                         birthdate="2001-04-18" nation="FRA" clubid="132"/>
+                <SWIMMER id="1402216" firstname="Gw&#xE9;na&#xEB;lle" lastname="LAMANILEVE"
+                         gender="F" birthdate="2000-09-01" nation="FRA" clubid="1323"/>
+                <SWIMMER id="1058313" firstname="Emma" lastname="LAYADI" gender="F"
+                         birthdate="2001-12-17" nation="FRA" clubid="24"/>
+                <SWIMMER id="1290424" firstname="Clothilde" lastname="LONGY" gender="F"
+                         birthdate="2000-02-08" nation="FRA" clubid="2266"/>
+                <SWIMMER id="1424933" firstname="Mathilde" lastname="LUC" gender="F"
+                         birthdate="2001-06-22" nation="FRA" clubid="657"/>
+                <SWIMMER id="1204340" firstname="Sara" lastname="MAGALHAES" gender="F"
+                         birthdate="2001-10-28" nation="FRA" clubid="132"/>
+                <SWIMMER id="1434101" firstname="Th&#xE9;o" lastname="MANDON" gender="M"
+                         birthdate="2001-12-31" nation="FRA" clubid="657"/>
+                <SWIMMER id="1142541" firstname="K&#xE9;vin" lastname="MANGUIN" gender="M"
+                         birthdate="2001-10-27" nation="FRA" clubid="132"/>
+                <SWIMMER id="1231925" firstname="Zoe" lastname="MAROUBY ALLO" gender="F"
+                         birthdate="2000-01-29" nation="FRA" clubid="657"/>
+                <SWIMMER id="1381178" firstname="Aubin" lastname="MAUDEUX" gender="M"
+                         birthdate="2001-04-01" nation="FRA" clubid="168"/>
+                <SWIMMER id="1069883" firstname="Mathilde" lastname="MECHIN" gender="F"
+                         birthdate="2000-07-31" nation="FRA" clubid="657"/>
+                <SWIMMER id="1372707" firstname="Romaric" lastname="MIDI" gender="M"
+                         birthdate="2000-04-17" nation="FRA" clubid="1793"/>
+                <SWIMMER id="978775" firstname="Pauline" lastname="NADAUD" gender="F"
+                         birthdate="2001-05-10" nation="FRA" clubid="2266"/>
+                <SWIMMER id="1419850" firstname="Ethaniel" lastname="NONY" gender="M"
+                         birthdate="2000-10-16" nation="FRA" clubid="2266"/>
+                <SWIMMER id="1376133" firstname="Lea" lastname="OMIEL" gender="F"
+                         birthdate="2000-06-23" nation="FRA" clubid="132"/>
+                <SWIMMER id="1171970" firstname="Pauline" lastname="PAJAK" gender="F"
+                         birthdate="2000-06-05" nation="FRA" clubid="2266"/>
+                <SWIMMER id="1073860" firstname="Th&#xE9;o" lastname="PAQUET" gender="M"
+                         birthdate="2001-06-22" nation="FRA" clubid="168"/>
+                <SWIMMER id="1168493" firstname="Mae" lastname="PATINAUD" gender="F"
+                         birthdate="2001-02-23" nation="FRA" clubid="168"/>
+                <SWIMMER id="1544410" firstname="Emilie" lastname="PETEYTAS" gender="F"
+                         birthdate="2000-11-08" nation="FRA" clubid="132"/>
+                <SWIMMER id="1210278" firstname="M&#xE9;lanie" lastname="PILOT" gender="F"
+                         birthdate="2000-07-29" nation="FRA" clubid="1323"/>
+                <SWIMMER id="1273207" firstname="Celestin" lastname="PINEAUD" gender="M"
+                         birthdate="2001-09-24" nation="FRA" clubid="132"/>
+                <SWIMMER id="1127328" firstname="Simon" lastname="PIOGER" gender="M"
+                         birthdate="2000-03-19" nation="FRA" clubid="2266"/>
+                <SWIMMER id="1378665" firstname="Lucie" lastname="PIQUET" gender="F"
+                         birthdate="2000-10-19" nation="FRA" clubid="865"/>
+                <SWIMMER id="1292268" firstname="Swann" lastname="PLAZA" gender="M"
+                         birthdate="2001-03-30" nation="FRA" clubid="865"/>
+                <SWIMMER id="1229888" firstname="Eloise" lastname="QUERO" gender="F"
+                         birthdate="2001-03-13" nation="FRA" clubid="657"/>
+                <SWIMMER id="1290661" firstname="Chlo&#xE9;" lastname="RAVAUD" gender="F"
+                         birthdate="2000-03-10" nation="FRA" clubid="168"/>
+                <SWIMMER id="1328755" firstname="Lise" lastname="RENAUDIE" gender="F"
+                         birthdate="2000-12-30" nation="FRA" clubid="1793"/>
+                <SWIMMER id="1287332" firstname="Paul" lastname="RIFFAUD" gender="M"
+                         birthdate="2001-05-14" nation="FRA" clubid="1323"/>
+                <SWIMMER id="1079811" firstname="Camille" lastname="RONGIERAS" gender="F"
+                         birthdate="2000-01-19" nation="FRA" clubid="1323"/>
+                <SWIMMER id="1525255" firstname="Laurent" lastname="SABY" gender="M"
+                         birthdate="2000-01-26" nation="FRA" clubid="1323"/>
+                <SWIMMER id="1700918" firstname="Anselme" lastname="SARRAN" gender="M"
+                         birthdate="2000-10-08" nation="FRA" clubid="132"/>
+                <SWIMMER id="978764" firstname="Clo&#xE9;" lastname="TRESALLET" gender="F"
+                         birthdate="2000-03-22" nation="FRA" clubid="2266"/>
+                <SWIMMER id="1459236" firstname="Antoinette" lastname="VAYRE" gender="F"
+                         birthdate="2001-12-10" nation="FRA" clubid="132"/>
+                <SWIMMER id="1752073" firstname="Michael" lastname="VIDAL" gender="M"
+                         birthdate="2001-03-19" nation="FRA" clubid="1323"/>
+            </SWIMMERS>
+            <AGEGROUPS>
+                <AGEGROUP id="0" name="Toutes cat&#xE9;gories" agemin="12" agemax="13"/>
+            </AGEGROUPS>
+            <SESSIONS>
+                <SESSION number="1" datetime="2013-02-03 08:00:00">
+                    <EVENTS>
+                        <EVENT id="223593" type="EVENT"
+                               name="Fin de l'&#xE9;chauffement, &#xE9;vacuation du bassin"
+                               datetime="2013-02-03 09:10:00" order="20"/>
+                        <EVENT id="223596" type="RACE" raceid="44" roundid="60" agegroupid=""
+                               datetime="2013-02-03 09:15:00" order="30"/>
+                        <EVENT id="223597" type="RACE" raceid="94" roundid="60" agegroupid=""
+                               datetime="2013-02-03 09:43:10" order="40"/>
+                        <EVENT id="223598" type="RACE" raceid="34" roundid="60" agegroupid=""
+                               datetime="2013-02-03 09:58:10" order="50"/>
+                        <EVENT id="223599" type="RACE" raceid="32" roundid="60" agegroupid=""
+                               datetime="2013-02-03 10:14:55" order="60"/>
+                        <EVENT id="223600" type="RACE" raceid="82" roundid="60" agegroupid=""
+                               datetime="2013-02-03 10:25:13" order="70"/>
+                        <EVENT id="223601" type="RACE" raceid="12" roundid="60" agegroupid=""
+                               datetime="2013-02-03 10:33:08" order="80"/>
+                        <EVENT id="223602" type="RACE" raceid="62" roundid="60" agegroupid=""
+                               datetime="2013-02-03 10:43:19" order="90"/>
+                        <EVENT id="1000063" type="EVENT" name="Fin de la r&#xE9;union"
+                               datetime="2013-02-03 10:50:53" order="100"/>
+                    </EVENTS>
+                    <JUDGES>
+                        <JUDGE officialid="-506" roleid="12" exam="false"/>
+                        <JUDGE officialid="-507" roleid="12" exam="false"/>
+                        <JUDGE officialid="-543" roleid="9" exam="false"/>
+                        <JUDGE officialid="-544" roleid="16" exam="false"/>
+                        <JUDGE officialid="1075311" roleid="4" exam="false" grade="A"/>
+                        <JUDGE officialid="1160459" roleid="20" exam="false"/>
+                        <JUDGE officialid="1252592" roleid="2" exam="false" grade="A"/>
+                        <JUDGE officialid="128267" roleid="14" exam="false" lane="3" grade="B"/>
+                        <JUDGE officialid="1286999" roleid="13" exam="false" lane="1" grade="C"/>
+                        <JUDGE officialid="1318356" roleid="13" exam="false" lane="1" grade="B"/>
+                        <JUDGE officialid="1365349" roleid="14" exam="false" lane="5" grade="B"/>
+                        <JUDGE officialid="1421277" roleid="13" exam="false" lane="2" grade="C"/>
+                        <JUDGE officialid="1448091" roleid="14" exam="false" lane="4" grade="B"/>
+                        <JUDGE officialid="1550607" roleid="14" exam="false" lane="1" grade="B"/>
+                        <JUDGE officialid="1551110" roleid="13" exam="false" lane="5" grade="C"/>
+                        <JUDGE officialid="1609907" roleid="13" exam="false" lane="4" grade="C"/>
+                        <JUDGE officialid="1609913" roleid="14" exam="false" lane="2" grade="B"/>
+                        <JUDGE officialid="1628775" roleid="13" exam="false" lane="3" grade="C"/>
+                        <JUDGE officialid="1634278" roleid="13" exam="false" lane="3" grade="C"/>
+                        <JUDGE officialid="1648926" roleid="13" exam="false" lane="1" grade="C"/>
+                        <JUDGE officialid="1650172" roleid="3" exam="false" grade="A"/>
+                        <JUDGE officialid="1667426" roleid="13" exam="false" lane="1" grade="C"/>
+                        <JUDGE officialid="1676112" roleid="13" exam="false" lane="4" grade="C"/>
+                        <JUDGE officialid="1682593" roleid="13" exam="false" lane="4" grade="C"/>
+                        <JUDGE officialid="1718337" roleid="13" exam="false" lane="3" grade="C"/>
+                        <JUDGE officialid="1718762" roleid="4" exam="false" grade="A"/>
+                        <JUDGE officialid="1718762" roleid="13" exam="false" lane="2" grade="C"/>
+                        <JUDGE officialid="1736882" roleid="13" exam="false" lane="5" grade="B"/>
+                        <JUDGE officialid="176874" roleid="20" exam="false"/>
+                        <JUDGE officialid="272472" roleid="13" exam="false" lane="2" grade="C"/>
+                        <JUDGE officialid="272477" roleid="13" exam="false" lane="5" grade="C"/>
+                        <JUDGE officialid="421009" roleid="14" exam="false" lane="4" grade="B"/>
+                        <JUDGE officialid="48960" roleid="4" exam="false" grade="A"/>
+                        <JUDGE officialid="58557" roleid="3" exam="false" grade="A"/>
+                        <JUDGE officialid="691440" roleid="14" exam="false" lane="3" grade="B"/>
+                        <JUDGE officialid="736824" roleid="14" exam="false" lane="2" grade="B"/>
+                        <JUDGE officialid="75751" roleid="20" exam="false"/>
+                        <JUDGE officialid="904987" roleid="2" exam="false" grade="A"/>
+                        <JUDGE officialid="933780" roleid="4" exam="false" grade="A"/>
+                    </JUDGES>
+                </SESSION>
+                <SESSION number="2" datetime="2013-02-03 14:00:00">
+                    <EVENTS>
+                        <EVENT id="223595" type="EVENT"
+                               name="Fin de l'&#xE9;chauffement, &#xE9;vacuation du bassin"
+                               datetime="2013-02-03 14:55:00" order="120"/>
+                        <EVENT id="223603" type="RACE" raceid="22" roundid="60" agegroupid=""
+                               datetime="2013-02-03 15:00:00" order="130"/>
+                        <EVENT id="223604" type="RACE" raceid="72" roundid="60" agegroupid=""
+                               datetime="2013-02-03 15:13:11" order="140"/>
+                        <EVENT id="223605" type="RACE" raceid="2" roundid="60" agegroupid=""
+                               datetime="2013-02-03 15:18:28" order="150"/>
+                        <EVENT id="223606" type="RACE" raceid="52" roundid="60" agegroupid=""
+                               datetime="2013-02-03 15:30:40" order="160"/>
+                        <EVENT id="223607" type="RACE" raceid="43" roundid="60" agegroupid=""
+                               datetime="2013-02-03 15:38:05" order="170"/>
+                        <EVENT id="223608" type="RACE" raceid="93" roundid="60" agegroupid=""
+                               datetime="2013-02-03 15:53:03" order="180"/>
+                        <EVENT id="223609" type="RACE" raceid="88" roundid="60" agegroupid=""
+                               datetime="2013-02-03 16:01:03" order="190"/>
+                        <EVENT id="1000064" type="EVENT" name="Fin de la r&#xE9;union"
+                               datetime="2013-02-03 16:09:48" order="200"/>
+                    </EVENTS>
+                    <JUDGES>
+                        <JUDGE officialid="-545" roleid="12" exam="false"/>
+                        <JUDGE officialid="-546" roleid="12" exam="false"/>
+                        <JUDGE officialid="-582" roleid="9" exam="false"/>
+                        <JUDGE officialid="-583" roleid="16" exam="false"/>
+                        <JUDGE officialid="1075311" roleid="4" exam="false" grade="A"/>
+                        <JUDGE officialid="1160459" roleid="20" exam="false"/>
+                        <JUDGE officialid="1252592" roleid="2" exam="false" grade="A"/>
+                        <JUDGE officialid="128267" roleid="14" exam="false" lane="3" grade="B"/>
+                        <JUDGE officialid="1286999" roleid="13" exam="false" lane="1" grade="C"/>
+                        <JUDGE officialid="1318356" roleid="13" exam="false" lane="1" grade="B"/>
+                        <JUDGE officialid="1365349" roleid="14" exam="false" lane="5" grade="B"/>
+                        <JUDGE officialid="1421277" roleid="13" exam="false" lane="2" grade="C"/>
+                        <JUDGE officialid="1448091" roleid="14" exam="false" lane="4" grade="B"/>
+                        <JUDGE officialid="1550607" roleid="14" exam="false" lane="1" grade="B"/>
+                        <JUDGE officialid="1551110" roleid="13" exam="false" lane="5" grade="C"/>
+                        <JUDGE officialid="1609907" roleid="13" exam="false" lane="4" grade="C"/>
+                        <JUDGE officialid="1609913" roleid="14" exam="false" lane="2" grade="B"/>
+                        <JUDGE officialid="1628775" roleid="13" exam="false" lane="3" grade="C"/>
+                        <JUDGE officialid="1634278" roleid="13" exam="false" lane="3" grade="C"/>
+                        <JUDGE officialid="1648926" roleid="13" exam="false" lane="1" grade="C"/>
+                        <JUDGE officialid="1650172" roleid="3" exam="false" grade="A"/>
+                        <JUDGE officialid="1667426" roleid="13" exam="false" lane="1" grade="C"/>
+                        <JUDGE officialid="1676112" roleid="13" exam="false" lane="4" grade="C"/>
+                        <JUDGE officialid="1682593" roleid="13" exam="false" lane="4" grade="C"/>
+                        <JUDGE officialid="1718337" roleid="13" exam="false" lane="3" grade="C"/>
+                        <JUDGE officialid="1718762" roleid="4" exam="false" grade="A"/>
+                        <JUDGE officialid="1718762" roleid="13" exam="false" lane="2" grade="C"/>
+                        <JUDGE officialid="1736882" roleid="13" exam="false" lane="5" grade="B"/>
+                        <JUDGE officialid="176874" roleid="20" exam="false"/>
+                        <JUDGE officialid="272472" roleid="13" exam="false" lane="2" grade="C"/>
+                        <JUDGE officialid="272477" roleid="13" exam="false" lane="5" grade="C"/>
+                        <JUDGE officialid="421009" roleid="14" exam="false" lane="4" grade="B"/>
+                        <JUDGE officialid="48960" roleid="4" exam="false" grade="A"/>
+                        <JUDGE officialid="58557" roleid="3" exam="false" grade="A"/>
+                        <JUDGE officialid="691440" roleid="14" exam="false" lane="3" grade="B"/>
+                        <JUDGE officialid="736824" roleid="14" exam="false" lane="2" grade="B"/>
+                        <JUDGE officialid="75751" roleid="20" exam="false"/>
+                        <JUDGE officialid="904987" roleid="2" exam="false" grade="A"/>
+                        <JUDGE officialid="933780" roleid="4" exam="false" grade="A"/>
+                    </JUDGES>
+                </SESSION>
+            </SESSIONS>
+            <RESULTS>
+                <RESULT id="9905" heat="1" lane="2" side="left" raceid="44" roundid="60"
+                        agegroupid="" qualifyingtime="14.0000" qualifyingdate="2013-01-28"
+                        swimtime="13.3770" swimdate="2013-02-03 00:00:00" place="8" points="290"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="24"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1046895" clubid="24"/>
+                            <RELAYPOSITION number="2" swimmerid="1205372" clubid="24"/>
+                            <RELAYPOSITION number="3" swimmerid="1058313" clubid="24"/>
+                            <RELAYPOSITION number="4" swimmerid="1205228" clubid="24"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3462" distance="50"/>
+                        <SPLIT swimtime="1.1578" distance="100"/>
+                        <SPLIT swimtime="1.5846" distance="150"/>
+                        <SPLIT swimtime="2.3958" distance="200"/>
+                        <SPLIT swimtime="3.3550" distance="250"/>
+                        <SPLIT swimtime="4.4320" distance="300"/>
+                        <SPLIT swimtime="5.5106" distance="350"/>
+                        <SPLIT swimtime="6.5793" distance="400"/>
+                        <SPLIT swimtime="7.4550" distance="450"/>
+                        <SPLIT swimtime="8.3939" distance="500"/>
+                        <SPLIT swimtime="9.3879" distance="550"/>
+                        <SPLIT swimtime="10.3451" distance="600"/>
+                        <SPLIT swimtime="11.1545" distance="650"/>
+                        <SPLIT swimtime="12.0048" distance="700"/>
+                        <SPLIT swimtime="12.5046" distance="750"/>
+                        <SPLIT swimtime="13.3770" distance="800"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9915" heat="1" lane="3" side="left" raceid="44" roundid="60"
+                        agegroupid="" qualifyingtime="13.0200" qualifyingdate="2013-01-29"
+                        swimtime="12.4973" swimdate="2013-02-03 00:00:00" place="7" points="395"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="168"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1290661" clubid="168"/>
+                            <RELAYPOSITION number="2" swimmerid="1637595" clubid="168"/>
+                            <RELAYPOSITION number="3" swimmerid="1168493" clubid="168"/>
+                            <RELAYPOSITION number="4" swimmerid="1091537" clubid="168"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4049" distance="50"/>
+                        <SPLIT swimtime="1.2560" distance="100"/>
+                        <SPLIT swimtime="2.1323" distance="150"/>
+                        <SPLIT swimtime="2.5896" distance="200"/>
+                        <SPLIT swimtime="3.4448" distance="250"/>
+                        <SPLIT swimtime="4.3691" distance="300"/>
+                        <SPLIT swimtime="5.3302" distance="350"/>
+                        <SPLIT swimtime="6.2486" distance="400"/>
+                        <SPLIT swimtime="7.1576" distance="450"/>
+                        <SPLIT swimtime="8.1184" distance="500"/>
+                        <SPLIT swimtime="9.1098" distance="550"/>
+                        <SPLIT swimtime="10.0500" distance="600"/>
+                        <SPLIT swimtime="10.4155" distance="650"/>
+                        <SPLIT swimtime="11.2274" distance="700"/>
+                        <SPLIT swimtime="12.0161" distance="750"/>
+                        <SPLIT swimtime="12.4973" distance="800"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9899" heat="1" lane="4" side="left" raceid="44" roundid="60"
+                        agegroupid="" qualifyingtime="13.1500" qualifyingdate="2013-01-22"
+                        swimtime="12.4540" swimdate="2013-02-03 00:00:00" place="6" points="405"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="132"
+                        team="2">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1204340" clubid="132"/>
+                            <RELAYPOSITION number="2" swimmerid="1268382" clubid="132"/>
+                            <RELAYPOSITION number="3" swimmerid="1283404" clubid="132"/>
+                            <RELAYPOSITION number="4" swimmerid="1586119" clubid="132"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4467" distance="50"/>
+                        <SPLIT swimtime="1.3486" distance="100"/>
+                        <SPLIT swimtime="2.2547" distance="150"/>
+                        <SPLIT swimtime="3.1412" distance="200"/>
+                        <SPLIT swimtime="3.5915" distance="250"/>
+                        <SPLIT swimtime="4.5112" distance="300"/>
+                        <SPLIT swimtime="5.4393" distance="350"/>
+                        <SPLIT swimtime="6.3190" distance="400"/>
+                        <SPLIT swimtime="7.1629" distance="450"/>
+                        <SPLIT swimtime="8.0754" distance="500"/>
+                        <SPLIT swimtime="9.0132" distance="550"/>
+                        <SPLIT swimtime="9.4502" distance="600"/>
+                        <SPLIT swimtime="10.2282" distance="650"/>
+                        <SPLIT swimtime="11.0770" distance="700"/>
+                        <SPLIT swimtime="11.5743" distance="750"/>
+                        <SPLIT swimtime="12.4540" distance="800"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9909" heat="2" lane="1" side="left" raceid="44" roundid="60"
+                        agegroupid="" qualifyingtime="12.4000" qualifyingdate="2013-01-28"
+                        swimtime="12.4470" swimdate="2013-02-03 00:00:00" place="5" points="407"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="657"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1424933" clubid="657"/>
+                            <RELAYPOSITION number="2" swimmerid="1231925" clubid="657"/>
+                            <RELAYPOSITION number="3" swimmerid="1229888" clubid="657"/>
+                            <RELAYPOSITION number="4" swimmerid="1069883" clubid="657"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4480" distance="50"/>
+                        <SPLIT swimtime="1.3180" distance="100"/>
+                        <SPLIT swimtime="2.1955" distance="150"/>
+                        <SPLIT swimtime="3.0746" distance="200"/>
+                        <SPLIT swimtime="3.5212" distance="250"/>
+                        <SPLIT swimtime="4.5034" distance="300"/>
+                        <SPLIT swimtime="5.5438" distance="350"/>
+                        <SPLIT swimtime="7.0062" distance="400"/>
+                        <SPLIT swimtime="7.4224" distance="450"/>
+                        <SPLIT swimtime="8.2868" distance="500"/>
+                        <SPLIT swimtime="9.1588" distance="550"/>
+                        <SPLIT swimtime="10.0280" distance="600"/>
+                        <SPLIT swimtime="10.4152" distance="650"/>
+                        <SPLIT swimtime="11.2220" distance="700"/>
+                        <SPLIT swimtime="12.0408" distance="750"/>
+                        <SPLIT swimtime="12.4470" distance="800"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9911" heat="2" lane="2" side="left" raceid="44" roundid="60"
+                        agegroupid="" qualifyingtime="12.0500" qualifyingdate="2013-01-28"
+                        swimtime="11.3582" swimdate="2013-02-03 00:00:00" place="3" points="588"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="2266"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="978764" clubid="2266"/>
+                            <RELAYPOSITION number="2" swimmerid="1391408" clubid="2266"/>
+                            <RELAYPOSITION number="3" swimmerid="1086176" clubid="2266"/>
+                            <RELAYPOSITION number="4" swimmerid="1171970" clubid="2266"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3660" distance="50"/>
+                        <SPLIT swimtime="1.1626" distance="100"/>
+                        <SPLIT swimtime="1.5813" distance="150"/>
+                        <SPLIT swimtime="2.3905" distance="200"/>
+                        <SPLIT swimtime="3.2243" distance="250"/>
+                        <SPLIT swimtime="4.1009" distance="300"/>
+                        <SPLIT swimtime="5.0051" distance="350"/>
+                        <SPLIT swimtime="5.4840" distance="400"/>
+                        <SPLIT swimtime="6.2859" distance="450"/>
+                        <SPLIT swimtime="7.1527" distance="500"/>
+                        <SPLIT swimtime="8.0259" distance="550"/>
+                        <SPLIT swimtime="8.4919" distance="600"/>
+                        <SPLIT swimtime="9.2745" distance="650"/>
+                        <SPLIT swimtime="10.1078" distance="700"/>
+                        <SPLIT swimtime="10.5447" distance="750"/>
+                        <SPLIT swimtime="11.3582" distance="800"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9903" heat="2" lane="3" side="left" raceid="44" roundid="60"
+                        agegroupid="" qualifyingtime="11.3500" qualifyingdate="2013-01-28"
+                        swimtime="11.2505" swimdate="2013-02-03 00:00:00" place="2" points="620"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="1323"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1079811" clubid="1323"/>
+                            <RELAYPOSITION number="2" swimmerid="1345425" clubid="1323"/>
+                            <RELAYPOSITION number="3" swimmerid="1402216" clubid="1323"/>
+                            <RELAYPOSITION number="4" swimmerid="1210278" clubid="1323"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3663" distance="50"/>
+                        <SPLIT swimtime="1.1826" distance="100"/>
+                        <SPLIT swimtime="2.0124" distance="150"/>
+                        <SPLIT swimtime="2.4364" distance="200"/>
+                        <SPLIT swimtime="3.2222" distance="250"/>
+                        <SPLIT swimtime="4.0579" distance="300"/>
+                        <SPLIT swimtime="4.5203" distance="350"/>
+                        <SPLIT swimtime="5.3704" distance="400"/>
+                        <SPLIT swimtime="6.1496" distance="450"/>
+                        <SPLIT swimtime="6.5907" distance="500"/>
+                        <SPLIT swimtime="7.4659" distance="550"/>
+                        <SPLIT swimtime="8.3354" distance="600"/>
+                        <SPLIT swimtime="9.1369" distance="650"/>
+                        <SPLIT swimtime="9.5761" distance="700"/>
+                        <SPLIT swimtime="10.4132" distance="750"/>
+                        <SPLIT swimtime="11.2505" distance="800"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9897" heat="2" lane="4" side="left" raceid="44" roundid="60"
+                        agegroupid="" qualifyingtime="12.0000" qualifyingdate="2013-01-22"
+                        swimtime="11.2204" swimdate="2013-02-03 00:00:00" place="1" points="629"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="132"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1459236" clubid="132"/>
+                            <RELAYPOSITION number="2" swimmerid="1544410" clubid="132"/>
+                            <RELAYPOSITION number="3" swimmerid="1204351" clubid="132"/>
+                            <RELAYPOSITION number="4" swimmerid="1376133" clubid="132"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3717" distance="50"/>
+                        <SPLIT swimtime="1.1889" distance="100"/>
+                        <SPLIT swimtime="2.0121" distance="150"/>
+                        <SPLIT swimtime="2.4292" distance="200"/>
+                        <SPLIT swimtime="3.2315" distance="250"/>
+                        <SPLIT swimtime="4.1009" distance="300"/>
+                        <SPLIT swimtime="4.5824" distance="350"/>
+                        <SPLIT swimtime="5.4368" distance="400"/>
+                        <SPLIT swimtime="6.2495" distance="450"/>
+                        <SPLIT swimtime="7.1103" distance="500"/>
+                        <SPLIT swimtime="7.5976" distance="550"/>
+                        <SPLIT swimtime="8.4616" distance="600"/>
+                        <SPLIT swimtime="9.2050" distance="650"/>
+                        <SPLIT swimtime="10.0157" distance="700"/>
+                        <SPLIT swimtime="10.4344" distance="750"/>
+                        <SPLIT swimtime="11.2204" distance="800"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9895" heat="2" lane="5" side="left" raceid="44" roundid="60"
+                        agegroupid="" qualifyingtime="12.3000" qualifyingdate="2013-01-22"
+                        swimtime="12.0260" swimdate="2013-02-03 00:00:00" place="4" points="514"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="319"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1052936" clubid="319"/>
+                            <RELAYPOSITION number="2" swimmerid="1327604" clubid="319"/>
+                            <RELAYPOSITION number="3" swimmerid="1328394" clubid="319"/>
+                            <RELAYPOSITION number="4" swimmerid="1537767" clubid="319"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3789" distance="50"/>
+                        <SPLIT swimtime="1.2042" distance="100"/>
+                        <SPLIT swimtime="2.0321" distance="150"/>
+                        <SPLIT swimtime="2.4453" distance="200"/>
+                        <SPLIT swimtime="3.2384" distance="250"/>
+                        <SPLIT swimtime="4.0691" distance="300"/>
+                        <SPLIT swimtime="4.5193" distance="350"/>
+                        <SPLIT swimtime="5.3584" distance="400"/>
+                        <SPLIT swimtime="6.1804" distance="450"/>
+                        <SPLIT swimtime="7.0695" distance="500"/>
+                        <SPLIT swimtime="7.5881" distance="550"/>
+                        <SPLIT swimtime="8.4473" distance="600"/>
+                        <SPLIT swimtime="9.2853" distance="650"/>
+                        <SPLIT swimtime="10.1922" distance="700"/>
+                        <SPLIT swimtime="11.1221" distance="750"/>
+                        <SPLIT swimtime="12.0260" distance="800"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9921" heat="1" lane="2" side="left" raceid="94" roundid="60"
+                        agegroupid="" qualifyingtime="14.1500" qualifyingdate="2013-01-29"
+                        swimtime="15.1006" swimdate="2013-02-03 00:00:00" place="3" points="40"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="1323"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1287332" clubid="1323"/>
+                            <RELAYPOSITION number="2" swimmerid="1282449" clubid="1323"/>
+                            <RELAYPOSITION number="3" swimmerid="1525255" clubid="1323"/>
+                            <RELAYPOSITION number="4" swimmerid="1752073" clubid="1323"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4490" distance="50"/>
+                        <SPLIT swimtime="1.3795" distance="100"/>
+                        <SPLIT swimtime="2.3314" distance="150"/>
+                        <SPLIT swimtime="3.2084" distance="200"/>
+                        <SPLIT swimtime="4.0938" distance="250"/>
+                        <SPLIT swimtime="5.1309" distance="300"/>
+                        <SPLIT swimtime="6.2133" distance="350"/>
+                        <SPLIT swimtime="7.2687" distance="400"/>
+                        <SPLIT swimtime="8.1022" distance="450"/>
+                        <SPLIT swimtime="9.0028" distance="500"/>
+                        <SPLIT swimtime="9.5029" distance="550"/>
+                        <SPLIT swimtime="10.3882" distance="600"/>
+                        <SPLIT swimtime="11.2769" distance="650"/>
+                        <SPLIT swimtime="12.3476" distance="700"/>
+                        <SPLIT swimtime="13.5170" distance="750"/>
+                        <SPLIT swimtime="15.1006" distance="800"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9907" heat="1" lane="3" side="left" raceid="94" roundid="60"
+                        agegroupid="" qualifyingtime="11.3000" qualifyingdate="2013-01-28"
+                        swimtime="11.4967" swimdate="2013-02-03 00:00:00" place="2" points="371"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="657"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1424925" clubid="657"/>
+                            <RELAYPOSITION number="2" swimmerid="1434101" clubid="657"/>
+                            <RELAYPOSITION number="3" swimmerid="1431242" clubid="657"/>
+                            <RELAYPOSITION number="4" swimmerid="1080595" clubid="657"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4529" distance="50"/>
+                        <SPLIT swimtime="1.3556" distance="100"/>
+                        <SPLIT swimtime="2.2925" distance="150"/>
+                        <SPLIT swimtime="3.1068" distance="200"/>
+                        <SPLIT swimtime="3.5466" distance="250"/>
+                        <SPLIT swimtime="4.4238" distance="300"/>
+                        <SPLIT swimtime="5.3119" distance="350"/>
+                        <SPLIT swimtime="6.2114" distance="400"/>
+                        <SPLIT swimtime="7.0071" distance="450"/>
+                        <SPLIT swimtime="7.4577" distance="500"/>
+                        <SPLIT swimtime="8.2952" distance="550"/>
+                        <SPLIT swimtime="9.1103" distance="600"/>
+                        <SPLIT swimtime="9.4812" distance="650"/>
+                        <SPLIT swimtime="10.2853" distance="700"/>
+                        <SPLIT swimtime="11.1025" distance="750"/>
+                        <SPLIT swimtime="11.4967" distance="800"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9901" heat="1" lane="4" side="left" raceid="94" roundid="60"
+                        agegroupid="" qualifyingtime="12.4500" qualifyingdate="2013-01-22"
+                        swimtime="11.4910" swimdate="2013-02-03 00:00:00" place="1" points="372"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="132"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1142541" clubid="132"/>
+                            <RELAYPOSITION number="2" swimmerid="1273207" clubid="132"/>
+                            <RELAYPOSITION number="3" swimmerid="1700918" clubid="132"/>
+                            <RELAYPOSITION number="4" swimmerid="1075305" clubid="132"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3556" distance="50"/>
+                        <SPLIT swimtime="1.1835" distance="100"/>
+                        <SPLIT swimtime="2.0168" distance="150"/>
+                        <SPLIT swimtime="2.4408" distance="200"/>
+                        <SPLIT swimtime="3.2367" distance="250"/>
+                        <SPLIT swimtime="4.0712" distance="300"/>
+                        <SPLIT swimtime="4.5253" distance="350"/>
+                        <SPLIT swimtime="5.3500" distance="400"/>
+                        <SPLIT swimtime="6.1593" distance="450"/>
+                        <SPLIT swimtime="7.0545" distance="500"/>
+                        <SPLIT swimtime="8.0098" distance="550"/>
+                        <SPLIT swimtime="8.5786" distance="600"/>
+                        <SPLIT swimtime="9.3732" distance="650"/>
+                        <SPLIT swimtime="10.2186" distance="700"/>
+                        <SPLIT swimtime="11.0839" distance="750"/>
+                        <SPLIT swimtime="11.4910" distance="800"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9936" heat="1" lane="2" side="left" raceid="34" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="16.0000"
+                        qualifyingdate="2013-02-03" swimtime="12.3622"
+                        swimdate="2013-02-03 00:00:00" place="3" points="331" disqualificationid="0"
+                        swimoff="false" mixedteam="false" clubid="1583" team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1046905" clubid="1583"/>
+                            <RELAYPOSITION number="2" swimmerid="1419850" clubid="1583"/>
+                            <RELAYPOSITION number="3" swimmerid="1128945" clubid="1583"/>
+                            <RELAYPOSITION number="4" swimmerid="1127328" clubid="1583"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4404" distance="50"/>
+                        <SPLIT swimtime="1.3641" distance="100"/>
+                        <SPLIT swimtime="2.3175" distance="150"/>
+                        <SPLIT swimtime="3.2291" distance="200"/>
+                        <SPLIT swimtime="4.0270" distance="250"/>
+                        <SPLIT swimtime="4.4794" distance="300"/>
+                        <SPLIT swimtime="5.3589" distance="350"/>
+                        <SPLIT swimtime="6.2106" distance="400"/>
+                        <SPLIT swimtime="7.0313" distance="450"/>
+                        <SPLIT swimtime="7.5352" distance="500"/>
+                        <SPLIT swimtime="8.4815" distance="550"/>
+                        <SPLIT swimtime="9.4090" distance="600"/>
+                        <SPLIT swimtime="10.1983" distance="650"/>
+                        <SPLIT swimtime="11.0520" distance="700"/>
+                        <SPLIT swimtime="11.5170" distance="750"/>
+                        <SPLIT swimtime="12.3622" distance="800"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9918" heat="1" lane="3" side="left" raceid="34" roundid="60"
+                        agegroupid="" qualifyingtime="11.4434" qualifyingdate="2013-01-29"
+                        swimtime="11.3313" swimdate="2013-02-03 00:00:00" place="2" points="486"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="865"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1211436" clubid="865"/>
+                            <RELAYPOSITION number="2" swimmerid="1377865" clubid="865"/>
+                            <RELAYPOSITION number="3" swimmerid="1378665" clubid="865"/>
+                            <RELAYPOSITION number="4" swimmerid="1292268" clubid="865"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3915" distance="50"/>
+                        <SPLIT swimtime="1.2232" distance="100"/>
+                        <SPLIT swimtime="2.0669" distance="150"/>
+                        <SPLIT swimtime="2.4892" distance="200"/>
+                        <SPLIT swimtime="3.2689" distance="250"/>
+                        <SPLIT swimtime="4.1015" distance="300"/>
+                        <SPLIT swimtime="4.5389" distance="350"/>
+                        <SPLIT swimtime="5.3376" distance="400"/>
+                        <SPLIT swimtime="6.1642" distance="450"/>
+                        <SPLIT swimtime="7.0976" distance="500"/>
+                        <SPLIT swimtime="8.0549" distance="550"/>
+                        <SPLIT swimtime="8.5992" distance="600"/>
+                        <SPLIT swimtime="9.3563" distance="650"/>
+                        <SPLIT swimtime="10.1602" distance="700"/>
+                        <SPLIT swimtime="10.5660" distance="750"/>
+                        <SPLIT swimtime="11.3313" distance="800"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9912" heat="1" lane="4" side="left" raceid="34" roundid="60"
+                        agegroupid="" qualifyingtime="12.0000" qualifyingdate="2013-01-29"
+                        swimtime="11.0807" swimdate="2013-02-03 00:00:00" place="1" points="555"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="1793"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1372707" clubid="1793"/>
+                            <RELAYPOSITION number="2" swimmerid="1363896" clubid="1793"/>
+                            <RELAYPOSITION number="3" swimmerid="1312967" clubid="1793"/>
+                            <RELAYPOSITION number="4" swimmerid="1328755" clubid="1793"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4003" distance="50"/>
+                        <SPLIT swimtime="1.2257" distance="100"/>
+                        <SPLIT swimtime="2.0608" distance="150"/>
+                        <SPLIT swimtime="2.4797" distance="200"/>
+                        <SPLIT swimtime="3.3031" distance="250"/>
+                        <SPLIT swimtime="4.1894" distance="300"/>
+                        <SPLIT swimtime="5.0884" distance="350"/>
+                        <SPLIT swimtime="5.5633" distance="400"/>
+                        <SPLIT swimtime="6.2975" distance="450"/>
+                        <SPLIT swimtime="7.0594" distance="500"/>
+                        <SPLIT swimtime="7.4354" distance="550"/>
+                        <SPLIT swimtime="8.2020" distance="600"/>
+                        <SPLIT swimtime="8.5976" distance="650"/>
+                        <SPLIT swimtime="9.4202" distance="700"/>
+                        <SPLIT swimtime="10.2574" distance="750"/>
+                        <SPLIT swimtime="11.0807" distance="800"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9788" heat="1" lane="2" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="CLERMONT-FERRAND" qualifyingtime="2.0312"
+                        qualifyingdate="2012-05-20" swimtime="1.4894" swimdate="2013-02-03 00:00:00"
+                        place="15" points="249" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="2">
+                    <SOLO swimmerid="1204340"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4839" distance="50"/>
+                        <SPLIT swimtime="1.4894" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9926" heat="1" lane="3" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="1.5457" swimdate="2013-02-03 00:00:00"
+                        place="17" points="179" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="319" team="1">
+                    <SOLO swimmerid="1328394"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5232" distance="50"/>
+                        <SPLIT swimtime="1.5457" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9940" heat="1" lane="4" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="1.5820" swimdate="2013-02-03 00:00:00"
+                        place="18" points="140" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="2266" team="2">
+                    <SOLO swimmerid="1290424"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5231" distance="50"/>
+                        <SPLIT swimtime="1.5820" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9811" heat="2" lane="1" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-01-28" swimtime="1.5318" swimdate="2013-02-03 00:00:00"
+                        place="16" points="196" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="24" team="1">
+                    <SOLO swimmerid="1205228"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5318" distance="50"/>
+                        <SPLIT swimtime="1.5318" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9777" heat="2" lane="2" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="1.5360"
+                        qualifyingdate="2012-05-13" swimtime="1.4410" swimdate="2013-02-03 00:00:00"
+                        place="12" points="319" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1204351"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4296" distance="50"/>
+                        <SPLIT swimtime="1.4410" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9787" heat="2" lane="3" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="1.4698"
+                        qualifyingdate="2012-11-10" swimtime="1.3859" swimdate="2013-02-03 00:00:00"
+                        place="8" points="408" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="2">
+                    <SOLO swimmerid="1586119"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4382" distance="50"/>
+                        <SPLIT swimtime="1.3859" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9850" heat="2" lane="4" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="1.5000"
+                        qualifyingdate="2013-01-28" swimtime="1.4502" swimdate="2013-02-03 00:00:00"
+                        place="13" points="305" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1424933"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4579" distance="50"/>
+                        <SPLIT swimtime="1.4502" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9802" heat="2" lane="5" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="BRIVE-LA-GAILLARDE" qualifyingtime="1.5664"
+                        qualifyingdate="2012-06-10" swimtime="1.4807" swimdate="2013-02-03 00:00:00"
+                        place="14" points="261" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1210278"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5066" distance="50"/>
+                        <SPLIT swimtime="1.4807" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9832" heat="3" lane="1" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="BRIVE-LA-GAILLARDE" qualifyingtime="1.4669"
+                        qualifyingdate="2011-11-06" swimtime="1.3877" swimdate="2013-02-03 00:00:00"
+                        place="9" points="405" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="168" team="1">
+                    <SOLO swimmerid="1290661"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4579" distance="50"/>
+                        <SPLIT swimtime="1.3877" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9881" heat="3" lane="2" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="1.3739"
+                        qualifyingdate="2012-05-13" swimtime="1.4179" swimdate="2013-02-03 00:00:00"
+                        place="11" points="355" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="2266" team="1">
+                    <SOLO swimmerid="1171970"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4941" distance="50"/>
+                        <SPLIT swimtime="1.4179" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9822" heat="3" lane="3" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="1.3500"
+                        qualifyingdate="2013-01-22" swimtime="1.3359" swimdate="2013-02-03 00:00:00"
+                        place="7" points="499" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="319" team="1">
+                    <SOLO swimmerid="1052936"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4198" distance="50"/>
+                        <SPLIT swimtime="1.3359" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9843" heat="3" lane="4" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="CLERMONT-FERRAND" qualifyingtime="1.3602"
+                        qualifyingdate="2012-05-20" swimtime="1.2928" swimdate="2013-02-03 00:00:00"
+                        place="5" points="584" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="2266" team="1">
+                    <SOLO swimmerid="978764"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4160" distance="50"/>
+                        <SPLIT swimtime="1.2928" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9818" heat="3" lane="5" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="1.4615"
+                        qualifyingdate="2012-05-13" swimtime="1.3932" swimdate="2013-02-03 00:00:00"
+                        place="10" points="396" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1345425"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4523" distance="50"/>
+                        <SPLIT swimtime="1.3932" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9870" heat="4" lane="1" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.2833"
+                        qualifyingdate="2013-01-13" swimtime="1.3050" swimdate="2013-02-03 00:00:00"
+                        place="6" points="559" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="168" team="1">
+                    <SOLO swimmerid="1091537"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4157" distance="50"/>
+                        <SPLIT swimtime="1.3050" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9885" heat="4" lane="2" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.2402"
+                        qualifyingdate="2012-10-21" swimtime="1.1859" swimdate="2013-02-03 00:00:00"
+                        place="1" points="825" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="1793" team="1">
+                    <SOLO swimmerid="1312967"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3629" distance="50"/>
+                        <SPLIT swimtime="1.1859" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9772" heat="4" lane="3" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.1997"
+                        qualifyingdate="2013-01-13" swimtime="1.1978" swimdate="2013-02-03 00:00:00"
+                        place="2" points="796" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="24" team="1">
+                    <SOLO swimmerid="1046895"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3652" distance="50"/>
+                        <SPLIT swimtime="1.1978" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9833" heat="4" lane="4" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.2024"
+                        qualifyingdate="2013-01-13" swimtime="1.2298" swimdate="2013-02-03 00:00:00"
+                        place="3" points="721" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1459236"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3809" distance="50"/>
+                        <SPLIT swimtime="1.2298" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9812" heat="4" lane="5" side="left" raceid="32" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.2519"
+                        qualifyingdate="2013-01-13" swimtime="1.2606" swimdate="2013-02-03 00:00:00"
+                        place="4" points="652" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1069883"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3941" distance="50"/>
+                        <SPLIT swimtime="1.2606" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9923" heat="1" lane="2" side="left" raceid="82" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="1.4940" swimdate="2013-02-03 00:00:00"
+                        place="11" points="145" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="2266" team="1">
+                    <SOLO swimmerid="1419850"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4841" distance="50"/>
+                        <SPLIT swimtime="1.4940" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9804" heat="1" lane="3" side="left" raceid="82" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-01-28" swimtime="2.0122" swimdate="2013-02-03 00:00:00"
+                        place="12" points="47" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="24" team="1">
+                    <SOLO swimmerid="1128945"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5424" distance="50"/>
+                        <SPLIT swimtime="2.0122" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9878" heat="1" lane="4" side="left" raceid="82" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-01-29" swimtime="2.1307" swimdate="2013-02-03 00:00:00"
+                        place="13" points="3" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1525255"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5892" distance="50"/>
+                        <SPLIT swimtime="2.1307" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9789" heat="2" lane="1" side="left" raceid="82" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-01-28" swimtime="1.4762" swimdate="2013-02-03 00:00:00"
+                        place="9" points="164" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1287332"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4889" distance="50"/>
+                        <SPLIT swimtime="1.4762" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9779" heat="2" lane="2" side="left" raceid="82" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="1.4800"
+                        qualifyingdate="2013-01-29" swimtime="1.4783" swimdate="2013-02-03 00:00:00"
+                        place="10" points="161" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="168" team="1">
+                    <SOLO swimmerid="1168480"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5091" distance="50"/>
+                        <SPLIT swimtime="1.4783" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9863" heat="2" lane="3" side="left" raceid="82" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.4122"
+                        qualifyingdate="2012-10-21" swimtime="1.3574" swimdate="2013-02-03 00:00:00"
+                        place="5" points="323" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="168" team="1">
+                    <SOLO swimmerid="1073860"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4299" distance="50"/>
+                        <SPLIT swimtime="1.3574" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9848" heat="2" lane="4" side="left" raceid="82" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.4420"
+                        qualifyingdate="2012-11-24" swimtime="1.4281" swimdate="2013-02-03 00:00:00"
+                        place="8" points="222" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="865" team="1">
+                    <SOLO swimmerid="1377865"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4502" distance="50"/>
+                        <SPLIT swimtime="1.4281" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9846" heat="2" lane="5" side="left" raceid="82" roundid="60"
+                        agegroupid="" qualifyingplace="CLERMONT-FERRAND" qualifyingtime="1.5233"
+                        qualifyingdate="2012-05-19" swimtime="1.3402" swimdate="2013-02-03 00:00:00"
+                        place="4" points="351" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1273207"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4187" distance="50"/>
+                        <SPLIT swimtime="1.3402" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9864" heat="3" lane="1" side="left" raceid="82" roundid="60"
+                        agegroupid="" qualifyingplace="CLERMONT-FERRAND" qualifyingtime="1.4032"
+                        qualifyingdate="2012-05-19" swimtime="1.3295" swimdate="2013-02-03 00:00:00"
+                        place="2" points="368" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1142541"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4082" distance="50"/>
+                        <SPLIT swimtime="1.3295" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9839" heat="3" lane="2" side="left" raceid="82" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="1.3889"
+                        qualifyingdate="2012-11-11" swimtime="1.3380" swimdate="2013-02-03 00:00:00"
+                        place="3" points="354" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="1793" team="1">
+                    <SOLO swimmerid="1372707"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4436" distance="50"/>
+                        <SPLIT swimtime="1.3380" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9857" heat="3" lane="3" side="left" raceid="82" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.3665"
+                        qualifyingdate="2013-01-13" swimtime="1.3802" swimdate="2013-02-03 00:00:00"
+                        place="7" points="288" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1431242"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4436" distance="50"/>
+                        <SPLIT swimtime="1.3802" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9781" heat="3" lane="4" side="left" raceid="82" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.3676"
+                        qualifyingdate="2013-01-13" swimtime="1.3669" swimdate="2013-02-03 00:00:00"
+                        place="6" points="308" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1080595"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4452" distance="50"/>
+                        <SPLIT swimtime="1.3669" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9886" heat="3" lane="5" side="left" raceid="82" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.3921"
+                        qualifyingdate="2012-10-21" swimtime="1.2740" swimdate="2013-02-03 00:00:00"
+                        place="1" points="467" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="865" team="1">
+                    <SOLO swimmerid="1292268"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4121" distance="50"/>
+                        <SPLIT swimtime="1.2740" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9887" heat="1" lane="1" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="2.1500"
+                        qualifyingdate="2013-01-28" swimtime="2.0282" swimdate="2013-02-03 00:00:00"
+                        place="19" points="128" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="24" team="1">
+                    <SOLO swimmerid="1205372"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5903" distance="50"/>
+                        <SPLIT swimtime="2.0282" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9927" heat="1" lane="2" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="1.4001" swimdate="2013-02-03 00:00:00"
+                        place="14" points="434" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="319" team="1">
+                    <SOLO swimmerid="1537767"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4852" distance="50"/>
+                        <SPLIT swimtime="1.4001" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9849" heat="1" lane="3" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-01-28" swimtime="1.5324" swimdate="2013-02-03 00:00:00"
+                        place="18" points="235" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="24" team="1">
+                    <SOLO swimmerid="1058313"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5605" distance="50"/>
+                        <SPLIT swimtime="1.5324" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9938" heat="1" lane="4" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="2.0440" swimdate="2013-02-03 00:00:00"
+                        place="20" points="114" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="2266" team="2">
+                    <SOLO swimmerid="1593641"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5549" distance="50"/>
+                        <SPLIT swimtime="2.0440" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9790" heat="1" lane="5" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="2.0180"
+                        qualifyingdate="2012-06-03" swimtime="1.4153" swimdate="2013-02-03 00:00:00"
+                        place="16" points="408" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="865" team="1">
+                    <SOLO swimmerid="1378665"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4859" distance="50"/>
+                        <SPLIT swimtime="1.4153" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9872" heat="2" lane="1" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="1.5000"
+                        qualifyingdate="2013-01-28" swimtime="1.4030" swimdate="2013-02-03 00:00:00"
+                        place="15" points="429" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="2">
+                    <SOLO swimmerid="1283404"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4805" distance="50"/>
+                        <SPLIT swimtime="1.4030" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9797" heat="2" lane="2" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="BRIVE-LA-GAILLARDE" qualifyingtime="1.3852"
+                        qualifyingdate="2012-12-02" swimtime="1.4177" swimdate="2013-02-03 00:00:00"
+                        place="17" points="404" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="2266" team="1">
+                    <SOLO swimmerid="1086176"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4910" distance="50"/>
+                        <SPLIT swimtime="1.4177" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9813" heat="2" lane="3" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.3608"
+                        qualifyingdate="2012-04-21" swimtime="1.2786" swimdate="2013-02-03 00:00:00"
+                        place="5" points="670" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="168" team="1">
+                    <SOLO swimmerid="1290661"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4181" distance="50"/>
+                        <SPLIT swimtime="1.2786" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9858" heat="2" lane="4" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.3759"
+                        qualifyingdate="2013-01-13" swimtime="1.3545" swimdate="2013-02-03 00:00:00"
+                        place="11" points="516" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="1793" team="1">
+                    <SOLO swimmerid="1328755"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4752" distance="50"/>
+                        <SPLIT swimtime="1.3545" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9835" heat="2" lane="5" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="1.4213"
+                        qualifyingdate="2012-11-11" swimtime="1.3835" swimdate="2013-02-03 00:00:00"
+                        place="13" points="463" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="2266" team="1">
+                    <SOLO swimmerid="1391408"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4773" distance="50"/>
+                        <SPLIT swimtime="1.3835" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9869" heat="3" lane="1" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.3554"
+                        qualifyingdate="2013-01-13" swimtime="1.3318" swimdate="2013-02-03 00:00:00"
+                        place="9" points="560" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1229888"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4550" distance="50"/>
+                        <SPLIT swimtime="1.3318" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9856" heat="3" lane="2" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.3507"
+                        qualifyingdate="2013-01-13" swimtime="1.3476" swimdate="2013-02-03 00:00:00"
+                        place="10" points="530" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1402216"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4547" distance="50"/>
+                        <SPLIT swimtime="1.3476" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9821" heat="3" lane="3" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="BRIVE-LA-GAILLARDE" qualifyingtime="1.3093"
+                        qualifyingdate="2012-12-02" swimtime="1.2833" swimdate="2013-02-03 00:00:00"
+                        place="6" points="660" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1079811"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4152" distance="50"/>
+                        <SPLIT swimtime="1.2833" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9860" heat="3" lane="4" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="BRIVE-LA-GAILLARDE" qualifyingtime="1.3137"
+                        qualifyingdate="2012-12-02" swimtime="1.3104" swimdate="2013-02-03 00:00:00"
+                        place="8" points="603" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="319" team="1">
+                    <SOLO swimmerid="1327604"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4448" distance="50"/>
+                        <SPLIT swimtime="1.3104" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9807" heat="3" lane="5" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="TULLE" qualifyingtime="1.3529"
+                        qualifyingdate="2012-03-25" swimtime="1.3832" swimdate="2013-02-03 00:00:00"
+                        place="12" points="464" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="2">
+                    <SOLO swimmerid="1268382"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4785" distance="50"/>
+                        <SPLIT swimtime="1.3832" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9852" heat="4" lane="1" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.3010"
+                        qualifyingdate="2013-01-13" swimtime="1.3040" swimdate="2013-02-03 00:00:00"
+                        place="7" points="616" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1544410"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4362" distance="50"/>
+                        <SPLIT swimtime="1.3040" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9851" heat="4" lane="2" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.2405"
+                        qualifyingdate="2013-01-13" swimtime="1.2616" swimdate="2013-02-03 00:00:00"
+                        place="3" points="707" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="168" team="1">
+                    <SOLO swimmerid="1091537"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4071" distance="50"/>
+                        <SPLIT swimtime="1.2616" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9796" heat="4" lane="3" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.2018"
+                        qualifyingdate="2013-01-13" swimtime="1.1902" swimdate="2013-02-03 00:00:00"
+                        place="1" points="874" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1376133"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3860" distance="50"/>
+                        <SPLIT swimtime="1.1902" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9792" heat="4" lane="4" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.2254"
+                        qualifyingdate="2013-01-13" swimtime="1.2129" swimdate="2013-02-03 00:00:00"
+                        place="2" points="819" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1069883"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4052" distance="50"/>
+                        <SPLIT swimtime="1.2129" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9893" heat="4" lane="5" side="left" raceid="12" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.2819"
+                        qualifyingdate="2013-01-13" swimtime="1.2782" swimdate="2013-02-03 00:00:00"
+                        place="4" points="671" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="865" team="1">
+                    <SOLO swimmerid="1211436"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4306" distance="50"/>
+                        <SPLIT swimtime="1.2782" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9930" heat="1" lane="2" side="left" raceid="62" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="1.5596" swimdate="2013-02-03 00:00:00"
+                        place="11" points="101" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1752073"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5605" distance="50"/>
+                        <SPLIT swimtime="1.5596" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9828" heat="1" lane="3" side="left" raceid="62" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="1.5179"
+                        qualifyingdate="2012-05-12" swimtime="1.5046" swimdate="2013-02-03 00:00:00"
+                        place="10" points="155" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1282449"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5248" distance="50"/>
+                        <SPLIT swimtime="1.5046" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9925" heat="1" lane="4" side="left" raceid="62" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="1.3219" swimdate="2013-02-03 00:00:00"
+                        place="5" points="418" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="2266" team="1">
+                    <SOLO swimmerid="1127328"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4651" distance="50"/>
+                        <SPLIT swimtime="1.3219" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9836" heat="2" lane="2" side="left" raceid="62" roundid="60"
+                        agegroupid="" qualifyingplace="LA SOUTERRAINE" qualifyingtime="1.4321"
+                        qualifyingdate="2012-06-03" swimtime="1.3967" swimdate="2013-02-03 00:00:00"
+                        place="8" points="295" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="168" team="1">
+                    <SOLO swimmerid="1381178"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4899" distance="50"/>
+                        <SPLIT swimtime="1.3967" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9880" heat="2" lane="3" side="left" raceid="62" roundid="60"
+                        agegroupid="" qualifyingplace="LA SOUTERRAINE" qualifyingtime="1.4050"
+                        qualifyingdate="2012-03-25" swimtime="1.4200" swimdate="2013-02-03 00:00:00"
+                        place="9" points="261" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="24" team="1">
+                    <SOLO swimmerid="1046905"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4950" distance="50"/>
+                        <SPLIT swimtime="1.4200" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9819" heat="2" lane="4" side="left" raceid="62" roundid="60"
+                        agegroupid="" qualifyingplace="CLERMONT-FERRAND" qualifyingtime="1.4116"
+                        qualifyingdate="2012-05-19" swimtime="1.3432" swimdate="2013-02-03 00:00:00"
+                        place="7" points="380" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1424925"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4551" distance="50"/>
+                        <SPLIT swimtime="1.3432" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9838" heat="3" lane="1" side="left" raceid="62" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.3595"
+                        qualifyingdate="2013-01-13" swimtime="1.3290" swimdate="2013-02-03 00:00:00"
+                        place="6" points="405" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1431242"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4600" distance="50"/>
+                        <SPLIT swimtime="1.3290" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9844" heat="3" lane="2" side="left" raceid="62" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.2936"
+                        qualifyingdate="2013-01-13" swimtime="1.3107" swimdate="2013-02-03 00:00:00"
+                        place="4" points="438" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="168" team="1">
+                    <SOLO swimmerid="1073860"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4502" distance="50"/>
+                        <SPLIT swimtime="1.3107" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9808" heat="3" lane="3" side="left" raceid="62" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.2563"
+                        qualifyingdate="2013-01-13" swimtime="1.2468" swimdate="2013-02-03 00:00:00"
+                        place="1" points="562" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1075305"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4206" distance="50"/>
+                        <SPLIT swimtime="1.2468" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9820" heat="3" lane="4" side="left" raceid="62" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.2878"
+                        qualifyingdate="2013-01-13" swimtime="1.2713" swimdate="2013-02-03 00:00:00"
+                        place="2" points="513" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="1793" team="1">
+                    <SOLO swimmerid="1372707"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4260" distance="50"/>
+                        <SPLIT swimtime="1.2713" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9883" heat="3" lane="5" side="left" raceid="62" roundid="60"
+                        agegroupid="" qualifyingplace="BRIVE-LA-GAILLARDE" qualifyingtime="1.3159"
+                        qualifyingdate="2012-12-02" swimtime="1.2926" swimdate="2013-02-03 00:00:00"
+                        place="3" points="471" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1273207"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4331" distance="50"/>
+                        <SPLIT swimtime="1.2926" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9817" heat="1" lane="2" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="LA SOUTERRAINE" qualifyingtime="2.0726"
+                        qualifyingdate="2012-06-03" swimtime="1.5924" swimdate="2013-02-03 00:00:00"
+                        place="20" points="354" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="168" team="1">
+                    <SOLO swimmerid="1637595"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5498" distance="50"/>
+                        <SPLIT swimtime="1.5924" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9942" heat="1" lane="3" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="1.5029" swimdate="2013-02-03 00:00:00"
+                        place="15" points="484" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="2266" team="2">
+                    <SOLO swimmerid="978775"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5288" distance="50"/>
+                        <SPLIT swimtime="1.5029" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9805" heat="1" lane="4" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="2.0500"
+                        qualifyingdate="2013-01-28" swimtime="1.4707" swimdate="2013-02-03 00:00:00"
+                        place="13" points="536" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1231925"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5087" distance="50"/>
+                        <SPLIT swimtime="1.4707" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9928" heat="2" lane="2" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="1.5761" swimdate="2013-02-03 00:00:00"
+                        place="19" points="376" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="319" team="1">
+                    <SOLO swimmerid="1537767"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5638" distance="50"/>
+                        <SPLIT swimtime="1.5761" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9825" heat="2" lane="3" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="LA SOUTERRAINE" qualifyingtime="1.5724"
+                        qualifyingdate="2012-11-25" swimtime="1.5572" swimdate="2013-02-03 00:00:00"
+                        place="17" points="402" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="168" team="1">
+                    <SOLO swimmerid="1168493"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5483" distance="50"/>
+                        <SPLIT swimtime="1.5572" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9814" heat="2" lane="4" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.5750"
+                        qualifyingdate="2013-01-13" swimtime="1.5720" swimdate="2013-02-03 00:00:00"
+                        place="18" points="381" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="319" team="1">
+                    <SOLO swimmerid="1328394"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5636" distance="50"/>
+                        <SPLIT swimtime="1.5720" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9826" heat="3" lane="1" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="1.5323"
+                        qualifyingdate="2012-11-10" swimtime="1.5191" swimdate="2013-02-03 00:00:00"
+                        place="16" points="459" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="2">
+                    <SOLO swimmerid="1204340"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5313" distance="50"/>
+                        <SPLIT swimtime="1.5191" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9853" heat="3" lane="2" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="1.5200"
+                        qualifyingdate="2013-01-28" swimtime="1.4981" swimdate="2013-02-03 00:00:00"
+                        place="14" points="491" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="2">
+                    <SOLO swimmerid="1586119"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5179" distance="50"/>
+                        <SPLIT swimtime="1.4981" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9810" heat="3" lane="3" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="1.4844"
+                        qualifyingdate="2012-11-10" swimtime="1.4354" swimdate="2013-02-03 00:00:00"
+                        place="11" points="595" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="865" team="1">
+                    <SOLO swimmerid="1378665"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4903" distance="50"/>
+                        <SPLIT swimtime="1.4354" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9877" heat="3" lane="4" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.5162"
+                        qualifyingdate="2012-04-14" swimtime="1.4656" swimdate="2013-02-03 00:00:00"
+                        place="12" points="544" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="1793" team="1">
+                    <SOLO swimmerid="1328755"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5026" distance="50"/>
+                        <SPLIT swimtime="1.4656" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9862" heat="3" lane="5" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="BRIVE-LA-GAILLARDE" qualifyingtime="1.5280"
+                        qualifyingdate="2011-12-04" swimtime="1.3816" swimdate="2013-02-03 00:00:00"
+                        place="5" points="693" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="2266" team="1">
+                    <SOLO swimmerid="1171970"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4607" distance="50"/>
+                        <SPLIT swimtime="1.3816" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9871" heat="4" lane="1" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="USSEL" qualifyingtime="1.4625"
+                        qualifyingdate="2012-01-29" swimtime="1.4146" swimdate="2013-02-03 00:00:00"
+                        place="10" points="632" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1204351"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4823" distance="50"/>
+                        <SPLIT swimtime="1.4146" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9888" heat="4" lane="2" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.4102"
+                        qualifyingdate="2013-01-13" swimtime="1.3914" swimdate="2013-02-03 00:00:00"
+                        place="6" points="674" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1229888"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4745" distance="50"/>
+                        <SPLIT swimtime="1.3914" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9791" heat="4" lane="3" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.4045"
+                        qualifyingdate="2013-01-13" swimtime="1.3945" swimdate="2013-02-03 00:00:00"
+                        place="7" points="669" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="24" team="1">
+                    <SOLO swimmerid="1205228"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4652" distance="50"/>
+                        <SPLIT swimtime="1.3945" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9801" heat="4" lane="4" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.4084"
+                        qualifyingdate="2013-01-13" swimtime="1.4052" swimdate="2013-02-03 00:00:00"
+                        place="9" points="649" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="1793" team="1">
+                    <SOLO swimmerid="1363896"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4740" distance="50"/>
+                        <SPLIT swimtime="1.4052" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9794" heat="4" lane="5" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="AIXE-SUR-VIENNE" qualifyingtime="1.4310"
+                        qualifyingdate="2012-10-07" swimtime="1.3963" swimdate="2013-02-03 00:00:00"
+                        place="8" points="665" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="2">
+                    <SOLO swimmerid="1525554"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4773" distance="50"/>
+                        <SPLIT swimtime="1.3963" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9824" heat="5" lane="1" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="BRIVE-LA-GAILLARDE" qualifyingtime="1.3975"
+                        qualifyingdate="2011-12-04" swimtime="0.0000" swimdate="2013-02-03 00:00:00"
+                        disqualificationid="8" swimoff="false" mixedteam="false" clubid="2266"
+                        team="1">
+                    <SOLO swimmerid="978764"/>
+                </RESULT>
+                <RESULT id="9834" heat="5" lane="2" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.3352"
+                        qualifyingdate="2013-01-13" swimtime="1.3140" swimdate="2013-02-03 00:00:00"
+                        place="2" points="825" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1459236"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4234" distance="50"/>
+                        <SPLIT swimtime="1.3140" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9875" heat="5" lane="3" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="1.2660"
+                        qualifyingdate="2012-05-13" swimtime="1.2731" swimdate="2013-02-03 00:00:00"
+                        place="1" points="911" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="24" team="1">
+                    <SOLO swimmerid="1046895"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4175" distance="50"/>
+                        <SPLIT swimtime="1.2731" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9837" heat="5" lane="4" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.3322"
+                        qualifyingdate="2012-11-24" swimtime="1.3400" swimdate="2013-02-03 00:00:00"
+                        place="3" points="773" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1210278"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4500" distance="50"/>
+                        <SPLIT swimtime="1.3400" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9873" heat="5" lane="5" side="left" raceid="22" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.3372"
+                        qualifyingdate="2012-11-24" swimtime="1.3482" swimdate="2013-02-03 00:00:00"
+                        place="4" points="757" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1079811"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4491" distance="50"/>
+                        <SPLIT swimtime="1.3482" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9865" heat="1" lane="2" side="left" raceid="72" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="1.5500"
+                        qualifyingdate="2013-01-28" swimtime="2.0119" swimdate="2013-02-03 00:00:00"
+                        place="8" points="160" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1700918"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5397" distance="50"/>
+                        <SPLIT swimtime="2.0119" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9773" heat="1" lane="3" side="left" raceid="72" roundid="60"
+                        agegroupid="" qualifyingplace="CLERMONT-FERRAND" qualifyingtime="1.4987"
+                        qualifyingdate="2012-05-20" swimtime="1.4098" swimdate="2013-02-03 00:00:00"
+                        place="4" points="428" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1434101"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4948" distance="50"/>
+                        <SPLIT swimtime="1.4098" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9892" heat="1" lane="4" side="left" raceid="72" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="1.5414"
+                        qualifyingdate="2012-05-12" swimtime="0.0000" swimdate="2013-02-03 00:00:00"
+                        disqualificationid="8" swimoff="false" mixedteam="false" clubid="1323"
+                        team="1">
+                    <SOLO swimmerid="1287332"/>
+                </RESULT>
+                <RESULT id="9922" heat="1" lane="5" side="left" raceid="72" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="1.3926" swimdate="2013-02-03 00:00:00"
+                        place="2" points="457" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="2266" team="1">
+                    <SOLO swimmerid="1419850"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4695" distance="50"/>
+                        <SPLIT swimtime="1.3926" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9859" heat="2" lane="1" side="left" raceid="72" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="1.4700"
+                        qualifyingdate="2013-01-29" swimtime="1.5465" swimdate="2013-02-03 00:00:00"
+                        place="7" points="233" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1525255"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5464" distance="50"/>
+                        <SPLIT swimtime="1.5465" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9867" heat="2" lane="2" side="left" raceid="72" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.4056"
+                        qualifyingdate="2012-11-24" swimtime="1.4212" swimdate="2013-02-03 00:00:00"
+                        place="5" points="410" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="865" team="1">
+                    <SOLO swimmerid="1292268"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4864" distance="50"/>
+                        <SPLIT swimtime="1.4212" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9780" heat="2" lane="3" side="left" raceid="72" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.3465"
+                        qualifyingdate="2013-01-13" swimtime="1.3150" swimdate="2013-02-03 00:00:00"
+                        place="1" points="599" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1075305"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4282" distance="50"/>
+                        <SPLIT swimtime="1.3150" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9884" heat="2" lane="4" side="left" raceid="72" roundid="60"
+                        agegroupid="" qualifyingplace="USSEL" qualifyingtime="1.3952"
+                        qualifyingdate="2012-01-29" swimtime="1.4028" swimdate="2013-02-03 00:00:00"
+                        place="3" points="440" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1080595"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4773" distance="50"/>
+                        <SPLIT swimtime="1.4028" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9855" heat="2" lane="5" side="left" raceid="72" roundid="60"
+                        agegroupid="" qualifyingplace="LA SOUTERRAINE" qualifyingtime="1.4584"
+                        qualifyingdate="2012-11-25" swimtime="1.4378" swimdate="2013-02-03 00:00:00"
+                        place="6" points="384" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="168" team="1">
+                    <SOLO swimmerid="1381178"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4940" distance="50"/>
+                        <SPLIT swimtime="1.4378" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9868" heat="1" lane="2" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="LA SOUTERRAINE" qualifyingtime="2.0590"
+                        qualifyingdate="2012-06-03" swimtime="1.5853" swimdate="2013-02-03 00:00:00"
+                        place="23" points="52" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="24" team="1">
+                    <SOLO swimmerid="1205372"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.5567" distance="50"/>
+                        <SPLIT swimtime="1.5853" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9937" heat="1" lane="3" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="1.3820" swimdate="2013-02-03 00:00:00"
+                        place="20" points="277" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="2266" team="2">
+                    <SOLO swimmerid="1593641"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4525" distance="50"/>
+                        <SPLIT swimtime="1.3820" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9941" heat="1" lane="4" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="1.3378" swimdate="2013-02-03 00:00:00"
+                        place="17" points="350" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="2266" team="2">
+                    <SOLO swimmerid="978775"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4486" distance="50"/>
+                        <SPLIT swimtime="1.3378" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9939" heat="2" lane="1" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="1.3378" swimdate="2013-02-03 00:00:00"
+                        place="17" points="350" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="2266" team="2">
+                    <SOLO swimmerid="1290424"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4486" distance="50"/>
+                        <SPLIT swimtime="1.3378" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9798" heat="2" lane="2" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="1.4500"
+                        qualifyingdate="2013-01-29" swimtime="1.3287" swimdate="2013-02-03 00:00:00"
+                        place="16" points="366" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="168" team="1">
+                    <SOLO swimmerid="1637595"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4570" distance="50"/>
+                        <SPLIT swimtime="1.3287" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9830" heat="2" lane="3" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="LA SOUTERRAINE" qualifyingtime="1.4262"
+                        qualifyingdate="2012-06-03" swimtime="1.4080" swimdate="2013-02-03 00:00:00"
+                        place="22" points="238" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="24" team="1">
+                    <SOLO swimmerid="1058313"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4767" distance="50"/>
+                        <SPLIT swimtime="1.4080" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9806" heat="2" lane="4" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="LA SOUTERRAINE" qualifyingtime="1.4309"
+                        qualifyingdate="2012-06-03" swimtime="1.3726" swimdate="2013-02-03 00:00:00"
+                        place="19" points="292" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="168" team="1">
+                    <SOLO swimmerid="1168493"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4770" distance="50"/>
+                        <SPLIT swimtime="1.3726" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9785" heat="2" lane="5" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="1.5500"
+                        qualifyingdate="2013-01-28" swimtime="1.3919" swimdate="2013-02-03 00:00:00"
+                        place="21" points="262" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1231925"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4623" distance="50"/>
+                        <SPLIT swimtime="1.3919" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9831" heat="3" lane="1" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="CLERMONT-FERRAND" qualifyingtime="1.3675"
+                        qualifyingdate="2012-05-19" swimtime="1.2710" swimdate="2013-02-03 00:00:00"
+                        place="13" points="476" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1424933"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4229" distance="50"/>
+                        <SPLIT swimtime="1.2710" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9778" heat="3" lane="2" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.3242"
+                        qualifyingdate="2012-04-01" swimtime="1.2346" swimdate="2013-02-03 00:00:00"
+                        place="8" points="553" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="2266" team="1">
+                    <SOLO swimmerid="1086176"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4042" distance="50"/>
+                        <SPLIT swimtime="1.2346" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9845" heat="3" lane="3" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="1.2900"
+                        qualifyingdate="2013-01-22" swimtime="1.2922" swimdate="2013-02-03 00:00:00"
+                        place="14" points="434" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="2">
+                    <SOLO swimmerid="1283404"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3993" distance="50"/>
+                        <SPLIT swimtime="1.2922" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9891" heat="3" lane="4" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="1.3141"
+                        qualifyingdate="2012-11-10" swimtime="1.3013" swimdate="2013-02-03 00:00:00"
+                        place="15" points="416" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="2">
+                    <SOLO swimmerid="1268382"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4418" distance="50"/>
+                        <SPLIT swimtime="1.3013" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9816" heat="3" lane="5" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="BRIVE-LA-GAILLARDE" qualifyingtime="1.3390"
+                        qualifyingdate="2012-06-09" swimtime="1.2509" swimdate="2013-02-03 00:00:00"
+                        place="9" points="517" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="2266" team="1">
+                    <SOLO swimmerid="1391408"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4200" distance="50"/>
+                        <SPLIT swimtime="1.2509" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9782" heat="4" lane="1" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.2467"
+                        qualifyingdate="2013-01-13" swimtime="1.2685" swimdate="2013-02-03 00:00:00"
+                        place="11" points="481" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="1793" team="1">
+                    <SOLO swimmerid="1363896"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4189" distance="50"/>
+                        <SPLIT swimtime="1.2685" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9783" heat="4" lane="2" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.2366"
+                        qualifyingdate="2013-01-13" swimtime="1.2709" swimdate="2013-02-03 00:00:00"
+                        place="12" points="476" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1402216"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4049" distance="50"/>
+                        <SPLIT swimtime="1.2709" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9841" heat="4" lane="3" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.1964"
+                        qualifyingdate="2013-01-13" swimtime="1.1916" swimdate="2013-02-03 00:00:00"
+                        place="4" points="650" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="319" team="1">
+                    <SOLO swimmerid="1327604"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3820" distance="50"/>
+                        <SPLIT swimtime="1.1916" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9815" heat="4" lane="4" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.2220"
+                        qualifyingdate="2013-01-13" swimtime="1.2286" swimdate="2013-02-03 00:00:00"
+                        place="7" points="566" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1544410"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3911" distance="50"/>
+                        <SPLIT swimtime="1.2286" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9775" heat="4" lane="5" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.2461"
+                        qualifyingdate="2012-11-25" swimtime="1.2509" swimdate="2013-02-03 00:00:00"
+                        place="9" points="517" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="2">
+                    <SOLO swimmerid="1525554"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4108" distance="50"/>
+                        <SPLIT swimtime="1.2509" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9874" heat="5" lane="1" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.1934"
+                        qualifyingdate="2013-01-13" swimtime="1.2027" swimdate="2013-02-03 00:00:00"
+                        place="6" points="624" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="865" team="1">
+                    <SOLO swimmerid="1211436"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3816" distance="50"/>
+                        <SPLIT swimtime="1.2027" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9890" heat="5" lane="2" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="GUERET" qualifyingtime="1.1706"
+                        qualifyingdate="2013-01-13" swimtime="1.1254" swimdate="2013-02-03 00:00:00"
+                        place="2" points="817" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1376133"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3491" distance="50"/>
+                        <SPLIT swimtime="1.1254" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9866" heat="5" lane="3" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.0588"
+                        qualifyingdate="2013-01-13" swimtime="1.0664" swimdate="2013-02-03 00:00:00"
+                        place="1" points="981" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="1793" team="1">
+                    <SOLO swimmerid="1312967"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3235" distance="50"/>
+                        <SPLIT swimtime="1.0664" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9803" heat="5" lane="4" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.1524"
+                        qualifyingdate="2013-01-13" swimtime="1.1267" swimdate="2013-02-03 00:00:00"
+                        place="3" points="814" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="319" team="1">
+                    <SOLO swimmerid="1052936"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3465" distance="50"/>
+                        <SPLIT swimtime="1.1267" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9854" heat="5" lane="5" side="left" raceid="2" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.1807"
+                        qualifyingdate="2012-11-25" swimtime="1.1919" swimdate="2013-02-03 00:00:00"
+                        place="5" points="650" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1345425"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3690" distance="50"/>
+                        <SPLIT swimtime="1.1919" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9924" heat="1" lane="2" side="left" raceid="52" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="1.1631" swimdate="2013-02-03 00:00:00"
+                        place="3" points="513" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="2266" team="1">
+                    <SOLO swimmerid="1127328"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3645" distance="50"/>
+                        <SPLIT swimtime="1.1631" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9809" heat="1" lane="3" side="left" raceid="52" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="1.4451"
+                        qualifyingdate="2012-05-12" swimtime="1.4422" swimdate="2013-02-03 00:00:00"
+                        place="10" points="72" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1282449"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4763" distance="50"/>
+                        <SPLIT swimtime="1.4422" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9929" heat="1" lane="4" side="left" raceid="52" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="2.0000"
+                        qualifyingdate="2013-02-03" swimtime="1.5142" swimdate="2013-02-03 00:00:00"
+                        place="11" points="24" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1323" team="1">
+                    <SOLO swimmerid="1752073"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4773" distance="50"/>
+                        <SPLIT swimtime="1.5142" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9784" heat="2" lane="2" side="left" raceid="52" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-LEONARD-DE-NOBLAT"
+                        qualifyingtime="1.3639" qualifyingdate="2012-02-19" swimtime="1.3435"
+                        swimdate="2013-02-03 00:00:00" place="9" points="183" disqualificationid="0"
+                        swimoff="false" mixedteam="true" clubid="24" team="1">
+                    <SOLO swimmerid="1128945"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4350" distance="50"/>
+                        <SPLIT swimtime="1.3435" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9799" heat="2" lane="3" side="left" raceid="52" roundid="60"
+                        agegroupid="" qualifyingplace="saisie manuelle" qualifyingtime="1.3500"
+                        qualifyingdate="2013-01-22" swimtime="1.3040" swimdate="2013-02-03 00:00:00"
+                        place="7" points="241" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1700918"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4162" distance="50"/>
+                        <SPLIT swimtime="1.3040" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9861" heat="2" lane="4" side="left" raceid="52" roundid="60"
+                        agegroupid="" qualifyingplace="LA SOUTERRAINE" qualifyingtime="1.3563"
+                        qualifyingdate="2012-11-25" swimtime="1.3264" swimdate="2013-02-03 00:00:00"
+                        place="8" points="207" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="24" team="1">
+                    <SOLO swimmerid="1046905"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4386" distance="50"/>
+                        <SPLIT swimtime="1.3264" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9882" heat="3" lane="1" side="left" raceid="52" roundid="60"
+                        agegroupid="" qualifyingplace="TULLE" qualifyingtime="1.3360"
+                        qualifyingdate="2012-01-22" swimtime="1.2708" swimdate="2013-02-03 00:00:00"
+                        place="6" points="296" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="168" team="1">
+                    <SOLO swimmerid="1168480"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4374" distance="50"/>
+                        <SPLIT swimtime="1.2708" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9800" heat="3" lane="2" side="left" raceid="52" roundid="60"
+                        agegroupid="" qualifyingplace="CLERMONT-FERRAND" qualifyingtime="1.2817"
+                        qualifyingdate="2012-05-20" swimtime="1.2510" swimdate="2013-02-03 00:00:00"
+                        place="4" points="331" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1424925"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.4228" distance="50"/>
+                        <SPLIT swimtime="1.2510" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9827" heat="3" lane="3" side="left" raceid="52" roundid="60"
+                        agegroupid="" qualifyingplace="LIMOGES" qualifyingtime="1.1604"
+                        qualifyingdate="2012-11-11" swimtime="1.1423" swimdate="2013-02-03 00:00:00"
+                        place="1" points="562" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="132" team="1">
+                    <SOLO swimmerid="1142541"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3541" distance="50"/>
+                        <SPLIT swimtime="1.1423" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9829" heat="3" lane="4" side="left" raceid="52" roundid="60"
+                        agegroupid="" qualifyingplace="SAINT-JUNIEN" qualifyingtime="1.1772"
+                        qualifyingdate="2013-01-13" swimtime="1.1541" swimdate="2013-02-03 00:00:00"
+                        place="2" points="534" disqualificationid="0" swimoff="false"
+                        mixedteam="true" clubid="865" team="1">
+                    <SOLO swimmerid="1377865"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3704" distance="50"/>
+                        <SPLIT swimtime="1.1541" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9876" heat="3" lane="5" side="left" raceid="52" roundid="60"
+                        agegroupid="" qualifyingplace="CLERMONT-FERRAND" qualifyingtime="1.2961"
+                        qualifyingdate="2012-05-20" swimtime="1.2576" swimdate="2013-02-03 00:00:00"
+                        place="5" points="319" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="657" team="1">
+                    <SOLO swimmerid="1434101"/>
+                    <SPLITS>
+                        <SPLIT swimtime="0.3990" distance="50"/>
+                        <SPLIT swimtime="1.2576" distance="100"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9908" heat="1" lane="2" side="left" raceid="43" roundid="60"
+                        agegroupid="" qualifyingtime="7.0000" qualifyingdate="2013-01-28"
+                        swimtime="6.1580" swimdate="2013-02-03 00:00:00" place="4" points="348"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="657"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1424933" clubid="657"/>
+                            <RELAYPOSITION number="2" swimmerid="1231925" clubid="657"/>
+                            <RELAYPOSITION number="3" swimmerid="1229888" clubid="657"/>
+                            <RELAYPOSITION number="4" swimmerid="1069883" clubid="657"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="1.3588" distance="100"/>
+                        <SPLIT swimtime="3.2189" distance="200"/>
+                        <SPLIT swimtime="4.5513" distance="300"/>
+                        <SPLIT swimtime="6.1580" distance="400"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9898" heat="1" lane="3" side="left" raceid="43" roundid="60"
+                        agegroupid="" qualifyingtime="6.4500" qualifyingdate="2013-01-22"
+                        swimtime="6.2824" swimdate="2013-02-03 00:00:00" place="6" points="296"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="132"
+                        team="2">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1204340" clubid="132"/>
+                            <RELAYPOSITION number="2" swimmerid="1268382" clubid="132"/>
+                            <RELAYPOSITION number="3" swimmerid="1283404" clubid="132"/>
+                            <RELAYPOSITION number="4" swimmerid="1586119" clubid="132"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="1.4009" distance="100"/>
+                        <SPLIT swimtime="3.1842" distance="200"/>
+                        <SPLIT swimtime="4.5788" distance="300"/>
+                        <SPLIT swimtime="6.2824" distance="400"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9904" heat="1" lane="4" side="left" raceid="43" roundid="60"
+                        agegroupid="" qualifyingtime="7.0000" qualifyingdate="2013-01-28"
+                        swimtime="6.4840" swimdate="2013-02-03 00:00:00" place="8" points="221"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="24"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1046895" clubid="24"/>
+                            <RELAYPOSITION number="2" swimmerid="1205228" clubid="24"/>
+                            <RELAYPOSITION number="3" swimmerid="1205372" clubid="24"/>
+                            <RELAYPOSITION number="4" swimmerid="1058313" clubid="24"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="1.2107" distance="100"/>
+                        <SPLIT swimtime="2.5264" distance="200"/>
+                        <SPLIT swimtime="4.5726" distance="300"/>
+                        <SPLIT swimtime="6.4840" distance="400"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9914" heat="2" lane="1" side="left" raceid="43" roundid="60"
+                        agegroupid="" qualifyingtime="6.2800" qualifyingdate="2013-01-29"
+                        swimtime="6.2261" swimdate="2013-02-03 00:00:00" place="5" points="319"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="168"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1290661" clubid="168"/>
+                            <RELAYPOSITION number="2" swimmerid="1637595" clubid="168"/>
+                            <RELAYPOSITION number="3" swimmerid="1168493" clubid="168"/>
+                            <RELAYPOSITION number="4" swimmerid="1091537" clubid="168"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="1.2702" distance="100"/>
+                        <SPLIT swimtime="3.0830" distance="200"/>
+                        <SPLIT swimtime="4.5792" distance="300"/>
+                        <SPLIT swimtime="6.2261" distance="400"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9910" heat="2" lane="2" side="left" raceid="43" roundid="60"
+                        agegroupid="" qualifyingtime="6.1000" qualifyingdate="2013-01-28"
+                        swimtime="6.1008" swimdate="2013-02-03 00:00:00" place="3" points="374"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="2266"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1171970" clubid="2266"/>
+                            <RELAYPOSITION number="2" swimmerid="1086176" clubid="2266"/>
+                            <RELAYPOSITION number="3" swimmerid="1391408" clubid="2266"/>
+                            <RELAYPOSITION number="4" swimmerid="978764" clubid="2266"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="1.2946" distance="100"/>
+                        <SPLIT swimtime="3.0586" distance="200"/>
+                        <SPLIT swimtime="4.4705" distance="300"/>
+                        <SPLIT swimtime="6.1008" distance="400"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9894" heat="2" lane="3" side="left" raceid="43" roundid="60"
+                        agegroupid="" qualifyingtime="6.0000" qualifyingdate="2013-01-22"
+                        swimtime="6.2961" swimdate="2013-02-03 00:00:00" place="7" points="291"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="319"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1052936" clubid="319"/>
+                            <RELAYPOSITION number="2" swimmerid="1537767" clubid="319"/>
+                            <RELAYPOSITION number="3" swimmerid="1328394" clubid="319"/>
+                            <RELAYPOSITION number="4" swimmerid="1327604" clubid="319"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="1.2597" distance="100"/>
+                        <SPLIT swimtime="3.1102" distance="200"/>
+                        <SPLIT swimtime="4.5445" distance="300"/>
+                        <SPLIT swimtime="6.2961" distance="400"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9902" heat="2" lane="4" side="left" raceid="43" roundid="60"
+                        agegroupid="" qualifyingtime="6.0900" qualifyingdate="2013-01-28"
+                        swimtime="6.0895" swimdate="2013-02-03 00:00:00" place="2" points="379"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="1323"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1079811" clubid="1323"/>
+                            <RELAYPOSITION number="2" swimmerid="1345425" clubid="1323"/>
+                            <RELAYPOSITION number="3" swimmerid="1402216" clubid="1323"/>
+                            <RELAYPOSITION number="4" swimmerid="1210278" clubid="1323"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="1.2927" distance="100"/>
+                        <SPLIT swimtime="3.0239" distance="200"/>
+                        <SPLIT swimtime="4.3841" distance="300"/>
+                        <SPLIT swimtime="6.0895" distance="400"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9896" heat="2" lane="5" side="left" raceid="43" roundid="60"
+                        agegroupid="" qualifyingtime="6.1500" qualifyingdate="2013-01-22"
+                        swimtime="5.5331" swimdate="2013-02-03 00:00:00" place="1" points="453"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="132"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1459236" clubid="132"/>
+                            <RELAYPOSITION number="2" swimmerid="1544410" clubid="132"/>
+                            <RELAYPOSITION number="3" swimmerid="1204351" clubid="132"/>
+                            <RELAYPOSITION number="4" swimmerid="1376133" clubid="132"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="1.2297" distance="100"/>
+                        <SPLIT swimtime="2.5781" distance="200"/>
+                        <SPLIT swimtime="4.3075" distance="300"/>
+                        <SPLIT swimtime="5.5331" distance="400"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9920" heat="1" lane="2" side="left" raceid="93" roundid="60"
+                        agegroupid="" qualifyingtime="7.1500" qualifyingdate="2013-01-29"
+                        swimtime="7.3553" swimdate="2013-02-03 00:00:00" place="3" points="13"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="1323"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1287332" clubid="1323"/>
+                            <RELAYPOSITION number="2" swimmerid="1282449" clubid="1323"/>
+                            <RELAYPOSITION number="3" swimmerid="1525255" clubid="1323"/>
+                            <RELAYPOSITION number="4" swimmerid="1752073" clubid="1323"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="1.4129" distance="100"/>
+                        <SPLIT swimtime="3.3170" distance="200"/>
+                        <SPLIT swimtime="5.1853" distance="300"/>
+                        <SPLIT swimtime="7.3553" distance="400"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9900" heat="1" lane="3" side="left" raceid="93" roundid="60"
+                        agegroupid="" qualifyingtime="6.3500" qualifyingdate="2013-01-22"
+                        swimtime="6.0664" swimdate="2013-02-03 00:00:00" place="2" points="224"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="132"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1142541" clubid="132"/>
+                            <RELAYPOSITION number="2" swimmerid="1273207" clubid="132"/>
+                            <RELAYPOSITION number="3" swimmerid="1700918" clubid="132"/>
+                            <RELAYPOSITION number="4" swimmerid="1075305" clubid="132"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="1.2935" distance="100"/>
+                        <SPLIT swimtime="2.5887" distance="200"/>
+                        <SPLIT swimtime="4.4290" distance="300"/>
+                        <SPLIT swimtime="6.0664" distance="400"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9906" heat="1" lane="4" side="left" raceid="93" roundid="60"
+                        agegroupid="" qualifyingtime="6.4500" qualifyingdate="2013-01-28"
+                        swimtime="6.0585" swimdate="2013-02-03 00:00:00" place="1" points="227"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="657"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1424925" clubid="657"/>
+                            <RELAYPOSITION number="2" swimmerid="1434101" clubid="657"/>
+                            <RELAYPOSITION number="3" swimmerid="1431242" clubid="657"/>
+                            <RELAYPOSITION number="4" swimmerid="1080595" clubid="657"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="1.3622" distance="100"/>
+                        <SPLIT swimtime="3.1135" distance="200"/>
+                        <SPLIT swimtime="4.4171" distance="300"/>
+                        <SPLIT swimtime="6.0585" distance="400"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9935" heat="1" lane="2" side="left" raceid="88" roundid="60"
+                        agegroupid="" qualifyingplace="Saisie manuelle" qualifyingtime="8.0000"
+                        qualifyingdate="2013-02-03" swimtime="6.3850" swimdate="2013-02-03 00:00:00"
+                        place="3" points="177" disqualificationid="0" swimoff="false"
+                        mixedteam="false" clubid="1583" team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1127328" clubid="1583"/>
+                            <RELAYPOSITION number="2" swimmerid="1128945" clubid="1583"/>
+                            <RELAYPOSITION number="3" swimmerid="1419850" clubid="1583"/>
+                            <RELAYPOSITION number="4" swimmerid="1046905" clubid="1583"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="1.3097" distance="100"/>
+                        <SPLIT swimtime="3.1504" distance="200"/>
+                        <SPLIT swimtime="4.5121" distance="300"/>
+                        <SPLIT swimtime="6.3850" distance="400"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9919" heat="1" lane="3" side="left" raceid="88" roundid="60"
+                        agegroupid="" qualifyingtime="6.1509" qualifyingdate="2013-01-29"
+                        swimtime="6.0769" swimdate="2013-02-03 00:00:00" place="2" points="289"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="865"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1211436" clubid="865"/>
+                            <RELAYPOSITION number="2" swimmerid="1377865" clubid="865"/>
+                            <RELAYPOSITION number="3" swimmerid="1378665" clubid="865"/>
+                            <RELAYPOSITION number="4" swimmerid="1292268" clubid="865"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="1.3177" distance="100"/>
+                        <SPLIT swimtime="3.0238" distance="200"/>
+                        <SPLIT swimtime="4.4267" distance="300"/>
+                        <SPLIT swimtime="6.0769" distance="400"/>
+                    </SPLITS>
+                </RESULT>
+                <RESULT id="9913" heat="1" lane="4" side="left" raceid="88" roundid="60"
+                        agegroupid="" qualifyingtime="8.0000" qualifyingdate="2013-01-29"
+                        swimtime="5.5633" swimdate="2013-02-03 00:00:00" place="1" points="337"
+                        disqualificationid="0" swimoff="false" mixedteam="false" clubid="1793"
+                        team="1">
+                    <RELAY>
+                        <RELAYPOSITIONS>
+                            <RELAYPOSITION number="1" swimmerid="1312967" clubid="1793"/>
+                            <RELAYPOSITION number="2" swimmerid="1363896" clubid="1793"/>
+                            <RELAYPOSITION number="3" swimmerid="1328755" clubid="1793"/>
+                            <RELAYPOSITION number="4" swimmerid="1372707" clubid="1793"/>
+                        </RELAYPOSITIONS>
+                    </RELAY>
+                    <SPLITS>
+                        <SPLIT swimtime="1.1780" distance="100"/>
+                        <SPLIT swimtime="2.5682" distance="200"/>
+                        <SPLIT swimtime="4.2959" distance="300"/>
+                        <SPLIT swimtime="5.5633" distance="400"/>
+                    </SPLITS>
+                </RESULT>
+            </RESULTS>
+        </MEET>
+    </MEETS>
+</FFNEX>
