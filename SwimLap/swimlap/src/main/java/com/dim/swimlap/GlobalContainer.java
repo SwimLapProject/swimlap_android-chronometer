@@ -1,3 +1,10 @@
+/**
+ * SwimLapProject from stephenbroyerproject
+ * March to June 2014
+ * Licence pro DIM 7
+ * CCI 74 & IUT Annecy Departement informatique
+ */
+
 package com.dim.swimlap;
 
 import android.app.Activity;
@@ -8,7 +15,6 @@ import android.widget.AdapterView;
 import com.dim.swimlap.fragments.FragementLaps;
 import com.dim.swimlap.fragments.FragmentChrono;
 import com.dim.swimlap.fragments.FragmentRaces;
-
 
 public class GlobalContainer extends Activity implements AdapterView.OnItemClickListener{
 
