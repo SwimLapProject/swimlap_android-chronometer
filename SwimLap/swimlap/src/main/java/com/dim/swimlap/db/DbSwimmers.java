@@ -13,10 +13,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 
 public class DbSwimmers extends SQLiteOpenHelper {
-
-    private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "db_swimlap.db";
-
+    // TABLE
     public static final String SWIMMERS_TABLE_NAME = "table_swimmers";
 
     public static final String COL_SWI_ID_FFN = "col_swi_id_ffn";
@@ -37,8 +34,8 @@ public class DbSwimmers extends SQLiteOpenHelper {
             COL_SWI_CLUB_ID + " TEXT" +
             ");";
 
-    public DbSwimmers(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, Environment.getExternalStorageDirectory() + "/" + DATABASE_NAME, null, DATABASE_VERSION);
+    public DbSwimmers(Context context, String databaseName, SQLiteDatabase.CursorFactory factory, int databaseVersion) {
+        super(context, Environment.getExternalStorageDirectory() + "/" + databaseName, null, databaseVersion);
     }
 
     @Override

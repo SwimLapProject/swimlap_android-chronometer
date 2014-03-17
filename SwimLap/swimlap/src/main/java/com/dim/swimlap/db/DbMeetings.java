@@ -14,9 +14,7 @@ import android.os.Environment;
 
 public class DbMeetings extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "db_swimlap.db";
-
+    // TABLE
     public static final String MEETINGS_TABLE_NAME = "table_meetings";
 
     public static final String COL_MEE_ID_MEET = "col_mee_id_meet";
@@ -25,7 +23,7 @@ public class DbMeetings extends SQLiteOpenHelper {
     public static final String COL_MEE_START_DATE = "col_mee_start_date";
     public static final String COL_MEE_STOP_DATE = "col_mee_stop_date";
     public static final String COL_MEE_POOL_SIZE = "col_mee_pool_size";
-    public static final String COL_MEE_AGEGROUP_ID = "col_mee_agegroup_id";
+    public static final String COL_AGE_AGEGROUP_ID = "col_age_agegroup_id";
 
 
     private static final String
@@ -36,11 +34,11 @@ public class DbMeetings extends SQLiteOpenHelper {
             COL_MEE_START_DATE + " TEXT, " +
             COL_MEE_STOP_DATE + " TEXT, " +
             COL_MEE_POOL_SIZE + " INTEGER, " +
-            COL_MEE_AGEGROUP_ID + " INTEGER " +
+            COL_AGE_AGEGROUP_ID + " INTEGER " +
             ");";
 
-    public DbMeetings(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, Environment.getExternalStorageDirectory() + "/" + DATABASE_NAME, null, DATABASE_VERSION);
+    public DbMeetings(Context context, String databaseName, SQLiteDatabase.CursorFactory factory, int databaseVersion) {
+        super(context, Environment.getExternalStorageDirectory() + "/" + databaseName, null, databaseVersion);
     }
 
     @Override
