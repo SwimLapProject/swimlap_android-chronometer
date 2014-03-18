@@ -5,34 +5,29 @@
  * CCI 74 & IUT Annecy Departement informatique
  */
 
-package com.dim.swimlap.db;
+package com.dim.swimlap.db.tables;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Environment;
-
-public class DbEvents extends SQLiteOpenHelper {
+public class DbTableEvents implements DbTableMODEL {
 
 /* THIS TABLE *** EVENTS *** IS A JOIN TABLE FROM SWIMMERS, RACES AND MEETINGS */
 
     // TABLE
-    public static final String EVENTS_TABLE_NAME = "table_events";
-
+    public static final String TABLE_NAME = "table_events";
+    // COLUMNS
     // FOREIGN KEYS AS PRIMARY KEYS
-    public static final String COL_SWI_ID_FFN = "col_swi_id_ffn";
-    public static final String COL_MEE_ID_MEET = "col_mee_id_meet";
-    public static final String COL_RAC_ID_RACE = "col_rac_id_race"; // if null : type is not a race (then type is event)
+    public static final String COL_SWI_ID_FFN = "col_swi_swimmer_id";
+    public static final String COL_MEE_ID_MEET = "col_mee_meet_id";
+    public static final String COL_RAC_ID_RACE = "col_rac_race_id"; // if null : type is not a race (then type is event)
 
     // MEETING SPECIFICATIONS
-    public static final String COL_EVE_ROUND_ID = "col_rou_id_round"; // event format: heat=60 , final=11 etc //todo
+    public static final String COL_EVE_ROUND_ID = "col_rou_round_id"; // event format: heat=60 , final=11 etc //todo
     public static final String COL_EVE_ORDER = "col_eve_order"; //order of events during meeting
-    
+
     // SWIMMER SPECIFICATIONS
     public static final String COL_EVE_QUALIFYING_TIME = "col_eve_qualifying_time"; // IMPORTANT !!!
     public static final String COL_EVE_SWIM_TIME = "col_eve_swim_time"; // final time
     public static final String COL_AGE_AGEGROUP_ID = "col_age_agegroup_id";// optional
-    
+
     // RACE SPECIFICATION
     public static final String COL_EVE_SPLIT_25 = "col_eve_split_25";
     public static final String COL_EVE_SPLIT_50 = "col_eve_split_50";
@@ -95,10 +90,8 @@ public class DbEvents extends SQLiteOpenHelper {
     public static final String COL_EVE_SPLIT_1475 = "col_eve_split_1475";
     public static final String COL_EVE_SPLIT_1500 = "col_eve_split_1500";
 
-
-
     private static final String
-            EVENTS_TABLE_CREATE = "CREATE TABLE " + EVENTS_TABLE_NAME + " (" +
+            REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
 
             COL_SWI_ID_FFN + " INTEGER , " +
             COL_MEE_ID_MEET + " INTEGER , " +
@@ -176,18 +169,86 @@ public class DbEvents extends SQLiteOpenHelper {
             COL_EVE_SPLIT_1500 + " REAL " +
             ");";
 
-    public DbEvents(Context context, String databaseName, SQLiteDatabase.CursorFactory factory, int databaseVersion) {
-        super(context, Environment.getExternalStorageDirectory() + "/" + databaseName, null, databaseVersion);
+    @Override
+    public String getTableName() {
+        return TABLE_NAME;
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(EVENTS_TABLE_CREATE);
+    public String getRequestTableCreate() {
+        return REQUEST_TABLE_CREATE;
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + EVENTS_TABLE_NAME);
-        onCreate(sqLiteDatabase);
+    public String[] getAllColumnsAsStrings() {
+        String[] strings = {COL_SWI_ID_FFN,
+                COL_MEE_ID_MEET,
+                COL_RAC_ID_RACE,
+                COL_EVE_ROUND_ID,
+                COL_EVE_ORDER,
+                COL_EVE_QUALIFYING_TIME,
+                COL_EVE_SWIM_TIME,
+                COL_AGE_AGEGROUP_ID,
+                COL_EVE_SPLIT_25,
+                COL_EVE_SPLIT_50,
+                COL_EVE_SPLIT_75,
+                COL_EVE_SPLIT_100,
+                COL_EVE_SPLIT_125,
+                COL_EVE_SPLIT_150,
+                COL_EVE_SPLIT_175,
+                COL_EVE_SPLIT_200,
+                COL_EVE_SPLIT_225,
+                COL_EVE_SPLIT_250,
+                COL_EVE_SPLIT_275,
+                COL_EVE_SPLIT_300,
+                COL_EVE_SPLIT_325,
+                COL_EVE_SPLIT_350,
+                COL_EVE_SPLIT_375,
+                COL_EVE_SPLIT_400,
+                COL_EVE_SPLIT_425,
+                COL_EVE_SPLIT_450,
+                COL_EVE_SPLIT_475,
+                COL_EVE_SPLIT_500,
+                COL_EVE_SPLIT_525,
+                COL_EVE_SPLIT_550,
+                COL_EVE_SPLIT_575,
+                COL_EVE_SPLIT_600,
+                COL_EVE_SPLIT_625,
+                COL_EVE_SPLIT_650,
+                COL_EVE_SPLIT_675,
+                COL_EVE_SPLIT_700,
+                COL_EVE_SPLIT_725,
+                COL_EVE_SPLIT_750,
+                COL_EVE_SPLIT_775,
+                COL_EVE_SPLIT_800,
+                COL_EVE_SPLIT_825,
+                COL_EVE_SPLIT_850,
+                COL_EVE_SPLIT_875,
+                COL_EVE_SPLIT_900,
+                COL_EVE_SPLIT_925,
+                COL_EVE_SPLIT_950,
+                COL_EVE_SPLIT_975,
+                COL_EVE_SPLIT_1000,
+                COL_EVE_SPLIT_1025,
+                COL_EVE_SPLIT_1050,
+                COL_EVE_SPLIT_1075,
+                COL_EVE_SPLIT_1100,
+                COL_EVE_SPLIT_1125,
+                COL_EVE_SPLIT_1150,
+                COL_EVE_SPLIT_1175,
+                COL_EVE_SPLIT_1200,
+                COL_EVE_SPLIT_1225,
+                COL_EVE_SPLIT_1250,
+                COL_EVE_SPLIT_1275,
+                COL_EVE_SPLIT_1300,
+                COL_EVE_SPLIT_1325,
+                COL_EVE_SPLIT_1350,
+                COL_EVE_SPLIT_1375,
+                COL_EVE_SPLIT_1400,
+                COL_EVE_SPLIT_1425,
+                COL_EVE_SPLIT_1450,
+                COL_EVE_SPLIT_1475,
+                COL_EVE_SPLIT_1500};
+        return strings;
     }
 }
