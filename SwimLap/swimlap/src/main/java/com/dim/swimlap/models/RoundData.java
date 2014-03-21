@@ -7,7 +7,7 @@
 
 package com.dim.swimlap.models;
 
-public class RoundModel {
+public class RoundData {
 
     private int idRound;
     private String name;

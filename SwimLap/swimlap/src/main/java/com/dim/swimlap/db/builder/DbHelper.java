@@ -30,14 +30,14 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "db_swimlap.db";
     private List<DbTableMODEL> tablesOfDb;
 
-    protected DbTableClubs dbTableClubs;
-    protected DbTableEvents dbTableEvents;
-    protected DbTableMeetings dbTableMeetings;
-    protected DbTableRaces dbTableRaces;
-    protected DbTableRecords dbTableRecords;
-    protected DbTableRounds dbTableRounds;
-    protected DbTableSeasons dbTableSeasons;
-    protected DbTableSwimmers dbTableSwimmers;
+    public DbTableClubs dbTableClubs;
+    public DbTableEvents dbTableEvents;
+    public DbTableMeetings dbTableMeetings;
+    public DbTableRaces dbTableRaces;
+    public DbTableRecords dbTableRecords;
+    public DbTableRounds dbTableRounds;
+    public DbTableSeasons dbTableSeasons;
+    public DbTableSwimmers dbTableSwimmers;
 
     public DbHelper(Context context, String databaseName, int dbVersion) {
         super(context, Environment.getExternalStorageDirectory() + "/" + databaseName, null, dbVersion);

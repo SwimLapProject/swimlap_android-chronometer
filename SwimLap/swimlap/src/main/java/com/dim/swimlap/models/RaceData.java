@@ -7,7 +7,7 @@
 
 package com.dim.swimlap.models;
 
-public class RaceModel {
+public class RaceData {
 
     private int idRace;
     private int distance;
