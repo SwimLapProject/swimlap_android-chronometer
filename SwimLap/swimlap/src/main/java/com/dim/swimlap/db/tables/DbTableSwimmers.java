@@ -19,7 +19,7 @@ public class DbTableSwimmers implements DbTableMODEL {
     public static final String COL_CLU_CLUB_ID = "col_clu_club_id";
 
 
-    private static final String
+    public static final String
             REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
             COL_SWI_ID_SWIMMER + " INTEGER, " +
             COL_SWI_NAME + " TEXT," +
@@ -29,6 +29,14 @@ public class DbTableSwimmers implements DbTableMODEL {
             COL_CLU_CLUB_ID + " TEXT" +
             ");";
 
+    public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_SWI_ID_SWIMMER,
+            COL_SWI_NAME,
+            COL_SWI_FIRST_NAME,
+            COL_SWI_FIRST_NAME,
+            COL_SWI_DATE_OF_BIRTH,
+            COL_SWI_GENDER,
+            COL_CLU_CLUB_ID};
+
     @Override
     public String getTableName() {
         return TABLE_NAME;
@@ -37,17 +45,5 @@ public class DbTableSwimmers implements DbTableMODEL {
     @Override
     public String getRequestTableCreate() {
         return REQUEST_TABLE_CREATE;
-    }
-
-    @Override
-    public String[] getAllColumnsAsStrings() {
-        String[] strings = {COL_SWI_ID_SWIMMER,
-                COL_SWI_NAME,
-                COL_SWI_FIRST_NAME,
-                COL_SWI_FIRST_NAME,
-                COL_SWI_DATE_OF_BIRTH,
-                COL_SWI_GENDER,
-                COL_CLU_CLUB_ID};
-        return strings;
     }
 }

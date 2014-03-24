@@ -7,11 +7,11 @@
 
 package com.dim.swimlap.models;
 
+import java.util.HashMap;
+
 public class RecordModel {
     private int swimmerId;
-    private int raceId;
-    private float swimtime25;
-    private float swimtime50;
+    private HashMap<Integer, Float> swimTimesPool25, swimTimesPool50;
 
     public int getSwimmerId() {
         return swimmerId;
@@ -21,27 +21,35 @@ public class RecordModel {
         this.swimmerId = swimmerId;
     }
 
-    public int getRaceId() {
-        return raceId;
+    public Float getSwimtimePool25(int idRace) {
+        return swimTimesPool25.get(idRace);
     }
 
-    public void setRaceId(int raceId) {
-        this.raceId = raceId;
+    public boolean setSwimtimePool25(int idRaceToUpdate, float newRecordTime) {
+        boolean isARecord = false;
+        if (swimTimesPool25.get(idRaceToUpdate) > newRecordTime) {
+            swimTimesPool25.remove(idRaceToUpdate);
+            swimTimesPool25.put(idRaceToUpdate, newRecordTime);
+            isARecord = true;
+        } else {
+            //record is not a record
+        }
+        return isARecord;
     }
 
-    public float getSwimtime25() {
-        return swimtime25;
+    public Float getSwimtimePool50(int idRace) {
+        return swimTimesPool50.get(idRace);
     }
 
-    public void setSwimtime25(float swimtime25) {
-        this.swimtime25 = swimtime25;
-    }
-
-    public float getSwimtime50() {
-        return swimtime50;
-    }
-
-    public void setSwimtime50(float swimtime50) {
-        this.swimtime50 = swimtime50;
+    public boolean setSwimtimePool50(int idRaceToUpdate, float newRecordTime) {
+        boolean isARecord = false;
+        if (swimTimesPool25.get(idRaceToUpdate) > newRecordTime) {
+            swimTimesPool25.remove(idRaceToUpdate);
+            swimTimesPool25.put(idRaceToUpdate, newRecordTime);
+            isARecord = true;
+        } else {
+            //record is not a record
+        }
+        return isARecord;
     }
 }

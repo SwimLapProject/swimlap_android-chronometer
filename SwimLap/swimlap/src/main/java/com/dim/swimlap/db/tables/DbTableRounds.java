@@ -14,11 +14,13 @@ public class DbTableRounds implements DbTableMODEL {
     // COLUMNS
     public static final String COL_ROU_ID_ROUND = "col_rou_id_round";
     public static final String COL_ROU_NAME = "col_rou_name";
-    private static final String
+    public static final String
             REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
             COL_ROU_ID_ROUND + " INTEGER, " +
             COL_ROU_NAME + " TEXT " +
             ");";
+
+    public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_ROU_ID_ROUND, COL_ROU_NAME};
 
     @Override
     public String getTableName() {
@@ -28,11 +30,5 @@ public class DbTableRounds implements DbTableMODEL {
     @Override
     public String getRequestTableCreate() {
         return REQUEST_TABLE_CREATE;
-    }
-
-    @Override
-    public String[] getAllColumnsAsStrings() {
-        String[] strings = {COL_ROU_ID_ROUND,COL_ROU_NAME};
-        return strings;
     }
 }

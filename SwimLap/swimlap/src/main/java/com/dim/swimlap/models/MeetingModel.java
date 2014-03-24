@@ -7,6 +7,10 @@
 
 package com.dim.swimlap.models;
 
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MeetingModel {
@@ -19,6 +23,16 @@ public class MeetingModel {
     private int size;
     private int agegroupId;
     private int seasonId;
+    private int poolSize;
+    private static final String FFNEX_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+    public int getPoolSize() {
+        return poolSize;
+    }
+
+    public void setPoolSize(int poolSize) {
+        this.poolSize = poolSize;
+    }
 
     public int getIdMeeting() {
         return idMeeting;
@@ -44,20 +58,20 @@ public class MeetingModel {
         this.city = city;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public String getStartDate() {
+        return convertDateToString(startDate);
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setStartDate(String startDate) {
+        this.startDate = convertStringToDate(startDate);
     }
 
-    public Date getStopDate() {
-        return stopDate;
+    public String getStopDate() {
+        return convertDateToString(stopDate);
     }
 
-    public void setStopDate(Date stopDate) {
-        this.stopDate = stopDate;
+    public void setStopDate(String stopDate) {
+        this.stopDate = convertStringToDate(stopDate);
     }
 
     public int getSize() {
@@ -82,5 +96,23 @@ public class MeetingModel {
 
     public void setSeasonId(int seasonId) {
         this.seasonId = seasonId;
+    }
+
+    private String convertDateToString(Date dateToConvert) {
+        SimpleDateFormat formatter = new SimpleDateFormat(FFNEX_DATE_FORMAT);
+        String dateInString = formatter.format(dateToConvert);
+        return dateInString;
+
+    }
+
+    private Date convertStringToDate(String dateInString){
+        SimpleDateFormat formatter = new SimpleDateFormat(FFNEX_DATE_FORMAT);
+        Date date = null;
+        try {
+            date = formatter.parse(dateInString);
+        } catch (ParseException e) {
+            date = null;
+        }
+        return date;
     }
 }

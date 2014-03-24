@@ -13,5 +13,4 @@ public interface DbTableMODEL {
 
     public String getRequestTableCreate();
 
-    public String[] getAllColumnsAsStrings();
 }

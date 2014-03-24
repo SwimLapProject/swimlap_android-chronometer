@@ -17,13 +17,20 @@ public class DbTableRecords implements DbTableMODEL {
     public static final String COL_REC_SWIMTIME_25 = "col_rec_swimtime_25";
     public static final String COL_REC_SWIMTIME_50 = "col_rec_swimtime_50";
 
-    private static final String
+
+    public static final String
             REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
             COL_SWI_SWIMMER_ID + " INTEGER, " +
             COL_RAC_RACE_ID + " INTEGER, " +
             COL_REC_SWIMTIME_25 + " REAL, " +
             COL_REC_SWIMTIME_50 + " REAL " +
             ");";
+
+    public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_SWI_SWIMMER_ID,
+            COL_RAC_RACE_ID,
+            COL_REC_SWIMTIME_25,
+            COL_REC_SWIMTIME_50};
+
 
     @Override
     public String getTableName() {
@@ -35,12 +42,4 @@ public class DbTableRecords implements DbTableMODEL {
         return REQUEST_TABLE_CREATE;
     }
 
-    @Override
-    public String[] getAllColumnsAsStrings() {
-        String[] strings = {COL_SWI_SWIMMER_ID,
-                COL_RAC_RACE_ID,
-                COL_REC_SWIMTIME_25,
-                COL_REC_SWIMTIME_50};
-        return strings;
-    }
 }

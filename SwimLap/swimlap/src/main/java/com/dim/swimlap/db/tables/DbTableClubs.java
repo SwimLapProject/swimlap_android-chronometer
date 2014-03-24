@@ -13,11 +13,13 @@ public class DbTableClubs implements DbTableMODEL {
     // COLUMNS
     public static final String COL_CLU_ID_CLUB = "col_clu_id_club";
     public static final String COL_CLU_NAME = "col_clu_name";
-    private static final String
+    public static final String
             REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
             COL_CLU_ID_CLUB + " INTEGER, " +
             COL_CLU_NAME + " TEXT" +
             ");";
+
+    public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_CLU_ID_CLUB, COL_CLU_NAME};
 
     @Override
     public String getTableName() {
@@ -27,11 +29,5 @@ public class DbTableClubs implements DbTableMODEL {
     @Override
     public String getRequestTableCreate() {
         return REQUEST_TABLE_CREATE;
-    }
-
-    @Override
-    public String[] getAllColumnsAsStrings() {
-        String[] strings = {COL_CLU_ID_CLUB, COL_CLU_NAME};
-        return strings;
     }
 }

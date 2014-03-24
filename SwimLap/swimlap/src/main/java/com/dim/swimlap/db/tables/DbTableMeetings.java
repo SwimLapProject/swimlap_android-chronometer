@@ -21,7 +21,7 @@ public class DbTableMeetings implements DbTableMODEL {
     public static final String COL_SEA_ID = "col_sea_id";
 
 
-    private static final String
+    public static final String
             REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
             COL_MEE_ID_MEET + " INTEGER, " +
             COL_MEE_MEETING_NAME + " TEXT, " +
@@ -33,6 +33,15 @@ public class DbTableMeetings implements DbTableMODEL {
             COL_SEA_ID + " INTEGER " +
             ");";
 
+    public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_MEE_ID_MEET,
+            COL_MEE_MEETING_NAME,
+            COL_MEE_CITY,
+            COL_MEE_START_DATE,
+            COL_MEE_STOP_DATE,
+            COL_MEE_POOL_SIZE,
+            COL_AGE_AGEGROUP_ID,
+            COL_SEA_ID};
+
     @Override
     public String getTableName() {
         return TABLE_NAME;
@@ -41,18 +50,5 @@ public class DbTableMeetings implements DbTableMODEL {
     @Override
     public String getRequestTableCreate() {
         return REQUEST_TABLE_CREATE;
-    }
-
-    @Override
-    public String[] getAllColumnsAsStrings() {
-        String[] strings = {COL_MEE_ID_MEET,
-                COL_MEE_MEETING_NAME,
-                COL_MEE_CITY,
-                COL_MEE_START_DATE,
-                COL_MEE_STOP_DATE,
-                COL_MEE_POOL_SIZE,
-                COL_AGE_AGEGROUP_ID,
-                COL_SEA_ID};
-        return strings;
     }
 }

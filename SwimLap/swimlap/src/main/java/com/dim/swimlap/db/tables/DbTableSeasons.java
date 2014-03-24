@@ -15,12 +15,16 @@ public class DbTableSeasons implements DbTableMODEL {
     public static final String COL_SEA_ID_SEASON = "col_sea_id_season";
     public static final String COL_SEA_DATE_START = "col_sea_date_start";
     public static final String COL_SEA_DATE_STOP = "col_sea_date_stop";
-    private static final String
+    public static final String
             REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
             COL_SEA_ID_SEASON + " INTEGER, " +
             COL_SEA_DATE_START + " TEXT, " +
             COL_SEA_DATE_STOP + " TEXT " +
             ");";
+
+    public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_SEA_ID_SEASON,
+            COL_SEA_DATE_START,
+            COL_SEA_DATE_STOP};
 
     @Override
     public String getTableName() {
@@ -30,13 +34,5 @@ public class DbTableSeasons implements DbTableMODEL {
     @Override
     public String getRequestTableCreate() {
         return REQUEST_TABLE_CREATE;
-    }
-
-    @Override
-    public String[] getAllColumnsAsStrings() {
-        String[] strings = {COL_SEA_ID_SEASON,
-                COL_SEA_DATE_START,
-                COL_SEA_DATE_STOP};
-        return strings;
     }
 }

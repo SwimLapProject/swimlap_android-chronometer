@@ -18,7 +18,7 @@ public class DbTableRaces implements DbTableMODEL {
     public static final String COL_RAC_IS_RELAY = "col_rac_is_relay";
     public static final String COL_RAC_GENDER = "col_rac_gender";
 
-    private static final String
+    public static final String
             REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
             COL_RAC_ID_RACE + " INTEGER, " +
             COL_RAC_DISTANCE + " INTEGER, " +
@@ -26,6 +26,12 @@ public class DbTableRaces implements DbTableMODEL {
             COL_RAC_IS_RELAY + " INTEGER, " +
             COL_RAC_GENDER + " TEXT " +
             ");";
+
+    public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_RAC_ID_RACE,
+            COL_RAC_DISTANCE,
+            COL_RAC_STYLE,
+            COL_RAC_IS_RELAY,
+            COL_RAC_GENDER};
 
     @Override
     public String getTableName() {
@@ -37,13 +43,4 @@ public class DbTableRaces implements DbTableMODEL {
         return REQUEST_TABLE_CREATE;
     }
 
-    @Override
-    public String[] getAllColumnsAsStrings() {
-        String[] strings = {COL_RAC_ID_RACE,
-                COL_RAC_DISTANCE,
-                COL_RAC_STYLE,
-                COL_RAC_IS_RELAY,
-                COL_RAC_GENDER};
-        return strings;
-    }
 }
