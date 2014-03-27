@@ -11,7 +11,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.dim.swimlap.db.builder.DbHelper;
 import com.dim.swimlap.db.tables.DbTableRecords;
 import com.dim.swimlap.db.tables.DbTableSwimmers;
 import com.dim.swimlap.models.RecordModel;
@@ -19,7 +18,7 @@ import com.dim.swimlap.models.RecordModel;
 public class RecordUtilities {
     private SQLiteDatabase sqLiteDatabaseSwimLap;
 
-    public RecordUtilities(SQLiteDatabase sqLiteDatabaseSwimLap, DbHelper dbHelper) {
+    public RecordUtilities(SQLiteDatabase sqLiteDatabaseSwimLap) {
         this.sqLiteDatabaseSwimLap = sqLiteDatabaseSwimLap;
     }
 
@@ -37,6 +36,20 @@ public class RecordUtilities {
         }
         cursor.close();
         return recordModel;
+    }
+
+    private float[] getARecordFromDb(int idSwimmer, int idRace, int poolSize) {
+        float[] record = new float[2];
+        String condition = DbTableRecords.COL_SWI_SWIMMER_ID + "=" + idSwimmer + " AND " + DbTableRecords.COL_RAC_RACE_ID + "=" + idRace;
+        Cursor cursor = sqLiteDatabaseSwimLap.query("table_records", DbTableRecords.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            record[0] = cursor.getFloat(2);
+            record[1] = cursor.getFloat(3);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return record;
     }
 
     public void updateARecordInDb(int idSwimmer, int idRace, float newRecordTime, int poolSize) {
@@ -57,21 +70,7 @@ public class RecordUtilities {
 
     }
 
-    private float[] getARecordFromDb(int idSwimmer, int idRace, int poolSize) {
-        float[] record = new float[2];
-        String condition = DbTableRecords.COL_SWI_SWIMMER_ID + "=" + idSwimmer + " AND " + DbTableRecords.COL_RAC_RACE_ID + "=" + idRace;
-        Cursor cursor = sqLiteDatabaseSwimLap.query("table_records", DbTableRecords.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            record[0] = cursor.getFloat(2);
-            record[1] = cursor.getFloat(3);
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return record;
-    }
-
-    public void deleteRecordInDb(int swimmerIdToDelete) {
+    public void deleteAllRecordFromASwimmerInDb(int swimmerIdToDelete) {
         sqLiteDatabaseSwimLap.delete(DbTableSwimmers.TABLE_NAME, DbTableSwimmers.COL_CLU_CLUB_ID + " = " + swimmerIdToDelete, null);
     }
 

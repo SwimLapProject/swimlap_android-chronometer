@@ -22,7 +22,7 @@ public class SwimmerUtilities {
 
     private SQLiteDatabase sqLiteDatabaseSwimLap;
 
-    public SwimmerUtilities(SQLiteDatabase sqLiteDatabaseSwimLap, DbHelper dbHelper) {
+    public SwimmerUtilities(SQLiteDatabase sqLiteDatabaseSwimLap) {
         this.sqLiteDatabaseSwimLap = sqLiteDatabaseSwimLap;
     }
 

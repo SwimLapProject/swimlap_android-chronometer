@@ -14,7 +14,6 @@ import android.database.sqlite.SQLiteDatabase;
 import com.dim.swimlap.db.builder.DbHelper;
 import com.dim.swimlap.db.tables.DbTableMeetings;
 import com.dim.swimlap.db.tables.DbTableRecords;
-import com.dim.swimlap.db.tables.DbTableSwimmers;
 import com.dim.swimlap.models.MeetingModel;
 
 import java.util.ArrayList;
@@ -24,25 +23,26 @@ public class MeetingUtilities {
     private SQLiteDatabase sqLiteDatabaseSwimLap;
     private DbHelper dbHelper;
 
-    public MeetingUtilities(SQLiteDatabase sqLiteDatabaseSwimLap, DbHelper dbHelper) {
+    public MeetingUtilities(SQLiteDatabase sqLiteDatabaseSwimLap) {
         this.sqLiteDatabaseSwimLap = sqLiteDatabaseSwimLap;
         this.dbHelper = dbHelper;
     }
 
 
-    public List<MeetingModel> getAllMeetings() {
+    public List<MeetingModel> getAllMeetingsFromDb() {
         List<MeetingModel> allMeetings = new ArrayList<MeetingModel>();
         Cursor cursor = sqLiteDatabaseSwimLap.query(DbTableMeetings.TABLE_NAME, DbTableMeetings.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            MeetingModel meeting = getRowFromDbMeeting(cursor);
+            MeetingModel meeting = getDataMeetingFromDb(cursor);
             allMeetings.add(meeting);
             cursor.moveToNext();
         }
         cursor.close();
         return allMeetings;
     }
-    public MeetingModel getMeetingById(int idMeeting) {
+
+    public MeetingModel getAMeetingByIdFromDb(int idMeeting) {
         MeetingModel meetingModel = new MeetingModel();
         String condition = DbTableMeetings.COL_MEE_ID_MEET + "=" + idMeeting;
         Cursor cursor = sqLiteDatabaseSwimLap.query(DbTableMeetings.TABLE_NAME, DbTableRecords.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null, null);
@@ -54,7 +54,7 @@ public class MeetingUtilities {
         return meetingModel;
     }
 
-    public MeetingModel getMeetingByName(String meetingName) {
+    public MeetingModel getAMeetingByNameFromDb(String meetingName) {
         MeetingModel meetingModel = new MeetingModel();
         String condition = DbTableMeetings.COL_MEE_MEETING_NAME + "=" + meetingName;
         Cursor cursor = sqLiteDatabaseSwimLap.query(DbTableMeetings.TABLE_NAME, DbTableRecords.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null, null);
@@ -67,8 +67,7 @@ public class MeetingUtilities {
     }
 
 
-
-    private MeetingModel getRowFromDbMeeting(Cursor cursor) {
+    private MeetingModel getDataMeetingFromDb(Cursor cursor) {
         MeetingModel meetingModel = new MeetingModel();
         meetingModel.setIdMeeting(cursor.getInt(0));
         meetingModel.setName(cursor.getString(1));
@@ -81,7 +80,7 @@ public class MeetingUtilities {
         return meetingModel;
     }
 
-    public void addMeeting(MeetingModel meetingModel) {
+    public void addMeetingInDb(MeetingModel meetingModel) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DbTableMeetings.COL_MEE_ID_MEET, meetingModel.getIdMeeting());
         contentValues.put(DbTableMeetings.COL_MEE_MEETING_NAME, meetingModel.getName());
@@ -94,13 +93,13 @@ public class MeetingUtilities {
         sqLiteDatabaseSwimLap.insert(DbTableMeetings.TABLE_NAME, null, contentValues);
     }
 
-    public void deleteMeeting(int idMeeting) {
+    public void deleteMeetingInDb(int idMeeting) {
         sqLiteDatabaseSwimLap.delete(DbTableMeetings.TABLE_NAME, DbTableMeetings.COL_MEE_ID_MEET + " = " + idMeeting, null);
     }
 
-    public void updateMeeting(int idMeeting, MeetingModel meetingModel) {
-        deleteMeeting(meetingModel.getIdMeeting());
-        addMeeting(meetingModel);
+    public void updateMeeting(MeetingModel meetingModel) {
+        deleteMeetingInDb(meetingModel.getIdMeeting());
+        addMeetingInDb(meetingModel);
     }
 
 }
