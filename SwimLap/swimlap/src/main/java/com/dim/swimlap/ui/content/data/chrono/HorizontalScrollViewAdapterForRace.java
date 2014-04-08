@@ -5,7 +5,7 @@
  * CCI 74 & IUT Annecy Departement informatique
  */
 
-package com.dim.swimlap.graphics;
+package com.dim.swimlap.ui.content.data.chrono;
 
 import android.content.Context;
 import android.view.View;
@@ -14,11 +14,11 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
-public class HorizontalScrollViewAdapter extends BaseAdapter {
+public class HorizontalScrollViewAdapterForRace extends BaseAdapter {
 
     private List<String> list;
 
-    public HorizontalScrollViewAdapter(Context ctx, List<String> list){
+    public HorizontalScrollViewAdapterForRace(Context ctx, List<String> list){
 
     }
 

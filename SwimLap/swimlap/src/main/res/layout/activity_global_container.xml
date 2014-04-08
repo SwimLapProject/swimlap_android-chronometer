@@ -3,24 +3,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:id="@+id/id_global_container"
 
-    <fragment android:name="com.dim.swimlap.fragments.FragmentChrono"
-              android:id="@+id/id_globalcontainer_fragmentchrono"
-              android:layout_weight="1"
-              android:layout_width="match_parent"
-              android:layout_height="0dp" />
-
-    <fragment android:name="com.dim.swimlap.fragments.FragmentRaces"
-              android:id="@+id/id_globalcontainer_fragmentraces"
-              android:layout_weight="1"
-              android:layout_width="match_parent"
-              android:layout_height="0dp" />
+    >
 
     <fragment
-        android:name="com.dim.swimlap.fragments.FragementLaps"
-        android:id="@+id/id_globalcontainer_fragmentcontent"
-        android:layout_weight="10"
+        android:name="com.dim.swimlap.ui.FragmentDirect"
+        android:id="@+id/id_IN_fragment_direct"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_height="0dp"
+        android:layout_gravity="fill_horizontal|top|center"
+        />
+
+    <fragment
+        android:name="com.dim.swimlap.ui.FragmentContent"
+        android:id="@+id/id_IN_fragment_content"
+        android:layout_weight="7"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="fill_horizontal|bottom|center"/>
+
 </LinearLayout>

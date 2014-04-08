@@ -5,4 +5,17 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="allButtons">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/bluesky</item>
+        <item name="android:textSize">@dimen/dimen_text_button</item>
+        <item name="android:background">@color/bluesea</item>
+        <item name="android:layout_marginTop">@dimen/dimen_margin_around_button</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:radius">3dp</item>
+    </style>
+
+
+
 </resources>

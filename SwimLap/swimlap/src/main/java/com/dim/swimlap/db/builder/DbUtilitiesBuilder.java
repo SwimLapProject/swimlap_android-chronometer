@@ -21,7 +21,7 @@ import com.dim.swimlap.db.DbUtilities.SwimmerUtilities;
 
 import java.sql.SQLException;
 
-public class DbBuilder {
+public class DbUtilitiesBuilder {
 
     private SQLiteDatabase sqLiteDatabaseSwimLap;
     private DbHelper dbHelper;
@@ -42,7 +42,7 @@ public class DbBuilder {
     /* Database fields */
     private String[] allColumns = {};
 
-    public DbBuilder(Context context) {
+    public DbUtilitiesBuilder(Context context) {
         dbHelper = new DbHelper(context, DATABASE_NAME, DATABASE_VERSION);
     }
 

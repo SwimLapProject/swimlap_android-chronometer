@@ -3,4 +3,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    </resources>
+    <dimen name="dimen_text_button">20dp</dimen>
+    <dimen name="dimen_margin_around_button">1dp</dimen>
+
+
+
+</resources>

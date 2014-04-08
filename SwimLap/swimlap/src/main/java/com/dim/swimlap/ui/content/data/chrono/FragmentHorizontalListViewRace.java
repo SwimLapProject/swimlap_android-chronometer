@@ -5,7 +5,7 @@
  * CCI 74 & IUT Annecy Departement informatique
  */
 
-package com.dim.swimlap.fragments;
+package com.dim.swimlap.ui.content.data.chrono;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -16,9 +16,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.graphics.HorizontalScrollViewAdapter;
 
-public class FragmentRaces extends Fragment implements AdapterView.OnItemClickListener{
+public class FragmentHorizontalListViewRace extends Fragment implements AdapterView.OnItemClickListener{
 
     private ListView listView;
 
@@ -37,7 +36,7 @@ public class FragmentRaces extends Fragment implements AdapterView.OnItemClickLi
 
     public void addContentList(){
 
-       //HorizontalScrollViewAdapter hsva = new HorizontalScrollViewAdapter(getActivity(),);
+       //HorizontalScrollViewAdapterForRace hsva = new HorizontalScrollViewAdapterForRace(getActivity(),);
 
     }
 }

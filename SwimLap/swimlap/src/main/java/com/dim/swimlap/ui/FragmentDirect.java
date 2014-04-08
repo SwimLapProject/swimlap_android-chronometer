@@ -5,7 +5,7 @@
  * CCI 74 & IUT Annecy Departement informatique
  */
 
-package com.dim.swimlap.fragments;
+package com.dim.swimlap.ui;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -18,51 +18,52 @@ import android.widget.Chronometer;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.objects.ChronometerWithMilli;
 
-public class FragmentChrono extends Fragment implements View.OnClickListener {
+public class FragmentDirect extends Fragment implements View.OnClickListener {
 
-    private Button buttonStart, buttonStop;
+    private Button buttonStart, buttonStop, buttonDirect;
     private Chronometer chronometer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_chrono, container);
+        View view = inflater.inflate(R.layout.fragment_direct, container);
 
-        buttonStart = (Button) view.findViewById(R.id.id_fragmentchrono_buttonstart);
+        buttonDirect = (Button) view.findViewById(R.id.id_button_direct);
+        buttonDirect.setOnClickListener(this);
+
+        chronometer = (Chronometer) view.findViewById(R.id.id_chrono_digit);
+        chronometer.setFormat("MM:SS");
+
+        buttonStart = (Button) view.findViewById(R.id.id_button_start);
         buttonStart.setOnClickListener(this);
 
-        buttonStop = (Button) view.findViewById(R.id.id_fragmentchrono_buttonstop);
+        buttonStop = (Button) view.findViewById(R.id.id_button_stop);
         buttonStop.setOnClickListener(this);
         buttonStop.setVisibility(View.INVISIBLE);
 
-        chronometer = (Chronometer) view.findViewById(R.id.id_fragmentchrono_chronodigit);
-//        chronometer.setFormat("MM:SS");
         return view;
     }
 
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.id_fragmentchrono_buttonstart) {
+        if (view.getId() == R.id.id_button_start) {
             chronometer.setBase(SystemClock.elapsedRealtime());
             chronometer.start();
             buttonStop.setVisibility(View.VISIBLE);
             buttonStart.setVisibility(View.INVISIBLE);
-            Toast.makeText(view.getContext(),"START",Toast.LENGTH_SHORT).show();
-
-
-        } else if (view.getId() == R.id.id_fragmentchrono_buttonstop) {
+            Toast.makeText(view.getContext(), "START", Toast.LENGTH_SHORT).show();
+        } else if (view.getId() == R.id.id_button_stop) {
             chronometer.stop();
             buttonStop.setVisibility(View.INVISIBLE);
             buttonStart.setVisibility(View.VISIBLE);
-            Toast.makeText(view.getContext(),"STOP",Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(view.getContext(), "STOP", Toast.LENGTH_SHORT).show();
+        } else if (view.getId() == R.id.id_button_direct) {
+            Toast.makeText(view.getContext(), "GO", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public long getMillisecondsLap(){
+    public long getMillisecondsLap() {
         return SystemClock.elapsedRealtime() - chronometer.getBase();
-                //return null;
     }
 }
