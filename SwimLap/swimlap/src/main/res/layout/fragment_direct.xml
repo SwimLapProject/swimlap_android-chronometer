@@ -4,7 +4,7 @@
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/white">
+              android:background="@drawable/application_background">
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -14,62 +14,57 @@
 
         <Button
             android:id="@+id/id_button_direct"
-            android:layout_width="@dimen/abc_action_button_min_width"
-            android:layout_height="fill_parent"
+            android:layout_width="@dimen/dimen_button_basic_side_size"
+            android:layout_height="@dimen/dimen_button_basic_side_size"
+            android:background="@drawable/button_basic_with_shadow"
+
+            android:layout_margin="@dimen/dimen_margin_around_button"
+
             android:text="GO"
-            style="@style/allButtons"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_button_basic"
             />
+
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="2"
-        >
-
-        <Chronometer
-            android:id="@+id/id_chrono_digit"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:autoText="true"
-            style="center"
-            android:gravity="center_horizontal"
-            android:numeric="decimal"
-            android:inputType="numberDecimal"
-            android:format="%s"
-            android:textAlignment="center"
-            android:textStyle="bold|normal"
-            android:textSize="30dp"
-            />
-    </RelativeLayout>
+    <Chronometer
+        android:id="@+id/id_chrono_digit"
+        style="@style/chronoDirect"
+        android:textAlignment="center"
+        />
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-
         >
 
         <Button
             android:id="@+id/id_button_start"
-            android:layout_width="@dimen/abc_action_button_min_width"
-            android:layout_height="fill_parent"
+            android:layout_width="@dimen/dimen_button_basic_side_size"
+            android:layout_height="@dimen/dimen_button_basic_side_size"
             android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/dimen_margin_around_button"
+
+            android:background="@drawable/button_start_with_shadow"
+
             android:text="Start"
-            android:background="@color/greenstart"
+            android:textSize="@dimen/dimen_text_button_basic"
             android:textColor="@color/white"
-            style="@style/allButtons"
-            />
+       />
 
         <Button
             android:id="@+id/id_button_stop"
-            android:layout_width="@dimen/abc_action_button_min_width"
-            android:layout_height="fill_parent"
+            android:layout_width="@dimen/dimen_button_basic_side_size"
+            android:layout_height="@dimen/dimen_button_basic_side_size"
             android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/dimen_margin_around_button"
+
+            android:background="@drawable/button_stop_with_shadow"
+
             android:text="Stop"
-            android:background="@color/redstop"
+            android:textSize="@dimen/dimen_text_button_basic"
             android:textColor="@color/white"
-            style="@style/allButtons"
             />
     </RelativeLayout>
 

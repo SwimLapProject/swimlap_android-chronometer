@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape
+            android:shape="rectangle">
+
+            <solid android:color="@color/greenstart"/>
+            <corners android:radius="8dp"/>
+            <size
+                android:width="@dimen/dimen_button_basic_side_size"
+                android:height="@dimen/dimen_button_basic_side_size"
+                />
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/button_start"
+        android:bottom="2px"
+        />
+
+</layer-list>

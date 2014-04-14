@@ -9,13 +9,41 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/bluesky</item>
-        <item name="android:textSize">@dimen/dimen_text_button</item>
+        <item name="android:textSize">@dimen/dimen_text_button_basic</item>
         <item name="android:background">@color/bluesea</item>
-        <item name="android:layout_marginTop">@dimen/dimen_margin_around_button</item>
+        <item name="android:layout_margin">@dimen/dimen_margin_around_button</item>
         <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:radius">3dp</item>
+        <item name="android:radius">5dp</item>
     </style>
 
+    <style name="chronoDirect">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/dimen_margin_around_button</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textColor">@color/bluesea</item>
+        <item name="android:textSize">@dimen/dimen_text_chrono_direct</item>
+        <item name="android:numeric">decimal</item>
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:autoText">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:format">%s</item>
+    </style>
+
+    <style name="titleContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/dimen_margin_around_button</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textColor">@color/bluesea</item>
+        <item name="android:textSize">@dimen/dimen_text_title_content</item>
+        <item name="android:inputType">text</item>
+        <item name="android:autoText">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:format">%s</item>
+    </style>
 
 
 </resources>

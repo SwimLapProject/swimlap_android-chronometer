@@ -7,9 +7,10 @@
 
 package com.dim.swimlap.ui;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,29 +22,31 @@ import com.dim.swimlap.R;
 
 public class FragmentDirect extends Fragment implements View.OnClickListener {
 
-    private Button buttonStart, buttonStop, buttonDirect;
+    private Button buttonStart, buttonStop, buttonDirect, button;
     private Chronometer chronometer;
+    private int statusOfContent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_direct, container);
+        View view = inflater.inflate(R.layout.fragment_direct, container, false);
 
         buttonDirect = (Button) view.findViewById(R.id.id_button_direct);
         buttonDirect.setOnClickListener(this);
 
         chronometer = (Chronometer) view.findViewById(R.id.id_chrono_digit);
-        chronometer.setFormat("MM:SS");
 
         buttonStart = (Button) view.findViewById(R.id.id_button_start);
         buttonStart.setOnClickListener(this);
+
 
         buttonStop = (Button) view.findViewById(R.id.id_button_stop);
         buttonStop.setOnClickListener(this);
         buttonStop.setVisibility(View.INVISIBLE);
 
+        statusOfContent = 0;
+
         return view;
     }
-
 
     @Override
     public void onClick(View view) {
@@ -59,6 +62,7 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
             buttonStart.setVisibility(View.VISIBLE);
             Toast.makeText(view.getContext(), "STOP", Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.id_button_direct) {
+            buttonDirect.setBackgroundResource(R.drawable.button_basic);
             Toast.makeText(view.getContext(), "GO", Toast.LENGTH_SHORT).show();
         }
     }
@@ -66,4 +70,14 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
     public long getMillisecondsLap() {
         return SystemClock.elapsedRealtime() - chronometer.getBase();
     }
+
+    public void changeStatusOfContent(int newStatus) {
+        statusOfContent = newStatus;
+    }
+
+    public int getStatusOfContent() {
+        return statusOfContent;
+    }
+
+
 }

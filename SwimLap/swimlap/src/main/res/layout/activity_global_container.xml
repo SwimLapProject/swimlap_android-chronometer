@@ -5,24 +5,37 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:id="@+id/id_global_container"
+              android:background="@drawable/application_background"
 
     >
 
-    <fragment
-        android:name="com.dim.swimlap.ui.FragmentDirect"
+    <FrameLayout
         android:id="@+id/id_IN_fragment_direct"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="2dp"
         android:layout_gravity="fill_horizontal|top|center"
         />
 
-    <fragment
-        android:name="com.dim.swimlap.ui.FragmentContent"
-        android:id="@+id/id_IN_fragment_content"
-        android:layout_weight="7"
+    <FrameLayout
+        android:id="@+id/id_IN_fragment_title"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="fill_horizontal|bottom|center"/>
 
+    <FrameLayout
+        android:id="@+id/id_IN_fragment_nav"
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="fill_horizontal|bottom|center"/>
+
+    <FrameLayout
+        android:id="@+id/id_IN_fragment_data"
+        android:layout_weight="11"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="fill_horizontal|bottom|center"/>
 </LinearLayout>
