@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.dim.swimlap.R;
 import com.dim.swimlap.ui.CommunicationFragments;
@@ -34,7 +33,7 @@ public class FragmentDataMenu extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState){
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         buttonSimple.setOnClickListener(this);
         buttonMeetings.setOnClickListener(this);
@@ -46,9 +45,14 @@ public class FragmentDataMenu extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-
         if (view.getId() == R.id.id_button_to_settings) {
             communicationFragments.changeFragment(5);
+        } else if (view.getId() == R.id.id_button_to_swimmers) {
+            communicationFragments.changeFragment(4);
+        }else if (view.getId() == R.id.id_button_to_meetings) {
+            communicationFragments.changeFragment(3);
+        }else if (view.getId() == R.id.id_button_to_simplechronometer) {
+            communicationFragments.changeFragment(2);
         }
     }
 }

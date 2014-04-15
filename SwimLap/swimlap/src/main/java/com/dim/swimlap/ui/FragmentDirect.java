@@ -10,7 +10,6 @@ package com.dim.swimlap.ui;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +24,8 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
     private Button buttonStart, buttonStop, buttonDirect, button;
     private Chronometer chronometer;
     private int statusOfContent;
+    private CommunicationFragments communicationFragments;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,6 +50,12 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
     }
 
     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        communicationFragments = (CommunicationFragments) this.getActivity();
+    }
+
+    @Override
     public void onClick(View view) {
         if (view.getId() == R.id.id_button_start) {
             chronometer.setBase(SystemClock.elapsedRealtime());
@@ -62,8 +69,7 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
             buttonStart.setVisibility(View.VISIBLE);
             Toast.makeText(view.getContext(), "STOP", Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.id_button_direct) {
-            buttonDirect.setBackgroundResource(R.drawable.button_basic);
-            Toast.makeText(view.getContext(), "GO", Toast.LENGTH_SHORT).show();
+            communicationFragments.changeFragment(1);
         }
     }
 
