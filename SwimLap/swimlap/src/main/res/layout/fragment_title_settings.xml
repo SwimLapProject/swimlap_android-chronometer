@@ -3,22 +3,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:layout_marginBottom="5dp"
+              android:layout_marginTop="5dp">
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="fill_parent"
+        android:layout_weight="2"
         >
 
         <ImageView
             android:id="@+id/id_imageview_logo_swimlap"
-            android:layout_width="@dimen/dimen_button_basic_side_size"
-            android:layout_height="fill_parent"
-            android:src="@drawable/logo_swimlap"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo_swimlap_color"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_weight="3"
         >
@@ -28,29 +33,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Settings"
-            android:layout_centerHorizontal="true"
             style="@style/titleContent"
             android:layout_centerVertical="true"
-            />
+            android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="fill_parent"
+        android:layout_weight="2"
         >
 
         <Button
             android:id="@+id/id_button_link"
-            android:layout_width="@dimen/dimen_button_little_side_size"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/dimen_button_little_side_size"
 
             android:background="@drawable/button_basic_with_shadow"
 
-            android:text="link"
+            android:text="Rankings"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_text_button_little"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 </LinearLayout>

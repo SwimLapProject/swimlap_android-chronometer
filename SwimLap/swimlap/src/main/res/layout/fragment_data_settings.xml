@@ -1,24 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:text="data1"/>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+    >
+    <!-- CLUB -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:text="data2"/>
+        <!-- title -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:text="data2"/>
-</LinearLayout>
+            <TextView
+                android:layout_width="@dimen/dimen_textview_settings_width"
+                android:layout_height="fill_parent"
+                android:text="Club"
+                android:textColor="@color/bluesea"
+                android:textSize="@dimen/dimen_settings_font_medium"
+                />
+
+            <Button
+                android:id="@+id/id_button_modifyclub"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:text="modify"
+                android:background="@drawable/button_basic_with_shadow"
+
+                />
+
+        </LinearLayout>
+        <!-- club name -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="@dimen/dimen_textview_settings_width"
+                android:layout_height="fill_parent"
+                android:text="Name"
+                android:textColor="@color/bluesea"
+                android:textSize="@dimen/dimen_settings_font_small"
+                />
+
+            <EditText
+                android:id="@+id/id_edittext_clubname"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                />
+        </LinearLayout>
+        <!-- id club -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/dimen_textview_settings_width"
+                android:layout_height="fill_parent"
+                android:text="id FFN"
+                android:textColor="@color/bluesea"
+                android:textSize="@dimen/dimen_settings_font_small"
+                android:id="@+id/id_textview_clubidffn"
+                />
+
+            <EditText
+                android:id="@+id/id_edittext_clubidffn"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                />
+        </LinearLayout>
+
+        <!-- ************************************** -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="25dp"
+            android:orientation="horizontal"
+            android:background="@drawable/application_background"/>
+        <!-- ************************************** -->
+
+        <!-- SEASON -->
+        <!-- title -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="@dimen/dimen_textview_settings_width"
+                android:layout_height="fill_parent"
+                android:text="Season"
+                android:textColor="@color/bluesea"
+                android:textSize="@dimen/dimen_settings_font_medium"
+                />
+
+            <Button
+                android:id="@+id/id_button_modifyclub"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_alignParentRight="true"
+                android:text="modify"
+                android:background="@drawable/button_basic_with_shadow"
+                />
+
+        </LinearLayout>
+
+        <!-- season name -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="@dimen/dimen_textview_settings_width"
+                android:layout_height="fill_parent"
+                android:text="Name"
+                android:textColor="@color/bluesea"
+                android:textSize="@dimen/dimen_settings_font_small"
+
+                />
+
+            <EditText
+                android:id="@+id/id_edittext_seasonname"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                />
+
+        </LinearLayout>
+
+        <!-- start date -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="@dimen/dimen_textview_settings_width"
+                android:layout_height="fill_parent"
+                android:text="Start Date"
+                android:textColor="@color/bluesea"
+                android:textSize="@dimen/dimen_settings_font_small"
+                />
+
+            <DatePicker
+                android:id="@+id/id_datepicker_startdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="0.8"
+                android:scaleY="0.8"
+                android:textSize="10dp"
+                />
+
+        </LinearLayout>
+
+        <!-- stop date -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/dimen_textview_settings_width"
+                android:layout_height="fill_parent"
+                android:text="Stop Date"
+                android:textColor="@color/bluesea"
+                android:textSize="@dimen/dimen_settings_font_small"
+                />
+
+            <DatePicker
+                android:id="@+id/id_datepicker_stopdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="0.8"
+                android:scaleY="0.8"
+                />
+
+        </LinearLayout>
+
+        <!-- ************************************** -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="25dp"
+            android:orientation="horizontal"
+            android:background="@drawable/application_background"/>
+        <!-- ************************************** -->
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="white">#ffffff</color>
+    <color name="white">#d4dadc</color>
     <color name="bluesky">#48999E</color>
     <color name="bluesea">#046675</color>
     <color name="greenstart">#0FA30F</color>
-    <color name="redstop">#ED0000</color>
+    <color name="redstop">#9E0016</color>
 
 
 

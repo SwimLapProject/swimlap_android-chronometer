@@ -20,7 +20,11 @@
     <dimen name="dimen_text_chrono_direct">50dp</dimen>
     <dimen name="dimen_text_title_content">20dp</dimen>
 
+    <!-- SETTINGS -->
+    <dimen name="dimen_settings_font_medium">25dp</dimen>
+    <dimen name="dimen_settings_font_small">18dp</dimen>
 
+    <dimen name="dimen_textview_settings_width">100dp</dimen>
 
 
 </resources>
