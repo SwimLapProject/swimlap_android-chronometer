@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_textview_scroll_lap"
+        android:layout_weight="4"
+        android:background="@drawable/lap_content_scrollview_with_border"
+        >
+
+        <LinearLayout
+            android:id="@+id/id_layout_lapdetail"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            >
+
+            <TextView
+                android:id="@+id/id_textview_lapdetails"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="NAME FIRST NAME"
+                android:textSize="@dimen/dimen_text_title"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/id_textview_25m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25m : "/>
+
+                <TextView
+                    android:id="@+id/id_textview_50m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50m : "/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/id_textview_75m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="75m : "/>
+
+                <TextView
+                    android:id="@+id/id_textview_100m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="100m : "/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/id_textview_125m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="125m : "/>
+
+                <TextView
+                    android:id="@+id/id_textview_150m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="150m : "/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/id_textview_175m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="175m : "/>
+
+                <TextView
+                    android:id="@+id/id_textview_200m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="200m : "/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/id_button_reset_lap"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_basic_with_shadow"
+            android:text="Reset"
+            android:onClick="getLap"/>
+
+        <Button
+            android:id="@+id/id_button_lap"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_basic_with_shadow"
+            android:text="Lap"/>
+
+        <Button
+            android:id="@+id/id_button_record_lap"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_basic_with_shadow"
+            android:text="Record"
+            android:onClick="getLap"/>
+
+    </LinearLayout>
+
+</LinearLayout>

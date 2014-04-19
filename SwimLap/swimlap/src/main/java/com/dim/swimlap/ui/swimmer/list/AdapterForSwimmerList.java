@@ -5,7 +5,7 @@
  * CCI 74 & IUT Annecy Departement informatique
  */
 
-package com.dim.swimlap.ui.lap;
+package com.dim.swimlap.ui.swimmer.list;
 
-public class VerticalScrollViewAdapterForLap {
+public class AdapterForSwimmerList {
 }

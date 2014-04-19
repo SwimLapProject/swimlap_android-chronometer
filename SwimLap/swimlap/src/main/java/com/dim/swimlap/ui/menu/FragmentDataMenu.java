@@ -20,6 +20,13 @@ import com.dim.swimlap.ui.CommunicationFragments;
 public class FragmentDataMenu extends Fragment implements View.OnClickListener {
     private Button buttonSimple, buttonMeetings, buttonSwimmers, buttonSettings;
     private CommunicationFragments communicationFragments;
+    private static int
+            VIEW_SIMPLE = 2,
+            VIEW_MEETING = 3,
+            VIEW_SWIMMER = 4,
+            VIEW_SETTING = 5,
+            VIEW_RANKING_MEET = 6,
+            VIEW_RANKING_SW = 7;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,13 +53,13 @@ public class FragmentDataMenu extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.id_button_to_settings) {
-            communicationFragments.changeFragment(5);
+            communicationFragments.changeFragment(VIEW_SETTING);
         } else if (view.getId() == R.id.id_button_to_swimmers) {
-            communicationFragments.changeFragment(4);
+            communicationFragments.changeFragment(VIEW_SWIMMER);
         }else if (view.getId() == R.id.id_button_to_meetings) {
-            communicationFragments.changeFragment(3);
+            communicationFragments.changeFragment(VIEW_MEETING);
         }else if (view.getId() == R.id.id_button_to_simplechronometer) {
-            communicationFragments.changeFragment(2);
+            communicationFragments.changeFragment(VIEW_SIMPLE);
         }
     }
 }

@@ -5,7 +5,7 @@
  * CCI 74 & IUT Annecy Departement informatique
  */
 
-package com.dim.swimlap.ui.meeting.detail;
+package com.dim.swimlap.ui.ranking;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.dim.swimlap.R;
 
-public class FragmentDataMeetingDetail extends Fragment{
+public class FragmentDataRankingSwTree extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_direct, container, false);

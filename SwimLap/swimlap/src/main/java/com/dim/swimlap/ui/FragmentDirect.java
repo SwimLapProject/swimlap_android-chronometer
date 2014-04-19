@@ -21,10 +21,19 @@ import com.dim.swimlap.R;
 
 public class FragmentDirect extends Fragment implements View.OnClickListener {
 
-    private Button buttonStart, buttonStop, buttonDirect, button;
+    private Button buttonStart, buttonStop, buttonDirect, buttonBackToMenu;
     private Chronometer chronometer;
     private int statusOfContent;
     private CommunicationFragments communicationFragments;
+    private static int
+            VIEW_MENU = 0,
+            VIEW_LAP = 1,
+            VIEW_SIMPLE = 2,
+            VIEW_MEETING = 3,
+            VIEW_SWIMMER = 4,
+            VIEW_SETTING = 5,
+            VIEW_RANKING_MEET = 6,
+            VIEW_RANKING_SW = 7;
 
 
     @Override
@@ -33,6 +42,10 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
 
         buttonDirect = (Button) view.findViewById(R.id.id_button_direct);
         buttonDirect.setOnClickListener(this);
+
+        buttonBackToMenu = (Button) view.findViewById(R.id.id_button_back_to_menu);
+        buttonBackToMenu.setOnClickListener(this);
+        buttonBackToMenu.setVisibility(View.INVISIBLE);
 
         chronometer = (Chronometer) view.findViewById(R.id.id_chrono_digit);
 
@@ -69,7 +82,13 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
             buttonStart.setVisibility(View.VISIBLE);
             Toast.makeText(view.getContext(), "STOP", Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.id_button_direct) {
-            communicationFragments.changeFragment(1);
+            communicationFragments.changeFragment(VIEW_LAP);
+            buttonBackToMenu.setVisibility(View.VISIBLE);
+            buttonDirect.setVisibility(View.INVISIBLE);
+        } else if (view.getId() == R.id.id_button_back_to_menu) {
+            communicationFragments.changeFragment(VIEW_MENU);
+            buttonBackToMenu.setVisibility(View.INVISIBLE);
+            buttonDirect.setVisibility(View.VISIBLE);
         }
     }
 
