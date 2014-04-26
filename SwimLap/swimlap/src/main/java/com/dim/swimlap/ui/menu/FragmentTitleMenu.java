@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dim.swimlap.R;
+;
 
 public class FragmentTitleMenu extends Fragment implements View.OnClickListener {
     private TextView textViewTitle;

@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dim.swimlap.R;
+;
 
 public class FragmentDataSimple extends Fragment{
     @Override

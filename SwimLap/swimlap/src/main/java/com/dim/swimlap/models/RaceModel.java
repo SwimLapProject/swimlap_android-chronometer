@@ -7,13 +7,30 @@
 
 package com.dim.swimlap.models;
 
-public class RaceData {
+import com.dim.swimlap.data.RaceData;
+
+public class RaceModel {
 
     private int idRace;
     private int distance;
     private String style;
     private boolean is_relay;
     private String gender;
+
+    public RaceModel(int idRace){
+        this.idRace=idRace;
+        RaceData raceData = new RaceData();
+        distance = raceData.giveDistance(idRace);
+        style = raceData.giveStyle(idRace);
+        gender = raceData.giveGender(idRace);
+        is_relay = style.substring(0,4).equals("4x25")
+                ||style.substring(0,4).equals("4x50")
+                ||style.substring(0,4).equals("4x10")
+                ||style.substring(0,4).equals("4x20")
+                ||style.substring(0,4).equals("6x50")
+                ||style.substring(0,4).equals("8x10")
+                ||style.substring(0,4).equals("10x1");
+    }
 
     public int getIdRace() {
         return idRace;
@@ -54,4 +71,6 @@ public class RaceData {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+
 }

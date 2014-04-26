@@ -14,22 +14,24 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.ui.CommunicationFragments;
-import com.dim.swimlap.ui.FragmentDirect;
+import com.dim.swimlap.objects.FormatTimeAsString;
 
 import java.util.ArrayList;
 
 public class LapAdapter extends ArrayAdapter {
     private final Context context;
-    private final ArrayList<DataLapForList> eventArrayList;
+    public final ArrayList<DataLapForList> eventArrayList;
+    private FormatTimeAsString formatTime;
+    private boolean chronoIsStarted;
 
-    public LapAdapter(Context context, ArrayList<DataLapForList> eventArrayList) {
+    public LapAdapter(Context context, ArrayList<DataLapForList> eventArrayList, boolean chronoIsStarted) {
         super(context, R.layout.viewforlist_data_lap, eventArrayList);
         this.context = context;
         this.eventArrayList = eventArrayList;
+        this.formatTime = new FormatTimeAsString();
+        this.chronoIsStarted = chronoIsStarted;
     }
 
     @Override
@@ -38,68 +40,59 @@ public class LapAdapter extends ArrayAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.viewforlist_data_lap, parent, false);
 
-
         // BUILD ELEMENT OF ROW
 
-        // TEXT VIEW
-        TextView textViewDetails = (TextView) rowView.findViewById(R.id.id_textview_lapdetails);
         // BUTTON LAP
-        Button buttonLap = (Button) rowView.findViewById(R.id.id_button_lap);
-        buttonLap.setVisibility(View.VISIBLE);
-        buttonLap.setTag("lap_" + String.valueOf(eventArrayList.get(position).getEventModel().getRaceId()));
+        Button buttonLap = (Button) rowView.findViewById(R.id.id_button_take_lap);
+        buttonLap.setVisibility(View.INVISIBLE);
+        buttonLap.setTag("lap_" + position);
         buttonLap.setBackgroundResource(R.drawable.button_basic_with_shadow);
-        buttonLap.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                getLap(view);
-            }
-        });
+
         //BUTTON RECORD
         Button buttonLapRecord = (Button) rowView.findViewById(R.id.id_button_record_lap);
-        buttonLapRecord.setVisibility(View.INVISIBLE);
-        buttonLapRecord.setTag("record_" + String.valueOf(eventArrayList.get(position).getEventModel().getRaceId()));
+        buttonLapRecord.setVisibility(View.VISIBLE);
+        buttonLapRecord.setTag("rec_" + position);
         buttonLapRecord.setBackgroundResource(R.drawable.button_basic_with_shadow);
-        buttonLapRecord.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                getLap(view);
-            }
-        });
+
         //BUTTON RESET
         Button buttonLapReset = (Button) rowView.findViewById(R.id.id_button_reset_lap);
-        buttonLapReset.setVisibility(View.INVISIBLE);
-        buttonLapReset.setTag("reset_"+String.valueOf(eventArrayList.get(position).getEventModel().getRaceId()));
+        buttonLapReset.setVisibility(View.VISIBLE);
+        buttonLapReset.setTag("res_" + position);
         buttonLapReset.setBackgroundResource(R.drawable.button_basic_with_shadow);
-        buttonLapReset.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                getLap(view);
-            }
-        });
+
+
+        // TEXT VIEW
+        TextView textViewSwimmerDetails = (TextView) rowView.findViewById(R.id.id_textview_lap_swimmerdetails);
+        TextView textViewQualifiedTime = (TextView) rowView.findViewById(R.id.id_textview_qualifiedTime);
+
+//        textViewSwimmerDetails.setId(eventArrayList.get(position).getEventModel().getEventId());
+
         // FILL ELEMENT WITH DATA FROM DB
         String name = eventArrayList.get(position).getSwimmerModel().getName();
         String firstName = eventArrayList.get(position).getSwimmerModel().getFirstname();
         String dateOfBird = eventArrayList.get(position).getSwimmerModel().getDateOfBirth();
-        String qualifyingTime = String.valueOf(eventArrayList.get(position).getEventModel().getQualifyingTime());
-        textViewDetails.setText(name + "  " + firstName + "  " + dateOfBird+" : "+qualifyingTime);
+        float qualifyingTime = eventArrayList.get(position).getEventModel().getQualifyingTime();
+        String qualifTimeAsString = formatTime.makeString(qualifyingTime);
+        textViewSwimmerDetails.setText(name + "  " + firstName + "  " + dateOfBird);
+        textViewQualifiedTime.setText(qualifTimeAsString);
 
+        TextView tvAllLaps = (TextView) rowView.findViewById(R.id.id_textview_all_laps);
+        tvAllLaps.setTag("TV_all_" + position);
+
+        TextView tvLapLast = (TextView) rowView.findViewById(R.id.id_textview_last);
+        tvLapLast.setTag("TV_last_" + position);
+
+        if (chronoIsStarted) {
+            buttonLap.setVisibility(View.VISIBLE);
+           buttonLapReset.setVisibility(View.INVISIBLE);
+            buttonLapRecord.setVisibility((View.INVISIBLE));
+        } else {
+            buttonLap.setVisibility(View.INVISIBLE);
+            buttonLapReset.setVisibility(View.VISIBLE);
+            buttonLapRecord.setVisibility((View.VISIBLE));
+        }
         return rowView;
     }
 
-//    @Override
-//    public void onClick(View view) {
-//        String tag = (String) view.getTag();
-//        String type = tag.substring(0,4);
-//        if(type.equals("lap_")){
-//
-//        }
-//    }
-    public void getLap(View view){
-        String tag = (String) view.getTag();
-        String type = tag.substring(0,4);
-        String eventCode = tag.substring(4);
-        if(type.equals("lap_")){
-            Toast.makeText(view.getContext(),tag, Toast.LENGTH_SHORT).show();
-
-        }
-//    }
-    }
 }
 

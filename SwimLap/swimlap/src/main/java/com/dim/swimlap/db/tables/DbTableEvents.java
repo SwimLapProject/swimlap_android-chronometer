@@ -14,6 +14,8 @@ public class DbTableEvents implements DbTableMODEL {
     // TABLE
     public static final String TABLE_NAME = "table_events";
     // COLUMNS
+    public static final String COL_EVE_ID = "col_eve_id";
+
     // FOREIGN KEYS AS PRIMARY KEYS
     public static final String COL_SWI_ID_FFN = "col_swi_swimmer_id";
     public static final String COL_MEE_ID_MEET = "col_mee_meet_id";
@@ -93,6 +95,8 @@ public class DbTableEvents implements DbTableMODEL {
     public static final String
             REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
 
+            COL_EVE_ID + " INTEGER , " +
+
             COL_SWI_ID_FFN + " INTEGER , " +
             COL_MEE_ID_MEET + " INTEGER , " +
             COL_RAC_ID_RACE + " INTEGER , " +
@@ -169,7 +173,9 @@ public class DbTableEvents implements DbTableMODEL {
             COL_EVE_SPLIT_1500 + " REAL " +
             ");";
 
-    public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_SWI_ID_FFN,
+    public static final String[] ALL_COLUMNS_AS_STRING_TAB = {
+            COL_EVE_ID,
+            COL_SWI_ID_FFN,
             COL_MEE_ID_MEET,
             COL_RAC_ID_RACE,
             COL_EVE_ROUND_ID,

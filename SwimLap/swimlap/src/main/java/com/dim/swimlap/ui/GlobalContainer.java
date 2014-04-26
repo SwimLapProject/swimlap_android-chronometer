@@ -8,10 +8,13 @@
 package com.dim.swimlap.ui;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
@@ -36,7 +39,6 @@ import com.dim.swimlap.ui.swimmer.FragmentTitleSwimmer;
 
 public class GlobalContainer extends FragmentActivity implements CommunicationFragments {
 
-    private FragmentTransaction transaction;
     private FragmentDirect fragmentDirect;
 
     private FragmentTitleMenu fragmentTitleMenu;
@@ -63,7 +65,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     private FragmentNavSettings fragmentNavSettings;
     private FragmentDataSettings fragmentDataSettings;
 
-    private int actualView;
+    private int currentView, lastView;
     private static int
             VIEW_MENU = 0,
             VIEW_LAP = 1,
@@ -81,8 +83,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_global_container);
-        FragmentManager manager = getSupportFragmentManager();
-        transaction = manager.beginTransaction();
+
         // FRAGMENT FOR THE VIEW MENU
         fragmentDirect = new FragmentDirect();
         fragmentTitleMenu = new FragmentTitleMenu();
@@ -114,18 +115,23 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         fragmentNavSettings = new FragmentNavSettings();
         fragmentDataSettings = new FragmentDataSettings();
 
+        // CREATE LAP DATA VIEW BEFORE
+        getSupportFragmentManager().beginTransaction().add(R.id.id_IN_fragment_data,fragmentDataLap).commit();
+
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.id_IN_fragment_direct, fragmentDirect);
         transaction.add(R.id.id_IN_fragment_title, fragmentTitleMenu);
         transaction.add(R.id.id_IN_fragment_nav, fragmentNavMenu);
-        transaction.add(R.id.id_IN_fragment_data, fragmentDataMenu);
-        actualView = VIEW_MENU;
+        transaction.replace(R.id.id_IN_fragment_data, fragmentDataMenu);
+        currentView = VIEW_MENU;
         transaction.commit();
 
     }
 
     @Override
     public void changeFragment(int code) {
-        if (actualView == code) {
+        if (currentView == code) {
             // do nothing
         } else {
             FragmentManager manager = getSupportFragmentManager();
@@ -134,38 +140,107 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                 newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleMenu);
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavMenu);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataMenu);
+                newTransaction.addToBackStack(null);
+
             } else if (code == VIEW_LAP) {
                 newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleLap);
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavLap);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataLap);
+                newTransaction.addToBackStack(null);
+
             } else if (code == VIEW_SIMPLE) {
                 newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleSimple);
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSimple);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSimple);
+                newTransaction.addToBackStack(null);
             } else if (code == VIEW_MEETING) {
                 newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleMeeting);
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavMeeting);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataMeeting);
+                newTransaction.addToBackStack(null);
             } else if (code == VIEW_SWIMMER) {
                 newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleSwimmer);
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSwimmer);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSwimmer);
+                newTransaction.addToBackStack(null);
+
             } else if (code == VIEW_SETTING) {
                 newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleSettings);
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSettings);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSettings);
+                newTransaction.addToBackStack(null);
             } else if (code == VIEW_RANKING_MEET) {
+                newTransaction.addToBackStack(null);
 
             } else if (code == VIEW_RANKING_SW) {
+                newTransaction.addToBackStack(null);
 
             } else {
                 Toast.makeText(this.getApplicationContext(), "A problem appear to get the good fragment", Toast.LENGTH_SHORT).show();
             }
-            actualView = code;
-            newTransaction.addToBackStack(null);
+            lastView = currentView;
+            currentView = code;
+            changeButtonDirect(code);
             newTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             newTransaction.commit();
         }
+    }
+
+
+    @Override
+    public void getGlobalLap(View view) {
+//        Toast.makeText(this.getApplicationContext(),"Global: "+ position, Toast.LENGTH_SHORT).show();
+        float milli = fragmentDirect.getMillisecondsLap();
+        fragmentDataLap.addLapToModel(view, milli);
 
     }
+
+    @Override
+    public void changeButtonsInLap(boolean chronoIsStarted) {
+        fragmentDataLap.setChronoIsStarted(chronoIsStarted);
+        if(currentView==VIEW_LAP){
+            fragmentDataLap.changeButtonLap(chronoIsStarted);
+        }else {
+            changeFragment(VIEW_LAP);
+
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (currentView == VIEW_MENU) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure to quit?\n You will lost current chronometer !")
+                    .setCancelable(true)
+                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            //do nothing: don't quit application
+                        }
+                    })
+                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        } else {
+            changeButtonDirect(lastView);
+            currentView = lastView;
+            lastView = 0;
+            super.onBackPressed();
+        }
+
+    }
+
+    private void changeButtonDirect(int code) {
+        if (code == VIEW_LAP) {
+            fragmentDirect.buttonBackToMenu.setVisibility(View.VISIBLE);
+            fragmentDirect.buttonDirect.setVisibility(View.INVISIBLE);
+        } else {
+            fragmentDirect.buttonBackToMenu.setVisibility(View.INVISIBLE);
+            fragmentDirect.buttonDirect.setVisibility(View.VISIBLE);
+        }
+    }
+
 }

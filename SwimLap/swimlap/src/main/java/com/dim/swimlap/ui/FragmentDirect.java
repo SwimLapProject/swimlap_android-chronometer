@@ -21,9 +21,10 @@ import com.dim.swimlap.R;
 
 public class FragmentDirect extends Fragment implements View.OnClickListener {
 
-    private Button buttonStart, buttonStop, buttonDirect, buttonBackToMenu;
+    private Button buttonStart, buttonStop;
+    public Button buttonDirect, buttonBackToMenu;
     private Chronometer chronometer;
-    private int statusOfContent;
+    private int currentView;
     private CommunicationFragments communicationFragments;
     private static int
             VIEW_MENU = 0,
@@ -57,7 +58,7 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
         buttonStop.setOnClickListener(this);
         buttonStop.setVisibility(View.INVISIBLE);
 
-        statusOfContent = 0;
+        currentView = 0;
 
         return view;
     }
@@ -75,11 +76,13 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
             chronometer.start();
             buttonStop.setVisibility(View.VISIBLE);
             buttonStart.setVisibility(View.INVISIBLE);
+            communicationFragments.changeButtonsInLap(true);
             Toast.makeText(view.getContext(), "START", Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.id_button_stop) {
             chronometer.stop();
             buttonStop.setVisibility(View.INVISIBLE);
             buttonStart.setVisibility(View.VISIBLE);
+            communicationFragments.changeButtonsInLap(false);
             Toast.makeText(view.getContext(), "STOP", Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.id_button_direct) {
             communicationFragments.changeFragment(VIEW_LAP);
@@ -97,11 +100,11 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
     }
 
     public void changeStatusOfContent(int newStatus) {
-        statusOfContent = newStatus;
+        currentView = newStatus;
     }
 
-    public int getStatusOfContent() {
-        return statusOfContent;
+    public int getCurrentView() {
+        return currentView;
     }
 
 

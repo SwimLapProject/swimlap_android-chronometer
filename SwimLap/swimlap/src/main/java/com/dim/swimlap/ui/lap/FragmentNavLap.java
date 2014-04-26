@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
+;
 
 public class FragmentNavLap extends Fragment implements View.OnClickListener {
     private LinearLayout linearLayout;

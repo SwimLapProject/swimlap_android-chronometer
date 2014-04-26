@@ -7,6 +7,8 @@
     <dimen name="dimen_padding_left_button_menu">15dp</dimen>
 
     <dimen name="dimen_button_basic_side_size">75dp</dimen>
+    <dimen name="dimen_button_basic_half_size">50dp</dimen>
+
     <dimen name="dimen_button_little_side_size">30dp</dimen>
     <dimen name="dimen_button_menu_width">200dp</dimen>
     <dimen name="dimen_button_menu_height">50dp</dimen>
