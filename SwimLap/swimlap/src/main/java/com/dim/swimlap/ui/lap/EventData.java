@@ -10,21 +10,22 @@ package com.dim.swimlap.ui.lap;
 import com.dim.swimlap.models.EventModel;
 import com.dim.swimlap.models.RaceModel;
 import com.dim.swimlap.models.SwimmerModel;
+import com.dim.swimlap.objects.FormatTimeAsString;
 
 import java.util.ArrayList;
 
-public class DataLapForList {
+public class EventData {
 
     private SwimmerModel swimmerModel;
     private EventModel eventModel;
     private RaceModel raceModel;
     private ArrayList<Float> laps;
-    private int currentLapSwimming;
+   private int currentLapSwimming;
     private int numberOfLap;
     private float lapPreviousMin, lapPreviousMax;
     private int poolSize;
 
-    public DataLapForList(SwimmerModel swimmerModel, EventModel eventModel, int poolSize) {
+    public EventData(SwimmerModel swimmerModel, EventModel eventModel, int poolSize) {
         this.swimmerModel = swimmerModel;
         this.eventModel = eventModel;
         this.raceModel = new RaceModel(eventModel.getRaceId());
@@ -45,14 +46,43 @@ public class DataLapForList {
         return eventModel;
     }
 
-    public float checkLap(float lap) {
+    public boolean trueIfSomeLapsAreAlreadyTaken() {
+        boolean lapsAllreadytaken = false;
+        if (eventModel.getLaps().size() != 0) {
+            lapsAllreadytaken = true;
+        }
+        return lapsAllreadytaken;
+    }
+
+    public ArrayList<String> giveBackLapsToInsertInTextViewAllLaps() {
+        FormatTimeAsString format = new FormatTimeAsString();
+        ArrayList<String> allLapsAlreadyTaken = new ArrayList<String>();
+
+        for (int lapIndex = 0; lapIndex < currentLapSwimming; lapIndex++) {
+            String lapStringToAdd = String.valueOf(poolSize * lapIndex) + ": ";
+            lapStringToAdd += format.makeString(giveSplit(eventModel.getLaps().get(lapIndex), lapIndex));
+            lapStringToAdd += format.makeString(eventModel.getLaps().get(lapIndex));
+            allLapsAlreadyTaken.add(lapStringToAdd);
+        }
+        return allLapsAlreadyTaken;
+    }
+    public String giveBackLastLap(){
+        FormatTimeAsString format = new FormatTimeAsString();
+        return format.makeString(eventModel.getLaps().get(eventModel.getLaps().size()-1));
+    }
+
+    private float giveSplit(float lap, int currentPosition) {
         float split;
-        if (currentLapSwimming == 0) {
+        if (currentPosition == 0) {
             split = lap;
         } else {
-            split = lap - eventModel.getLaps().get(currentLapSwimming - 1);
+            split = lap - eventModel.getLaps().get(currentPosition - 1);
         }
+        return split;
+    }
 
+    public float checkLap(float lap) {
+        float split = giveSplit(lap, currentLapSwimming);
         // VERIFY IF THE TIME BETWEEN LAST LAP AND THE NEW ONE IS COHERENT AND IF ALL THE LAPS ARE NOT FILLED (RACE FINISH)
 //        (split > lapPreviousMin) && (split < lapPreviousMax) &&
         if ((currentLapSwimming < numberOfLap)) {
@@ -65,8 +95,8 @@ public class DataLapForList {
         return split;
     }
 
-    public int getnbSplitRemaining(){
-        return numberOfLap-currentLapSwimming;
+    public int getnbSplitRemaining() {
+        return numberOfLap - currentLapSwimming;
     }
 
     public String getSplitName() {
@@ -76,7 +106,10 @@ public class DataLapForList {
         }
         return lapName;
     }
-
+    public void resetLaps() {
+        this.currentLapSwimming = 0;
+        this.eventModel.getLaps().clear();
+    }
 
     public void recordLapsInDB() {
     }

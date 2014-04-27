@@ -20,10 +20,10 @@ import android.widget.Toast;
 
 import com.dim.swimlap.R;
 import com.dim.swimlap.models.EventModel;
-import com.dim.swimlap.models.SwimmerModel;
 import com.dim.swimlap.objects.FormatTimeAsString;
+import com.dim.swimlap.objects.Singleton;
 
-import java.util.ArrayList;;
+import java.util.ArrayList;
 
 public class FragmentDataLap extends Fragment implements AdapterView.OnItemClickListener {
 
@@ -31,12 +31,16 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     private LapAdapter adapter;
     private FormatTimeAsString formatTime;
     private boolean chronoIsStarted;
+    private ArrayList<EventData> list;
+    private Singleton singleton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_lap, container, false);
+        singleton = Singleton.getInstance();
+
         listViewForLap = (ListView) view.findViewById(R.id.id_listview_lap);
-        adapter = new LapAdapter(this.getActivity(), buildEvent(),chronoIsStarted);
+        adapter = new LapAdapter(this.getActivity(),singleton.buildEvent(), chronoIsStarted);
         listViewForLap.setAdapter(adapter);
         return view;
     }
@@ -48,24 +52,6 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
         formatTime = new FormatTimeAsString();
     }
 
-
-    private ArrayList<DataLapForList> buildEvent() {
-        ArrayList<DataLapForList> list = new ArrayList<DataLapForList>();
-        for (int i = 0; i < 3; i++) {
-            SwimmerModel swimmerModel = new SwimmerModel();
-            swimmerModel.setName("Name" + i);
-            swimmerModel.setFirstname("FirstName" + i);
-            swimmerModel.setIdSwimmer(888888);
-            swimmerModel.setDateOfBirth(String.valueOf(1987 + i));
-            EventModel eventModel = new EventModel();
-            eventModel.setQualifyingTime(new Float(60789));
-            eventModel.setRaceId(4);
-            DataLapForList dataLapForList = new DataLapForList(swimmerModel, eventModel, 25);
-            list.add(dataLapForList);
-        }
-        return list;
-    }
-
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Toast.makeText(view.getContext(), "fragment", Toast.LENGTH_SHORT).show();
@@ -73,22 +59,20 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     }
 
     public void addLapToModel(View view, float milli) {
-        FormatTimeAsString formatTime = new FormatTimeAsString();
-        String posString = (String) view.getTag();
-        posString = posString.substring(4);
-        Integer posInt = Integer.valueOf(posString);
+        Integer position = getPositionOfView(view);
 
-        View viewRow = listViewForLap.getChildAt(posInt);
-        DataLapForList dataLapForList = adapter.eventArrayList.get(posInt);
-        int nbSplitRemaining = dataLapForList.getnbSplitRemaining();
+        View viewRow = listViewForLap.getChildAt(position);
+        EventData eventData = singleton.getEventData(position);
+
+        int nbSplitRemaining = eventData.getnbSplitRemaining();
         if (nbSplitRemaining > 0) {
-            float lapDiff = dataLapForList.checkLap(milli);
+            float lapDiff = eventData.checkLap(milli);
             String splitAsString = formatTime.makeString(lapDiff);
             String lapAsString = formatTime.makeString(milli);
-            String tripName = dataLapForList.getSplitName();
+            String tripName = eventData.getSplitName();
 
-            TextView textViewLast = (TextView) viewRow.findViewWithTag("TV_last_" + posString);
-            TextView textViewAll = (TextView) viewRow.findViewWithTag("TV_all_" + posString);
+            TextView textViewLast = (TextView) viewRow.findViewWithTag("TV_last_" + position);
+            TextView textViewAll = (TextView) viewRow.findViewWithTag("TV_all_" + position);
             textViewAll.append("\n" + tripName + ": " + splitAsString + " - " + lapAsString);
 
             ScrollView scrollView = (ScrollView) viewRow.findViewById(R.id.id_scrollview_laps);
@@ -101,7 +85,7 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
                 textViewLast.setText(lapAsString);
             }
         } else {
-            Toast.makeText(view.getContext(), "All lap taken !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), "All laps taken !", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -120,8 +104,28 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
 
         }
     }
-
     public void setChronoIsStarted(boolean isStarted) {
         this.chronoIsStarted = isStarted;
+    }
+
+    public void resetLap(View view) {
+        int position = getPositionOfView(view);
+        //reset data
+        singleton.getEventData(position).resetLaps();
+
+        //reset view
+        View viewRow = listViewForLap.getChildAt(position);
+        TextView textViewAll = (TextView) viewRow.findViewById(R.id.id_textview_all_laps);
+        textViewAll.setText("All laps");
+        TextView textViewLast = (TextView) viewRow.findViewById(R.id.id_textview_last);
+        textViewLast.setText("Last: 0:00.00");
+        textViewLast.setTextColor(getResources().getColor(R.color.bluesea));
+
+    }
+
+    private int getPositionOfView(View view) {
+        String posString = (String) view.getTag();
+        posString = posString.substring(4);
+        return Integer.valueOf(posString);
     }
 }

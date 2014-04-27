@@ -22,14 +22,14 @@ import java.util.ArrayList;
 
 public class LapAdapter extends ArrayAdapter {
     private final Context context;
-    public final ArrayList<DataLapForList> eventArrayList;
+    public final ArrayList<EventData> eventList;
     private FormatTimeAsString formatTime;
     private boolean chronoIsStarted;
 
-    public LapAdapter(Context context, ArrayList<DataLapForList> eventArrayList, boolean chronoIsStarted) {
-        super(context, R.layout.viewforlist_data_lap, eventArrayList);
+    public LapAdapter(Context context, ArrayList<EventData> eventList, boolean chronoIsStarted) {
+        super(context, R.layout.viewforlist_data_lap, eventList);
         this.context = context;
-        this.eventArrayList = eventArrayList;
+        this.eventList = eventList;
         this.formatTime = new FormatTimeAsString();
         this.chronoIsStarted = chronoIsStarted;
     }
@@ -65,13 +65,13 @@ public class LapAdapter extends ArrayAdapter {
         TextView textViewSwimmerDetails = (TextView) rowView.findViewById(R.id.id_textview_lap_swimmerdetails);
         TextView textViewQualifiedTime = (TextView) rowView.findViewById(R.id.id_textview_qualifiedTime);
 
-//        textViewSwimmerDetails.setId(eventArrayList.get(position).getEventModel().getEventId());
+//        textViewSwimmerDetails.setId(eventList.get(position).getEventModel().getEventId());
 
         // FILL ELEMENT WITH DATA FROM DB
-        String name = eventArrayList.get(position).getSwimmerModel().getName();
-        String firstName = eventArrayList.get(position).getSwimmerModel().getFirstname();
-        String dateOfBird = eventArrayList.get(position).getSwimmerModel().getDateOfBirth();
-        float qualifyingTime = eventArrayList.get(position).getEventModel().getQualifyingTime();
+        String name = eventList.get(position).getSwimmerModel().getName();
+        String firstName = eventList.get(position).getSwimmerModel().getFirstname();
+        String dateOfBird = eventList.get(position).getSwimmerModel().getDateOfBirth();
+        float qualifyingTime = eventList.get(position).getEventModel().getQualifyingTime();
         String qualifTimeAsString = formatTime.makeString(qualifyingTime);
         textViewSwimmerDetails.setText(name + "  " + firstName + "  " + dateOfBird);
         textViewQualifiedTime.setText(qualifTimeAsString);
@@ -84,12 +84,23 @@ public class LapAdapter extends ArrayAdapter {
 
         if (chronoIsStarted) {
             buttonLap.setVisibility(View.VISIBLE);
-           buttonLapReset.setVisibility(View.INVISIBLE);
+            buttonLapReset.setVisibility(View.INVISIBLE);
             buttonLapRecord.setVisibility((View.INVISIBLE));
         } else {
             buttonLap.setVisibility(View.INVISIBLE);
             buttonLapReset.setVisibility(View.VISIBLE);
             buttonLapRecord.setVisibility((View.VISIBLE));
+        }
+
+        if (eventList.get(position).trueIfSomeLapsAreAlreadyTaken()) {
+            ArrayList<String> listOfLineToInsertInAllLaps = eventList.get(position).giveBackLapsToInsertInTextViewAllLaps();
+            String stringToInsert = null;
+            for (int indexLap = 0; indexLap < listOfLineToInsertInAllLaps.size(); indexLap++) {
+                stringToInsert += listOfLineToInsertInAllLaps.get(indexLap);
+            }
+            tvAllLaps.setText(stringToInsert);
+            tvLapLast.setText(eventList.get(position).giveBackLastLap());
+
         }
         return rowView;
     }

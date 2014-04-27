@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
+import com.dim.swimlap.ui.lap.EventData;
 import com.dim.swimlap.ui.lap.FragmentDataLap;
 import com.dim.swimlap.ui.lap.FragmentNavLap;
 import com.dim.swimlap.ui.lap.FragmentTitleLap;
@@ -37,6 +38,8 @@ import com.dim.swimlap.ui.swimmer.FragmentDataSwimmer;
 import com.dim.swimlap.ui.swimmer.FragmentNavSwimmer;
 import com.dim.swimlap.ui.swimmer.FragmentTitleSwimmer;
 
+import java.util.ArrayList;
+
 public class GlobalContainer extends FragmentActivity implements CommunicationFragments {
 
     private FragmentDirect fragmentDirect;
@@ -48,6 +51,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     private FragmentTitleLap fragmentTitleLap;
     private FragmentNavLap fragmentNavLap;
     private FragmentDataLap fragmentDataLap;
+    private ArrayList<EventData> savedLapList;
 
     private FragmentTitleSimple fragmentTitleSimple;
     private FragmentNavSimple fragmentNavSimple;
@@ -115,8 +119,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         fragmentNavSettings = new FragmentNavSettings();
         fragmentDataSettings = new FragmentDataSettings();
 
-        // CREATE LAP DATA VIEW BEFORE
-        getSupportFragmentManager().beginTransaction().add(R.id.id_IN_fragment_data,fragmentDataLap).commit();
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -147,7 +149,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavLap);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataLap);
                 newTransaction.addToBackStack(null);
-
             } else if (code == VIEW_SIMPLE) {
                 newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleSimple);
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSimple);
@@ -180,7 +181,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             }
             lastView = currentView;
             currentView = code;
-            changeButtonDirect(code);
+            fragmentDirect.changeButtonDirect(code);
+            fragmentDirect.changeButtonStartStop();
             newTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             newTransaction.commit();
         }
@@ -196,15 +198,36 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     }
 
     @Override
-    public void changeButtonsInLap(boolean chronoIsStarted) {
-        fragmentDataLap.setChronoIsStarted(chronoIsStarted);
-        if(currentView==VIEW_LAP){
-            fragmentDataLap.changeButtonLap(chronoIsStarted);
-        }else {
-            changeFragment(VIEW_LAP);
+    public void resetLap(View view) {
+        fragmentDataLap.resetLap(view);
+    }
 
+    @Override
+    public void recordLap(View view) {
+        // record lap in db
+    }
+
+    @Override
+    public void saveLapList(ArrayList<EventData> list) {
+        savedLapList = new ArrayList<EventData>();
+        savedLapList = (ArrayList<EventData>) list.clone();
+    }
+
+    @Override
+    public ArrayList<EventData> giveBackLapList() {
+        return savedLapList;
+    }
+
+    @Override
+    public void inverseButtonsInLap(boolean chronoIsStarted) {
+        fragmentDataLap.setChronoIsStarted(chronoIsStarted);
+        if (currentView == VIEW_LAP) {
+            fragmentDataLap.changeButtonLap(chronoIsStarted);
+        } else {
+            changeFragment(VIEW_LAP);
         }
     }
+
 
     @Override
     public void onBackPressed() {
@@ -225,22 +248,11 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             AlertDialog alert = builder.create();
             alert.show();
         } else {
-            changeButtonDirect(lastView);
+            fragmentDirect.changeButtonDirect(lastView);
             currentView = lastView;
             lastView = 0;
             super.onBackPressed();
         }
 
     }
-
-    private void changeButtonDirect(int code) {
-        if (code == VIEW_LAP) {
-            fragmentDirect.buttonBackToMenu.setVisibility(View.VISIBLE);
-            fragmentDirect.buttonDirect.setVisibility(View.INVISIBLE);
-        } else {
-            fragmentDirect.buttonBackToMenu.setVisibility(View.INVISIBLE);
-            fragmentDirect.buttonDirect.setVisibility(View.VISIBLE);
-        }
-    }
-
 }

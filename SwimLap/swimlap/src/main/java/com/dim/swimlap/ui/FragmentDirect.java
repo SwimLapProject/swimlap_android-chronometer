@@ -22,8 +22,9 @@ import com.dim.swimlap.R;
 public class FragmentDirect extends Fragment implements View.OnClickListener {
 
     private Button buttonStart, buttonStop;
-    public Button buttonDirect, buttonBackToMenu;
+    private Button buttonDirect, buttonBackToMenu;
     private Chronometer chronometer;
+    private boolean chronoIsStarted;
     private int currentView;
     private CommunicationFragments communicationFragments;
     private static int
@@ -52,6 +53,7 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
 
         buttonStart = (Button) view.findViewById(R.id.id_button_start);
         buttonStart.setOnClickListener(this);
+        buttonStart.setVisibility(View.INVISIBLE);
 
 
         buttonStop = (Button) view.findViewById(R.id.id_button_stop);
@@ -59,7 +61,7 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
         buttonStop.setVisibility(View.INVISIBLE);
 
         currentView = 0;
-
+        chronoIsStarted = false;
         return view;
     }
 
@@ -74,15 +76,15 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
         if (view.getId() == R.id.id_button_start) {
             chronometer.setBase(SystemClock.elapsedRealtime());
             chronometer.start();
-            buttonStop.setVisibility(View.VISIBLE);
-            buttonStart.setVisibility(View.INVISIBLE);
-            communicationFragments.changeButtonsInLap(true);
+            chronoIsStarted = true;
+            changeButtonStartStop();
+            communicationFragments.inverseButtonsInLap(true);
             Toast.makeText(view.getContext(), "START", Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.id_button_stop) {
             chronometer.stop();
-            buttonStop.setVisibility(View.INVISIBLE);
-            buttonStart.setVisibility(View.VISIBLE);
-            communicationFragments.changeButtonsInLap(false);
+            chronoIsStarted = false;
+            changeButtonStartStop();
+            communicationFragments.inverseButtonsInLap(false);
             Toast.makeText(view.getContext(), "STOP", Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.id_button_direct) {
             communicationFragments.changeFragment(VIEW_LAP);
@@ -107,5 +109,25 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
         return currentView;
     }
 
+    public void changeButtonStartStop() {
+        if (chronoIsStarted) {
+            buttonStart.setVisibility(View.INVISIBLE);
+            buttonStop.setVisibility(View.VISIBLE);
+        } else {
+            buttonStart.setVisibility(View.VISIBLE);
+            buttonStop.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void changeButtonDirect(int code) {
+        if (code == VIEW_LAP) {
+            buttonBackToMenu.setVisibility(View.VISIBLE);
+            buttonDirect.setVisibility(View.INVISIBLE);
+
+        } else {
+            buttonBackToMenu.setVisibility(View.INVISIBLE);
+            buttonDirect.setVisibility(View.VISIBLE);
+        }
+    }
 
 }

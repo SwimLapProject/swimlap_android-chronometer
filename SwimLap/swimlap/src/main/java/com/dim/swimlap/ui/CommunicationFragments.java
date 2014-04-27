@@ -10,17 +10,25 @@ package com.dim.swimlap.ui;
 
 import android.view.View;
 
+import com.dim.swimlap.ui.lap.EventData;
+
+import java.util.ArrayList;
+
 public interface CommunicationFragments {
 
     public void changeFragment(int integerCodeFragment);
 
     public void getGlobalLap(View view);
 
-    public void changeButtonsInLap(boolean chronoIsStarted);
+    public void inverseButtonsInLap(boolean chronoIsStarted);
 
     public void resetLap(View view);
 
     public void recordLap(View view);
+
+    public void saveLapList(ArrayList<EventData> list);
+
+    public ArrayList<EventData> giveBackLapList();
 
 
 }
