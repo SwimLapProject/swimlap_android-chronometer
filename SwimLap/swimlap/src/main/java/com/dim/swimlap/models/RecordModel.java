@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 public class RecordModel {
     private int swimmerId;
+    // HashMap <raceId , swimTime >
     private HashMap<Integer, Float> swimTimesPool25, swimTimesPool50;
 
     public int getSwimmerId() {
@@ -21,8 +22,8 @@ public class RecordModel {
         this.swimmerId = swimmerId;
     }
 
-    public Float getSwimtimePool25(int idRace) {
-        return swimTimesPool25.get(idRace);
+    public Float getSwimtimePool25(int raceId) {
+        return swimTimesPool25.get(raceId);
     }
 
     public boolean setSwimtimePool25(int idRaceToUpdate, float newRecordTime) {

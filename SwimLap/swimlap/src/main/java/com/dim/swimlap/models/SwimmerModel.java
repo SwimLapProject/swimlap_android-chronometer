@@ -13,7 +13,8 @@ public class SwimmerModel {
     private String firstname;
     private String dateOfBirth;
     private String gender;
-    private int clubId;
+
+    private ClubModel clubModel;
 
     public int getIdSwimmer() {
         return idSwimmer;
@@ -55,11 +56,11 @@ public class SwimmerModel {
         this.gender = gender;
     }
 
-    public int getClubId() {
-        return clubId;
+    public ClubModel getClubModel() {
+        return clubModel;
     }
 
-    public void setClubId(int clubId) {
-        this.clubId = clubId;
+    public void setClubModel(ClubModel clubModel) {
+        this.clubModel = clubModel;
     }
 }

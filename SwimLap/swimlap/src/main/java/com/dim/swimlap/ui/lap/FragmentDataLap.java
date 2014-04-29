@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.models.EventModel;
+import com.dim.swimlap.models.RESULT;
 import com.dim.swimlap.objects.FormatTimeAsString;
 import com.dim.swimlap.objects.Singleton;
 
@@ -31,7 +31,7 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     private LapAdapter adapter;
     private FormatTimeAsString formatTime;
     private boolean chronoIsStarted;
-    private ArrayList<EventData> list;
+    private ArrayList<RESULT> list;
     private Singleton singleton;
 
     @Override
@@ -62,14 +62,14 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
         Integer position = getPositionOfView(view);
 
         View viewRow = listViewForLap.getChildAt(position);
-        EventData eventData = singleton.getEventData(position);
+        RESULT RESULT = singleton.getEventData(position);
 
-        int nbSplitRemaining = eventData.getnbSplitRemaining();
+        int nbSplitRemaining = RESULT.getnbSplitRemaining();
         if (nbSplitRemaining > 0) {
-            float lapDiff = eventData.checkLap(milli);
+            float lapDiff = RESULT.checkLap(milli);
             String splitAsString = formatTime.makeString(lapDiff);
             String lapAsString = formatTime.makeString(milli);
-            String tripName = eventData.getSplitName();
+            String tripName = RESULT.getSplitName();
 
             TextView textViewLast = (TextView) viewRow.findViewWithTag("TV_last_" + position);
             TextView textViewAll = (TextView) viewRow.findViewWithTag("TV_all_" + position);

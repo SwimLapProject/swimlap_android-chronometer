@@ -7,23 +7,25 @@
 
 package com.dim.swimlap.models;
 
-
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MeetingModel {
 
-    private int idMeeting;
+    private int id;
+
     private String name;
     private String city;
     private Date startDate;
     private Date stopDate;
     private int size;
-    private int agegroupId;
-    private int seasonId;
     private int poolSize;
+    private boolean byTeam;
+
+    private SeasonModel seasonModel;
+
+
     private static final String FFNEX_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     public int getPoolSize() {
@@ -34,12 +36,12 @@ public class MeetingModel {
         this.poolSize = poolSize;
     }
 
-    public int getIdMeeting() {
-        return idMeeting;
+    public int getId() {
+        return id;
     }
 
-    public void setIdMeeting(int idMeeting) {
-        this.idMeeting = idMeeting;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -82,20 +84,13 @@ public class MeetingModel {
         this.size = size;
     }
 
-    public int getAgegroupId() {
-        return agegroupId;
+    public SeasonModel getSeasonModel() {
+        return seasonModel;
     }
 
-    public void setAgegroupId(int agegroupId) {
-        this.agegroupId = agegroupId;
-    }
-
-    public int getSeasonId() {
-        return seasonId;
-    }
-
-    public void setSeasonId(int seasonId) {
-        this.seasonId = seasonId;
+    public void setSeasonModel(SeasonModel seasonModel) {
+        //todo calculate season
+        this.seasonModel = seasonModel;
     }
 
     private String convertDateToString(Date dateToConvert) {
@@ -105,7 +100,7 @@ public class MeetingModel {
 
     }
 
-    private Date convertStringToDate(String dateInString){
+    private Date convertStringToDate(String dateInString) {
         SimpleDateFormat formatter = new SimpleDateFormat(FFNEX_DATE_FORMAT);
         Date date = null;
         try {
@@ -114,5 +109,13 @@ public class MeetingModel {
             date = null;
         }
         return date;
+    }
+
+    public boolean isByTeam() {
+        return byTeam;
+    }
+
+    public void setByTeam(boolean byTeam) {
+        this.byTeam = byTeam;
     }
 }

@@ -18,7 +18,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.ui.lap.EventData;
+import com.dim.swimlap.models.RESULT;
 import com.dim.swimlap.ui.lap.FragmentDataLap;
 import com.dim.swimlap.ui.lap.FragmentNavLap;
 import com.dim.swimlap.ui.lap.FragmentTitleLap;
@@ -51,7 +51,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     private FragmentTitleLap fragmentTitleLap;
     private FragmentNavLap fragmentNavLap;
     private FragmentDataLap fragmentDataLap;
-    private ArrayList<EventData> savedLapList;
+    private ArrayList<RESULT> savedLapList;
 
     private FragmentTitleSimple fragmentTitleSimple;
     private FragmentNavSimple fragmentNavSimple;
@@ -208,13 +208,13 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     }
 
     @Override
-    public void saveLapList(ArrayList<EventData> list) {
-        savedLapList = new ArrayList<EventData>();
-        savedLapList = (ArrayList<EventData>) list.clone();
+    public void saveLapList(ArrayList<RESULT> list) {
+        savedLapList = new ArrayList<RESULT>();
+        savedLapList = (ArrayList<RESULT>) list.clone();
     }
 
     @Override
-    public ArrayList<EventData> giveBackLapList() {
+    public ArrayList<RESULT> giveBackLapList() {
         return savedLapList;
     }
 

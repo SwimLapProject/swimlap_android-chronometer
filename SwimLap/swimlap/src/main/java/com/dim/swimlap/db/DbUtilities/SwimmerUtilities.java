@@ -11,8 +11,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.dim.swimlap.db.builder.DbHelper;
 import com.dim.swimlap.db.tables.DbTableSwimmers;
+import com.dim.swimlap.models.ClubModel;
 import com.dim.swimlap.models.SwimmerModel;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class SwimmerUtilities {
         swimmerModel.setFirstname(cursor.getString(2));
         swimmerModel.setDateOfBirth(cursor.getString(3));
         swimmerModel.setGender(cursor.getString(4));
-        swimmerModel.setClubId(cursor.getInt(5));
+        swimmerModel.setClubModel(new ClubModel(cursor.getInt(5)));
         return swimmerModel;
     }
 
@@ -58,7 +58,7 @@ public class SwimmerUtilities {
         contentValues.put(DbTableSwimmers.COL_SWI_FIRST_NAME, newSimmer.getFirstname());
         contentValues.put(DbTableSwimmers.COL_SWI_DATE_OF_BIRTH, newSimmer.getDateOfBirth());
         contentValues.put(DbTableSwimmers.COL_SWI_GENDER, newSimmer.getGender());
-        contentValues.put(DbTableSwimmers.COL_CLU_CLUB_ID, newSimmer.getClubId());
+        contentValues.put(DbTableSwimmers.COL_CLU_CLUB_ID, newSimmer.getClubModel().getId());
 
         sqLiteDatabaseSwimLap.insert(DbTableSwimmers.TABLE_NAME, null, contentValues);
         Cursor cursor = sqLiteDatabaseSwimLap.query(DbTableSwimmers.TABLE_NAME,DbTableSwimmers.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);

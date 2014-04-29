@@ -15,6 +15,7 @@ import com.dim.swimlap.db.builder.DbHelper;
 import com.dim.swimlap.db.tables.DbTableMeetings;
 import com.dim.swimlap.db.tables.DbTableRecords;
 import com.dim.swimlap.models.MeetingModel;
+import com.dim.swimlap.models.SeasonModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,27 +70,25 @@ public class MeetingUtilities {
 
     private MeetingModel getDataMeetingFromDb(Cursor cursor) {
         MeetingModel meetingModel = new MeetingModel();
-        meetingModel.setIdMeeting(cursor.getInt(0));
+        meetingModel.setId(cursor.getInt(0));
         meetingModel.setName(cursor.getString(1));
         meetingModel.setCity(cursor.getString(2));
         meetingModel.setStartDate(cursor.getString(3));
         meetingModel.setStopDate(cursor.getString(4));
         meetingModel.setPoolSize(cursor.getInt(5));
-        meetingModel.setAgegroupId(cursor.getInt(6));
-        meetingModel.setSeasonId(cursor.getInt(7));
+        meetingModel.setSeasonModel(new SeasonModel(cursor.getInt(6)));
         return meetingModel;
     }
 
     public void addMeetingInDb(MeetingModel meetingModel) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(DbTableMeetings.COL_MEE_ID_MEET, meetingModel.getIdMeeting());
+        contentValues.put(DbTableMeetings.COL_MEE_ID_MEET, meetingModel.getId());
         contentValues.put(DbTableMeetings.COL_MEE_MEETING_NAME, meetingModel.getName());
         contentValues.put(DbTableMeetings.COL_MEE_CITY, meetingModel.getCity());
         contentValues.put(DbTableMeetings.COL_MEE_START_DATE, meetingModel.getStartDate());
         contentValues.put(DbTableMeetings.COL_MEE_STOP_DATE, meetingModel.getStopDate());
         contentValues.put(DbTableMeetings.COL_MEE_POOL_SIZE, meetingModel.getPoolSize());
-        contentValues.put(DbTableMeetings.COL_AGE_AGEGROUP_ID, meetingModel.getAgegroupId());
-        contentValues.put(DbTableMeetings.COL_SEA_ID, meetingModel.getSeasonId());
+        contentValues.put(DbTableMeetings.COL_SEA_ID, meetingModel.getSeasonModel().getId());
         sqLiteDatabaseSwimLap.insert(DbTableMeetings.TABLE_NAME, null, contentValues);
     }
 
@@ -98,7 +97,7 @@ public class MeetingUtilities {
     }
 
     public void updateMeeting(MeetingModel meetingModel) {
-        deleteMeetingInDb(meetingModel.getIdMeeting());
+        deleteMeetingInDb(meetingModel.getId());
         addMeetingInDb(meetingModel);
     }
 

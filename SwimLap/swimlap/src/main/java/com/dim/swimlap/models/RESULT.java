@@ -5,50 +5,50 @@
  * CCI 74 & IUT Annecy Departement informatique
  */
 
-package com.dim.swimlap.ui.lap;
+package com.dim.swimlap.models;
 
-import com.dim.swimlap.models.EventModel;
-import com.dim.swimlap.models.RaceModel;
-import com.dim.swimlap.models.SwimmerModel;
 import com.dim.swimlap.objects.FormatTimeAsString;
 
 import java.util.ArrayList;
 
-public class EventData {
+public class RESULT {
 
-    private SwimmerModel swimmerModel;
-    private EventModel eventModel;
-    private RaceModel raceModel;
+    // CHARACTERISTICS
+    private int id;
+    public SwimmerModel swimmerModel;
+    public EventModel eventModel;
+    public MeetingModel meetingModel;
+    private float qualifyingTime;
+
+    // DATA
+    private float swimTime;
     private ArrayList<Float> laps;
-   private int currentLapSwimming;
+
+    // UTILITIES
+    private int currentLapSwimming;
     private int numberOfLap;
     private float lapPreviousMin, lapPreviousMax;
-    private int poolSize;
 
-    public EventData(SwimmerModel swimmerModel, EventModel eventModel, int poolSize) {
+    public RESULT(SwimmerModel swimmerModel, EventModel eventModel, MeetingModel meetingModel,float qualifyingTime) {
         this.swimmerModel = swimmerModel;
         this.eventModel = eventModel;
-        this.raceModel = new RaceModel(eventModel.getRaceId());
-        this.poolSize = poolSize;
-        numberOfLap = raceModel.getDistance() / poolSize;
+        this.meetingModel = meetingModel;
+        this.qualifyingTime =qualifyingTime;
+        laps = new ArrayList<Float>();
+
+        buildContent();
+   }
+
+    private void buildContent() {
+        numberOfLap = eventModel.getRaceModel().getDistance() / meetingModel.getPoolSize();
         currentLapSwimming = 0;
-        lapPreviousMin = (eventModel.getQualifyingTime() * 10000 / numberOfLap) * 75 / 100;
-        lapPreviousMax = (eventModel.getQualifyingTime() * 10000 / numberOfLap) * 125 / 100;
-
-        eventModel.buildLapTable(numberOfLap);
-    }
-
-    public SwimmerModel getSwimmerModel() {
-        return swimmerModel;
-    }
-
-    public EventModel getEventModel() {
-        return eventModel;
+        lapPreviousMin = (qualifyingTime * 10000 / numberOfLap) * 75 / 100;
+        lapPreviousMax = (qualifyingTime * 10000 / numberOfLap) * 125 / 100;
     }
 
     public boolean trueIfSomeLapsAreAlreadyTaken() {
         boolean lapsAllreadytaken = false;
-        if (eventModel.getLaps().size() != 0) {
+        if (laps.size() != 0) {
             lapsAllreadytaken = true;
         }
         return lapsAllreadytaken;
@@ -59,16 +59,17 @@ public class EventData {
         ArrayList<String> allLapsAlreadyTaken = new ArrayList<String>();
 
         for (int lapIndex = 0; lapIndex < currentLapSwimming; lapIndex++) {
-            String lapStringToAdd = String.valueOf(poolSize * lapIndex) + ": ";
-            lapStringToAdd += format.makeString(giveSplit(eventModel.getLaps().get(lapIndex), lapIndex));
-            lapStringToAdd += format.makeString(eventModel.getLaps().get(lapIndex));
+            String lapStringToAdd = String.valueOf(meetingModel.getPoolSize() * lapIndex) + ": ";
+            lapStringToAdd += format.makeString(giveSplit(laps.get(lapIndex), lapIndex));
+            lapStringToAdd += format.makeString(laps.get(lapIndex));
             allLapsAlreadyTaken.add(lapStringToAdd);
         }
         return allLapsAlreadyTaken;
     }
-    public String giveBackLastLap(){
+
+    public String giveBackLastLap() {
         FormatTimeAsString format = new FormatTimeAsString();
-        return format.makeString(eventModel.getLaps().get(eventModel.getLaps().size()-1));
+        return format.makeString(laps.get(laps.size() - 1));
     }
 
     private float giveSplit(float lap, int currentPosition) {
@@ -76,7 +77,7 @@ public class EventData {
         if (currentPosition == 0) {
             split = lap;
         } else {
-            split = lap - eventModel.getLaps().get(currentPosition - 1);
+            split = lap - laps.get(currentPosition - 1);
         }
         return split;
     }
@@ -86,7 +87,7 @@ public class EventData {
         // VERIFY IF THE TIME BETWEEN LAST LAP AND THE NEW ONE IS COHERENT AND IF ALL THE LAPS ARE NOT FILLED (RACE FINISH)
 //        (split > lapPreviousMin) && (split < lapPreviousMax) &&
         if ((currentLapSwimming < numberOfLap)) {
-            eventModel.addValueToLaps(currentLapSwimming, lap);
+            laps.add(currentLapSwimming, lap);
             currentLapSwimming++;
         } else {
             split = 0;
@@ -102,17 +103,34 @@ public class EventData {
     public String getSplitName() {
         String lapName = null;
         if (currentLapSwimming <= numberOfLap) {
-            lapName = String.valueOf(poolSize * currentLapSwimming);
+            lapName = String.valueOf(meetingModel.getPoolSize() * currentLapSwimming);
         }
         return lapName;
     }
+
     public void resetLaps() {
         this.currentLapSwimming = 0;
-        this.eventModel.getLaps().clear();
+        this.laps.clear();
     }
 
     public void recordLapsInDB() {
     }
 
+
+    public float getQualifyingTime() {
+        return qualifyingTime;
+    }
+
+    public void setQualifyingTime(float qualifyingTime) {
+        this.qualifyingTime = qualifyingTime;
+    }
+
+    public ArrayList<Float> getLaps() {
+        return laps;
+    }
+
+    public void setLaps(ArrayList<Float> laps) {
+        this.laps = laps;
+    }
 
 }

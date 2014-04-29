@@ -7,13 +7,21 @@
 
 package com.dim.swimlap.models;
 
-public class ClubModel {
+import com.dim.swimlap.data.RoundData;
+
+public class RoundModel {
 
     private int id;
     private String name;
 
-    public ClubModel(int id) {
+    public RoundModel(int id) {
         this.id = id;
+        buidContent();
+    }
+
+    private void buidContent() {
+        RoundData roundData = new RoundData();
+        this.name = roundData.getRoundName(id);
     }
 
     public int getId() {
