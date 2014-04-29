@@ -41,7 +41,7 @@ public class SwimmerUtilities {
 
     private SwimmerModel getRowFromDbSwimmers(Cursor cursor) {// cursorToFilm
         SwimmerModel swimmerModel = new SwimmerModel();
-        swimmerModel.setIdSwimmer(cursor.getInt(0));
+        swimmerModel.setIdFFN(cursor.getInt(0));
         swimmerModel.setName(cursor.getString(1));
         swimmerModel.setFirstname(cursor.getString(2));
         swimmerModel.setDateOfBirth(cursor.getString(3));
@@ -53,7 +53,7 @@ public class SwimmerUtilities {
 
     public void addSwimmerInDb(SwimmerModel newSimmer) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(DbTableSwimmers.COL_SWI_ID_SWIMMER, newSimmer.getIdSwimmer());
+        contentValues.put(DbTableSwimmers.COL_SWI_ID_SWIMMER, newSimmer.getIdFFN());
         contentValues.put(DbTableSwimmers.COL_SWI_NAME, newSimmer.getName());
         contentValues.put(DbTableSwimmers.COL_SWI_FIRST_NAME, newSimmer.getFirstname());
         contentValues.put(DbTableSwimmers.COL_SWI_DATE_OF_BIRTH, newSimmer.getDateOfBirth());
@@ -95,7 +95,7 @@ public class SwimmerUtilities {
     }
 
     public void updateSwimmerInDb(SwimmerModel modifiedSwimmer) {
-        deleteSwimmerInDb(modifiedSwimmer.getIdSwimmer());
+        deleteSwimmerInDb(modifiedSwimmer.getIdFFN());
         addSwimmerInDb(modifiedSwimmer);
     }
 }

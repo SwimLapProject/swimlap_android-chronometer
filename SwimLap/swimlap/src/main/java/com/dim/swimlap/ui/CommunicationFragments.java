@@ -10,7 +10,7 @@ package com.dim.swimlap.ui;
 
 import android.view.View;
 
-import com.dim.swimlap.models.RESULT;
+import com.dim.swimlap.models.ResultModel;
 
 import java.util.ArrayList;
 
@@ -26,9 +26,9 @@ public interface CommunicationFragments {
 
     public void recordLap(View view);
 
-    public void saveLapList(ArrayList<RESULT> list);
+    public void saveLapList(ArrayList<ResultModel> list);
 
-    public ArrayList<RESULT> giveBackLapList();
+    public ArrayList<ResultModel> giveBackLapList();
 
 
 }

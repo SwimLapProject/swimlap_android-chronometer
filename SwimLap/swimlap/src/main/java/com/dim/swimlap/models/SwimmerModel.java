@@ -8,7 +8,7 @@
 package com.dim.swimlap.models;
 
 public class SwimmerModel {
-    private int idSwimmer;
+    private int idFFN;
     private String name;
     private String firstname;
     private String dateOfBirth;
@@ -16,12 +16,12 @@ public class SwimmerModel {
 
     private ClubModel clubModel;
 
-    public int getIdSwimmer() {
-        return idSwimmer;
+    public int getIdFFN() {
+        return idFFN;
     }
 
-    public void setIdSwimmer(int idSwimmer) {
-        this.idSwimmer = idSwimmer;
+    public void setIdFFN(int idFFN) {
+        this.idFFN = idFFN;
     }
 
     public String getName() {

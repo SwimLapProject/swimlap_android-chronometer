@@ -43,9 +43,9 @@ public class RaceData {
         distances.put(200, 25);
         styles.put(200, "FREE");
 
-        genders.put(100, "-M");
-        genders.put(150, "-F");
-        genders.put(200, "-M-F");
+        genders.put(100, "M");
+        genders.put(150, "F");
+        genders.put(200, "MIXED");
 
         distances.put(1, 50);
         styles.put(1, "FREE");
@@ -54,9 +54,9 @@ public class RaceData {
         distances.put(201, 50);
         styles.put(201, "FREE");
 
-        genders.put(1, "-M");
-        genders.put(51, "-F");
-        genders.put(201, "-M-F");
+        genders.put(1, "M");
+        genders.put(51, "F");
+        genders.put(201, "MIXED");
 
         distances.put(2, 100);
         styles.put(2, "FREE");
@@ -65,9 +65,9 @@ public class RaceData {
         distances.put(202, 100);
         styles.put(202, "FREE");
 
-        genders.put(2, "-M");
-        genders.put(52, "-F");
-        genders.put(202, "-M-F");
+        genders.put(2, "M");
+        genders.put(52, "F");
+        genders.put(202, "MIXED");
 
         distances.put(3, 200);
         styles.put(3, "FREE");
@@ -76,9 +76,9 @@ public class RaceData {
         distances.put(203, 200);
         styles.put(203, "FREE");
 
-        genders.put(3, "-M");
-        genders.put(53, "-F");
-        genders.put(203, "-M-F");
+        genders.put(3, "M");
+        genders.put(53, "F");
+        genders.put(203, "MIXED");
 
         distances.put(4, 400);
         styles.put(4, "FREE");
@@ -87,9 +87,9 @@ public class RaceData {
         distances.put(204, 400);
         styles.put(204, "FREE");
 
-        genders.put(4, "-M");
-        genders.put(54, "-F");
-        genders.put(204, "-M-F");
+        genders.put(4, "M");
+        genders.put(54, "F");
+        genders.put(204, "MIXED");
 
         distances.put(5, 800);
         styles.put(5, "FREE");
@@ -98,9 +98,9 @@ public class RaceData {
         distances.put(205, 800);
         styles.put(205, "FREE");
 
-        genders.put(5, "-M");
-        genders.put(55, "-F");
-        genders.put(205, "-M-F");
+        genders.put(5, "M");
+        genders.put(55, "F");
+        genders.put(205, "MIXED");
 
         distances.put(7, 1000);
         styles.put(7, "FREE");
@@ -109,9 +109,9 @@ public class RaceData {
         distances.put(207, 1000);
         styles.put(207, "FREE");
 
-        genders.put(7, "-M");
-        genders.put(57, "-F");
-        genders.put(207, "-M-F");
+        genders.put(7, "M");
+        genders.put(57, "F");
+        genders.put(207, "MIXED");
 
         distances.put(6, 1500);
         styles.put(6, "FREE");
@@ -120,9 +120,9 @@ public class RaceData {
         distances.put(206, 1500);
         styles.put(206, "FREE");
 
-        genders.put(6, "-M");
-        genders.put(56, "-F");
-        genders.put(206, "-M-F");
+        genders.put(6, "M");
+        genders.put(56, "F");
+        genders.put(206, "MIXED");
 
         distances.put(16, 3000);
         styles.put(16, "FREE");
@@ -131,9 +131,9 @@ public class RaceData {
         distances.put(216, 3000);
         styles.put(216, "FREE");
 
-        genders.put(16, "-M");
-        genders.put(66, "-F");
-        genders.put(216, "-M-F");
+        genders.put(16, "M");
+        genders.put(66, "F");
+        genders.put(216, "MIXED");
 
         distances.put(15, 5000);
         styles.put(15, "FREE");
@@ -142,9 +142,9 @@ public class RaceData {
         distances.put(215, 5000);
         styles.put(215, "FREE");
 
-        genders.put(15, "-M");
-        genders.put(65, "-F");
-        genders.put(215, "-M-F");
+        genders.put(15, "M");
+        genders.put(65, "F");
+        genders.put(215, "MIXED");
 
         distances.put(110, 25);
         styles.put(110, "BACK");
@@ -153,9 +153,9 @@ public class RaceData {
         distances.put(210, 25);
         styles.put(210, "BACK");
 
-        genders.put(110, "-M");
-        genders.put(160, "-F");
-        genders.put(210, "-M-F");
+        genders.put(110, "M");
+        genders.put(160, "F");
+        genders.put(210, "MIXED");
 
         distances.put(11, 50);
         styles.put(11, "BACK");
@@ -164,9 +164,9 @@ public class RaceData {
         distances.put(211, 50);
         styles.put(211, "BACK");
 
-        genders.put(11, "-M");
-        genders.put(61, "-F");
-        genders.put(211, "-M-F");
+        genders.put(11, "M");
+        genders.put(61, "F");
+        genders.put(211, "MIXED");
 
         distances.put(12, 100);
         styles.put(12, "BACK");
@@ -175,9 +175,9 @@ public class RaceData {
         distances.put(212, 100);
         styles.put(212, "BACK");
 
-        genders.put(12, "-M");
-        genders.put(62, "-F");
-        genders.put(212, "-M-F");
+        genders.put(12, "M");
+        genders.put(62, "F");
+        genders.put(212, "MIXED");
 
         distances.put(13, 200);
         styles.put(13, "BACK");
@@ -186,9 +186,9 @@ public class RaceData {
         distances.put(213, 200);
         styles.put(213, "BACK");
 
-        genders.put(13, "-M");
-        genders.put(63, "-F");
-        genders.put(213, "-M-F");
+        genders.put(13, "M");
+        genders.put(63, "F");
+        genders.put(213, "MIXED");
 
         distances.put(120, 25);
         styles.put(120, "BREA");
@@ -197,9 +197,9 @@ public class RaceData {
         distances.put(220, 25);
         styles.put(220, "BREA");
 
-        genders.put(120, "-M");
-        genders.put(170, "-F");
-        genders.put(220, "-M-F");
+        genders.put(120, "M");
+        genders.put(170, "F");
+        genders.put(220, "MIXED");
 
         distances.put(21, 50);
         styles.put(21, "BREA");
@@ -208,9 +208,9 @@ public class RaceData {
         distances.put(221, 50);
         styles.put(221, "BREA");
 
-        genders.put(21, "-M");
-        genders.put(71, "-F");
-        genders.put(221, "-M-F");
+        genders.put(21, "M");
+        genders.put(71, "F");
+        genders.put(221, "MIXED");
 
         distances.put(22, 100);
         styles.put(22, "BREA");
@@ -219,9 +219,9 @@ public class RaceData {
         distances.put(222, 100);
         styles.put(222, "BREA");
 
-        genders.put(22, "-M");
-        genders.put(72, "-F");
-        genders.put(222, "-M-F");
+        genders.put(22, "M");
+        genders.put(72, "F");
+        genders.put(222, "MIXED");
 
         distances.put(23, 200);
         styles.put(23, "BREA");
@@ -230,9 +230,9 @@ public class RaceData {
         distances.put(223, 200);
         styles.put(223, "BREA");
 
-        genders.put(23, "-M");
-        genders.put(73, "-F");
-        genders.put(223, "-M-F");
+        genders.put(23, "M");
+        genders.put(73, "F");
+        genders.put(223, "MIXED");
 
         distances.put(130, 25);
         styles.put(130, "BUTT");
@@ -241,9 +241,9 @@ public class RaceData {
         distances.put(230, 25);
         styles.put(230, "BUTT");
 
-        genders.put(130, "-M");
-        genders.put(180, "-F");
-        genders.put(230, "-M-F");
+        genders.put(130, "M");
+        genders.put(180, "F");
+        genders.put(230, "MIXED");
 
         distances.put(31, 50);
         styles.put(31, "BUTT");
@@ -252,9 +252,9 @@ public class RaceData {
         distances.put(231, 50);
         styles.put(231, "BUTT");
 
-        genders.put(31, "-M");
-        genders.put(81, "-F");
-        genders.put(231, "-M-F");
+        genders.put(31, "M");
+        genders.put(81, "F");
+        genders.put(231, "MIXED");
 
 
         distances.put(32, 100);
@@ -264,9 +264,9 @@ public class RaceData {
         distances.put(232, 100);
         styles.put(232, "BUTT");
 
-        genders.put(32, "-M");
-        genders.put(82, "-F");
-        genders.put(232, "-M-F");
+        genders.put(32, "M");
+        genders.put(82, "F");
+        genders.put(232, "MIXED");
 
         distances.put(33, 200);
         styles.put(33, "BUTT");
@@ -275,9 +275,9 @@ public class RaceData {
         distances.put(233, 200);
         styles.put(233, "BUTT");
 
-        genders.put(33, "-M");
-        genders.put(83, "-F");
-        genders.put(233, "-M-F");
+        genders.put(33, "M");
+        genders.put(83, "F");
+        genders.put(233, "MIXED");
 
         distances.put(40, 100);
         styles.put(40, "MEDLL");
@@ -286,9 +286,9 @@ public class RaceData {
         distances.put(240, 100);
         styles.put(240, "MEDL");
 
-        genders.put(40, "-M");
-        genders.put(90, "-F");
-        genders.put(240, "-M-F");
+        genders.put(40, "M");
+        genders.put(90, "F");
+        genders.put(240, "MIXED");
 
         distances.put(41, 200);
         styles.put(41, "MEDL");
@@ -297,9 +297,9 @@ public class RaceData {
         distances.put(241, 200);
         styles.put(241, "MEDL");
 
-        genders.put(41, "-M");
-        genders.put(91, "-F");
-        genders.put(241, "-M-F");
+        genders.put(41, "M");
+        genders.put(91, "F");
+        genders.put(241, "MIXED");
 
         distances.put(42, 400);
         styles.put(42, "MEDL");
@@ -308,9 +308,9 @@ public class RaceData {
         distances.put(242, 400);
         styles.put(242, "MEDL");
 
-        genders.put(42, "-M");
-        genders.put(92, "-F");
-        genders.put(242, "-M-F");
+        genders.put(42, "M");
+        genders.put(92, "F");
+        genders.put(242, "MIXED");
 
         distances.put(8, 100);
         styles.put(8, "4x25_NL");
@@ -319,9 +319,9 @@ public class RaceData {
         distances.put(86, 100);
         styles.put(86, "4x25_NL");
 
-        genders.put(8, "-M");
-        genders.put(58, "-F");
-        genders.put(86, "-M-F");
+        genders.put(8, "M");
+        genders.put(58, "F");
+        genders.put(86, "MIXED");
 
         distances.put(47, 100);
         styles.put(47, "4x50_NL");
@@ -330,9 +330,9 @@ public class RaceData {
         distances.put(87, 200);
         styles.put(87, "4x50_NL");
 
-        genders.put(47, "-M");
-        genders.put(97, "-F");
-        genders.put(87, "-M-F");
+        genders.put(47, "M");
+        genders.put(97, "F");
+        genders.put(87, "MIXED");
 
         distances.put(43, 400);
         styles.put(43, "4x100_NL");
@@ -341,9 +341,9 @@ public class RaceData {
         distances.put(88, 400);
         styles.put(88, "4x100_NL");
 
-        genders.put(43, "-M");
-        genders.put(93, "-F");
-        genders.put(88, "-M-F");
+        genders.put(43, "M");
+        genders.put(93, "F");
+        genders.put(88, "MIXED");
 
         distances.put(44, 800);
         styles.put(44, "4x200_NL");
@@ -352,17 +352,17 @@ public class RaceData {
         distances.put(34, 800);
         styles.put(34, "4x200_FREE");
 
-        genders.put(44, "-M");
-        genders.put(94, "-F");
-        genders.put(34, "-M-F");
+        genders.put(44, "M");
+        genders.put(94, "F");
+        genders.put(34, "MIXED");
 
         distances.put(111, 200);
         styles.put(111, "4x50_BACK");
         distances.put(161, 200);
         styles.put(161, "4x50_BACK");
 
-        genders.put(111, "-M");
-        genders.put(161, "-F");
+        genders.put(111, "M");
+        genders.put(161, "F");
 
         distances.put(39, 100);
         styles.put(39, "4x25_MED");
@@ -371,9 +371,9 @@ public class RaceData {
         distances.put(38, 100);
         styles.put(38, "4x25_MED");
 
-        genders.put(39, "-M");
-        genders.put(89, "-F");
-        genders.put(38, "-M-F");
+        genders.put(39, "M");
+        genders.put(89, "F");
+        genders.put(38, "MIXED");
 
 
         distances.put(121, 200);
@@ -381,8 +381,8 @@ public class RaceData {
         distances.put(171, 200);
         styles.put(171, "4x50_BRE");
 
-        genders.put(121, "-M");
-        genders.put(171, "-F");
+        genders.put(121, "M");
+        genders.put(171, "F");
 
         distances.put(48, 200);
         styles.put(48, "4x50_MED");
@@ -391,17 +391,17 @@ public class RaceData {
         distances.put(37, 200);
         styles.put(37, "4x50_MED");
 
-        genders.put(48, "-M");
-        genders.put(98, "-F");
-        genders.put(37, "-M-F");
+        genders.put(48, "M");
+        genders.put(98, "F");
+        genders.put(37, "MIXED");
 
         distances.put(131, 200);
         styles.put(131, "4x50_BUT");
         distances.put(181, 200);
         styles.put(181, "4x50_BUT");
 
-        genders.put(131, "-M");
-        genders.put(181, "-F");
+        genders.put(131, "M");
+        genders.put(181, "F");
 
         distances.put(49, 300);
         styles.put(79, "6x50_FRE");
@@ -410,9 +410,9 @@ public class RaceData {
         distances.put(35, 300);
         styles.put(35, "6x50_FRE");
 
-        genders.put(49, "-M");
-        genders.put(99, "-F");
-        genders.put(35, "-M-F");
+        genders.put(49, "M");
+        genders.put(99, "F");
+        genders.put(35, "MIXED");
 
         distances.put(46, 400);
         styles.put(46, "4x100_MED");
@@ -421,9 +421,9 @@ public class RaceData {
         distances.put(36, 400);
         styles.put(36, "4x100_MED");
 
-        genders.put(46, "-M");
-        genders.put(96, "-F");
-        genders.put(36, "-M-F");
+        genders.put(46, "M");
+        genders.put(96, "F");
+        genders.put(36, "MIXED");
 
         distances.put(9, 500);
         styles.put(9, "10x50_FRE");
@@ -432,9 +432,9 @@ public class RaceData {
         distances.put(84, 500);
         styles.put(84, "10x50_FRE");
 
-        genders.put(9, "-M");
-        genders.put(59, "-F");
-        genders.put(84, "-M-F");
+        genders.put(9, "M");
+        genders.put(59, "F");
+        genders.put(84, "MIXED");
 
         distances.put(14, 800);
         styles.put(14, "8x100_FRE");
@@ -443,9 +443,9 @@ public class RaceData {
         distances.put(214, 800);
         styles.put(214, "8x100_FRE");
 
-        genders.put(14, "-M");
-        genders.put(64, "-F");
-        genders.put(214, "-M-F");
+        genders.put(14, "M");
+        genders.put(64, "F");
+        genders.put(214, "MIXED");
 
         distances.put(45, 1000);
         styles.put(45, "10x100_FRE");
@@ -454,8 +454,8 @@ public class RaceData {
         distances.put(85, 1000);
         styles.put(85, "10x100_FRE");
 
-        genders.put(45, "-M");
-        genders.put(95, "-F");
-        genders.put(85, "-M-F");
+        genders.put(45, "M");
+        genders.put(95, "F");
+        genders.put(85, "MIXED");
     }
 }

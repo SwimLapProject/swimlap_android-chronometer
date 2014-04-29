@@ -16,21 +16,21 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.models.RESULT;
+import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.objects.FormatTimeAsString;
 
 import java.util.ArrayList;
 
 public class LapAdapter extends ArrayAdapter {
     private final Context context;
-    public final ArrayList<RESULT> resultList;
+    public final ArrayList<ResultModel> resultModelList;
     private FormatTimeAsString formatTime;
     private boolean chronoIsStarted;
 
-    public LapAdapter(Context context, ArrayList<RESULT> resultList, boolean chronoIsStarted) {
-        super(context, R.layout.viewforlist_data_lap, resultList);
+    public LapAdapter(Context context, ArrayList<ResultModel> resultModelList, boolean chronoIsStarted) {
+        super(context, R.layout.viewforlist_data_lap, resultModelList);
         this.context = context;
-        this.resultList = resultList;
+        this.resultModelList = resultModelList;
         this.formatTime = new FormatTimeAsString();
         this.chronoIsStarted = chronoIsStarted;
     }
@@ -66,13 +66,13 @@ public class LapAdapter extends ArrayAdapter {
         TextView textViewSwimmerDetails = (TextView) rowView.findViewById(R.id.id_textview_lap_swimmerdetails);
         TextView textViewQualifiedTime = (TextView) rowView.findViewById(R.id.id_textview_qualifiedTime);
 
-//        textViewSwimmerDetails.setId(resultList.get(position).getEventModel().getId());
+//        textViewSwimmerDetails.setId(resultModelList.get(position).getEventModel().getId());
 
         // FILL ELEMENT WITH DATA FROM DB
-        String name = resultList.get(position).swimmerModel.getName();
-        String firstName = resultList.get(position).swimmerModel.getFirstname();
-        String dateOfBird = resultList.get(position).swimmerModel.getDateOfBirth();
-        float qualifyingTime = resultList.get(position).getQualifyingTime();
+        String name = resultModelList.get(position).getSwimmerModel().getName();
+        String firstName = resultModelList.get(position).getSwimmerModel().getFirstname();
+        String dateOfBird = resultModelList.get(position).getSwimmerModel().getDateOfBirth();
+        float qualifyingTime = resultModelList.get(position).getQualifyingTime();
         String qualifTimeAsString = formatTime.makeString(qualifyingTime);
         textViewSwimmerDetails.setText(name + "  " + firstName + "  " + dateOfBird);
         textViewQualifiedTime.setText(qualifTimeAsString);
@@ -93,14 +93,14 @@ public class LapAdapter extends ArrayAdapter {
             buttonLapRecord.setVisibility((View.VISIBLE));
         }
 
-        if (resultList.get(position).trueIfSomeLapsAreAlreadyTaken()) {
-            ArrayList<String> listOfLineToInsertInAllLaps = resultList.get(position).giveBackLapsToInsertInTextViewAllLaps();
+        if (resultModelList.get(position).trueIfSomeLapsAreAlreadyTaken()) {
+            ArrayList<String> listOfLineToInsertInAllLaps = resultModelList.get(position).giveBackLapsToInsertInTextViewAllLaps();
             String stringToInsert = null;
             for (int indexLap = 0; indexLap < listOfLineToInsertInAllLaps.size(); indexLap++) {
                 stringToInsert += listOfLineToInsertInAllLaps.get(indexLap);
             }
             tvAllLaps.setText(stringToInsert);
-            tvLapLast.setText(resultList.get(position).giveBackLastLap());
+            tvLapLast.setText(resultModelList.get(position).giveBackLastLap());
 
         }
         return rowView;

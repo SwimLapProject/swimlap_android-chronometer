@@ -11,13 +11,12 @@ import com.dim.swimlap.objects.FormatTimeAsString;
 
 import java.util.ArrayList;
 
-public class RESULT {
+public class ResultModel {
 
     // CHARACTERISTICS
     private int id;
-    public SwimmerModel swimmerModel;
-    public EventModel eventModel;
-    public MeetingModel meetingModel;
+    private SwimmerModel swimmerModel;
+    private EventModel eventModel;
     private float qualifyingTime;
 
     // DATA
@@ -28,19 +27,28 @@ public class RESULT {
     private int currentLapSwimming;
     private int numberOfLap;
     private float lapPreviousMin, lapPreviousMax;
+    private int poolSize;
 
-    public RESULT(SwimmerModel swimmerModel, EventModel eventModel, MeetingModel meetingModel,float qualifyingTime) {
+    public ResultModel(SwimmerModel swimmerModel, EventModel eventModel, int poolSize, float qualifyingTime, int id) {
+        this.id = id;
         this.swimmerModel = swimmerModel;
         this.eventModel = eventModel;
-        this.meetingModel = meetingModel;
-        this.qualifyingTime =qualifyingTime;
+        this.qualifyingTime = qualifyingTime;
+        this.poolSize = poolSize;
         laps = new ArrayList<Float>();
 
         buildContent();
-   }
+    }
 
-    private void buildContent() {
-        numberOfLap = eventModel.getRaceModel().getDistance() / meetingModel.getPoolSize();
+    public ResultModel(int id) {
+    this.id = id;
+
+    }
+
+
+
+    public void buildContent() {
+        numberOfLap = eventModel.getRaceModel().getDistance() / poolSize;
         currentLapSwimming = 0;
         lapPreviousMin = (qualifyingTime * 10000 / numberOfLap) * 75 / 100;
         lapPreviousMax = (qualifyingTime * 10000 / numberOfLap) * 125 / 100;
@@ -59,7 +67,7 @@ public class RESULT {
         ArrayList<String> allLapsAlreadyTaken = new ArrayList<String>();
 
         for (int lapIndex = 0; lapIndex < currentLapSwimming; lapIndex++) {
-            String lapStringToAdd = String.valueOf(meetingModel.getPoolSize() * lapIndex) + ": ";
+            String lapStringToAdd = String.valueOf(poolSize * lapIndex) + ": ";
             lapStringToAdd += format.makeString(giveSplit(laps.get(lapIndex), lapIndex));
             lapStringToAdd += format.makeString(laps.get(lapIndex));
             allLapsAlreadyTaken.add(lapStringToAdd);
@@ -103,7 +111,7 @@ public class RESULT {
     public String getSplitName() {
         String lapName = null;
         if (currentLapSwimming <= numberOfLap) {
-            lapName = String.valueOf(meetingModel.getPoolSize() * currentLapSwimming);
+            lapName = String.valueOf(poolSize * currentLapSwimming);
         }
         return lapName;
     }
@@ -116,7 +124,7 @@ public class RESULT {
     public void recordLapsInDB() {
     }
 
-
+    // GETTERS AND SETTERS
     public float getQualifyingTime() {
         return qualifyingTime;
     }
@@ -131,6 +139,69 @@ public class RESULT {
 
     public void setLaps(ArrayList<Float> laps) {
         this.laps = laps;
+    }
+
+    public int getPoolSize() {
+        return poolSize;
+    }
+
+    public void setPoolSize(int poolSize) {
+        this.poolSize = poolSize;
+    }
+    public SwimmerModel getSwimmerModel() {
+        return swimmerModel;
+    }
+
+    public void setSwimmerModel(SwimmerModel swimmerModel) {
+        this.swimmerModel = swimmerModel;
+    }
+
+    public EventModel getEventModel() {
+        return eventModel;
+    }
+
+    public void setEventModel(EventModel eventModel) {
+        this.eventModel = eventModel;
+    }
+
+    public float getSwimTime() {
+        return swimTime;
+    }
+
+    public void setSwimTime(float swimTime) {
+        this.swimTime = swimTime;
+    }
+
+    public int getCurrentLapSwimming() {
+        return currentLapSwimming;
+    }
+
+    public void setCurrentLapSwimming(int currentLapSwimming) {
+        this.currentLapSwimming = currentLapSwimming;
+    }
+
+    public int getNumberOfLap() {
+        return numberOfLap;
+    }
+
+    public void setNumberOfLap(int numberOfLap) {
+        this.numberOfLap = numberOfLap;
+    }
+
+    public float getLapPreviousMin() {
+        return lapPreviousMin;
+    }
+
+    public void setLapPreviousMin(float lapPreviousMin) {
+        this.lapPreviousMin = lapPreviousMin;
+    }
+
+    public float getLapPreviousMax() {
+        return lapPreviousMax;
+    }
+
+    public void setLapPreviousMax(float lapPreviousMax) {
+        this.lapPreviousMax = lapPreviousMax;
     }
 
 }

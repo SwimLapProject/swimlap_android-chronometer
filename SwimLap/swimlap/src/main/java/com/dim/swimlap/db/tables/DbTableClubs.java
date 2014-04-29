@@ -13,13 +13,16 @@ public class DbTableClubs implements DbTableMODEL {
     // COLUMNS
     public static final String COL_CLU_ID_CLUB = "col_clu_id_club";
     public static final String COL_CLU_NAME = "col_clu_name";
+    public static final String COL_CLU_CODE_FFN = "col_clu_code_ffn";
+
     public static final String
             REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
             COL_CLU_ID_CLUB + " INTEGER, " +
             COL_CLU_NAME + " TEXT" +
+            COL_CLU_CODE_FFN + " INTEGER" +
             ");";
 
-    public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_CLU_ID_CLUB, COL_CLU_NAME};
+    public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_CLU_ID_CLUB, COL_CLU_NAME, COL_CLU_CODE_FFN};
 
     @Override
     public String getTableName() {

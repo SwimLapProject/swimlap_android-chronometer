@@ -11,6 +11,7 @@ public class ClubModel {
 
     private int id;
     private String name;
+    private int codeFFN;
 
     public ClubModel(int id) {
         this.id = id;
@@ -30,5 +31,13 @@ public class ClubModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getCodeFFN() {
+        return codeFFN;
+    }
+
+    public void setCodeFFN(int codeFFN) {
+        this.codeFFN = codeFFN;
     }
 }

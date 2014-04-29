@@ -9,12 +9,13 @@ package com.dim.swimlap.models;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class MeetingModel {
 
+    private static final String FFNEX_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private int id;
-
     private String name;
     private String city;
     private Date startDate;
@@ -24,9 +25,12 @@ public class MeetingModel {
     private boolean byTeam;
 
     private SeasonModel seasonModel;
+    private ArrayList<ResultModel> resultModels;
 
+    public MeetingModel(){
+        resultModels = new ArrayList<ResultModel>();
+    }
 
-    private static final String FFNEX_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     public int getPoolSize() {
         return poolSize;
@@ -117,5 +121,15 @@ public class MeetingModel {
 
     public void setByTeam(boolean byTeam) {
         this.byTeam = byTeam;
+    }
+
+    public void addResult(ResultModel resultModel){
+        resultModel.setPoolSize(poolSize);
+        resultModels.add(resultModel);
+    }
+
+    public ResultModel getResult(int swimmerId, int eventId){
+        //todo
+        return null;
     }
 }
