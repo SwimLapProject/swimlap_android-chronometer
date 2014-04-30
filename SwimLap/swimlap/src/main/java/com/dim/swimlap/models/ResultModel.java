@@ -16,6 +16,7 @@ public class ResultModel {
     // CHARACTERISTICS
     private int id;
     private SwimmerModel swimmerModel;
+    private ArrayList<SwimmerModel> team;
     private EventModel eventModel;
     private float qualifyingTime;
 
@@ -26,32 +27,29 @@ public class ResultModel {
     // UTILITIES
     private int currentLapSwimming;
     private int numberOfLap;
-    private float lapPreviousMin, lapPreviousMax;
+    private float lapMin, lapMax;
     private int poolSize;
 
-    public ResultModel(SwimmerModel swimmerModel, EventModel eventModel, int poolSize, float qualifyingTime, int id) {
-        this.id = id;
-        this.swimmerModel = swimmerModel;
-        this.eventModel = eventModel;
-        this.qualifyingTime = qualifyingTime;
-        this.poolSize = poolSize;
-        laps = new ArrayList<Float>();
-
-        buildContent();
-    }
-
     public ResultModel(int id) {
-    this.id = id;
-
+        this.id = id;
+        // with this constructor elements must be added: swimmer or team, eventmodel , poolsize , qualifyingtime
     }
 
+    public void addSwimmersInTeam(SwimmerModel swimmerModel){
+        if(team==null){
+            team = new ArrayList<SwimmerModel>();
+        }
+        team.add(swimmerModel);
+    }
 
-
-    public void buildContent() {
+    public void buildContent(float qualifyingTime, int poolSize) {
+        this.poolSize = poolSize;
+        // qualifying time must be in milliseconds
+        this.qualifyingTime = qualifyingTime;
         numberOfLap = eventModel.getRaceModel().getDistance() / poolSize;
         currentLapSwimming = 0;
-        lapPreviousMin = (qualifyingTime * 10000 / numberOfLap) * 75 / 100;
-        lapPreviousMax = (qualifyingTime * 10000 / numberOfLap) * 125 / 100;
+        lapMin = (qualifyingTime * 10000 / numberOfLap) * 75 / 100;
+        lapMax = (qualifyingTime * 10000 / numberOfLap) * 125 / 100;
     }
 
     public boolean trueIfSomeLapsAreAlreadyTaken() {
@@ -93,7 +91,7 @@ public class ResultModel {
     public float checkLap(float lap) {
         float split = giveSplit(lap, currentLapSwimming);
         // VERIFY IF THE TIME BETWEEN LAST LAP AND THE NEW ONE IS COHERENT AND IF ALL THE LAPS ARE NOT FILLED (RACE FINISH)
-//        (split > lapPreviousMin) && (split < lapPreviousMax) &&
+//        (split > lapMin) && (split < lapMax) &&
         if ((currentLapSwimming < numberOfLap)) {
             laps.add(currentLapSwimming, lap);
             currentLapSwimming++;
@@ -148,6 +146,7 @@ public class ResultModel {
     public void setPoolSize(int poolSize) {
         this.poolSize = poolSize;
     }
+
     public SwimmerModel getSwimmerModel() {
         return swimmerModel;
     }
@@ -188,20 +187,20 @@ public class ResultModel {
         this.numberOfLap = numberOfLap;
     }
 
-    public float getLapPreviousMin() {
-        return lapPreviousMin;
+    public float getLapMin() {
+        return lapMin;
     }
 
-    public void setLapPreviousMin(float lapPreviousMin) {
-        this.lapPreviousMin = lapPreviousMin;
+    public void setLapMin(float lapMin) {
+        this.lapMin = lapMin;
     }
 
-    public float getLapPreviousMax() {
-        return lapPreviousMax;
+    public float getLapMax() {
+        return lapMax;
     }
 
-    public void setLapPreviousMax(float lapPreviousMax) {
-        this.lapPreviousMax = lapPreviousMax;
+    public void setLapMax(float lapMax) {
+        this.lapMax = lapMax;
     }
 
 }

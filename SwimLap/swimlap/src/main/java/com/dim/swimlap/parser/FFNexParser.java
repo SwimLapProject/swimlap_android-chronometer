@@ -7,6 +7,7 @@
 
 package com.dim.swimlap.parser;
 
+import com.dim.swimlap.data.RaceData;
 import com.dim.swimlap.models.ClubModel;
 import com.dim.swimlap.models.EventModel;
 import com.dim.swimlap.models.MeetingModel;
@@ -55,8 +56,8 @@ public class FFNexParser {
         int swimmerIdInResult = 0, resultIdInResult = 0, raceIdInResult = 0, roundIdInResult = 0;
         float qualifyingTimeInResult = 0;
         boolean isRelay = false;
-        ArrayList<Integer> listSwimmerInRelay = null;
-        boolean allDataForResultReady = false;
+        ArrayList<Integer> swIdInTeam = null;
+        int nbRelayerIfRelay = 0;
 
         while (eventType != XmlPullParser.END_DOCUMENT) {
 
@@ -131,15 +132,23 @@ public class FFNexParser {
                 } else if (xpp.getName().equals("SOLO")) {
                     System.out.println("$$$ Start tag " + xpp.getName());
 
+                    /** BUILD THE WHOLE RESULT MODEL SINGLE SWIMMER WHICH WILL BE ADDED IN MEETING MODEL **/
                     swimmerIdInResult = Integer.valueOf(xpp.getAttributeValue(null, "swimmerid"));
                     isRelay = false;
+                    /** ID **/
                     ResultModel result = new ResultModel(resultIdInResult);
-
-                    for (int indexSw = 0; indexSw < swimmers.size(); indexSw++) {
-                        if (swimmerIdInResult == swimmers.get(indexSw).getIdFFN()) {
-                            result.setSwimmerModel(swimmers.get(indexSw));
+                    /** SWIMMER **/
+                    if (swimmers.size() != 0) {
+                        for (int indexSw = 0; indexSw < swimmers.size(); indexSw++) {
+                            if (swimmerIdInResult == swimmers.get(indexSw).getIdFFN()) {
+                                result.setSwimmerModel(swimmers.get(indexSw));
+                            }
                         }
+                    } else {
+                        // todo throw an exception which stop parsing but not application
+
                     }
+                    /** EVENT **/
                     if (events.size() != 0) {
                         for (int indexEv = 0; indexEv < events.size(); indexEv++) {
                             if (raceIdInResult == events.get(indexEv).getRaceModel().getId() &&
@@ -148,31 +157,62 @@ public class FFNexParser {
                             }
                         }
                     } else {
-                        result.setEventModel(new EventModel());
+                        // todo throw an exception which stop parsing but not application
                     }
-                    result.setQualifyingTime(qualifyingTimeInResult);
-                    result.setPoolSize(meetingModel.getPoolSize());
-                    result.buildContent();
+                    /** BUILD attributes with qualifying time in milliseconds and poolsize from meeting **/
+                    result.buildContent(qualifyingTimeInResult * 100000, meetingModel.getPoolSize());
+
+                    /** ADDING IN MEETING MODEL **/
                     meetingModel.addResult(result);
 
 
                 } else if (xpp.getName().equals("RELAY")) {
 //                    System.out.println("$$$ Start tag " + xpp.getName());
-
-//                    isRelay = true;
-//                    listSwimmerInRelay = new ArrayList<Integer>();
+                    isRelay = true;
+                    RaceData raceData = new RaceData();
+                    raceData.makeData();
+                    nbRelayerIfRelay = raceData.giveNbRelayer(raceIdInResult);
+                    swIdInTeam = new ArrayList<Integer>();
 
                 } else if (xpp.getName().equals("RELAYPOSITION")) {
 //                    System.out.println("$$$ Start tag " + xpp.getName());
 
-//                    listSwimmerInRelay.add(Integer.valueOf(xpp.getAttributeValue(null, "swimmerid")));
-//                    if(listSwimmerInRelay.size()==4){
-//                        //todo
-//                    }
-                }
+                    swIdInTeam.add(Integer.valueOf(xpp.getAttributeValue(null, "swimmerid")));
 
-                if (allDataForResultReady && !isRelay) {
+                    /** BUILD THE WHOLE RESULT MODEL WITH TEAM RELAY WHEN ALL SWIMMERS ARE FOUND **/
+                    if (swIdInTeam.size() >= nbRelayerIfRelay) {
+                        /** ID **/
+                        ResultModel result = new ResultModel(resultIdInResult);
+                        /** SWIMMERS IN TEAM **/
+                        if (swimmers.size() != 0) {
+                            for (int indexSw = 0; indexSw < swimmers.size(); indexSw++) {
+                                for (int indexTeam = 0; indexTeam < swIdInTeam.size(); indexTeam++) {
+                                    if (swIdInTeam.get(indexTeam) == swimmers.get(indexSw).getIdFFN()) {
+                                        result.addSwimmersInTeam(swimmers.get(indexSw));
+                                    }
+                                }
 
+                            }
+                        } else {
+                            // todo throw an exception which stop parsing but not application
+                        }
+                        /** EVENT **/
+                        if (events.size() != 0) {
+                            for (int indexEv = 0; indexEv < events.size(); indexEv++) {
+                                if (raceIdInResult == events.get(indexEv).getRaceModel().getId() &&
+                                        roundIdInResult == events.get(indexEv).getRoundModel().getId()) {
+                                    result.setEventModel(events.get(indexEv));
+                                }
+                            }
+                        } else {
+                            // todo throw an exception which stop parsing but not application
+                        }
+                        /** BUILD attributes with qualifying time in milliseconds and poolsize from meeting **/
+                        result.buildContent(qualifyingTimeInResult * 100000, meetingModel.getPoolSize());
+
+                        /** ADDING IN MEETING MODEL **/
+                        meetingModel.addResult(result);
+                    }
                 }
 
 

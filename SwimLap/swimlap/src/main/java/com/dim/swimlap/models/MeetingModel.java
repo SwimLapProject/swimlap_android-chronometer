@@ -20,7 +20,6 @@ public class MeetingModel {
     private String city;
     private Date startDate;
     private Date stopDate;
-    private int size;
     private int poolSize;
     private boolean byTeam;
 
@@ -79,15 +78,6 @@ public class MeetingModel {
     public void setStopDate(String stopDate) {
         this.stopDate = convertStringToDate(stopDate);
     }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
     public SeasonModel getSeasonModel() {
         return seasonModel;
     }

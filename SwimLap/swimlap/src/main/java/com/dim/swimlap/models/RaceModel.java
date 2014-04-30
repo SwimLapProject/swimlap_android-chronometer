@@ -16,6 +16,7 @@ public class RaceModel {
     private String style;
     private boolean is_relay;
     private String gender;
+    private int numberOfRelayerIfRelay;
 
     public RaceModel(int id) {
         this.id = id;
@@ -27,13 +28,8 @@ public class RaceModel {
         distance = raceData.giveDistance(id);
         style = raceData.giveStyle(id);
         gender = raceData.giveGender(id);
-        is_relay = style.substring(0, 4).equals("4x25")
-                || style.substring(0, 4).equals("4x50")
-                || style.substring(0, 4).equals("4x10")
-                || style.substring(0, 4).equals("4x20")
-                || style.substring(0, 4).equals("6x50")
-                || style.substring(0, 4).equals("8x10")
-                || style.substring(0, 4).equals("10x1");
+        numberOfRelayerIfRelay = raceData.giveNbRelayer(id);
+        is_relay = numberOfRelayerIfRelay != 1;
     }
 
     public int getId() {

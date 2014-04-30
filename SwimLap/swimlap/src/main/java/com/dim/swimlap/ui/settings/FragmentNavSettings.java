@@ -77,6 +77,8 @@ public class FragmentNavSettings extends Fragment implements View.OnClickListene
             String stringXMLToParse = ffnexGetter.transformFileToString(fileToParse);
             meetingModel = ffnexGetter.getResultOfParsing(stringXMLToParse);
 
+            // RECORD IN DB
+
             Toast.makeText(getActivity(), "DONE "+meetingModel.getName(), Toast.LENGTH_SHORT).show();
 
         } catch (IOException e) {
