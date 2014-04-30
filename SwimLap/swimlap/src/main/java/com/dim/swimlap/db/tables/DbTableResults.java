@@ -17,15 +17,29 @@ public class DbTableResults implements DbTableMODEL {
     public static final String COL_RES_ID = "col_res_id";
 
     // FOREIGN KEYS AS PRIMARY KEYS
-    public static final String COL_SWI_ID_FFN = "col_swi_swimmer_id";
+    public static final String COL_SWI_0_ID_FFN = "col_swi_swimmer_0_id";
+    public static final String COL_SWI_1_ID_FFN = "col_swi_swimmer_1_id";
+    public static final String COL_SWI_2_ID_FFN = "col_swi_swimmer_2_id";
+    public static final String COL_SWI_3_ID_FFN = "col_swi_swimmer_3_id";
+    public static final String COL_SWI_4_ID_FFN = "col_swi_swimmer_4_id";
+    public static final String COL_SWI_5_ID_FFN = "col_swi_swimmer_5_id";
+    public static final String COL_SWI_6_ID_FFN = "col_swi_swimmer_6_id";
+    public static final String COL_SWI_7_ID_FFN = "col_swi_swimmer_7_id";
+    public static final String COL_SWI_8_ID_FFN = "col_swi_swimmer_8_id";
+    public static final String COL_SWI_9_ID_FFN = "col_swi_swimmer_9_id";
+
+
     public static final String COL_MEE_ID_MEET = "col_mee_meet_id";
     public static final String COL_EVE_ID_EVENT = "col_eve_even_id";
+
+    public static final String COL_RES_ID_RACE = "col_res_race_id";
+
 
     // SWIMMER SPECIFICATIONS
     public static final String COL_EVE_QUALIFYING_TIME = "col_eve_qualifying_time"; // IMPORTANT !!!
     public static final String COL_EVE_SWIM_TIME = "col_eve_swim_time"; // final time
 
-    // RACE SPECIFICATION
+    // LAP SPECIFICATION
     public static final String COL_EVE_SPLIT_25 = "col_eve_split_25";
     public static final String COL_EVE_SPLIT_50 = "col_eve_split_50";
     public static final String COL_EVE_SPLIT_75 = "col_eve_split_75";
@@ -92,10 +106,23 @@ public class DbTableResults implements DbTableMODEL {
 
             COL_RES_ID + " INTEGER , " +
 
-            // FOREIGN KEY
-            COL_SWI_ID_FFN + " INTEGER , " +
+            // FOREIGN KEY swimmer0 is the one used for individual race
+
+            COL_SWI_0_ID_FFN + " INTEGER , " +
+            COL_SWI_1_ID_FFN + " INTEGER , " +
+            COL_SWI_2_ID_FFN + " INTEGER , " +
+            COL_SWI_3_ID_FFN + " INTEGER , " +
+            COL_SWI_4_ID_FFN + " INTEGER , " +
+            COL_SWI_5_ID_FFN + " INTEGER , " +
+            COL_SWI_6_ID_FFN + " INTEGER , " +
+            COL_SWI_7_ID_FFN + " INTEGER , " +
+            COL_SWI_8_ID_FFN + " INTEGER , " +
+            COL_SWI_9_ID_FFN + " INTEGER , " +
+
+
             COL_MEE_ID_MEET + " INTEGER , " +
             COL_EVE_ID_EVENT + " INTEGER , " +
+            COL_RES_ID_RACE + " INTEGER , " +
 
             // SWIMMER SPECIFICATIONS
             COL_EVE_QUALIFYING_TIME + " REAL , " +
@@ -166,11 +193,24 @@ public class DbTableResults implements DbTableMODEL {
 
     public static final String[] ALL_COLUMNS_AS_STRING_TAB = {
             COL_RES_ID,
-            COL_SWI_ID_FFN,
+
+            COL_SWI_0_ID_FFN,
+            COL_SWI_1_ID_FFN,
+            COL_SWI_2_ID_FFN,
+            COL_SWI_3_ID_FFN,
+            COL_SWI_4_ID_FFN,
+            COL_SWI_5_ID_FFN,
+            COL_SWI_6_ID_FFN,
+            COL_SWI_7_ID_FFN,
+            COL_SWI_8_ID_FFN,
+            COL_SWI_9_ID_FFN,
+
             COL_MEE_ID_MEET,
             COL_EVE_ID_EVENT,
+            COL_RES_ID_RACE,
             COL_EVE_QUALIFYING_TIME,
             COL_EVE_SWIM_TIME,
+
             COL_EVE_SPLIT_25,
             COL_EVE_SPLIT_50,
             COL_EVE_SPLIT_75,

@@ -55,7 +55,6 @@ public class FFNexParser {
 
         int swimmerIdInResult = 0, resultIdInResult = 0, raceIdInResult = 0, roundIdInResult = 0;
         float qualifyingTimeInResult = 0;
-        boolean isRelay = false;
         ArrayList<Integer> swIdInTeam = null;
         int nbRelayerIfRelay = 0;
 
@@ -134,7 +133,6 @@ public class FFNexParser {
 
                     /** BUILD THE WHOLE RESULT MODEL SINGLE SWIMMER WHICH WILL BE ADDED IN MEETING MODEL **/
                     swimmerIdInResult = Integer.valueOf(xpp.getAttributeValue(null, "swimmerid"));
-                    isRelay = false;
                     /** ID **/
                     ResultModel result = new ResultModel(resultIdInResult);
                     /** SWIMMER **/
@@ -160,7 +158,7 @@ public class FFNexParser {
                         // todo throw an exception which stop parsing but not application
                     }
                     /** BUILD attributes with qualifying time in milliseconds and poolsize from meeting **/
-                    result.buildContent(qualifyingTimeInResult * 100000, meetingModel.getPoolSize());
+                    result.buildContent(qualifyingTimeInResult * 100000, meetingModel.getPoolSize(),meetingModel.getId());
 
                     /** ADDING IN MEETING MODEL **/
                     meetingModel.addResult(result);
@@ -168,7 +166,6 @@ public class FFNexParser {
 
                 } else if (xpp.getName().equals("RELAY")) {
 //                    System.out.println("$$$ Start tag " + xpp.getName());
-                    isRelay = true;
                     RaceData raceData = new RaceData();
                     raceData.makeData();
                     nbRelayerIfRelay = raceData.giveNbRelayer(raceIdInResult);
@@ -208,7 +205,7 @@ public class FFNexParser {
                             // todo throw an exception which stop parsing but not application
                         }
                         /** BUILD attributes with qualifying time in milliseconds and poolsize from meeting **/
-                        result.buildContent(qualifyingTimeInResult * 100000, meetingModel.getPoolSize());
+                        result.buildContent(qualifyingTimeInResult * 100000, meetingModel.getPoolSize(),meetingModel.getId());
 
                         /** ADDING IN MEETING MODEL **/
                         meetingModel.addResult(result);

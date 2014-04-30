@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class MeetingModel {
 
-    private static final String FFNEX_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    private static final String FFNEX_DATE_FORMAT = "yyyy-MM-dd";
     private int id;
     private String name;
     private String city;

@@ -15,6 +15,13 @@ public class EventModel {
     private RaceModel raceModel;
     private RoundModel roundModel;
 
+    public EventModel() {
+    }
+
+    public EventModel(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

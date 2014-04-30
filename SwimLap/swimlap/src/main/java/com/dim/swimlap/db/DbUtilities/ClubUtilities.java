@@ -7,32 +7,64 @@
 
 package com.dim.swimlap.db.DbUtilities;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.dim.swimlap.db.builder.DbHelper;
 import com.dim.swimlap.db.tables.DbTableClubs;
 import com.dim.swimlap.models.ClubModel;
-
-import java.util.List;
 
 public class ClubUtilities {
     private SQLiteDatabase sqLiteDatabaseSwimLap;
     private DbTableClubs table;
 
+    /**
+     * For this version of SwimLap only one club can be recorded
+     */
     public ClubUtilities(SQLiteDatabase sqLiteDatabaseSwimLap, DbTableClubs dbTableClubs) {
         this.sqLiteDatabaseSwimLap = sqLiteDatabaseSwimLap;
         this.table = dbTableClubs;
     }
 
-    public void addClubInDb(ClubModel clubModel) {
-
+    /* GETTERS */
+    public ClubModel getClub_FromDb() {
+        ClubModel clubModel = null;
+        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            clubModel = getDataClub_FromDb(cursor);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return clubModel;
     }
 
-    public void deleteClub(ClubModel clubModel) {
-
+    /* GET CONTENT */
+    private ClubModel getDataClub_FromDb(Cursor cursor) {
+        ClubModel clubModel = new ClubModel(cursor.getInt(0));
+        clubModel.setName(cursor.getString(1));
+        clubModel.setCodeFFN(cursor.getInt(2));
+        return clubModel;
     }
 
-    public List<ClubModel> getAllClubsRecordedInDb() {
-        return null;
+    /* ADDER */
+    public void addClub_InDb(ClubModel clubModel) {
+        deleteClub_FromDb();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(table.COL_CLU_ID, clubModel.getId());
+        contentValues.put(table.COL_CLU_CODE_FFN, clubModel.getName());
+        contentValues.put(table.COL_CLU_CODE_FFN, clubModel.getCodeFFN());
+
+        sqLiteDatabaseSwimLap.insert(table.TABLE_NAME, null, contentValues);
     }
+
+    /* DELETER */
+    public void deleteClub_FromDb() {
+        sqLiteDatabaseSwimLap.delete(table.TABLE_NAME, null, null);
+    }
+    /* UPDATER */
+    // no updater because only one club
+
+    /* VERIFY ENTRY */
+    //todo
 }

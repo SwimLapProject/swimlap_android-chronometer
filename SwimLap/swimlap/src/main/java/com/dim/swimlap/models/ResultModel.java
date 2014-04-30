@@ -18,9 +18,10 @@ public class ResultModel {
     private SwimmerModel swimmerModel;
     private ArrayList<SwimmerModel> team;
     private EventModel eventModel;
-    private float qualifyingTime;
 
+    private int meetingId;
     // DATA
+    private float qualifyingTime;
     private float swimTime;
     private ArrayList<Float> laps;
 
@@ -35,14 +36,15 @@ public class ResultModel {
         // with this constructor elements must be added: swimmer or team, eventmodel , poolsize , qualifyingtime
     }
 
-    public void addSwimmersInTeam(SwimmerModel swimmerModel){
-        if(team==null){
+    public void addSwimmersInTeam(SwimmerModel swimmerModel) {
+        if (team == null) {
             team = new ArrayList<SwimmerModel>();
         }
         team.add(swimmerModel);
     }
 
-    public void buildContent(float qualifyingTime, int poolSize) {
+    public void buildContent(float qualifyingTime, int poolSize,int meetingId) {
+        this.meetingId =meetingId;
         this.poolSize = poolSize;
         // qualifying time must be in milliseconds
         this.qualifyingTime = qualifyingTime;
@@ -187,20 +189,27 @@ public class ResultModel {
         this.numberOfLap = numberOfLap;
     }
 
-    public float getLapMin() {
-        return lapMin;
+    public int getId() {
+        return id;
     }
 
-    public void setLapMin(float lapMin) {
-        this.lapMin = lapMin;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public float getLapMax() {
-        return lapMax;
+    public ArrayList<SwimmerModel> getTeam() {
+        return team;
     }
 
-    public void setLapMax(float lapMax) {
-        this.lapMax = lapMax;
+    public void setTeam(ArrayList<SwimmerModel> team) {
+        this.team = team;
+    }
+    public int getMeetingId() {
+        return meetingId;
+    }
+
+    public void setMeetingId(int meetingId) {
+        this.meetingId = meetingId;
     }
 
 }

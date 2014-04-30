@@ -11,9 +11,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.dim.swimlap.db.tables.DbTableClubs;
 import com.dim.swimlap.db.tables.DbTableRecords;
-import com.dim.swimlap.db.tables.DbTableSwimmers;
 import com.dim.swimlap.models.RecordModel;
 
 public class RecordUtilities {
@@ -25,12 +23,13 @@ public class RecordUtilities {
         this.table = dbTableRecords;
     }
 
-    public RecordModel getAllRecordsFromASwimmer(int idSwimmer) {
+    /* GETTERS */
+    public RecordModel getAllRecordsOfOneSwimmer_FromDb(int idSwimmer) {
         RecordModel recordModel = new RecordModel();
         recordModel.setSwimmerId(idSwimmer);
 
         String[] swimmerIdAsStrings = {String.valueOf(idSwimmer)};
-        Cursor cursor = sqLiteDatabaseSwimLap.query("table_records", DbTableRecords.ALL_COLUMNS_AS_STRING_TAB, DbTableRecords.COL_RAC_RACE_ID + " = ?", swimmerIdAsStrings, null, null, null);
+        Cursor cursor = sqLiteDatabaseSwimLap.query("table_records", table.ALL_COLUMNS_AS_STRING_TAB, table.COL_RAC_RACE_ID + " = ?", swimmerIdAsStrings, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             recordModel.setSwimtimePool25(cursor.getInt(1), cursor.getFloat(2));
@@ -41,10 +40,10 @@ public class RecordUtilities {
         return recordModel;
     }
 
-    private float[] getARecordFromDb(int idSwimmer, int idRace, int poolSize) {
+    private float[] getRecordOfOneSwimmerForOneRace_FromDb(int idSwimmer, int idRace) {
         float[] record = new float[2];
-        String condition = DbTableRecords.COL_SWI_SWIMMER_ID + "=" + idSwimmer + " AND " + DbTableRecords.COL_RAC_RACE_ID + "=" + idRace;
-        Cursor cursor = sqLiteDatabaseSwimLap.query("table_records", DbTableRecords.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null, null);
+        String condition = table.COL_SWI_SWIMMER_ID + "=" + idSwimmer + " AND " + table.COL_RAC_RACE_ID + "=" + idRace;
+        Cursor cursor = sqLiteDatabaseSwimLap.query("table_records", table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             record[0] = cursor.getFloat(2);
@@ -54,27 +53,35 @@ public class RecordUtilities {
         cursor.close();
         return record;
     }
+    /* GET CONTENT */
+    // no getData because use an HashMap in RecordModel
 
-    public void updateARecordInDb(int idSwimmer, int idRace, float newRecordTime, int poolSize) {
+    /* ADDER */
+    // no adder always use updater
+
+    /* DELETER */
+    public void deleteAllRecordFromASwimmer_InDb(int swimmerIdToDelete) {
+        sqLiteDatabaseSwimLap.delete(table.TABLE_NAME, table.COL_SWI_SWIMMER_ID + " = " + swimmerIdToDelete, null);
+    }
+
+    /* UPDATER */
+    public void updateARecord_InDb(int idSwimmer, int idRace, float newRecordTime, int poolSize) {
         ContentValues contentValues = new ContentValues();
-        RecordModel recordModelAllReadyInDB = getAllRecordsFromASwimmer(idSwimmer);
+        RecordModel recordModelAllReadyInDB = getAllRecordsOfOneSwimmer_FromDb(idSwimmer);
         if (poolSize == 25 && (recordModelAllReadyInDB.getSwimtimePool25(idRace) > newRecordTime || recordModelAllReadyInDB.getSwimtimePool25(idRace) == 0)) {
-            contentValues.put(DbTableRecords.COL_SWI_SWIMMER_ID, idSwimmer);
-            contentValues.put(DbTableRecords.COL_RAC_RACE_ID, idRace);
-            contentValues.put(DbTableRecords.COL_REC_SWIMTIME_25, newRecordTime);
+            contentValues.put(table.COL_SWI_SWIMMER_ID, idSwimmer);
+            contentValues.put(table.COL_RAC_RACE_ID, idRace);
+            contentValues.put(table.COL_REC_SWIMTIME_25, newRecordTime);
         }
         if (poolSize == 50 && (recordModelAllReadyInDB.getSwimtimePool50(idRace) > newRecordTime || recordModelAllReadyInDB.getSwimtimePool50(idRace) == 0)) {
-            contentValues.put(DbTableRecords.COL_SWI_SWIMMER_ID, idSwimmer);
-            contentValues.put(DbTableRecords.COL_RAC_RACE_ID, idRace);
-            contentValues.put(DbTableRecords.COL_REC_SWIMTIME_25, newRecordTime);
+            contentValues.put(table.COL_SWI_SWIMMER_ID, idSwimmer);
+            contentValues.put(table.COL_RAC_RACE_ID, idRace);
+            contentValues.put(table.COL_REC_SWIMTIME_25, newRecordTime);
         }
-        String condition = DbTableRecords.COL_SWI_SWIMMER_ID + "=" + idSwimmer + " AND " + DbTableRecords.COL_RAC_RACE_ID + "=" + idRace;
-        sqLiteDatabaseSwimLap.update(DbTableRecords.TABLE_NAME, contentValues, condition, null);
-
+        String condition = table.COL_SWI_SWIMMER_ID + "=" + idSwimmer + " AND " + table.COL_RAC_RACE_ID + "=" + idRace;
+        sqLiteDatabaseSwimLap.update(table.TABLE_NAME, contentValues, condition, null);
     }
 
-    public void deleteAllRecordFromASwimmerInDb(int swimmerIdToDelete) {
-        sqLiteDatabaseSwimLap.delete(DbTableSwimmers.TABLE_NAME, DbTableSwimmers.COL_CLU_CLUB_ID + " = " + swimmerIdToDelete, null);
-    }
-
+    /* VERIFY ENTRY */
+    //todo
 }

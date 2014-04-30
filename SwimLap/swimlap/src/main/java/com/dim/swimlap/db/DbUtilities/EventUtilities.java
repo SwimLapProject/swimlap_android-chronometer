@@ -24,36 +24,16 @@ public class EventUtilities {
         this.table = dbTableEvents;
     }
 
-    public List<EventModel> getAllEventsFromAMeeting(int idMeeting) {
-        return null;
-    }
+    /* GETTERS */
 
-    public List<EventModel> getAllEventsFromASwimmer(int idSwimmer) {
-        return null;
-    }
+    /* GET CONTENT */
 
-    public List<EventModel> getAllEventsFromAMeetingForASwimmer(int idMeeting, int idSwimmer) {
-        return null;
-    }
+    /* ADDER */
 
-    public List<EventModel> getAllEventsFromAMeetingForARace(int idMeeting, int idRace) {
-        return null;
-    }
+    /* DELETER */
 
-    public void addAnEventInDb(EventModel event) {
+    /* UPDATER */
 
-    }
-
-    public void addAllEventOfAMeeting(List<EventModel> events){
-
-    }
-
-    public void updateSwimTimeOfAnEvent(EventModel eventModel){
-        deleteEventInDb(eventModel);
-        addAnEventInDb(eventModel);
-    }
-
-    public void deleteEventInDb(EventModel eventModel) {
-
-    }
+    /* VERIFY ENTRY */
+    //todo
 }

@@ -15,7 +15,7 @@ import com.dim.swimlap.db.DbUtilities.EventUtilities;
 import com.dim.swimlap.db.DbUtilities.MeetingUtilities;
 import com.dim.swimlap.db.DbUtilities.RecordUtilities;
 import com.dim.swimlap.db.DbUtilities.ResultUtilities;
-import com.dim.swimlap.db.DbUtilities.SeasonDataBuikder;
+import com.dim.swimlap.db.DbUtilities.SeasonUtilities;
 import com.dim.swimlap.db.DbUtilities.SwimmerUtilities;
 
 import java.sql.SQLException;
@@ -33,7 +33,7 @@ public class DbUtilitiesBuilder {
     private MeetingUtilities meetingUtilities;
     private RecordUtilities recordUtilities;
     private ResultUtilities resultUtilities;
-    private SeasonDataBuikder seasonDataBuikder;
+    private SeasonUtilities seasonUtilities;
     private SwimmerUtilities swimmerUtilities;
 
 
@@ -58,7 +58,7 @@ public class DbUtilitiesBuilder {
         meetingUtilities = new MeetingUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableMeetings);
         recordUtilities = new RecordUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableRecords);
         resultUtilities = new ResultUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableResults);
-        seasonDataBuikder = new SeasonDataBuikder(sqLiteDatabaseSwimLap, dbHelper.dbTableSeasons);
+        seasonUtilities = new SeasonUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableSeasons);
         swimmerUtilities = new SwimmerUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableSwimmers);
     }
 }

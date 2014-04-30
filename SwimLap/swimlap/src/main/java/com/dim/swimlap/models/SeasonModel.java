@@ -7,17 +7,15 @@
 
 package com.dim.swimlap.models;
 
-import java.util.Date;
-
 public class SeasonModel {
 
     private int id;
     private String name;
-    private Date startDate;
-    private Date stopDate;
+    private String startDate;
+    private String stopDate;
 
-    public SeasonModel(int id){
-        this.id=id;
+    public SeasonModel(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -36,19 +34,19 @@ public class SeasonModel {
         this.name = name;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getStopDate() {
+    public String getStopDate() {
         return stopDate;
     }
 
-    public void setStopDate(Date stopDate) {
+    public void setStopDate(String stopDate) {
         this.stopDate = stopDate;
     }
 }

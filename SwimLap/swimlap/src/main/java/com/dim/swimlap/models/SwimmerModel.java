@@ -16,6 +16,12 @@ public class SwimmerModel {
 
     private ClubModel clubModel;
 
+    public SwimmerModel(){
+    }
+    public SwimmerModel(int idFFN){
+        this.idFFN = idFFN;
+    }
+
     public int getIdFFN() {
         return idFFN;
     }

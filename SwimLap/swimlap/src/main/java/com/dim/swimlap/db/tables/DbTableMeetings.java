@@ -11,7 +11,7 @@ public class DbTableMeetings implements DbTableMODEL {
     // TABLE
     public static final String TABLE_NAME = "table_meetings";
     // COLUMNS
-    public static final String COL_MEE_ID_MEET = "col_mee_id_meet";
+    public static final String COL_MEE_ID = "col_mee_id";
     public static final String COL_MEE_MEETING_NAME = "col_mee_meeting_name";
     public static final String COL_MEE_CITY = "col_mee_city";
     public static final String COL_MEE_START_DATE = "col_mee_start_date";
@@ -22,7 +22,7 @@ public class DbTableMeetings implements DbTableMODEL {
 
     public static final String
             REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
-            COL_MEE_ID_MEET + " INTEGER, " +
+            COL_MEE_ID + " INTEGER, " +
             COL_MEE_MEETING_NAME + " TEXT, " +
             COL_MEE_CITY + " TEXT, " +
             COL_MEE_START_DATE + " TEXT, " +
@@ -31,7 +31,7 @@ public class DbTableMeetings implements DbTableMODEL {
             COL_SEA_ID + " INTEGER " +
             ");";
 
-    public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_MEE_ID_MEET,
+    public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_MEE_ID,
             COL_MEE_MEETING_NAME,
             COL_MEE_CITY,
             COL_MEE_START_DATE,
