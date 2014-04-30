@@ -9,15 +9,14 @@ package com.dim.swimlap.db.DbUtilities;
 
 import android.database.sqlite.SQLiteDatabase;
 
-public class RacesDataBuilder {
+import com.dim.swimlap.db.tables.DbTableResults;
 
+public class ResultUtilities {
     private SQLiteDatabase sqLiteDatabaseSwimLap;
+    private DbTableResults table;
 
-    public RacesDataBuilder(SQLiteDatabase sqLiteDatabaseSwimLap) {
+    public ResultUtilities(SQLiteDatabase sqLiteDatabaseSwimLap, DbTableResults dbTableResults) {
         this.sqLiteDatabaseSwimLap = sqLiteDatabaseSwimLap;
-    }
-
-    private void buildData() {
-
+        this.table = dbTableResults;
     }
 }

@@ -13,9 +13,8 @@ import android.database.sqlite.SQLiteDatabase;
 import com.dim.swimlap.db.DbUtilities.ClubUtilities;
 import com.dim.swimlap.db.DbUtilities.EventUtilities;
 import com.dim.swimlap.db.DbUtilities.MeetingUtilities;
-import com.dim.swimlap.db.DbUtilities.RacesDataBuilder;
 import com.dim.swimlap.db.DbUtilities.RecordUtilities;
-import com.dim.swimlap.db.DbUtilities.RoundDataBuilder;
+import com.dim.swimlap.db.DbUtilities.ResultUtilities;
 import com.dim.swimlap.db.DbUtilities.SeasonDataBuikder;
 import com.dim.swimlap.db.DbUtilities.SwimmerUtilities;
 
@@ -32,9 +31,8 @@ public class DbUtilitiesBuilder {
     private ClubUtilities clubUtilities;
     private EventUtilities eventUtilities;
     private MeetingUtilities meetingUtilities;
-    private RacesDataBuilder racesDataBuilder;
     private RecordUtilities recordUtilities;
-    private RoundDataBuilder roundDataBuilder;
+    private ResultUtilities resultUtilities;
     private SeasonDataBuikder seasonDataBuikder;
     private SwimmerUtilities swimmerUtilities;
 
@@ -55,13 +53,12 @@ public class DbUtilitiesBuilder {
     }
 
     public void buildUtilities() {
-        clubUtilities = new ClubUtilities(sqLiteDatabaseSwimLap);
-        eventUtilities = new EventUtilities(sqLiteDatabaseSwimLap);
-        meetingUtilities = new MeetingUtilities(sqLiteDatabaseSwimLap);
-        racesDataBuilder = new RacesDataBuilder(sqLiteDatabaseSwimLap);
-        recordUtilities = new RecordUtilities(sqLiteDatabaseSwimLap);
-        roundDataBuilder = new RoundDataBuilder(sqLiteDatabaseSwimLap);
-        seasonDataBuikder = new SeasonDataBuikder(sqLiteDatabaseSwimLap);
-        swimmerUtilities = new SwimmerUtilities(sqLiteDatabaseSwimLap);
+        clubUtilities = new ClubUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableClubs);
+        eventUtilities = new EventUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableEvents);
+        meetingUtilities = new MeetingUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableMeetings);
+        recordUtilities = new RecordUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableRecords);
+        resultUtilities = new ResultUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableResults);
+        seasonDataBuikder = new SeasonDataBuikder(sqLiteDatabaseSwimLap, dbHelper.dbTableSeasons);
+        swimmerUtilities = new SwimmerUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableSwimmers);
     }
 }

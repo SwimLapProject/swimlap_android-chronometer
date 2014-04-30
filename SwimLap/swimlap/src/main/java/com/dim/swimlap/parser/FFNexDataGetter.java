@@ -10,7 +10,6 @@ package com.dim.swimlap.parser;
 import android.os.Environment;
 
 import com.dim.swimlap.models.MeetingModel;
-import com.dim.swimlap.parser.FFNexParser;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -21,24 +20,24 @@ import java.io.IOException;
 
 public class FFNexDataGetter {
 
-    private File dirSource;
+    private File ffnexDir;
     private String[] files;
 
     public void createDirectory() throws IOException {
         File root = Environment.getExternalStorageDirectory();
         File swimLapDir = new File(root, "swimlap");
         swimLapDir.mkdir();
+        ffnexDir = new File(swimLapDir,"ffnex");
+        ffnexDir.mkdir();
     }
 
     public String[] getFiles() {
-        File root = Environment.getExternalStorageDirectory();
-        dirSource = new File(root, "swimlap");
-        files = dirSource.list();
+        files = ffnexDir.list();
         return files;
     }
 
     public File getFFNExFile(String name) {
-        File ffnex =  new File(dirSource, name);
+        File ffnex =  new File(ffnexDir, name);
         return ffnex;
     }
 
@@ -58,6 +57,8 @@ public class FFNexDataGetter {
         MeetingModel meetingModel = parser.getBackMeetingModel();
         return meetingModel;
     }
+
+
 
 
 }

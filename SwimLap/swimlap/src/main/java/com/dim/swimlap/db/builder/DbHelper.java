@@ -16,9 +16,8 @@ import com.dim.swimlap.db.tables.DbTableClubs;
 import com.dim.swimlap.db.tables.DbTableEvents;
 import com.dim.swimlap.db.tables.DbTableMODEL;
 import com.dim.swimlap.db.tables.DbTableMeetings;
-import com.dim.swimlap.db.tables.DbTableRaces;
 import com.dim.swimlap.db.tables.DbTableRecords;
-import com.dim.swimlap.db.tables.DbTableRounds;
+import com.dim.swimlap.db.tables.DbTableResults;
 import com.dim.swimlap.db.tables.DbTableSeasons;
 import com.dim.swimlap.db.tables.DbTableSwimmers;
 
@@ -27,20 +26,19 @@ import java.util.List;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "db_swimlap.db";
     private List<DbTableMODEL> tablesOfDb;
 
     public DbTableClubs dbTableClubs;
     public DbTableEvents dbTableEvents;
     public DbTableMeetings dbTableMeetings;
-    public DbTableRaces dbTableRaces;
     public DbTableRecords dbTableRecords;
-    public DbTableRounds dbTableRounds;
+    public DbTableResults dbTableResults;
     public DbTableSeasons dbTableSeasons;
     public DbTableSwimmers dbTableSwimmers;
 
     public DbHelper(Context context, String databaseName, int dbVersion) {
-        super(context, Environment.getExternalStorageDirectory() + "/" + databaseName, null, dbVersion);
+
+        super(context, Environment.getExternalStorageDirectory() + "/swimlap/" + databaseName, null, dbVersion);
 
         tablesOfDb = new ArrayList<DbTableMODEL>();
         dbTableClubs = new DbTableClubs();
@@ -52,14 +50,11 @@ public class DbHelper extends SQLiteOpenHelper {
         dbTableMeetings = new DbTableMeetings();
         tablesOfDb.add(dbTableMeetings);
 
-        dbTableRaces = new DbTableRaces();
-        tablesOfDb.add(dbTableRaces);
-
         dbTableRecords = new DbTableRecords();
         tablesOfDb.add(dbTableRecords);
 
-        dbTableRounds = new DbTableRounds();
-        tablesOfDb.add(dbTableRounds);
+        dbTableResults = new DbTableResults();
+        tablesOfDb.add(dbTableResults);
 
         dbTableSeasons = new DbTableSeasons();
         tablesOfDb.add(dbTableSeasons);

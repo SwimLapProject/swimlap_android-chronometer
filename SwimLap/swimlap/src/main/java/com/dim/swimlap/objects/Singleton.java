@@ -1,13 +1,6 @@
 package com.dim.swimlap.objects;
 
-import com.dim.swimlap.models.ClubModel;
-import com.dim.swimlap.models.EventModel;
-import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
-import com.dim.swimlap.models.RaceModel;
-import com.dim.swimlap.models.RoundModel;
-import com.dim.swimlap.models.SeasonModel;
-import com.dim.swimlap.models.SwimmerModel;
 
 import java.util.ArrayList;
 
@@ -41,7 +34,6 @@ public final class Singleton {
     }
 
     private ArrayList<ResultModel> getEmptyEvents() {
-
         listOf_ResultModel = new ArrayList<ResultModel>();
 
 //        for (int i = 0; i < 3; i++) {

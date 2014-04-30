@@ -10,17 +10,18 @@ package com.dim.swimlap.db.DbUtilities;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.dim.swimlap.db.builder.DbHelper;
+import com.dim.swimlap.db.tables.DbTableEvents;
 import com.dim.swimlap.models.EventModel;
 
 import java.util.List;
 
 public class EventUtilities {
     private SQLiteDatabase sqLiteDatabaseSwimLap;
-    private DbHelper dbHelper;
+    private DbTableEvents table;
 
-    public EventUtilities(SQLiteDatabase sqLiteDatabaseSwimLap) {
+    public EventUtilities(SQLiteDatabase sqLiteDatabaseSwimLap, DbTableEvents dbTableEvents) {
         this.sqLiteDatabaseSwimLap = sqLiteDatabaseSwimLap;
-        this.dbHelper = dbHelper;
+        this.table = dbTableEvents;
     }
 
     public List<EventModel> getAllEventsFromAMeeting(int idMeeting) {

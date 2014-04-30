@@ -11,6 +11,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.dim.swimlap.db.tables.DbTableClubs;
 import com.dim.swimlap.db.tables.DbTableSwimmers;
 import com.dim.swimlap.models.ClubModel;
 import com.dim.swimlap.models.SwimmerModel;
@@ -21,9 +22,11 @@ import java.util.List;
 public class SwimmerUtilities {
 
     private SQLiteDatabase sqLiteDatabaseSwimLap;
+    private DbTableSwimmers table;
 
-    public SwimmerUtilities(SQLiteDatabase sqLiteDatabaseSwimLap) {
+    public SwimmerUtilities(SQLiteDatabase sqLiteDatabaseSwimLap, DbTableSwimmers dbTableSwimmers) {
         this.sqLiteDatabaseSwimLap = sqLiteDatabaseSwimLap;
+        this.table = dbTableSwimmers;
     }
 
     public List<SwimmerModel> getAllSwimmers() {

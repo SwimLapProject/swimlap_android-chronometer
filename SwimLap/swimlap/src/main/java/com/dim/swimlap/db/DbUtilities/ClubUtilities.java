@@ -10,17 +10,18 @@ package com.dim.swimlap.db.DbUtilities;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.dim.swimlap.db.builder.DbHelper;
+import com.dim.swimlap.db.tables.DbTableClubs;
 import com.dim.swimlap.models.ClubModel;
 
 import java.util.List;
 
 public class ClubUtilities {
     private SQLiteDatabase sqLiteDatabaseSwimLap;
-    private DbHelper dbHelper;
+    private DbTableClubs table;
 
-    public ClubUtilities(SQLiteDatabase sqLiteDatabaseSwimLap) {
+    public ClubUtilities(SQLiteDatabase sqLiteDatabaseSwimLap, DbTableClubs dbTableClubs) {
         this.sqLiteDatabaseSwimLap = sqLiteDatabaseSwimLap;
-        this.dbHelper = dbHelper;
+        this.table = dbTableClubs;
     }
 
     public void addClubInDb(ClubModel clubModel) {

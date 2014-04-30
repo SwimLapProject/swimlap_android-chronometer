@@ -12,6 +12,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.dim.swimlap.db.builder.DbHelper;
+import com.dim.swimlap.db.tables.DbTableClubs;
 import com.dim.swimlap.db.tables.DbTableMeetings;
 import com.dim.swimlap.db.tables.DbTableRecords;
 import com.dim.swimlap.models.MeetingModel;
@@ -22,11 +23,11 @@ import java.util.List;
 
 public class MeetingUtilities {
     private SQLiteDatabase sqLiteDatabaseSwimLap;
-    private DbHelper dbHelper;
+    private DbTableMeetings table;
 
-    public MeetingUtilities(SQLiteDatabase sqLiteDatabaseSwimLap) {
+    public MeetingUtilities(SQLiteDatabase sqLiteDatabaseSwimLap, DbTableMeetings dbTableMeetings) {
         this.sqLiteDatabaseSwimLap = sqLiteDatabaseSwimLap;
-        this.dbHelper = dbHelper;
+        this.table = dbTableMeetings;
     }
 
 

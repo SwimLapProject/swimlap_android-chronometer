@@ -11,15 +11,18 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.dim.swimlap.db.tables.DbTableClubs;
 import com.dim.swimlap.db.tables.DbTableRecords;
 import com.dim.swimlap.db.tables.DbTableSwimmers;
 import com.dim.swimlap.models.RecordModel;
 
 public class RecordUtilities {
     private SQLiteDatabase sqLiteDatabaseSwimLap;
+    private DbTableRecords table;
 
-    public RecordUtilities(SQLiteDatabase sqLiteDatabaseSwimLap) {
+    public RecordUtilities(SQLiteDatabase sqLiteDatabaseSwimLap, DbTableRecords dbTableRecords) {
         this.sqLiteDatabaseSwimLap = sqLiteDatabaseSwimLap;
+        this.table = dbTableRecords;
     }
 
     public RecordModel getAllRecordsFromASwimmer(int idSwimmer) {

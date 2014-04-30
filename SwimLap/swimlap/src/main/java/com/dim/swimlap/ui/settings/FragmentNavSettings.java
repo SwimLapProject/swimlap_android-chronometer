@@ -20,12 +20,15 @@ import android.widget.Toast;
 import com.dim.swimlap.R;
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.parser.FFNexDataGetter;
-;import org.xmlpull.v1.XmlPullParserException;
+
+import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.File;
 import java.io.IOException;
 
-public class FragmentNavSettings extends Fragment implements View.OnClickListener{
+;
+
+public class FragmentNavSettings extends Fragment implements View.OnClickListener {
 
     private Button buttonScan;
     private String fileNameToParse;
@@ -56,31 +59,34 @@ public class FragmentNavSettings extends Fragment implements View.OnClickListene
             String[] files = ffnexGetter.getFiles();
             final String[] items = files;
 
-            if (files.length > 1) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Exit!")
-                        .setSingleChoiceItems(items, 1, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialogInterface, int item) {
-                                Toast.makeText(getActivity(), items[item], Toast.LENGTH_SHORT).show();
-                                fileNameToParse = items[item];
-                            }
-                        });
-                builder.create().show();
-            } else if (files.length == 0) {
+            if (files == null || files.length==0) {
                 Toast.makeText(getActivity(), "NO file in swimlap directory", Toast.LENGTH_SHORT).show();
-            } else if (files.length == 1) {
-                fileNameToParse = files[0];
+
+            } else {
+
+                if (files.length > 1) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("Exit!")
+                            .setSingleChoiceItems(items, 1, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialogInterface, int item) {
+                                    Toast.makeText(getActivity(), items[item], Toast.LENGTH_SHORT).show();
+                                    fileNameToParse = items[item];
+                                }
+                            });
+                    builder.create().show();
+                } else if (files.length == 1) {
+                    fileNameToParse = files[0];
+                }
+                Toast.makeText(getActivity(), "Find " + fileNameToParse, Toast.LENGTH_SHORT).show();
+
+                File fileToParse = ffnexGetter.getFFNExFile(fileNameToParse);
+                String stringXMLToParse = ffnexGetter.transformFileToString(fileToParse);
+                meetingModel = ffnexGetter.getResultOfParsing(stringXMLToParse);
+
+                // RECORD IN DB
+
+                Toast.makeText(getActivity(), "DONE " + meetingModel.getName(), Toast.LENGTH_SHORT).show();
             }
-            Toast.makeText(getActivity(), "Find "+fileNameToParse, Toast.LENGTH_SHORT).show();
-
-            File fileToParse = ffnexGetter.getFFNExFile(fileNameToParse);
-            String stringXMLToParse = ffnexGetter.transformFileToString(fileToParse);
-            meetingModel = ffnexGetter.getResultOfParsing(stringXMLToParse);
-
-            // RECORD IN DB
-
-            Toast.makeText(getActivity(), "DONE "+meetingModel.getName(), Toast.LENGTH_SHORT).show();
-
         } catch (IOException e) {
             Toast.makeText(getActivity(), "A problem occured: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         } catch (XmlPullParserException e) {

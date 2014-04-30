@@ -11,7 +11,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.dim.swimlap.parser.FFNexDataGetter;
 import com.dim.swimlap.ui.GlobalContainer;
+
+import java.io.IOException;
 
 public class MainActivity extends Activity {
 
@@ -24,6 +27,8 @@ public class MainActivity extends Activity {
             public void run() {
                 try {
                     logoTimer = 0;
+                    FFNexDataGetter ffNexDataGetter = new FFNexDataGetter();
+                    ffNexDataGetter.createDirectory();
                     while (logoTimer < 1000) {
                         sleep(100);
                         logoTimer = logoTimer + 100;
@@ -31,6 +36,8 @@ public class MainActivity extends Activity {
 
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (IOException e) {
                     e.printStackTrace();
                 } finally {
                     finish();

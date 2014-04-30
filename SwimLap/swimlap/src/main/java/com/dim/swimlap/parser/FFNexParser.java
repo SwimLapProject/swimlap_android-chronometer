@@ -62,7 +62,7 @@ public class FFNexParser {
         while (eventType != XmlPullParser.END_DOCUMENT) {
 
             if (eventType == XmlPullParser.START_DOCUMENT) {
-                System.out.println("$$$ Start document");
+//                System.out.println("$$$ Start document");
 
             } else if (eventType == XmlPullParser.START_TAG) {
 //                System.out.println("$$$ Start tag " + xpp.getName());
@@ -86,7 +86,7 @@ public class FFNexParser {
                     meetingModel.setByTeam(Boolean.valueOf(xpp.getAttributeValue(null, "byteam")));
 
                 } else if (xpp.getName().equals("POOL")) {
-                    System.out.println("$$$ Start tag " + xpp.getName());
+//                    System.out.println("$$$ Start tag " + xpp.getName());
                     meetingModel.setPoolSize(Integer.valueOf(xpp.getAttributeValue(null, "size")));
 
                 } else if (xpp.getName().equals("CLUB")) {
@@ -123,14 +123,14 @@ public class FFNexParser {
                     events.add(eventModel);
 
                 } else if (xpp.getName().equals("RESULT")) {
-                    System.out.println("Start tag " + xpp.getName());
+//                    System.out.println("Start tag " + xpp.getName());
 
                     resultIdInResult = Integer.valueOf(xpp.getAttributeValue(null, "id"));
                     raceIdInResult = Integer.valueOf(xpp.getAttributeValue(null, "raceid"));
                     roundIdInResult = Integer.valueOf(xpp.getAttributeValue(null, "roundid"));
                     qualifyingTimeInResult = Float.valueOf(xpp.getAttributeValue(null, "qualifyingtime"));
                 } else if (xpp.getName().equals("SOLO")) {
-                    System.out.println("$$$ Start tag " + xpp.getName());
+//                    System.out.println("$$$ Start tag " + xpp.getName());
 
                     /** BUILD THE WHOLE RESULT MODEL SINGLE SWIMMER WHICH WILL BE ADDED IN MEETING MODEL **/
                     swimmerIdInResult = Integer.valueOf(xpp.getAttributeValue(null, "swimmerid"));
