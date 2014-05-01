@@ -46,7 +46,6 @@ public class FragmentNavSettings extends Fragment implements View.OnClickListene
     public void onClick(View view) {
         if (view.getId() == R.id.id_button_scan_ffnex) {
             Toast.makeText(getActivity(), "Start parsing", Toast.LENGTH_SHORT).show();
-
             doParsing();
         }
     }
@@ -75,17 +74,21 @@ public class FragmentNavSettings extends Fragment implements View.OnClickListene
                             });
                     builder.create().show();
                 } else if (files.length == 1) {
+                    // if only one file
                     fileNameToParse = files[0];
                 }
                 Toast.makeText(getActivity(), "Find " + fileNameToParse, Toast.LENGTH_SHORT).show();
 
                 File fileToParse = ffnexGetter.getFFNExFile(fileNameToParse);
                 String stringXMLToParse = ffnexGetter.transformFileToString(fileToParse);
-                meetingModel = ffnexGetter.getResultOfParsing(stringXMLToParse);
+                meetingModel = ffnexGetter.getResultOfParsing(stringXMLToParse,getActivity());
 
                 // RECORD IN DB
-
-                Toast.makeText(getActivity(), "DONE " + meetingModel.getName(), Toast.LENGTH_SHORT).show();
+                ffnexGetter.recordParsedMeetingInDb(meetingModel,getActivity());
+                if(ffnexGetter.recordParsingHasBeenDone(meetingModel.getId(),getActivity())){
+                    ffnexGetter.moveFFNexParsed(fileNameToParse);
+                    Toast.makeText(getActivity(), "MEETING !\n" + meetingModel.getName()+"\nHAS BEEN RECORDED IN PHONE", Toast.LENGTH_SHORT).show();
+                }
             }
         } catch (IOException e) {
             Toast.makeText(getActivity(), "A problem occured: " + e.getMessage(), Toast.LENGTH_SHORT).show();

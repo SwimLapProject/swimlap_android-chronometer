@@ -108,7 +108,7 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
         this.chronoIsStarted = isStarted;
     }
 
-    public void resetLap(View view) {
+    public void resetLaps(View view) {
         int position = getPositionOfView(view);
         //reset data
         singleton.getEventData(position).resetLaps();
@@ -121,6 +121,14 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
         textViewLast.setText("Last: 0:00.00");
         textViewLast.setTextColor(getResources().getColor(R.color.bluesea));
 
+    }
+
+    public void recordLaps(View view){
+        int position = getPositionOfView(view);
+        //reset data
+        singleton.getEventData(position).recordLapsInDB(getActivity());
+
+        //modify view
     }
 
     private int getPositionOfView(View view) {

@@ -16,7 +16,7 @@ public class DbTableSwimmers implements DbTableMODEL {
     public static final String COL_SWI_FIRST_NAME = "col_swi_firstname";
     public static final String COL_SWI_DATE_OF_BIRTH = "col_swi_date_of_birth";
     public static final String COL_SWI_GENDER = "col_swi_gender";
-    public static final String COL_CLU_CLUB_ID = "col_clu_club_id";
+    public static final String COL_CLU_CLUB_CODE = "col_clu_club_code";
 
 
     public static final String
@@ -26,7 +26,7 @@ public class DbTableSwimmers implements DbTableMODEL {
             COL_SWI_FIRST_NAME + " TEXT," +
             COL_SWI_DATE_OF_BIRTH + " TEXT," +
             COL_SWI_GENDER + " TEXT," +
-            COL_CLU_CLUB_ID + " TEXT" +
+            COL_CLU_CLUB_CODE + " TEXT" +
             ");";
 
     public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_SWI_ID,
@@ -35,7 +35,7 @@ public class DbTableSwimmers implements DbTableMODEL {
             COL_SWI_FIRST_NAME,
             COL_SWI_DATE_OF_BIRTH,
             COL_SWI_GENDER,
-            COL_CLU_CLUB_ID};
+            COL_CLU_CLUB_CODE};
 
     @Override
     public String getTableName() {

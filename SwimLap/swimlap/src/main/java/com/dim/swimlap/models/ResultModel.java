@@ -7,6 +7,9 @@
 
 package com.dim.swimlap.models;
 
+import android.content.Context;
+
+import com.dim.swimlap.db.recorder.RecordLapsInDb;
 import com.dim.swimlap.objects.FormatTimeAsString;
 
 import java.util.ArrayList;
@@ -30,6 +33,7 @@ public class ResultModel {
     private int numberOfLap;
     private float lapMin, lapMax;
     private int poolSize;
+    private boolean isRelay;
 
     public ResultModel(int id) {
         this.id = id;
@@ -39,12 +43,13 @@ public class ResultModel {
     public void addSwimmersInTeam(SwimmerModel swimmerModel) {
         if (team == null) {
             team = new ArrayList<SwimmerModel>();
+            isRelay = true;
         }
         team.add(swimmerModel);
     }
 
-    public void buildContent(float qualifyingTime, int poolSize,int meetingId) {
-        this.meetingId =meetingId;
+    public void buildContent(float qualifyingTime, int poolSize, int meetingId) {
+        this.meetingId = meetingId;
         this.poolSize = poolSize;
         // qualifying time must be in milliseconds
         this.qualifyingTime = qualifyingTime;
@@ -121,7 +126,17 @@ public class ResultModel {
         this.laps.clear();
     }
 
-    public void recordLapsInDB() {
+    public boolean isRelay() {
+        return isRelay;
+    }
+
+    public void setIsRelay(boolean isRelay) {
+        this.isRelay = isRelay;
+    }
+
+    public void recordLapsInDB(Context context) {
+        RecordLapsInDb recorder = new RecordLapsInDb(context);
+        recorder.recordLaps(this);
     }
 
     // GETTERS AND SETTERS
@@ -155,6 +170,7 @@ public class ResultModel {
 
     public void setSwimmerModel(SwimmerModel swimmerModel) {
         this.swimmerModel = swimmerModel;
+        isRelay = false;
     }
 
     public EventModel getEventModel() {
@@ -204,6 +220,7 @@ public class ResultModel {
     public void setTeam(ArrayList<SwimmerModel> team) {
         this.team = team;
     }
+
     public int getMeetingId() {
         return meetingId;
     }

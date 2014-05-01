@@ -199,12 +199,12 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
     @Override
     public void resetLap(View view) {
-        fragmentDataLap.resetLap(view);
+        fragmentDataLap.resetLaps(view);
     }
 
     @Override
     public void recordLap(View view) {
-        // record lap in db
+        fragmentDataLap.recordLaps(view);
     }
 
     @Override

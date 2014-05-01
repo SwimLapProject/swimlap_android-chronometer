@@ -36,23 +36,16 @@ public class DbUtilitiesBuilder {
     private SeasonUtilities seasonUtilities;
     private SwimmerUtilities swimmerUtilities;
 
-
-    /* Database fields */
-    private String[] allColumns = {};
-
     public DbUtilitiesBuilder(Context context) {
         dbHelper = new DbHelper(context, DATABASE_NAME, DATABASE_VERSION);
     }
 
     public void open() throws SQLException {
         sqLiteDatabaseSwimLap = dbHelper.getWritableDatabase();
+        buildUtilities();
     }
 
-    public void close() {
-        dbHelper.close();
-    }
-
-    public void buildUtilities() {
+    private void buildUtilities() {
         clubUtilities = new ClubUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableClubs);
         eventUtilities = new EventUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableEvents);
         meetingUtilities = new MeetingUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableMeetings);
@@ -60,5 +53,37 @@ public class DbUtilitiesBuilder {
         resultUtilities = new ResultUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableResults);
         seasonUtilities = new SeasonUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableSeasons);
         swimmerUtilities = new SwimmerUtilities(sqLiteDatabaseSwimLap, dbHelper.dbTableSwimmers);
+    }
+
+    public void close() {
+        dbHelper.close();
+    }
+
+    public ClubUtilities getClubUtilities() {
+        return clubUtilities;
+    }
+
+    public EventUtilities getEventUtilities() {
+        return eventUtilities;
+    }
+
+    public MeetingUtilities getMeetingUtilities() {
+        return meetingUtilities;
+    }
+
+    public RecordUtilities getRecordUtilities() {
+        return recordUtilities;
+    }
+
+    public ResultUtilities getResultUtilities() {
+        return resultUtilities;
+    }
+
+    public SeasonUtilities getSeasonUtilities() {
+        return seasonUtilities;
+    }
+
+    public SwimmerUtilities getSwimmerUtilities() {
+        return swimmerUtilities;
     }
 }

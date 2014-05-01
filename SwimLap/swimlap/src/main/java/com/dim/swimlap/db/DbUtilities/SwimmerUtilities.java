@@ -31,7 +31,7 @@ public class SwimmerUtilities {
     /* GETTERS */
     public List<SwimmerModel> getAllSwimmers_FromDb() {
         List<SwimmerModel> allSwimmers = new ArrayList<SwimmerModel>();
-        Cursor cursor = sqLiteDatabaseSwimLap.query(DbTableSwimmers.TABLE_NAME, DbTableSwimmers.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             SwimmerModel swimmer = getDataSwimmer_FromDb(cursor);
@@ -45,7 +45,7 @@ public class SwimmerUtilities {
     private SwimmerModel getSwimmer_FromDb(int swimmerIdToGet) {
         String[] swimmerIdAsStrings = {String.valueOf(swimmerIdToGet)};
         SwimmerModel swimmer = null;
-        Cursor cursor = sqLiteDatabaseSwimLap.query(DbTableSwimmers.TABLE_NAME, DbTableSwimmers.ALL_COLUMNS_AS_STRING_TAB, DbTableSwimmers.COL_CLU_CLUB_ID + " = ?", swimmerIdAsStrings, null, null, null);
+        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, table.COL_SWI_ID + " = ?", swimmerIdAsStrings, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             swimmer = getDataSwimmer_FromDb(cursor);
@@ -74,20 +74,20 @@ public class SwimmerUtilities {
             //do notthing
         } else {
             ContentValues contentValues = new ContentValues();
-            contentValues.put(DbTableSwimmers.COL_SWI_ID, newSimmer.getIdFFN());
-            contentValues.put(DbTableSwimmers.COL_SWI_NAME, newSimmer.getName());
-            contentValues.put(DbTableSwimmers.COL_SWI_FIRST_NAME, newSimmer.getFirstname());
-            contentValues.put(DbTableSwimmers.COL_SWI_DATE_OF_BIRTH, newSimmer.getDateOfBirth());
-            contentValues.put(DbTableSwimmers.COL_SWI_GENDER, newSimmer.getGender());
-            contentValues.put(DbTableSwimmers.COL_CLU_CLUB_ID, newSimmer.getClubModel().getId());
+            contentValues.put(table.COL_SWI_ID, newSimmer.getIdFFN());
+            contentValues.put(table.COL_SWI_NAME, newSimmer.getName());
+            contentValues.put(table.COL_SWI_FIRST_NAME, newSimmer.getFirstname());
+            contentValues.put(table.COL_SWI_DATE_OF_BIRTH, newSimmer.getDateOfBirth());
+            contentValues.put(table.COL_SWI_GENDER, newSimmer.getGender());
+            contentValues.put(table.COL_CLU_CLUB_CODE, newSimmer.getClubModel().getCodeFFN());
 
-            sqLiteDatabaseSwimLap.insert(DbTableSwimmers.TABLE_NAME, null, contentValues);
+            sqLiteDatabaseSwimLap.insert(table.TABLE_NAME, null, contentValues);
         }
     }
 
     /* DELETER */
     public void deleteSwimmer_InDb(int swimmerIdToDelete) {
-        sqLiteDatabaseSwimLap.delete(DbTableSwimmers.TABLE_NAME, DbTableSwimmers.COL_CLU_CLUB_ID + " = " + swimmerIdToDelete, null);
+        sqLiteDatabaseSwimLap.delete(table.TABLE_NAME, table.COL_SWI_ID + " = " + swimmerIdToDelete, null);
         //todo ON DELETE CASCADE FOR RECORDS EVENTS ??
     }
 
@@ -98,7 +98,7 @@ public class SwimmerUtilities {
     }
 
     /* VERIFY ENTRY */
-    private boolean swimmerAlready_InDb(int swimmerIdToSearch) {
+    public boolean swimmerAlready_InDb(int swimmerIdToSearch) {
         boolean isPresent;
         if (getSwimmer_FromDb(swimmerIdToSearch) == null) {
             isPresent = false;

@@ -42,7 +42,7 @@ public class MeetingUtilities {
     }
 
     public MeetingModel getOneMeetingById_FromDb(int idMeeting) {
-        MeetingModel meetingModel = new MeetingModel();
+        MeetingModel meetingModel = null;
         String condition = table.COL_MEE_ID + "=" + idMeeting;
         Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null, null);
         cursor.moveToFirst();
@@ -91,6 +91,7 @@ public class MeetingUtilities {
         contentValues.put(table.COL_MEE_POOL_SIZE, meetingModel.getPoolSize());
         contentValues.put(table.COL_SEA_ID, meetingModel.getSeasonModel().getId());
         sqLiteDatabaseSwimLap.insert(table.TABLE_NAME, null, contentValues);
+
     }
 
     /* DELETER */
@@ -103,6 +104,15 @@ public class MeetingUtilities {
         deleteMeeting_InDb(meetingModel.getId());
         addMeeting_InDb(meetingModel);
     }
+
     /* VERIFY ENTRY */
-    //todo
+    public boolean meetingAlready_InDb(int meetingId) {
+        boolean isPresent;
+        if (getOneMeetingById_FromDb(meetingId) == null) {
+            isPresent = false;
+        } else {
+            isPresent = true;
+        }
+        return isPresent;
+    }
 }

@@ -27,6 +27,7 @@ public class MainActivity extends Activity {
             public void run() {
                 try {
                     logoTimer = 0;
+                    //todo don't know if splash screen will work find so remove directory creation
                     FFNexDataGetter ffNexDataGetter = new FFNexDataGetter();
                     ffNexDataGetter.createDirectory();
                     while (logoTimer < 1000) {
@@ -35,7 +36,6 @@ public class MainActivity extends Activity {
                     }
 
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();

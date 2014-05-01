@@ -7,7 +7,10 @@
 
 package com.dim.swimlap.parser;
 
+import android.content.Context;
+
 import com.dim.swimlap.data.RaceData;
+import com.dim.swimlap.db.builder.DbUtilitiesBuilder;
 import com.dim.swimlap.models.ClubModel;
 import com.dim.swimlap.models.EventModel;
 import com.dim.swimlap.models.MeetingModel;
@@ -22,10 +25,12 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class FFNexParser {
 
+    private Context context;
     private MeetingModel meetingModel;
     private ArrayList<ClubModel> clubs;
     private ArrayList<EventModel> events;
@@ -37,7 +42,8 @@ public class FFNexParser {
             FFNEX_TYPE_ENGAGEMENT = 2,
             FFNEX_TYPE_RECORD = 3;
 
-    public FFNexParser() {
+    public FFNexParser(Context context) {
+        this.context = context;
         meetingModel = new MeetingModel();
         clubs = new ArrayList<ClubModel>();
         swimmers = new ArrayList<SwimmerModel>();
@@ -45,6 +51,9 @@ public class FFNexParser {
     }
 
     public void parseIt(String ffnex) throws XmlPullParserException, IOException {
+
+        int clubCodeFFN = getCurrentClubCode(context);
+        int clubIdInThisMeeting = 0;
 
         XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
         factory.setNamespaceAware(true);
@@ -89,27 +98,38 @@ public class FFNexParser {
                     meetingModel.setPoolSize(Integer.valueOf(xpp.getAttributeValue(null, "size")));
 
                 } else if (xpp.getName().equals("CLUB")) {
-//                    System.out.println("$$$ Start tag " + xpp.getName());
-                    ClubModel clubModel = new ClubModel(Integer.valueOf(xpp.getAttributeValue(null, "id")));
-                    clubModel.setName(xpp.getAttributeValue(null, "name"));
-                    clubModel.setCodeFFN(Integer.valueOf(xpp.getAttributeValue(null, "code")));
-                    clubs.add(clubModel);
+                    //                    System.out.println("$$$ Start tag " + xpp.getName());
+
+                    if (Integer.valueOf(xpp.getAttributeValue(null, "code")) == clubCodeFFN) {
+                        // get the clubid corresponding to apllication club code
+                        clubIdInThisMeeting = Integer.valueOf(xpp.getAttributeValue(null, "id"));
+                        ClubModel clubModel = new ClubModel(clubIdInThisMeeting);
+                        clubModel.setName(xpp.getAttributeValue(null, "name"));
+                        clubModel.setCodeFFN(Integer.valueOf(xpp.getAttributeValue(null, "code")));
+                        clubs.add(clubModel);
+                    }
+
 
                 } else if (xpp.getName().equals("SWIMMER")) {
 //                    System.out.println("$$$ Start tag " + xpp.getName());
-                    SwimmerModel swimmerModel = new SwimmerModel();
-                    swimmerModel.setIdFFN(Integer.valueOf(xpp.getAttributeValue(null, "id")));
-                    swimmerModel.setFirstname(xpp.getAttributeValue(null, "firstname"));
-                    swimmerModel.setName(xpp.getAttributeValue(null, "lastname"));
-                    swimmerModel.setGender(xpp.getAttributeValue(null, "gender"));
-                    swimmerModel.setGender(xpp.getAttributeValue(null, "birthdate"));
-                    int clubId = Integer.valueOf(xpp.getAttributeValue(null, "clubid"));
-                    for (int i = 0; i < clubs.size(); i++) {
-                        if (clubs.get(i).getId() == clubId) {
-                            swimmerModel.setClubModel(clubs.get(i));
+
+                    // add swimmer in list of swimmer only if clubid is the corresponding one to the application club code
+                    if (Integer.valueOf(xpp.getAttributeValue(null, "clubid")) == clubIdInThisMeeting) {
+
+                        SwimmerModel swimmerModel = new SwimmerModel();
+                        swimmerModel.setIdFFN(Integer.valueOf(xpp.getAttributeValue(null, "id")));
+                        swimmerModel.setFirstname(xpp.getAttributeValue(null, "firstname"));
+                        swimmerModel.setName(xpp.getAttributeValue(null, "lastname"));
+                        swimmerModel.setGender(xpp.getAttributeValue(null, "gender"));
+                        swimmerModel.setGender(xpp.getAttributeValue(null, "birthdate"));
+                        int clubId = Integer.valueOf(xpp.getAttributeValue(null, "clubid"));
+                        for (int i = 0; i < clubs.size(); i++) {
+                            if (clubs.get(i).getId() == clubId) {
+                                swimmerModel.setClubModel(clubs.get(i));
+                            }
                         }
+                        swimmers.add(swimmerModel);
                     }
-                    swimmers.add(swimmerModel);
 
                 } else if (xpp.getName().equals("EVENT") && xpp.getAttributeValue(null, "type").equals("RACE")) {
 //                    System.out.println("$$$ Start tag " + xpp.getName());
@@ -131,67 +151,23 @@ public class FFNexParser {
                 } else if (xpp.getName().equals("SOLO")) {
 //                    System.out.println("$$$ Start tag " + xpp.getName());
 
-                    /** BUILD THE WHOLE RESULT MODEL SINGLE SWIMMER WHICH WILL BE ADDED IN MEETING MODEL **/
-                    swimmerIdInResult = Integer.valueOf(xpp.getAttributeValue(null, "swimmerid"));
-                    /** ID **/
-                    ResultModel result = new ResultModel(resultIdInResult);
-                    /** SWIMMER **/
-                    if (swimmers.size() != 0) {
-                        for (int indexSw = 0; indexSw < swimmers.size(); indexSw++) {
-                            if (swimmerIdInResult == swimmers.get(indexSw).getIdFFN()) {
-                                result.setSwimmerModel(swimmers.get(indexSw));
-                            }
-                        }
-                    } else {
-                        // todo throw an exception which stop parsing but not application
-
-                    }
-                    /** EVENT **/
-                    if (events.size() != 0) {
-                        for (int indexEv = 0; indexEv < events.size(); indexEv++) {
-                            if (raceIdInResult == events.get(indexEv).getRaceModel().getId() &&
-                                    roundIdInResult == events.get(indexEv).getRoundModel().getId()) {
-                                result.setEventModel(events.get(indexEv));
-                            }
-                        }
-                    } else {
-                        // todo throw an exception which stop parsing but not application
-                    }
-                    /** BUILD attributes with qualifying time in milliseconds and poolsize from meeting **/
-                    result.buildContent(qualifyingTimeInResult * 100000, meetingModel.getPoolSize(),meetingModel.getId());
-
-                    /** ADDING IN MEETING MODEL **/
-                    meetingModel.addResult(result);
-
-
-                } else if (xpp.getName().equals("RELAY")) {
-//                    System.out.println("$$$ Start tag " + xpp.getName());
-                    RaceData raceData = new RaceData();
-                    raceData.makeData();
-                    nbRelayerIfRelay = raceData.giveNbRelayer(raceIdInResult);
-                    swIdInTeam = new ArrayList<Integer>();
-
-                } else if (xpp.getName().equals("RELAYPOSITION")) {
-//                    System.out.println("$$$ Start tag " + xpp.getName());
-
-                    swIdInTeam.add(Integer.valueOf(xpp.getAttributeValue(null, "swimmerid")));
-
-                    /** BUILD THE WHOLE RESULT MODEL WITH TEAM RELAY WHEN ALL SWIMMERS ARE FOUND **/
-                    if (swIdInTeam.size() >= nbRelayerIfRelay) {
+                    // add result in meeting only if clubid is the corresponding one to the application club code
+                    if (Integer.valueOf(xpp.getAttributeValue(null, "clubid")) == clubIdInThisMeeting) {
+                        /** BUILD THE WHOLE RESULT MODEL SINGLE SWIMMER WHICH WILL BE ADDED IN MEETING MODEL **/
+                        swimmerIdInResult = Integer.valueOf(xpp.getAttributeValue(null, "swimmerid"));
                         /** ID **/
                         ResultModel result = new ResultModel(resultIdInResult);
-                        /** SWIMMERS IN TEAM **/
+                        result.setIsRelay(false);
+                        /** SWIMMER **/
                         if (swimmers.size() != 0) {
                             for (int indexSw = 0; indexSw < swimmers.size(); indexSw++) {
-                                for (int indexTeam = 0; indexTeam < swIdInTeam.size(); indexTeam++) {
-                                    if (swIdInTeam.get(indexTeam) == swimmers.get(indexSw).getIdFFN()) {
-                                        result.addSwimmersInTeam(swimmers.get(indexSw));
-                                    }
+                                if (swimmerIdInResult == swimmers.get(indexSw).getIdFFN()) {
+                                    result.setSwimmerModel(swimmers.get(indexSw));
                                 }
-
                             }
                         } else {
                             // todo throw an exception which stop parsing but not application
+
                         }
                         /** EVENT **/
                         if (events.size() != 0) {
@@ -205,10 +181,59 @@ public class FFNexParser {
                             // todo throw an exception which stop parsing but not application
                         }
                         /** BUILD attributes with qualifying time in milliseconds and poolsize from meeting **/
-                        result.buildContent(qualifyingTimeInResult * 100000, meetingModel.getPoolSize(),meetingModel.getId());
+                        result.buildContent(qualifyingTimeInResult * 100000, meetingModel.getPoolSize(), meetingModel.getId());
 
                         /** ADDING IN MEETING MODEL **/
                         meetingModel.addResult(result);
+
+
+                    } else if (xpp.getName().equals("RELAY")) {
+//                    System.out.println("$$$ Start tag " + xpp.getName());
+                        RaceData raceData = new RaceData();
+                        raceData.makeData();
+                        nbRelayerIfRelay = raceData.giveNbRelayer(raceIdInResult);
+                        swIdInTeam = new ArrayList<Integer>();
+
+                    } else if (xpp.getName().equals("RELAYPOSITION")) {
+//                    System.out.println("$$$ Start tag " + xpp.getName());
+
+                        swIdInTeam.add(Integer.valueOf(xpp.getAttributeValue(null, "swimmerid")));
+
+                        /** BUILD THE WHOLE RESULT MODEL WITH TEAM RELAY WHEN ALL SWIMMERS ARE FOUND **/
+                        if (swIdInTeam.size() >= nbRelayerIfRelay) {
+                            /** ID **/
+                            ResultModel result = new ResultModel(resultIdInResult);
+                            result.setIsRelay(true);
+                            /** SWIMMERS IN TEAM **/
+                            if (swimmers.size() != 0) {
+                                for (int indexSw = 0; indexSw < swimmers.size(); indexSw++) {
+                                    for (int indexTeam = 0; indexTeam < swIdInTeam.size(); indexTeam++) {
+                                        if (swIdInTeam.get(indexTeam) == swimmers.get(indexSw).getIdFFN()) {
+                                            result.addSwimmersInTeam(swimmers.get(indexSw));
+                                        }
+                                    }
+
+                                }
+                            } else {
+                                // todo throw an exception which stop parsing but not application
+                            }
+                            /** EVENT **/
+                            if (events.size() != 0) {
+                                for (int indexEv = 0; indexEv < events.size(); indexEv++) {
+                                    if (raceIdInResult == events.get(indexEv).getRaceModel().getId() &&
+                                            roundIdInResult == events.get(indexEv).getRoundModel().getId()) {
+                                        result.setEventModel(events.get(indexEv));
+                                    }
+                                }
+                            } else {
+                                // todo throw an exception which stop parsing but not application
+                            }
+                            /** BUILD attributes with qualifying time in milliseconds and poolsize from meeting **/
+                            result.buildContent(qualifyingTimeInResult * 100000, meetingModel.getPoolSize(), meetingModel.getId());
+
+                            /** ADDING IN MEETING MODEL **/
+                            meetingModel.addResult(result);
+                        }
                     }
                 }
 
@@ -225,5 +250,20 @@ public class FFNexParser {
 
     public MeetingModel getBackMeetingModel() {
         return meetingModel;
+    }
+
+    private int getCurrentClubCode(Context context) {
+        DbUtilitiesBuilder db = new DbUtilitiesBuilder(context);
+        int clubCode = 0;
+        try {
+            db.open();
+            clubCode = db.getClubUtilities().getClub_FromDb().getCodeFFN();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            db.close();
+        }
+        return clubCode;
+
     }
 }

@@ -7,8 +7,11 @@
 
 package com.dim.swimlap.parser;
 
+import android.content.Context;
 import android.os.Environment;
 
+import com.dim.swimlap.db.builder.DbUtilitiesBuilder;
+import com.dim.swimlap.db.recorder.RecordParsingInDb;
 import com.dim.swimlap.models.MeetingModel;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -16,19 +19,24 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 
 public class FFNexDataGetter {
 
-    private File ffnexDir;
+    private File swimLapDir, ffnexDir, ffnexReaded;
     private String[] files;
 
     public void createDirectory() throws IOException {
         File root = Environment.getExternalStorageDirectory();
-        File swimLapDir = new File(root, "swimlap");
+        swimLapDir = new File(root, "swimlap");
         swimLapDir.mkdir();
-        ffnexDir = new File(swimLapDir,"ffnex");
+        ffnexDir = new File(swimLapDir, "ffnex");
         ffnexDir.mkdir();
+        ffnexReaded = new File(swimLapDir, "ffnexReaded");
+        ffnexReaded.mkdir();
     }
 
     public String[] getFiles() {
@@ -37,7 +45,7 @@ public class FFNexDataGetter {
     }
 
     public File getFFNExFile(String name) {
-        File ffnex =  new File(ffnexDir, name);
+        File ffnex = new File(ffnexDir, name);
         return ffnex;
     }
 
@@ -51,14 +59,51 @@ public class FFNexDataGetter {
 
     }
 
-    public MeetingModel getResultOfParsing(String stringXML) throws IOException, XmlPullParserException {
-        FFNexParser parser = new FFNexParser();
+    public MeetingModel getResultOfParsing(String stringXML,Context context) throws IOException, XmlPullParserException {
+        FFNexParser parser = new FFNexParser(context);
         parser.parseIt(stringXML);
         MeetingModel meetingModel = parser.getBackMeetingModel();
         return meetingModel;
     }
 
+    public void recordParsedMeetingInDb(MeetingModel meetingModel, Context context) {
+        RecordParsingInDb recorder = new RecordParsingInDb(context);
+        recorder.recordMeetingFromFFNex(meetingModel);
+    }
 
+    public boolean recordParsingHasBeenDone(int idMeetting, Context context) {
+        DbUtilitiesBuilder db = new DbUtilitiesBuilder(context);
+        return db.getMeetingUtilities().meetingAlready_InDb(idMeetting);
+    }
 
+    public void moveFFNexParsed(String fileNameParsed) {
+        File fileSrc = new File(ffnexDir, fileNameParsed);
+        File fileDest = new File(ffnexReaded, fileNameParsed);
+        FileChannel readChannel = null;
+        FileChannel writeChannel = null;
 
+        try {
+            readChannel = new FileInputStream(fileSrc).getChannel();
+            writeChannel = new FileOutputStream(fileDest).getChannel();
+
+            long bytesMoved = readChannel.transferTo(0, readChannel.size(), writeChannel);
+            if (bytesMoved == readChannel.size()) {
+                fileSrc.delete();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (readChannel != null)
+                    readChannel.close();
+                if (writeChannel != null)
+                    writeChannel.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
 }

@@ -13,6 +13,10 @@ public class ClubModel {
     private String name;
     private int codeFFN;
 
+    public ClubModel(){
+
+    }
+
     public ClubModel(int id) {
         this.id = id;
     }

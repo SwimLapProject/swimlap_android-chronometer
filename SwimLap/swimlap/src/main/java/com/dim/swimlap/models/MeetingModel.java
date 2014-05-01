@@ -24,10 +24,10 @@ public class MeetingModel {
     private boolean byTeam;
 
     private SeasonModel seasonModel;
-    private ArrayList<ResultModel> resultModels;
+    private ArrayList<ResultModel> allResults;
 
-    public MeetingModel(){
-        resultModels = new ArrayList<ResultModel>();
+    public MeetingModel() {
+        allResults = new ArrayList<ResultModel>();
     }
 
 
@@ -78,6 +78,7 @@ public class MeetingModel {
     public void setStopDate(String stopDate) {
         this.stopDate = convertStringToDate(stopDate);
     }
+
     public SeasonModel getSeasonModel() {
         return seasonModel;
     }
@@ -113,13 +114,25 @@ public class MeetingModel {
         this.byTeam = byTeam;
     }
 
-    public void addResult(ResultModel resultModel){
+    public void addResult(ResultModel resultModel) {
         resultModel.setPoolSize(poolSize);
-        resultModels.add(resultModel);
+        allResults.add(resultModel);
     }
 
-    public ResultModel getResult(int swimmerId, int eventId){
-        //todo
-        return null;
+    public ResultModel getResult(int swimmerId, int eventId, int roundId) {
+        ResultModel resultToReturn = null;
+        for (int indexResult = 0; indexResult < allResults.size(); indexResult++) {
+            int idSwimmer = allResults.get(indexResult).getSwimmerModel().getIdFFN();
+            int idEvent = allResults.get(indexResult).getEventModel().getId();
+            int idRound = allResults.get(indexResult).getEventModel().getRoundModel().getId();
+            if (idSwimmer == swimmerId && idEvent == eventId && idRound == roundId) {
+                resultToReturn = allResults.get(indexResult);
+            }
+        }
+        return resultToReturn;
+    }
+
+    public ArrayList<ResultModel> getAllResults() {
+        return allResults;
     }
 }

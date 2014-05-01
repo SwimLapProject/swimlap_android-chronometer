@@ -104,7 +104,7 @@ public class ResultUtilities {
     public void addResult_InDb(ResultModel resultModel) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(table.COL_RES_ID, resultModel.getId());
-        if (resultModel.getSwimmerModel().getIdFFN() != 0) {
+        if (! resultModel.isRelay()) {
             contentValues.put(table.COL_SWI_0_ID_FFN, resultModel.getSwimmerModel().getIdFFN());
         } else {
             contentValues.put(table.COL_SWI_0_ID_FFN, resultModel.getTeam().get(0).getIdFFN());
