@@ -41,9 +41,8 @@ public class ClubUtilities {
 
     /* GET CONTENT */
     private ClubModel getDataClub_FromDb(Cursor cursor) {
-        ClubModel clubModel = new ClubModel(cursor.getInt(0));
+        ClubModel clubModel = new ClubModel(cursor.getInt(0),cursor.getInt(2));
         clubModel.setName(cursor.getString(1));
-        clubModel.setCodeFFN(cursor.getInt(2));
         return clubModel;
     }
 
@@ -52,7 +51,7 @@ public class ClubUtilities {
         deleteClub_FromDb();
         ContentValues contentValues = new ContentValues();
         contentValues.put(table.COL_CLU_ID, clubModel.getId());
-        contentValues.put(table.COL_CLU_CODE_FFN, clubModel.getName());
+        contentValues.put(table.COL_CLU_NAME, clubModel.getName());
         contentValues.put(table.COL_CLU_CODE_FFN, clubModel.getCodeFFN());
 
         sqLiteDatabaseSwimLap.insert(table.TABLE_NAME, null, contentValues);
@@ -66,5 +65,4 @@ public class ClubUtilities {
     // no updater because only one club
 
     /* VERIFY ENTRY */
-    //todo
 }

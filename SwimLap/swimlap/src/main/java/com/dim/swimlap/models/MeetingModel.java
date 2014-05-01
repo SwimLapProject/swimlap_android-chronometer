@@ -22,6 +22,7 @@ public class MeetingModel {
     private Date stopDate;
     private int poolSize;
     private boolean byTeam;
+    private int clubId, clubCode;
 
     private SeasonModel seasonModel;
     private ArrayList<ResultModel> allResults;
@@ -30,6 +31,22 @@ public class MeetingModel {
         allResults = new ArrayList<ResultModel>();
     }
 
+
+    public int getClubId() {
+        return clubId;
+    }
+
+    public void setClubId(int clubId) {
+        this.clubId = clubId;
+    }
+
+    public int getClubCode() {
+        return clubCode;
+    }
+
+    public void setClubCode(int clubCode) {
+        this.clubCode = clubCode;
+    }
 
     public int getPoolSize() {
         return poolSize;
@@ -95,7 +112,7 @@ public class MeetingModel {
 
     }
 
-    private Date convertStringToDate(String dateInString) {
+    public Date convertStringToDate(String dateInString) {
         SimpleDateFormat formatter = new SimpleDateFormat(FFNEX_DATE_FORMAT);
         Date date = null;
         try {

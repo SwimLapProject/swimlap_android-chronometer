@@ -42,7 +42,7 @@ public class SwimmerUtilities {
         return allSwimmers;
     }
 
-    private SwimmerModel getSwimmer_FromDb(int swimmerIdToGet) {
+    public SwimmerModel getSwimmer_FromDb(int swimmerIdToGet) {
         String[] swimmerIdAsStrings = {String.valueOf(swimmerIdToGet)};
         SwimmerModel swimmer = null;
         Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, table.COL_SWI_ID + " = ?", swimmerIdAsStrings, null, null, null);
@@ -63,7 +63,7 @@ public class SwimmerUtilities {
         swimmerModel.setFirstname(cursor.getString(2));
         swimmerModel.setDateOfBirth(cursor.getString(3));
         swimmerModel.setGender(cursor.getString(4));
-        swimmerModel.setClubModel(new ClubModel(cursor.getInt(5)));
+        swimmerModel.setClubModel(new ClubModel(0,cursor.getInt(5)));// id , codeFFN
         return swimmerModel;
     }
 

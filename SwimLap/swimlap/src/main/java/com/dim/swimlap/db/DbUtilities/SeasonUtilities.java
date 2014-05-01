@@ -33,18 +33,22 @@ public class SeasonUtilities {
         Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            SeasonModel seasonToVerify = getDataSeason_FromDb(cursor);
-            SimpleDateFormat format = new SimpleDateFormat(FFNEX_DATE_FORMAT);
-            try {
-                Date startDate = format.parse(seasonToVerify.getStartDate());
-                Date stopDate = format.parse(seasonToVerify.getStopDate());
-                Date currentDate = format.parse(dateAsString);
-                if (startDate.before(currentDate) && stopDate.after(currentDate)) {
-                    seasonToFind = seasonToVerify;
-                }
+            SeasonModel seasonFromDb = getDataSeason_FromDb(cursor);
+            if (seasonFromDb == null) {
+                seasonToFind = new SeasonModel(0);
+            } else {
+                SimpleDateFormat format = new SimpleDateFormat(FFNEX_DATE_FORMAT);
+                try {
+                    Date startDate = format.parse(seasonFromDb.getStartDate());
+                    Date stopDate = format.parse(seasonFromDb.getStopDate());
+                    Date currentDate = format.parse(dateAsString);
+                    if (startDate.before(currentDate) && stopDate.after(currentDate)) {
+                        seasonToFind = seasonFromDb;
+                    }
 
-            } catch (java.text.ParseException e) {
-                e.printStackTrace();
+                } catch (java.text.ParseException e) {
+                    e.printStackTrace();
+                }
             }
             cursor.moveToNext();
         }

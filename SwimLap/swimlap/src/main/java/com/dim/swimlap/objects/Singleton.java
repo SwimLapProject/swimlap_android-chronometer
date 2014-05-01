@@ -1,13 +1,17 @@
 package com.dim.swimlap.objects;
 
-import com.dim.swimlap.models.ResultModel;
+import android.content.Context;
 
-import java.util.ArrayList;
+import com.dim.swimlap.db.getter.GetResultsForLapView;
+import com.dim.swimlap.models.MeetingModel;
+import com.dim.swimlap.models.ResultModel;
 
 public final class Singleton {
 
+    private static final String FFNEX_DATE_FORMAT = "yyyy-MM-dd";
+
     private static volatile Singleton instance = null;
-    private ArrayList<ResultModel> listOf_ResultModel;
+    private MeetingModel meetingModel;
     private boolean listIsAlreadyBuilt;
 
     private Singleton() {
@@ -25,56 +29,18 @@ public final class Singleton {
         return Singleton.instance;
     }
 
-    public ArrayList<ResultModel> buildEvent() {
-        if (listIsAlreadyBuilt) {
-            return getList();
+    public MeetingModel buildEvent(Context context) {
+        if (meetingModel != null) {
+            return meetingModel;
         } else {
-            return getEmptyEvents();
+            GetResultsForLapView getter = new GetResultsForLapView(context);
+            meetingModel = getter.getMeetingOfTheDay();
+            return meetingModel;
         }
     }
 
-    private ArrayList<ResultModel> getEmptyEvents() {
-        listOf_ResultModel = new ArrayList<ResultModel>();
-
-//        for (int i = 0; i < 3; i++) {
-//            SwimmerModel swimmerModel = new SwimmerModel();
-//            swimmerModel.setName("Name" + i);
-//            swimmerModel.setFirstname("FirstName" + i);
-//            swimmerModel.setIdFFN(888888);
-//            swimmerModel.setDateOfBirth(String.valueOf(1987 + i));
-//            swimmerModel.setClubModel(new ClubModel(1));
-//
-//            EventModel eventModel = new EventModel();
-//            eventModel.setId(i);
-//            eventModel.setOrder(10 * i);
-//            eventModel.setRaceModel(new RaceModel(3));
-//            eventModel.setRoundModel(new RoundModel(60));
-//
-//
-//            MeetingModel meetingModel = new MeetingModel();
-//            meetingModel.setId(1);
-//            meetingModel.setName("Championnats Régionaux Hiver");
-//            meetingModel.setStartDate("2014-04-29 00:00:00");
-//            meetingModel.setStopDate("2014-04-30 00:00:00");
-//            meetingModel.setPoolSize(25);
-//            meetingModel.setByTeam(false);
-//            meetingModel.setSeasonModel(new SeasonModel(1));
-//
-//
-//            ResultModel ResultModel = new ResultModel(swimmerModel, eventModel, meetingModel,  new Float(127789));
-//            listOf_ResultModel.add(ResultModel);
-//        }
-        listIsAlreadyBuilt = true;
-        return listOf_ResultModel;
-    }
-
-    private ArrayList<ResultModel> getList() {
-        return listOf_ResultModel;
-    }
-
-
-    public ResultModel getEventData(int eventPosition) {
-        return listOf_ResultModel.get(eventPosition);
+    public ResultModel getResultOfTheDay(int eventPosition) {
+        return meetingModel.getAllResults().get(eventPosition);
     }
 
 

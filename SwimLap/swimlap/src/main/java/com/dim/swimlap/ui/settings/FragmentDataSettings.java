@@ -25,7 +25,7 @@ public class FragmentDataSettings extends Fragment implements View.OnClickListen
 
     private DatePicker datePickerStart, datePickerStop;
     private Button buttonSeason, buttonClub;
-    private EditText clubName, clubCodeffn, seasonName;
+    private EditText editTextclubName, editTextclubCodeffn, editTextSeasonName;
 
 
     @Override
@@ -34,12 +34,12 @@ public class FragmentDataSettings extends Fragment implements View.OnClickListen
         // CLUB
         buttonClub = (Button) view.findViewById(R.id.id_button_modifyclub);
         buttonClub.setOnClickListener(this);
-        clubName = (EditText) view.findViewById(R.id.id_edittext_clubname);
-        clubCodeffn = (EditText) view.findViewById(R.id.id_edittext_club_codeffn);
+        editTextclubName = (EditText) view.findViewById(R.id.id_edittext_clubname);
+        editTextclubCodeffn = (EditText) view.findViewById(R.id.id_edittext_club_codeffn);
         // SEASON
         buttonSeason = (Button) view.findViewById(R.id.id_button_modifyseason);
         buttonSeason.setOnClickListener(this);
-        seasonName = (EditText) view.findViewById(R.id.id_edittext_seasonname);
+        editTextSeasonName = (EditText) view.findViewById(R.id.id_edittext_seasonname);
         datePickerStart = (DatePicker) view.findViewById(R.id.id_datepicker_startdate);
         datePickerStop = (DatePicker) view.findViewById(R.id.id_datepicker_stopdate);
 
@@ -52,14 +52,14 @@ public class FragmentDataSettings extends Fragment implements View.OnClickListen
         RecordSettings recordSettings = new RecordSettings(getActivity());
 
         if (view.getId() == R.id.id_button_modifyclub) {
-            ClubModel clubModel = new ClubModel(0);
-            clubModel.setName(clubName.getText().toString());
-            int codeClubFFN = Integer.valueOf(clubCodeffn.getText().toString());
-            clubModel.setCodeFFN(codeClubFFN);
+            int codeClubFFN = Integer.valueOf(editTextclubCodeffn.getText().toString());
+            ClubModel clubModel = new ClubModel(0,codeClubFFN);
+            clubModel.setName(editTextclubName.getText().toString());
             recordSettings.recordClub(clubModel);
+
         } else if (view.getId() == R.id.id_button_modifyseason) {
             SeasonModel seasonModel = new SeasonModel(0);
-            seasonModel.setName(seasonName.getText().toString());
+            seasonModel.setName(editTextSeasonName.getText().toString());
             String dateStart = getDateFromPicker(datePickerStart);
             seasonModel.setStartDate(dateStart);
             String dateStop = getDateFromPicker(datePickerStop);

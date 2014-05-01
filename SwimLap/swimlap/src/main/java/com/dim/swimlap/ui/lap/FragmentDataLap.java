@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
+import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.objects.FormatTimeAsString;
 import com.dim.swimlap.objects.Singleton;
@@ -40,7 +41,8 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
         singleton = Singleton.getInstance();
 
         listViewForLap = (ListView) view.findViewById(R.id.id_listview_lap);
-        adapter = new LapAdapter(this.getActivity(),singleton.buildEvent(), chronoIsStarted);
+        MeetingModel meetingModel = singleton.buildEvent(getActivity());
+        adapter = new LapAdapter(this.getActivity(),meetingModel.getAllResults(), chronoIsStarted);
         listViewForLap.setAdapter(adapter);
         return view;
     }
@@ -62,7 +64,7 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
         Integer position = getPositionOfView(view);
 
         View viewRow = listViewForLap.getChildAt(position);
-        ResultModel ResultModel = singleton.getEventData(position);
+        ResultModel ResultModel = singleton.getResultOfTheDay(position);
 
         int nbSplitRemaining = ResultModel.getnbSplitRemaining();
         if (nbSplitRemaining > 0) {
@@ -111,7 +113,7 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     public void resetLaps(View view) {
         int position = getPositionOfView(view);
         //reset data
-        singleton.getEventData(position).resetLaps();
+        singleton.getResultOfTheDay(position).resetLaps();
 
         //reset view
         View viewRow = listViewForLap.getChildAt(position);
@@ -126,7 +128,7 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     public void recordLaps(View view){
         int position = getPositionOfView(view);
         //reset data
-        singleton.getEventData(position).recordLapsInDB(getActivity());
+        singleton.getResultOfTheDay(position).recordLapsInDB(getActivity());
 
         //modify view
     }

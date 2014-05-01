@@ -30,7 +30,7 @@ public class DbTableEvents implements DbTableMODEL {
 
             COL_RAC_ID_RACE + " INTEGER , " +
             COL_EVE_ROUND_ID + " INTEGER , " +
-            COL_EVE_ORDER + " INTEGER , " +
+            COL_EVE_ORDER + " INTEGER " +
             ");";
 
     public static final String[] ALL_COLUMNS_AS_STRING_TAB = {

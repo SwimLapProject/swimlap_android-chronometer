@@ -16,6 +16,7 @@ import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.SeasonModel;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MeetingUtilities {
@@ -67,6 +68,22 @@ public class MeetingUtilities {
         return meetingModel;
     }
 
+    public MeetingModel getMeetingWithDates(Date today){
+        MeetingModel meetingToday = null;
+        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+           MeetingModel meeting = getDataMeeting_FromDb(cursor);
+           Date startDate = meeting.convertStringToDate(meeting.getStartDate());
+            Date stopDate = meeting.convertStringToDate(meeting.getStopDate());
+            if (today.after(startDate) && today.before(stopDate)){
+                meetingToday=meeting;
+            }
+            cursor.moveToNext();        }
+        cursor.close();
+        return meetingToday;
+    }
+
     /* GET CONTENT */
     private MeetingModel getDataMeeting_FromDb(Cursor cursor) {
         MeetingModel meetingModel = new MeetingModel();
@@ -77,6 +94,8 @@ public class MeetingUtilities {
         meetingModel.setStopDate(cursor.getString(4));
         meetingModel.setPoolSize(cursor.getInt(5));
         meetingModel.setSeasonModel(new SeasonModel(cursor.getInt(6)));
+        meetingModel.setClubId(cursor.getInt(7));
+        meetingModel.setClubCode(cursor.getInt(8));
         return meetingModel;
     }
 
@@ -90,6 +109,8 @@ public class MeetingUtilities {
         contentValues.put(table.COL_MEE_STOP_DATE, meetingModel.getStopDate());
         contentValues.put(table.COL_MEE_POOL_SIZE, meetingModel.getPoolSize());
         contentValues.put(table.COL_SEA_ID, meetingModel.getSeasonModel().getId());
+        contentValues.put(table.COL_CLU_ID, meetingModel.getClubId());
+        contentValues.put(table.COL_CLU_CODE , meetingModel.getClubCode());
         sqLiteDatabaseSwimLap.insert(table.TABLE_NAME, null, contentValues);
 
     }

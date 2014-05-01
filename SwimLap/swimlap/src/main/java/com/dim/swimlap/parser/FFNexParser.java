@@ -103,10 +103,11 @@ public class FFNexParser {
                     if (Integer.valueOf(xpp.getAttributeValue(null, "code")) == clubCodeFFN) {
                         // get the clubid corresponding to apllication club code
                         clubIdInThisMeeting = Integer.valueOf(xpp.getAttributeValue(null, "id"));
-                        ClubModel clubModel = new ClubModel(clubIdInThisMeeting);
+                        ClubModel clubModel = new ClubModel(clubIdInThisMeeting,clubCodeFFN);
                         clubModel.setName(xpp.getAttributeValue(null, "name"));
-                        clubModel.setCodeFFN(Integer.valueOf(xpp.getAttributeValue(null, "code")));
                         clubs.add(clubModel);
+                        meetingModel.setClubId(clubIdInThisMeeting);
+                        meetingModel.setClubCode(clubCodeFFN);
                     }
 
 

@@ -17,8 +17,9 @@ public class ClubModel {
 
     }
 
-    public ClubModel(int id) {
+    public ClubModel(int id, int code) {
         this.id = id;
+        this.codeFFN = code;
     }
 
     public int getId() {

@@ -31,7 +31,6 @@ public class DbTableResults implements DbTableMODEL {
 
     public static final String COL_MEE_ID_MEET = "col_mee_meet_id";
     public static final String COL_EVE_ID_EVENT = "col_eve_even_id";
-
     public static final String COL_RES_ID_RACE = "col_res_race_id";
 
 

@@ -16,10 +16,10 @@ public class DbTableClubs implements DbTableMODEL {
     public static final String COL_CLU_CODE_FFN = "col_clu_code_ffn";
 
     public static final String
-            REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
-            COL_CLU_ID + " INTEGER, " +
-            COL_CLU_NAME + " TEXT" +
-            COL_CLU_CODE_FFN + " INTEGER" +
+            REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " ( " +
+            COL_CLU_ID + " INTEGER , " +
+            COL_CLU_NAME + " TEXT , " +
+            COL_CLU_CODE_FFN + " INTEGER " +
             ");";
 
     public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_CLU_ID, COL_CLU_NAME, COL_CLU_CODE_FFN};

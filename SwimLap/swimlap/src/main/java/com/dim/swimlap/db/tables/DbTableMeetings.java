@@ -18,6 +18,8 @@ public class DbTableMeetings implements DbTableMODEL {
     public static final String COL_MEE_STOP_DATE = "col_mee_stop_date";
     public static final String COL_MEE_POOL_SIZE = "col_mee_pool_size";
     public static final String COL_SEA_ID = "col_sea_id";
+    public static final String COL_CLU_ID = "col_club_id";
+    public static final String COL_CLU_CODE = "col_club_code";
 
 
     public static final String
@@ -29,6 +31,9 @@ public class DbTableMeetings implements DbTableMODEL {
             COL_MEE_STOP_DATE + " TEXT, " +
             COL_MEE_POOL_SIZE + " INTEGER, " +
             COL_SEA_ID + " INTEGER " +
+            COL_CLU_ID + " INTEGER " +
+            COL_CLU_CODE + " INTEGER " +
+
             ");";
 
     public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_MEE_ID,
@@ -37,7 +42,9 @@ public class DbTableMeetings implements DbTableMODEL {
             COL_MEE_START_DATE,
             COL_MEE_STOP_DATE,
             COL_MEE_POOL_SIZE,
-            COL_SEA_ID};
+            COL_SEA_ID,
+            COL_CLU_ID,
+            COL_CLU_CODE};
 
     @Override
     public String getTableName() {
