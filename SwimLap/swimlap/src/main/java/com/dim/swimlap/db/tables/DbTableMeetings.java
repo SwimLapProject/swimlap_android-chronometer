@@ -30,10 +30,9 @@ public class DbTableMeetings implements DbTableMODEL {
             COL_MEE_START_DATE + " TEXT, " +
             COL_MEE_STOP_DATE + " TEXT, " +
             COL_MEE_POOL_SIZE + " INTEGER, " +
-            COL_SEA_ID + " INTEGER " +
-            COL_CLU_ID + " INTEGER " +
+            COL_SEA_ID + " INTEGER, " +
+            COL_CLU_ID + " INTEGER, " +
             COL_CLU_CODE + " INTEGER " +
-
             ");";
 
     public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_MEE_ID,

@@ -28,7 +28,7 @@ public class ClubUtilities {
 
     /* GETTERS */
     public ClubModel getClub_FromDb() {
-        ClubModel clubModel = null;
+        ClubModel clubModel =null;
         Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -36,12 +36,13 @@ public class ClubUtilities {
             cursor.moveToNext();
         }
         cursor.close();
+
         return clubModel;
     }
 
     /* GET CONTENT */
     private ClubModel getDataClub_FromDb(Cursor cursor) {
-        ClubModel clubModel = new ClubModel(cursor.getInt(0),cursor.getInt(2));
+        ClubModel clubModel = new ClubModel(cursor.getInt(0), cursor.getInt(2));
         clubModel.setName(cursor.getString(1));
         return clubModel;
     }
@@ -65,4 +66,15 @@ public class ClubUtilities {
     // no updater because only one club
 
     /* VERIFY ENTRY */
+    public boolean tableIsEmpty() {
+        boolean isEmpty;
+        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+
+        if (cursor.getCount() == 0) {
+            isEmpty = true;
+        } else {
+            isEmpty = false;
+        }
+        return isEmpty;
+    }
 }

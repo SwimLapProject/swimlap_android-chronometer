@@ -9,13 +9,18 @@ package com.dim.swimlap.models;
 
 public class EventModel {
 
-    private int id;
+    private int id; // equals to concatenation of raceid and roundid if no id in ffnex
     private int order; //order of events during meeting
 
     private RaceModel raceModel;
     private RoundModel roundModel;
 
-    public EventModel() {
+    public EventModel(int raceId, int roundId) {
+        this.raceModel = new RaceModel(raceId);
+        this.roundModel = new RoundModel(roundId);
+        String idAsString = String.valueOf(raceId)+String.valueOf(roundId);
+        this.id = Integer.valueOf(idAsString);
+
     }
 
     public EventModel(int id) {

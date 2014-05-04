@@ -9,6 +9,7 @@ package com.dim.swimlap.models;
 
 public class SeasonModel {
 
+    private static final String FFNEX_DATE_FORMAT = "yyyy-MM-dd";
     private int id;
     private String name;
     private String startDate;
@@ -16,6 +17,20 @@ public class SeasonModel {
 
     public SeasonModel(int id) {
         this.id = id;
+    }
+
+    public SeasonModel(String startDate) {
+        int startYearOfSeason = Integer.valueOf(startDate.substring(0, 4));
+        int monthOfMeeting = Integer.valueOf(startDate.substring(5, 7));
+        if (monthOfMeeting < 8) {
+            startYearOfSeason--;
+        }
+        this.id = startYearOfSeason;
+        this.name = String.valueOf(startYearOfSeason);
+        this.startDate = startYearOfSeason + "-09-01";
+        int secondYearOfSeason = startYearOfSeason + 1;
+        this.stopDate = secondYearOfSeason + "-08-31";
+
     }
 
     public int getId() {
@@ -49,4 +64,5 @@ public class SeasonModel {
     public void setStopDate(String stopDate) {
         this.stopDate = stopDate;
     }
+
 }

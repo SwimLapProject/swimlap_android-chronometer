@@ -56,7 +56,7 @@ public class MeetingUtilities {
     }
 
     public MeetingModel getAMeetingByName_FromDb(String meetingName) {
-        MeetingModel meetingModel = null;
+        MeetingModel meetingModel = new MeetingModel();
         String condition = table.COL_MEE_MEETING_NAME + "=" + meetingName;
         Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null, null);
         cursor.moveToFirst();
@@ -68,18 +68,19 @@ public class MeetingUtilities {
         return meetingModel;
     }
 
-    public MeetingModel getMeetingWithDates(Date today){
+    public MeetingModel getMeetingWithDates(Date today) {
         MeetingModel meetingToday = null;
         Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-           MeetingModel meeting = getDataMeeting_FromDb(cursor);
-           Date startDate = meeting.convertStringToDate(meeting.getStartDate());
+            MeetingModel meeting = getDataMeeting_FromDb(cursor);
+            Date startDate = meeting.convertStringToDate(meeting.getStartDate());
             Date stopDate = meeting.convertStringToDate(meeting.getStopDate());
-            if (today.after(startDate) && today.before(stopDate)){
-                meetingToday=meeting;
+            if (today.after(startDate) && today.before(stopDate)) {
+                meetingToday = meeting;
             }
-            cursor.moveToNext();        }
+            cursor.moveToNext();
+        }
         cursor.close();
         return meetingToday;
     }
@@ -110,7 +111,7 @@ public class MeetingUtilities {
         contentValues.put(table.COL_MEE_POOL_SIZE, meetingModel.getPoolSize());
         contentValues.put(table.COL_SEA_ID, meetingModel.getSeasonModel().getId());
         contentValues.put(table.COL_CLU_ID, meetingModel.getClubId());
-        contentValues.put(table.COL_CLU_CODE , meetingModel.getClubCode());
+        contentValues.put(table.COL_CLU_CODE, meetingModel.getClubCode());
         sqLiteDatabaseSwimLap.insert(table.TABLE_NAME, null, contentValues);
 
     }
@@ -135,5 +136,17 @@ public class MeetingUtilities {
             isPresent = true;
         }
         return isPresent;
+    }
+
+    public boolean tableIsEmpty() {
+        boolean isEmpty;
+        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+
+        if (cursor.getCount() == 0) {
+            isEmpty = true;
+        } else {
+            isEmpty = false;
+        }
+        return isEmpty;
     }
 }

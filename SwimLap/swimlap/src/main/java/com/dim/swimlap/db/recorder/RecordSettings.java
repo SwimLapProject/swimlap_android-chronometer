@@ -18,10 +18,8 @@ import java.sql.SQLException;
 public class RecordSettings {
 
     private DbUtilitiesBuilder db;
-    private Context context;
 
     public RecordSettings(Context context) {
-        this.context = context;
         db = new DbUtilitiesBuilder(context);
     }
 
@@ -33,7 +31,7 @@ public class RecordSettings {
                 db.getSeasonUtilities().addSeason_InDb(seasonToAdd);
             } else {
                 seasonToAdd.setId(seasonFromDb.getId());
-                db.getSeasonUtilities().updateSeason_InDb(seasonToAdd);
+                db.getSeasonUtilities().addSeason_InDb(seasonToAdd);
             }
 
         } catch (SQLException e) {

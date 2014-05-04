@@ -211,5 +211,14 @@ public class ResultUtilities {
     }
 
     /* VERIFY ENTRY */
-    //todo
-}
+    public boolean tableIsEmpty(){
+        boolean isEmpty;
+        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+
+        if (cursor.getCount() == 0) {
+            isEmpty = true;
+        } else {
+            isEmpty = false;
+        }
+        return isEmpty;
+    }}

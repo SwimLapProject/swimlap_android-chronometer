@@ -8,6 +8,8 @@
 package com.dim.swimlap.data;
 
 
+import com.dim.swimlap.models.RaceModel;
+
 import java.util.HashMap;
 
 public class RaceData {
@@ -42,6 +44,14 @@ public class RaceData {
             nbToReturn = nbRelayers.get(raceId);
         }
         return nbToReturn;
+    }
+
+    public boolean raceIdExists(int raceId){
+        boolean raceIdExists=false;
+        if(distances.containsKey(raceId)){
+            raceIdExists = true;
+        }
+        return raceIdExists;
     }
 
     public void makeData() {

@@ -22,11 +22,11 @@ public class DbTableSwimmers implements DbTableMODEL {
     public static final String
             REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
             COL_SWI_ID + " INTEGER, " +
-            COL_SWI_NAME + " TEXT," +
-            COL_SWI_FIRST_NAME + " TEXT," +
-            COL_SWI_DATE_OF_BIRTH + " TEXT," +
-            COL_SWI_GENDER + " TEXT," +
-            COL_CLU_CLUB_CODE + " TEXT" +
+            COL_SWI_NAME + " TEXT, " +
+            COL_SWI_FIRST_NAME + " TEXT, " +
+            COL_SWI_DATE_OF_BIRTH + " TEXT, " +
+            COL_SWI_GENDER + " TEXT, " +
+            COL_CLU_CLUB_CODE + " TEXT " +
             ");";
 
     public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_SWI_ID,

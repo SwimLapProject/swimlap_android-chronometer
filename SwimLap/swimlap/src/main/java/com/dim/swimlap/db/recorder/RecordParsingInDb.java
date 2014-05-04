@@ -38,7 +38,11 @@ public class RecordParsingInDb {
             } else {
                 /** SEASON **/
                 SeasonModel matchingSeason = db.getSeasonUtilities().getSeason_FromDb(meetingModel.getStartDate());
-                meetingModel.setSeasonModel(matchingSeason);
+                if (meetingModel.setSeasonModel(matchingSeason)) {
+                    // do nothing season: is recorded
+                } else {
+                    meetingModel.setSeasonModel(new SeasonModel(meetingModel.getStartDate()));
+                }
                 /** MEETING **/
                 db.getMeetingUtilities().addMeeting_InDb(meetingModel);
                 /** RESULTS **/

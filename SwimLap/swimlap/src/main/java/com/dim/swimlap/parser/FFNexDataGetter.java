@@ -23,6 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
+import java.sql.SQLException;
 
 public class FFNexDataGetter {
 
@@ -73,7 +74,16 @@ public class FFNexDataGetter {
 
     public boolean recordParsingHasBeenDone(int idMeetting, Context context) {
         DbUtilitiesBuilder db = new DbUtilitiesBuilder(context);
-        return db.getMeetingUtilities().meetingAlready_InDb(idMeetting);
+        boolean meetingAlreadyExists = false;
+        try{
+            db.open();
+            meetingAlreadyExists = db.getMeetingUtilities().meetingAlready_InDb(idMeetting);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            db.close();
+        }
+        return meetingAlreadyExists;
     }
 
     public void moveFFNexParsed(String fileNameParsed) {

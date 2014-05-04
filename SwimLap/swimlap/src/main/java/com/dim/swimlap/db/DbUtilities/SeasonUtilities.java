@@ -13,6 +13,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.dim.swimlap.db.tables.DbTableSeasons;
 import com.dim.swimlap.models.SeasonModel;
+import com.dim.swimlap.objects.DateTransformer;
+import com.dim.swimlap.objects.FormatTimeAsString;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,29 +32,33 @@ public class SeasonUtilities {
     /* GETTERS */
     public SeasonModel getSeason_FromDb(String dateAsString) {
         SeasonModel seasonToFind = null;
-        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            SeasonModel seasonFromDb = getDataSeason_FromDb(cursor);
-            if (seasonFromDb == null) {
-                seasonToFind = new SeasonModel(0);
-            } else {
-                SimpleDateFormat format = new SimpleDateFormat(FFNEX_DATE_FORMAT);
-                try {
-                    Date startDate = format.parse(seasonFromDb.getStartDate());
-                    Date stopDate = format.parse(seasonFromDb.getStopDate());
-                    Date currentDate = format.parse(dateAsString);
-                    if (startDate.before(currentDate) && stopDate.after(currentDate)) {
-                        seasonToFind = seasonFromDb;
-                    }
+        if (tableIsEmpty()) {
+            Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                SeasonModel seasonFromDb = getDataSeason_FromDb(cursor);
+                if (seasonFromDb == null) {
+                    DateTransformer transformer = new DateTransformer();
+                    seasonToFind = new SeasonModel(transformer.getTodayAsString());
+                } else {
+                    SimpleDateFormat format = new SimpleDateFormat(FFNEX_DATE_FORMAT);
+                    try {
+                        Date startDate = format.parse(seasonFromDb.getStartDate());
+                        Date stopDate = format.parse(seasonFromDb.getStopDate());
+                        Date currentDate = format.parse(dateAsString);
+                        if (startDate.before(currentDate) && stopDate.after(currentDate)) {
+                            seasonToFind = seasonFromDb;
+                        }
 
-                } catch (java.text.ParseException e) {
-                    e.printStackTrace();
+                    } catch (java.text.ParseException e) {
+                        e.printStackTrace();
+                    }
                 }
+                cursor.moveToNext();
             }
-            cursor.moveToNext();
+            cursor.close();
         }
-        cursor.close();
+
         return seasonToFind;
     }
 
@@ -68,32 +74,60 @@ public class SeasonUtilities {
 
     /* ADDER */
     public void addSeason_InDb(SeasonModel seasonModel) {
-        ContentValues contentValues = new ContentValues();
+        // FIRST verify the season has an correct id = year of the start date
         int startDateToBeId;
         if (seasonModel.getId() == 0) {
             startDateToBeId = Integer.valueOf(seasonModel.getStartDate().substring(0, 4));
         } else {
             startDateToBeId = seasonModel.getId();
         }
-        contentValues.put(table.COL_SEA_ID, startDateToBeId);
-        contentValues.put(table.COL_SEA_NAME, seasonModel.getName());
-        contentValues.put(table.COL_SEA_DATE_START, seasonModel.getStartDate());
-        contentValues.put(table.COL_SEA_DATE_STOP, seasonModel.getStopDate());
+        // SECOND : verify if a season already exist with this id and delete it
+        if (!tableIsEmpty()) {
+            if (seasonAlready_InDb(seasonModel.getStartDate())) {
+                deleteSeason_InDb(seasonModel);
+            }
+            //THIRD : add the new season
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(table.COL_SEA_ID, startDateToBeId);
+            contentValues.put(table.COL_SEA_NAME, seasonModel.getName());
+            contentValues.put(table.COL_SEA_DATE_START, seasonModel.getStartDate());
+            contentValues.put(table.COL_SEA_DATE_STOP, seasonModel.getStopDate());
 
-        sqLiteDatabaseSwimLap.insert(table.TABLE_NAME, null, contentValues);
+            sqLiteDatabaseSwimLap.insert(table.TABLE_NAME, null, contentValues);
+        }
     }
 
     /* DELETER */
     public void deleteSeason_InDb(SeasonModel seasonModel) {
-        sqLiteDatabaseSwimLap.delete(table.TABLE_NAME, null, null);
+        sqLiteDatabaseSwimLap.delete(table.TABLE_NAME, table.COL_SEA_ID + " = " + seasonModel.getId(), null);
     }
 
     /* UPDATER */
-    public void updateSeason_InDb(SeasonModel seasonModel) {
-        deleteSeason_InDb(seasonModel);
-        addSeason_InDb(seasonModel);
-    }
+//    public void updateSeason_InDb(SeasonModel seasonModel) {
+//        deleteSeason_InDb(seasonModel);
+//        addSeason_InDb(seasonModel);
+//    }
 
     /* VERIFY ENTRY */
-    //todo
+    public boolean seasonAlready_InDb(String startDate) {
+        boolean isPresent;
+        if (getSeason_FromDb(startDate) == null) {
+            isPresent = false;
+        } else {
+            isPresent = true;
+        }
+        return isPresent;
+    }
+
+    public boolean tableIsEmpty() {
+        boolean isEmpty;
+        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+
+        if (cursor.getCount() == 0) {
+            isEmpty = true;
+        } else {
+            isEmpty = false;
+        }
+        return isEmpty;
+    }
 }

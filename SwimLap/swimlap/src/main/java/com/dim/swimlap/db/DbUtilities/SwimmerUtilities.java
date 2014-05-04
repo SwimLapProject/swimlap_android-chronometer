@@ -44,7 +44,7 @@ public class SwimmerUtilities {
 
     public SwimmerModel getSwimmer_FromDb(int swimmerIdToGet) {
         String[] swimmerIdAsStrings = {String.valueOf(swimmerIdToGet)};
-        SwimmerModel swimmer = null;
+        SwimmerModel swimmer = new SwimmerModel(0);
         Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, table.COL_SWI_ID + " = ?", swimmerIdAsStrings, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -108,5 +108,15 @@ public class SwimmerUtilities {
         return isPresent;
     }
 
+    public boolean tableIsEmpty(){
+        boolean isEmpty;
+        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
 
+        if (cursor.getCount() == 0) {
+            isEmpty = true;
+        } else {
+            isEmpty = false;
+        }
+        return isEmpty;
+    }
 }

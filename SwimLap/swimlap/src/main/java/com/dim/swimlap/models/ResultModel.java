@@ -37,6 +37,7 @@ public class ResultModel {
 
     public ResultModel(int id) {
         this.id = id;
+        laps = new ArrayList<Float>();
         // with this constructor elements must be added: swimmer or team, eventmodel , poolsize , qualifyingtime
     }
 
@@ -48,12 +49,13 @@ public class ResultModel {
         team.add(swimmerModel);
     }
 
-    public void buildContent(float qualifyingTime, int poolSize, int meetingId) {
+    public void buildContent(float qualifyingTime, int poolSize, int meetingId,EventModel eventModel) {
+        this.eventModel = eventModel;
         this.meetingId = meetingId;
         this.poolSize = poolSize;
         // qualifying time must be in milliseconds
         this.qualifyingTime = qualifyingTime;
-        numberOfLap = eventModel.getRaceModel().getDistance() / poolSize;
+        numberOfLap = this.eventModel.getRaceModel().getDistance() / poolSize;
         currentLapSwimming = 0;
         lapMin = (qualifyingTime * 10000 / numberOfLap) * 75 / 100;
         lapMax = (qualifyingTime * 10000 / numberOfLap) * 125 / 100;

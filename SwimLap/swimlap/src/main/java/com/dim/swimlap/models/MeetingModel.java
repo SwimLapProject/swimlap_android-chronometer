@@ -100,10 +100,15 @@ public class MeetingModel {
         return seasonModel;
     }
 
-    public void setSeasonModel(SeasonModel seasonModel) {
-        //todo calculate season
-        this.seasonModel = seasonModel;
+    public boolean setSeasonModel(SeasonModel seasonModel) {
+        boolean seasonIsAdded = false;
+        if (seasonModel != null) {
+            this.seasonModel = seasonModel;
+            seasonIsAdded = true;
+        }
+        return seasonIsAdded;
     }
+
 
     private String convertDateToString(Date dateToConvert) {
         SimpleDateFormat formatter = new SimpleDateFormat(FFNEX_DATE_FORMAT);
