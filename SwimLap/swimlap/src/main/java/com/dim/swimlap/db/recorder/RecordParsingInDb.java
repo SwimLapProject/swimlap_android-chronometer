@@ -13,7 +13,6 @@ import com.dim.swimlap.db.builder.DbUtilitiesBuilder;
 import com.dim.swimlap.models.EventModel;
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
-import com.dim.swimlap.models.SeasonModel;
 import com.dim.swimlap.models.SwimmerModel;
 
 import java.sql.SQLException;
@@ -26,7 +25,6 @@ public class RecordParsingInDb {
 
     public RecordParsingInDb(Context context) {
         this.context = context;
-
         db = new DbUtilitiesBuilder(context);
     }
 
@@ -37,11 +35,9 @@ public class RecordParsingInDb {
                 //todo : tell user, the meeting already exists
             } else {
                 /** SEASON **/
-                SeasonModel matchingSeason = db.getSeasonUtilities().getSeason_FromDb(meetingModel.getStartDate());
-                if (meetingModel.setSeasonModel(matchingSeason)) {
-                    // do nothing season: is recorded
-                } else {
-                    meetingModel.setSeasonModel(new SeasonModel(meetingModel.getStartDate()));
+            // todo next : remove season from db using SeasonData
+                if(!db.getSeasonUtilities().seasonAlready_InDb(meetingModel.getStartDate())){
+                    db.getSeasonUtilities().addSeason_InDb(meetingModel.getSeasonModel());
                 }
                 /** MEETING **/
                 db.getMeetingUtilities().addMeeting_InDb(meetingModel);

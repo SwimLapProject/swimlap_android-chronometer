@@ -8,6 +8,7 @@
 package com.dim.swimlap.ui;
 
 
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.dim.swimlap.models.ResultModel;
@@ -29,6 +30,8 @@ public interface CommunicationFragments {
     public void saveLapList(ArrayList<ResultModel> list);
 
     public ArrayList<ResultModel> giveBackLapList();
+
+    public void buildFragmentDataLapWithNewRaceId();
 
 
 }

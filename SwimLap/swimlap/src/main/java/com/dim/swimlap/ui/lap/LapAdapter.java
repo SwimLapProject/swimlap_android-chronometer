@@ -37,73 +37,86 @@ public class LapAdapter extends ArrayAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        View rowView = convertView;
+        ViewHolder viewHolder;
+        if (rowView == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            rowView = inflater.inflate(R.layout.viewforlist_data_lap, parent, false);
+            viewHolder = new ViewHolder();
 
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.viewforlist_data_lap, parent, false);
+            // BUILD ELEMENT OF ROW
 
-        // BUILD ELEMENT OF ROW
+            // BUTTON LAP
+            viewHolder.buttonTakeLap = (Button) rowView.findViewById(R.id.id_button_take_lap);
+            viewHolder.buttonTakeLap.setTag("lap_" + position);
+            viewHolder.buttonTakeLap.setBackgroundResource(R.drawable.button_basic_with_shadow);
 
-        // BUTTON LAP
-        Button buttonLap = (Button) rowView.findViewById(R.id.id_button_take_lap);
-        buttonLap.setVisibility(View.INVISIBLE);
-        buttonLap.setTag("lap_" + position);
-        buttonLap.setBackgroundResource(R.drawable.button_basic_with_shadow);
+            //BUTTON RECORD
+            viewHolder.buttonRecordLap = (Button) rowView.findViewById(R.id.id_button_record_lap);
+            viewHolder.buttonRecordLap.setTag("rec_" + position);
+            viewHolder.buttonRecordLap.setBackgroundResource(R.drawable.button_basic_with_shadow);
 
-        //BUTTON RECORD
-        Button buttonLapRecord = (Button) rowView.findViewById(R.id.id_button_record_lap);
-        buttonLapRecord.setVisibility(View.VISIBLE);
-        buttonLapRecord.setTag("rec_" + position);
-        buttonLapRecord.setBackgroundResource(R.drawable.button_basic_with_shadow);
-
-        //BUTTON RESET
-        Button buttonLapReset = (Button) rowView.findViewById(R.id.id_button_reset_lap);
-        buttonLapReset.setVisibility(View.VISIBLE);
-        buttonLapReset.setTag("res_" + position);
-        buttonLapReset.setBackgroundResource(R.drawable.button_basic_with_shadow);
+            //BUTTON RESET
+            viewHolder.buttonResetLap = (Button) rowView.findViewById(R.id.id_button_reset_lap);
+            viewHolder.buttonResetLap.setTag("res_" + position);
+            viewHolder.buttonResetLap.setBackgroundResource(R.drawable.button_basic_with_shadow);
 
 
-        // TEXT VIEW
-        TextView textViewSwimmerDetails = (TextView) rowView.findViewById(R.id.id_textview_lap_swimmerdetails);
-        TextView textViewQualifiedTime = (TextView) rowView.findViewById(R.id.id_textview_qualifiedTime);
+            // TEXT VIEW
+            viewHolder.textViewSwimmerDetails = (TextView) rowView.findViewById(R.id.id_textview_lap_swimmerdetails);
+            viewHolder.textViewQualifiedTime = (TextView) rowView.findViewById(R.id.id_textview_qualifiedTime);
 
-//        textViewSwimmerDetails.setId(resultModelList.get(position).getEventModel().getId());
 
-        // FILL ELEMENT WITH DATA FROM DB
-        String name = resultModelList.get(position).getSwimmerModel().getName();
-        String firstName = resultModelList.get(position).getSwimmerModel().getFirstname();
-        String dateOfBird = resultModelList.get(position).getSwimmerModel().getDateOfBirth();
-        float qualifyingTime = resultModelList.get(position).getQualifyingTime();
-        String qualifTimeAsString = formatTime.makeString(qualifyingTime);
-        textViewSwimmerDetails.setText(name + "  " + firstName + "  " + dateOfBird);
-        textViewQualifiedTime.setText(qualifTimeAsString);
+            // FILL ELEMENT WITH DATA FROM DB
+            String name = resultModelList.get(position).getSwimmerModel().getName();
+            String firstName = resultModelList.get(position).getSwimmerModel().getFirstname();
+            String dateOfBird = resultModelList.get(position).getSwimmerModel().getDateOfBirth();
+            float qualifyingTime = resultModelList.get(position).getQualifyingTime();
+            String qualifTimeAsString = formatTime.makeString(qualifyingTime);
+            viewHolder.textViewSwimmerDetails.setText(name + "  " + firstName + "  " + dateOfBird);
+            viewHolder.textViewQualifiedTime.setText(qualifTimeAsString);
 
-        TextView tvAllLaps = (TextView) rowView.findViewById(R.id.id_textview_all_laps);
-        tvAllLaps.setTag("TV_all_" + position);
+            viewHolder.textViewAllLaps = (TextView) rowView.findViewById(R.id.id_textview_all_laps);
+            viewHolder.textViewAllLaps.setTag("TV_all_" + position);
 
-        TextView tvLapLast = (TextView) rowView.findViewById(R.id.id_textview_last);
-        tvLapLast.setTag("TV_last_" + position);
+            viewHolder.textViewLastLap = (TextView) rowView.findViewById(R.id.id_textview_last);
+            viewHolder.textViewLastLap.setTag("TV_last_" + position);
 
-        if (chronoIsStarted) {
-            buttonLap.setVisibility(View.VISIBLE);
-            buttonLapReset.setVisibility(View.INVISIBLE);
-            buttonLapRecord.setVisibility((View.INVISIBLE));
-        } else {
-            buttonLap.setVisibility(View.INVISIBLE);
-            buttonLapReset.setVisibility(View.VISIBLE);
-            buttonLapRecord.setVisibility((View.VISIBLE));
-        }
-
-        if (resultModelList.get(position).trueIfSomeLapsAreAlreadyTaken()) {
-            ArrayList<String> listOfLineToInsertInAllLaps = resultModelList.get(position).giveBackLapsToInsertInTextViewAllLaps();
-            String stringToInsert = null;
-            for (int indexLap = 0; indexLap < listOfLineToInsertInAllLaps.size(); indexLap++) {
-                stringToInsert += listOfLineToInsertInAllLaps.get(indexLap);
+            if (chronoIsStarted) {
+                viewHolder.buttonTakeLap.setVisibility(View.VISIBLE);
+                viewHolder.buttonResetLap.setVisibility(View.INVISIBLE);
+                viewHolder.buttonRecordLap.setVisibility((View.INVISIBLE));
+            } else {
+                viewHolder.buttonTakeLap.setVisibility(View.INVISIBLE);
+                viewHolder.buttonResetLap.setVisibility(View.VISIBLE);
+                viewHolder.buttonRecordLap.setVisibility((View.VISIBLE));
             }
-            tvAllLaps.setText(stringToInsert);
-            tvLapLast.setText(resultModelList.get(position).giveBackLastLap());
+
+            if (resultModelList.get(position).trueIfSomeLapsAreAlreadyTaken()) {
+                ArrayList<String> listOfLineToInsertInAllLaps = resultModelList.get(position).giveBackLapsToInsertInTextViewAllLaps();
+                String stringToInsert = null;
+                for (int indexLap = 0; indexLap < listOfLineToInsertInAllLaps.size(); indexLap++) {
+                    stringToInsert += listOfLineToInsertInAllLaps.get(indexLap);
+                }
+                viewHolder.textViewAllLaps.setText(stringToInsert);
+                viewHolder.textViewLastLap.setText(resultModelList.get(position).giveBackLastLap());
+
+            }
+
+            rowView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) rowView.getTag();
 
         }
+
+
         return rowView;
+    }
+
+    private static class ViewHolder {
+        public static Button buttonTakeLap, buttonResetLap, buttonRecordLap;
+        public static TextView textViewSwimmerDetails, textViewQualifiedTime, textViewAllLaps, textViewLastLap;
+
     }
 
 }

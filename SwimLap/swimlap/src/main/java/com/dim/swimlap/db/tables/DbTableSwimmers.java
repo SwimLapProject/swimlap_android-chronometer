@@ -32,7 +32,6 @@ public class DbTableSwimmers implements DbTableMODEL {
     public static final String[] ALL_COLUMNS_AS_STRING_TAB = {COL_SWI_ID,
             COL_SWI_NAME,
             COL_SWI_FIRST_NAME,
-            COL_SWI_FIRST_NAME,
             COL_SWI_DATE_OF_BIRTH,
             COL_SWI_GENDER,
             COL_CLU_CLUB_CODE};

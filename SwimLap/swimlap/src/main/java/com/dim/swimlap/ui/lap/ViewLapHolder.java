@@ -7,5 +7,5 @@
 
 package com.dim.swimlap.ui.lap;
 
-public class ViewTimeLap {
+public class ViewLapHolder {
 }

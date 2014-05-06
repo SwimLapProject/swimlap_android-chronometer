@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -19,38 +20,57 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.objects.FormatTimeAsString;
 import com.dim.swimlap.objects.Singleton;
 
 import java.util.ArrayList;
 
-public class FragmentDataLap extends Fragment implements AdapterView.OnItemClickListener {
+public class FragmentDataLap extends Fragment implements AdapterView.OnItemClickListener, AbsListView.OnScrollListener {
 
     private ListView listViewForLap;
+    private TextView textViewNoMeetingInLap;
     private LapAdapter adapter;
     private FormatTimeAsString formatTime;
     private boolean chronoIsStarted;
     private ArrayList<ResultModel> list;
     private Singleton singleton;
+    private int raceIdOfThisFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_lap, container, false);
         singleton = Singleton.getInstance();
+        boolean meetingOfTheDayIsBuilt = singleton.buildEvent(getActivity());
 
         listViewForLap = (ListView) view.findViewById(R.id.id_listview_lap);
-        MeetingModel meetingModel = singleton.buildEvent(getActivity());
-        adapter = new LapAdapter(this.getActivity(),meetingModel.getAllResults(), chronoIsStarted);
-        listViewForLap.setAdapter(adapter);
+        textViewNoMeetingInLap = (TextView) view.findViewById(R.id.id_textview_no_meeting_in_lap);
+        textViewNoMeetingInLap.setVisibility(View.INVISIBLE);
+
+
+        if (!meetingOfTheDayIsBuilt) {
+            // this case appear when there no club indicate in settings
+            Toast.makeText(getActivity(), "You must complete settings please.", Toast.LENGTH_SHORT).show();
+            textViewNoMeetingInLap.setText("No meeting found today");
+            textViewNoMeetingInLap.setVisibility(View.VISIBLE);
+            listViewForLap.setVisibility(View.INVISIBLE);
+        } else {
+            raceIdOfThisFragment = singleton.getCurrentRaceId();
+            listViewForLap.setVisibility(View.VISIBLE);
+            textViewNoMeetingInLap.setVisibility(View.INVISIBLE);
+
+            ArrayList<ResultModel> resultsToDisplay = singleton.getResultsByRace(raceIdOfThisFragment);
+            adapter = new LapAdapter(this.getActivity(), resultsToDisplay, chronoIsStarted);
+            listViewForLap.setAdapter(adapter);
+
+        }
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        listViewForLap.setOnItemClickListener(this);
+        listViewForLap.setOnScrollListener(this);
         formatTime = new FormatTimeAsString();
     }
 
@@ -92,20 +112,32 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     }
 
     public void changeButtonLap(boolean chronoIsStarted) {
-        for (int position = 0; position <= listViewForLap.getLastVisiblePosition(); position++) {
-            View viewRow = listViewForLap.getChildAt(position);
-            if (chronoIsStarted) {
-                viewRow.findViewById(R.id.id_button_take_lap).setVisibility(View.VISIBLE);
-                viewRow.findViewById(R.id.id_button_reset_lap).setVisibility(View.INVISIBLE);
-                viewRow.findViewById(R.id.id_button_record_lap).setVisibility((View.INVISIBLE));
-            } else {
-                viewRow.findViewById(R.id.id_button_take_lap).setVisibility(View.INVISIBLE);
-                viewRow.findViewById(R.id.id_button_reset_lap).setVisibility(View.VISIBLE);
-                viewRow.findViewById(R.id.id_button_record_lap).setVisibility((View.VISIBLE));
-            }
+        this.chronoIsStarted = chronoIsStarted;
+        int firstVisibleRow = listViewForLap.getFirstVisiblePosition();
+        int lastVisibleRow = listViewForLap.getLastVisiblePosition();
+        doChangeButtonLap(firstVisibleRow, lastVisibleRow);
 
+    }
+
+    private void doChangeButtonLap(int firstVisible, int lastVisible) {
+
+        for (int position = firstVisible; position <= lastVisible; position++) {
+            View viewRow = listViewForLap.getChildAt(position);
+            if (viewRow != null) {
+                if (chronoIsStarted) {
+                    viewRow.findViewById(R.id.id_button_take_lap).setVisibility(View.VISIBLE);
+                    viewRow.findViewById(R.id.id_button_reset_lap).setVisibility(View.INVISIBLE);
+                    viewRow.findViewById(R.id.id_button_record_lap).setVisibility((View.INVISIBLE));
+                } else {
+                    viewRow.findViewById(R.id.id_button_take_lap).setVisibility(View.INVISIBLE);
+                    viewRow.findViewById(R.id.id_button_reset_lap).setVisibility(View.VISIBLE);
+                    viewRow.findViewById(R.id.id_button_record_lap).setVisibility((View.VISIBLE));
+                }
+            }
         }
     }
+
+
     public void setChronoIsStarted(boolean isStarted) {
         this.chronoIsStarted = isStarted;
     }
@@ -125,7 +157,7 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
 
     }
 
-    public void recordLaps(View view){
+    public void recordLaps(View view) {
         int position = getPositionOfView(view);
         //reset data
         singleton.getResultOfTheDay(position).recordLapsInDB(getActivity());
@@ -137,5 +169,17 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
         String posString = (String) view.getTag();
         posString = posString.substring(4);
         return Integer.valueOf(posString);
+    }
+
+    @Override
+    public void onScrollStateChanged(AbsListView absListView, int i) {
+        // do nothing
+    }
+
+    @Override
+    public void onScroll(AbsListView absListView, int first, int count, int total) {
+        // in count there is the first so must minus one
+        int last = first + count - 1;
+        doChangeButtonLap(first, last);
     }
 }

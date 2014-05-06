@@ -16,7 +16,6 @@ import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.models.SeasonModel;
 import com.dim.swimlap.models.SwimmerModel;
-import com.dim.swimlap.objects.SimpleChronometerBuilder;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,32 +24,33 @@ import java.util.List;
 
 public class GetResultsForLapView {
 
-    private DbUtilitiesBuilder db;
+    private Context context;
     private MeetingModel meetingOfTheDay;
 
     public GetResultsForLapView(Context context) {
-        db = new DbUtilitiesBuilder(context);
+        this.context = context;
     }
 
     public MeetingModel getMeetingOfTheDay() {
         // GET DATE OF THE DAY TO KNOW IF A MEETING EXIST
         Date today = new Date();
+        DbUtilitiesBuilder db1 = new DbUtilitiesBuilder(context);
         try {
-            db.open();
-            meetingOfTheDay = db.getMeetingUtilities().getMeetingWithDates(today);
-            if (meetingOfTheDay == null) {
-                ClubModel club = db.getClubUtilities().getClub_FromDb();
-                SimpleChronometerBuilder simpleBuilder = new SimpleChronometerBuilder(club, 25, false);
-                meetingOfTheDay = simpleBuilder.getBuiltMeetingForSimple();
+            db1.open();
+            ClubModel club = db1.getClubUtilities().getClub_FromDb();
+            if (club == null) {
+                // do nothing Toast in caller please
             } else {
-                fillMeetingWithResult();
-                fillMeetingWithSeason();
+                meetingOfTheDay = db1.getMeetingUtilities().getMeetingWithDates(today);
+                if (meetingOfTheDay != null) {
+                    fillMeetingWithResult();
+                    fillMeetingWithSeason();
+                }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            db.close();
+            db1.close();
         }
 
         return meetingOfTheDay;
@@ -58,9 +58,11 @@ public class GetResultsForLapView {
 
     private void fillMeetingWithResult() {
         List<ResultModel> resultsInDB = new ArrayList<ResultModel>();
+        DbUtilitiesBuilder db2 = new DbUtilitiesBuilder(context);
+
         try {
-            db.open();
-            resultsInDB = db.getResultUtilities().getAllResultsFromDb_ByMeeting(meetingOfTheDay.getId());
+            db2.open();
+            resultsInDB = db2.getResultUtilities().getAllResultsFromDb_ByMeeting(meetingOfTheDay.getId());
 
             /** FOR EACH RESULT IN DB OF MEETING **/
             for (int indexResult = 0; indexResult < resultsInDB.size(); indexResult++) {
@@ -68,19 +70,19 @@ public class GetResultsForLapView {
                 /** TEAM **/
                 if (resultToFillThenToAdd.isRelay()) {
                     for (int indexSwimmer = 0; indexSwimmer < resultToFillThenToAdd.getTeam().size(); indexSwimmer++) {
-                        SwimmerModel swimmerToFill = resultToFillThenToAdd.getTeam().get(indexSwimmer);
-                        fillSwimmerWithClub(swimmerToFill);
+                        int idSwimmerToFill = resultToFillThenToAdd.getTeam().get(indexSwimmer).getIdFFN();
+                        resultToFillThenToAdd.getTeam().add(fillSwimmerWithClub(idSwimmerToFill));
                     }
                 } else {
                     /** SWIMMER **/
-                    SwimmerModel swimmerToFill = resultToFillThenToAdd.getSwimmerModel();
-                    fillSwimmerWithClub(swimmerToFill);
+                    int idSwimmerToFill = resultToFillThenToAdd.getSwimmerModel().getIdFFN();
+                    resultToFillThenToAdd.setSwimmerModel(fillSwimmerWithClub(idSwimmerToFill));
                 }
                 /** EVENT **/
                 int idEvent = resultToFillThenToAdd.getEventModel().getId();
                 EventModel eventTofill = resultToFillThenToAdd.getEventModel();
-                EventModel eventFromDb = db.getEventUtilities().getEventModel_FromDb(idEvent, meetingOfTheDay.getId());
-                eventTofill = eventFromDb;
+                EventModel eventFromDb = db2.getEventUtilities().getEventModel_FromDb(idEvent, meetingOfTheDay.getId());
+                resultToFillThenToAdd.setEventModel(eventFromDb);
 
                 /** ADD EACH RESULT GETTED FROM DB IN MEETING */
                 meetingOfTheDay.addResult(resultToFillThenToAdd);
@@ -89,38 +91,42 @@ public class GetResultsForLapView {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            db.close();
+            db2.close();
         }
     }
 
-    private void fillSwimmerWithClub(SwimmerModel swimmerToFill) {
-        int idSwimmerToFind = swimmerToFill.getIdFFN();
+    private SwimmerModel fillSwimmerWithClub(int idSwimmerToFind) {
+        DbUtilitiesBuilder db3 = new DbUtilitiesBuilder(context);
+        SwimmerModel swimmerToFill = null;
         try {
-            db.open();
-            swimmerToFill = db.getSwimmerUtilities().getSwimmer_FromDb(idSwimmerToFind);
-
-            int clubCodeFromMeeting = swimmerToFill.getClubModel().getCodeFFN();
-            ClubModel clubFromDb = db.getClubUtilities().getClub_FromDb();
+            db3.open();
+            swimmerToFill = db3.getSwimmerUtilities().getSwimmer_FromDb(idSwimmerToFind);
+            int clubCodeFromMeeting = meetingOfTheDay.getClubCode();
+            ClubModel clubFromDb = db3.getClubUtilities().getClub_FromDb();
             if (clubFromDb.getCodeFFN() == clubCodeFromMeeting) {
+
                 swimmerToFill.getClubModel().setName(clubFromDb.getName());
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            db.close();
+            db3.close();
         }
+        return swimmerToFill;
     }
 
     private void fillMeetingWithSeason() {
         SeasonModel seasonOfMeeting = meetingOfTheDay.getSeasonModel();
         String startDateOfMeeting = meetingOfTheDay.getStartDate();
+        DbUtilitiesBuilder db4 = new DbUtilitiesBuilder(context);
+
         try {
-            db.open();
-            seasonOfMeeting = db.getSeasonUtilities().getSeason_FromDb(startDateOfMeeting);
+            db4.open();
+            seasonOfMeeting = db4.getSeasonUtilities().getSeason_FromDb(startDateOfMeeting);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            db.close();
+            db4.close();
         }
     }
 }

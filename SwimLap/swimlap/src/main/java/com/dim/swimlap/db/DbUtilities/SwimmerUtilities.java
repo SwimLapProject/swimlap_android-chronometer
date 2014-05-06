@@ -44,7 +44,7 @@ public class SwimmerUtilities {
 
     public SwimmerModel getSwimmer_FromDb(int swimmerIdToGet) {
         String[] swimmerIdAsStrings = {String.valueOf(swimmerIdToGet)};
-        SwimmerModel swimmer = new SwimmerModel(0);
+        SwimmerModel swimmer =null;
         Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, table.COL_SWI_ID + " = ?", swimmerIdAsStrings, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {

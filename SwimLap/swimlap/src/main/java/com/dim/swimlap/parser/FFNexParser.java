@@ -127,7 +127,7 @@ public class FFNexParser {
                         swimmerModel.setFirstname(xpp.getAttributeValue(null, "firstname"));
                         swimmerModel.setName(xpp.getAttributeValue(null, "lastname"));
                         swimmerModel.setGender(xpp.getAttributeValue(null, "gender"));
-                        swimmerModel.setGender(xpp.getAttributeValue(null, "birthdate"));
+                        swimmerModel.setDateOfBirth(xpp.getAttributeValue(null, "birthdate"));
                         int clubId = Integer.valueOf(xpp.getAttributeValue(null, "clubid"));
                         for (int i = 0; i < clubs.size(); i++) {
                             if (clubs.get(i).getId() == clubId) {

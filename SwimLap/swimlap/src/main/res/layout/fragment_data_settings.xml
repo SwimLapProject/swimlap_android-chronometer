@@ -29,7 +29,7 @@
                 android:id="@+id/id_button_modifyclub"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
-                android:text="modify"
+                android:text="Save"
                 android:background="@drawable/button_basic_with_shadow"
 
                 />
@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:layout_alignParentRight="true"
-                android:text="modify"
+                android:text="Save"
                 android:background="@drawable/button_basic_with_shadow"
                 />
 

@@ -12,7 +12,7 @@ public class FormatTimeAsString {
     public String makeString(float timeInMilli) {
         int milliSec = (int) timeInMilli % 1000;
         String milliInString = String.valueOf(milliSec);
-        milliInString += "0000";
+        milliInString += "00";
         milliInString = milliInString.substring(0, 2);
         int secondsTotal = (int) (timeInMilli - milliSec) / 1000;
         int seconds = secondsTotal % 60;

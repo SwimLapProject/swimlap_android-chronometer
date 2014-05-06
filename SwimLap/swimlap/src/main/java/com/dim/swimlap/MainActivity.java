@@ -27,7 +27,8 @@ public class MainActivity extends Activity {
             public void run() {
                 try {
                     logoTimer = 0;
-                    //todo don't know if splash screen will work find so remove directory creation
+                    // todo: don't know if splash screen will work find
+                    // todo: so remove the directory creation to put it in an other file
                     FFNexDataGetter ffNexDataGetter = new FFNexDataGetter();
                     ffNexDataGetter.createDirectory();
                     while (logoTimer < 1000) {

@@ -17,7 +17,7 @@ import com.dim.swimlap.models.SwimmerModel;
 
 import java.util.List;
 
-public class SimpleChronometerBuilder {
+public class SimpleChronoDataBuilder {
 
     private MeetingModel meetingForSimple;
     private static final int DEFAULT_ID = 888888;
@@ -28,7 +28,7 @@ public class SimpleChronometerBuilder {
     private ClubModel club;
 
 
-    public SimpleChronometerBuilder(ClubModel clubModel,int poolSize, boolean byTeam) {
+    public SimpleChronoDataBuilder(ClubModel clubModel, int poolSize, boolean byTeam) {
         this.club = clubModel;
         meetingForSimple = new MeetingModel();
         meetingForSimple.setId(DEFAULT_ID);

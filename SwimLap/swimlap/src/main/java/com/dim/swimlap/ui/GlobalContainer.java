@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.dim.swimlap.R;
 import com.dim.swimlap.models.ResultModel;
+import com.dim.swimlap.objects.Singleton;
 import com.dim.swimlap.ui.lap.FragmentDataLap;
 import com.dim.swimlap.ui.lap.FragmentNavLap;
 import com.dim.swimlap.ui.lap.FragmentTitleLap;
@@ -70,6 +71,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     private FragmentDataSettings fragmentDataSettings;
 
     private int currentView, lastView;
+    private Singleton singleton;
+
     private static int
             VIEW_MENU = 0,
             VIEW_LAP = 1,
@@ -87,6 +90,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_global_container);
+        singleton = Singleton.getInstance();
+        singleton.buildEvent(getApplicationContext());
 
         // FRAGMENT FOR THE VIEW MENU
         fragmentDirect = new FragmentDirect();
@@ -145,9 +150,10 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                 newTransaction.addToBackStack(null);
 
             } else if (code == VIEW_LAP) {
+
                 newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleLap);
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavLap);
-                newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataLap);
+                addFragmentDataLapDependOnRaceId(newTransaction);
                 newTransaction.addToBackStack(null);
             } else if (code == VIEW_SIMPLE) {
                 newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleSimple);
@@ -188,6 +194,19 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         }
     }
 
+    @Override
+    public void buildFragmentDataLapWithNewRaceId() {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction newTransaction = manager.beginTransaction();
+        addFragmentDataLapDependOnRaceId(newTransaction);
+        newTransaction.addToBackStack(null);
+        newTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        newTransaction.commit();
+    }
+
+    private void addFragmentDataLapDependOnRaceId(FragmentTransaction newTransaction) {
+        newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataLap);
+    }
 
     @Override
     public void getGlobalLap(View view) {
@@ -217,6 +236,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     public ArrayList<ResultModel> giveBackLapList() {
         return savedLapList;
     }
+
 
     @Override
     public void inverseButtonsInLap(boolean chronoIsStarted) {
