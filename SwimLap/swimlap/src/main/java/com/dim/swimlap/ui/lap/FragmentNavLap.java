@@ -44,8 +44,8 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (singleton.buildEvent(getActivity())) {
-            ArrayList<EventModel> eventsOfTheDay = singleton.getAllRaceFromEventsInMeeting();
-            for (int indexRace = eventsOfTheDay.size()-1; indexRace >=0; indexRace--) {
+            ArrayList<EventModel> eventsOfTheDay = singleton.getAllEventsByOrderInMeeting();
+            for (int indexRace = eventsOfTheDay.size() - 1; indexRace >= 0; indexRace--) {
                 RaceModel race = eventsOfTheDay.get(indexRace).getRaceModel();
                 String nameToPutInButton = race.getDistance() + " " + race.getStyle() + " " + race.getGender();
                 int idRace = race.getId();
@@ -72,9 +72,8 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
         String[] splitedTag = tag.split("_");
         int newRaceId = Integer.valueOf(splitedTag[1]);
         modifyButtonRaceSelected(newRaceId);
-
         singleton.setCurrentRaceId(newRaceId);
-        communication.buildFragmentDataLapWithNewRaceId();
+        communication.replaceFragmentDataLap(newRaceId);
 //        Toast.makeText(view.getContext(), b, Toast.LENGTH_SHORT).show();
 
     }

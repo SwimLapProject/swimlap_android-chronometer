@@ -37,6 +37,10 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     private Singleton singleton;
     private int raceIdOfThisFragment;
 
+    public FragmentDataLap(int raceId) {
+        raceIdOfThisFragment = raceId;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_lap, container, false);
@@ -44,19 +48,16 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
         boolean meetingOfTheDayIsBuilt = singleton.buildEvent(getActivity());
 
         listViewForLap = (ListView) view.findViewById(R.id.id_listview_lap);
+        listViewForLap.setOnScrollListener(this);
+
         textViewNoMeetingInLap = (TextView) view.findViewById(R.id.id_textview_no_meeting_in_lap);
-        textViewNoMeetingInLap.setVisibility(View.INVISIBLE);
 
 
         if (!meetingOfTheDayIsBuilt) {
             // this case appear when there no club indicate in settings
             Toast.makeText(getActivity(), "You must complete settings please.", Toast.LENGTH_SHORT).show();
-            textViewNoMeetingInLap.setText("No meeting found today");
             textViewNoMeetingInLap.setVisibility(View.VISIBLE);
-            listViewForLap.setVisibility(View.INVISIBLE);
         } else {
-            raceIdOfThisFragment = singleton.getCurrentRaceId();
-            listViewForLap.setVisibility(View.VISIBLE);
             textViewNoMeetingInLap.setVisibility(View.INVISIBLE);
 
             ArrayList<ResultModel> resultsToDisplay = singleton.getResultsByRace(raceIdOfThisFragment);
@@ -70,8 +71,6 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        listViewForLap.setOnScrollListener(this);
-        formatTime = new FormatTimeAsString();
     }
 
     @Override
@@ -82,6 +81,7 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
 
     public void addLapToModel(View view, float milli) {
         Integer position = getPositionOfView(view);
+        FormatTimeAsString formatTime = new FormatTimeAsString();
 
         View viewRow = listViewForLap.getChildAt(position);
         ResultModel ResultModel = singleton.getResultOfTheDay(position);
@@ -182,4 +182,5 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
         int last = first + count - 1;
         doChangeButtonLap(first, last);
     }
+
 }

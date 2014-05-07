@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
+import com.dim.swimlap.models.EventModel;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.objects.Singleton;
 import com.dim.swimlap.ui.lap.FragmentDataLap;
@@ -40,6 +41,7 @@ import com.dim.swimlap.ui.swimmer.FragmentNavSwimmer;
 import com.dim.swimlap.ui.swimmer.FragmentTitleSwimmer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GlobalContainer extends FragmentActivity implements CommunicationFragments {
 
@@ -51,7 +53,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
     private FragmentTitleLap fragmentTitleLap;
     private FragmentNavLap fragmentNavLap;
-    private FragmentDataLap fragmentDataLap;
+    //    private FragmentDataLap fragmentDataLap;
+    private HashMap<Integer, FragmentDataLap> mapOfFragmentLap;
     private ArrayList<ResultModel> savedLapList;
 
     private FragmentTitleSimple fragmentTitleSimple;
@@ -72,6 +75,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
     private int currentView, lastView;
     private Singleton singleton;
+    private boolean todayHasAMeeting;
 
     private static int
             VIEW_MENU = 0,
@@ -84,6 +88,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             VIEW_RANKING_SW = 7;
 
     public GlobalContainer() {
+
     }
 
     @Override
@@ -102,7 +107,9 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         // FRAGMENT FOR THE VIEW LAP
         fragmentTitleLap = new FragmentTitleLap();
         fragmentNavLap = new FragmentNavLap();
-        fragmentDataLap = new FragmentDataLap();
+        buildFragmentsForLapData();
+
+//        fragmentDataLap = new FragmentDataLap();
 
         // FRAGMENT FOR VIEW SIMPLE CHRONOMETER
         fragmentTitleSimple = new FragmentTitleSimple();
@@ -133,7 +140,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         transaction.replace(R.id.id_IN_fragment_data, fragmentDataMenu);
         currentView = VIEW_MENU;
         transaction.commit();
-
     }
 
     @Override
@@ -148,13 +154,16 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavMenu);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataMenu);
                 newTransaction.addToBackStack(null);
-
             } else if (code == VIEW_LAP) {
-
-                newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleLap);
-                newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavLap);
-                addFragmentDataLapDependOnRaceId(newTransaction);
-                newTransaction.addToBackStack(null);
+                if (singleton.buildEvent(getApplicationContext())) {
+                    newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleLap);
+                    newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavLap);
+                    addFragmentDataLapDependOnRaceId(newTransaction, singleton.getCurrentRaceId());
+                    newTransaction.addToBackStack(null);
+                } else {
+                    Toast.makeText(getApplicationContext(), "No meeting Today.\nUse Simple Chronometer.", Toast.LENGTH_SHORT).show();
+                    code = -1;
+                }
             } else if (code == VIEW_SIMPLE) {
                 newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleSimple);
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSimple);
@@ -185,44 +194,51 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             } else {
                 Toast.makeText(this.getApplicationContext(), "A problem appear to get the good fragment", Toast.LENGTH_SHORT).show();
             }
-            lastView = currentView;
-            currentView = code;
-            fragmentDirect.changeButtonDirect(code);
-            fragmentDirect.changeButtonStartStop();
-            newTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            newTransaction.commit();
+            if (code != -1) {
+                lastView = currentView;
+                currentView = code;
+                fragmentDirect.changeButtonDirect(code);
+                fragmentDirect.changeButtonStartStop();
+                newTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                newTransaction.commit();
+            }
         }
     }
 
     @Override
-    public void buildFragmentDataLapWithNewRaceId() {
+    public void replaceFragmentDataLap(int raceId) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction newTransaction = manager.beginTransaction();
-        addFragmentDataLapDependOnRaceId(newTransaction);
+        addFragmentDataLapDependOnRaceId(newTransaction, raceId);
         newTransaction.addToBackStack(null);
         newTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         newTransaction.commit();
     }
 
-    private void addFragmentDataLapDependOnRaceId(FragmentTransaction newTransaction) {
-        newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataLap);
+    private void addFragmentDataLapDependOnRaceId(FragmentTransaction newTransaction, int newRaceId) {
+        FragmentDataLap fragmentLapToAdd = mapOfFragmentLap.get(newRaceId);
+        newTransaction.replace(R.id.id_IN_fragment_data, fragmentLapToAdd);
+        singleton.setCurrentRaceId(newRaceId);
     }
 
     @Override
     public void getGlobalLap(View view) {
 //        Toast.makeText(this.getApplicationContext(),"Global: "+ position, Toast.LENGTH_SHORT).show();
         float milli = fragmentDirect.getMillisecondsLap();
+        FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(singleton.getCurrentRaceId());
         fragmentDataLap.addLapToModel(view, milli);
 
     }
 
     @Override
     public void resetLap(View view) {
+        FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(singleton.getCurrentRaceId());
         fragmentDataLap.resetLaps(view);
     }
 
     @Override
     public void recordLap(View view) {
+        FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(singleton.getCurrentRaceId());
         fragmentDataLap.recordLaps(view);
     }
 
@@ -240,6 +256,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
     @Override
     public void inverseButtonsInLap(boolean chronoIsStarted) {
+        FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(singleton.getCurrentRaceId());
         fragmentDataLap.setChronoIsStarted(chronoIsStarted);
         if (currentView == VIEW_LAP) {
             fragmentDataLap.changeButtonLap(chronoIsStarted);
@@ -274,5 +291,23 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             super.onBackPressed();
         }
 
+    }
+
+    public void buildFragmentsForLapData() {
+
+        if (mapOfFragmentLap == null) {
+            mapOfFragmentLap = new HashMap<Integer, FragmentDataLap>();
+
+        } else {
+            mapOfFragmentLap.clear();
+        }
+        if (singleton.buildEvent(getApplicationContext())) {
+            ArrayList<EventModel> events = singleton.getAllEventsByOrderInMeeting();
+            for (int indexEvent = 0; indexEvent < events.size(); indexEvent++) {
+                int raceId = events.get(indexEvent).getRaceModel().getId();
+                FragmentDataLap fragmentToAdd = new FragmentDataLap(raceId);
+                mapOfFragmentLap.put(raceId, fragmentToAdd);
+            }
+        }
     }
 }

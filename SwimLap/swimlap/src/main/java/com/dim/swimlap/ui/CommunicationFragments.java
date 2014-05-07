@@ -31,7 +31,7 @@ public interface CommunicationFragments {
 
     public ArrayList<ResultModel> giveBackLapList();
 
-    public void buildFragmentDataLapWithNewRaceId();
+    public void replaceFragmentDataLap(int raceId);
 
 
 }

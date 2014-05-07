@@ -7,6 +7,8 @@
 
 package com.dim.swimlap.ui.lap;
 
+
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.dim.swimlap.R;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.objects.FormatTimeAsString;
 
+
 import java.util.ArrayList;
 
 public class LapAdapter extends ArrayAdapter {
@@ -28,7 +31,7 @@ public class LapAdapter extends ArrayAdapter {
     private boolean chronoIsStarted;
 
     public LapAdapter(Context context, ArrayList<ResultModel> resultModelList, boolean chronoIsStarted) {
-        super(context, R.layout.viewforlist_data_lap, resultModelList);
+        super(context,R.layout.viewforlist_data_lap,resultModelList);
         this.context = context;
         this.resultModelList = resultModelList;
         this.formatTime = new FormatTimeAsString();
@@ -42,6 +45,7 @@ public class LapAdapter extends ArrayAdapter {
         if (rowView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             rowView = inflater.inflate(R.layout.viewforlist_data_lap, parent, false);
+
             viewHolder = new ViewHolder();
 
             // BUILD ELEMENT OF ROW
@@ -70,10 +74,13 @@ public class LapAdapter extends ArrayAdapter {
             // FILL ELEMENT WITH DATA FROM DB
             String name = resultModelList.get(position).getSwimmerModel().getName();
             String firstName = resultModelList.get(position).getSwimmerModel().getFirstname();
-            String dateOfBird = resultModelList.get(position).getSwimmerModel().getDateOfBirth();
+            String yearOfBirth = resultModelList.get(position).getSwimmerModel().getDateOfBirth().substring(0,4);
             float qualifyingTime = resultModelList.get(position).getQualifyingTime();
             String qualifTimeAsString = formatTime.makeString(qualifyingTime);
-            viewHolder.textViewSwimmerDetails.setText(name + "  " + firstName + "  " + dateOfBird);
+
+            System.out.println("$$$ "+name+" "+firstName+" "+qualifTimeAsString);
+
+            viewHolder.textViewSwimmerDetails.setText(name + "  " + firstName + "  " + yearOfBirth);
             viewHolder.textViewQualifiedTime.setText(qualifTimeAsString);
 
             viewHolder.textViewAllLaps = (TextView) rowView.findViewById(R.id.id_textview_all_laps);
@@ -106,12 +113,10 @@ public class LapAdapter extends ArrayAdapter {
             rowView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) rowView.getTag();
-
         }
-
-
         return rowView;
     }
+
 
     private static class ViewHolder {
         public static Button buttonTakeLap, buttonResetLap, buttonRecordLap;

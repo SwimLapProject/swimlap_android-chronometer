@@ -74,7 +74,7 @@ public final class Singleton {
         return resultsForIdRace;
     }
 
-    public ArrayList<EventModel> getAllRaceFromEventsInMeeting() {
+    public ArrayList<EventModel> getAllEventsByOrderInMeeting() {
         return allEventsByOrder;
     }
 
@@ -102,7 +102,6 @@ public final class Singleton {
                     }
                 }
                 allEventsByOrder.add(positionToInsert, allResultsInMeeting.get(indexResult).getEventModel());
-                int i;
             }
         }
     }
