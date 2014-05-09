@@ -67,6 +67,7 @@ public class GetResultsForLapView {
             /** FOR EACH RESULT IN DB OF MEETING **/
             for (int indexResult = 0; indexResult < resultsInDB.size(); indexResult++) {
                 ResultModel resultToFillThenToAdd = resultsInDB.get(indexResult);
+
                 /** TEAM **/
                 if (resultToFillThenToAdd.isRelay()) {
                     for (int indexSwimmer = 0; indexSwimmer < resultToFillThenToAdd.getTeam().size(); indexSwimmer++) {
@@ -82,7 +83,12 @@ public class GetResultsForLapView {
                 int idEvent = resultToFillThenToAdd.getEventModel().getId();
                 EventModel eventTofill = resultToFillThenToAdd.getEventModel();
                 EventModel eventFromDb = db2.getEventUtilities().getEventModel_FromDb(idEvent, meetingOfTheDay.getId());
-                resultToFillThenToAdd.setEventModel(eventFromDb);
+
+                /** ADD EVENT AND BUILD OTHER ATTRIBUTES **/
+                float qualifyingTime = resultToFillThenToAdd.getQualifyingTime();
+                int poolSize = meetingOfTheDay.getPoolSize();
+                int meetingId = meetingOfTheDay.getId();
+                resultToFillThenToAdd.buildContent(qualifyingTime,poolSize,meetingId,eventFromDb);
 
                 /** ADD EACH RESULT GETTED FROM DB IN MEETING */
                 meetingOfTheDay.addResult(resultToFillThenToAdd);

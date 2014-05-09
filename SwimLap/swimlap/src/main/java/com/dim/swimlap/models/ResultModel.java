@@ -63,7 +63,7 @@ public class ResultModel {
 
     public boolean trueIfSomeLapsAreAlreadyTaken() {
         boolean lapsAllreadytaken = false;
-        if (laps.size() != 0) {
+        if (laps.size() != 0 && laps.get(0)!=0) {//todo verify if laps.get(0) works
             lapsAllreadytaken = true;
         }
         return lapsAllreadytaken;

@@ -93,9 +93,16 @@ public class ResultUtilities {
         resultModel.setEventModel(eventModel); // ADD eventModel
         resultModel.setQualifyingTime(cursor.getFloat(14)); //qualifyinfTime
         resultModel.setSwimTime(cursor.getFloat(15));// swimTime
-        // try to get the 60 laps max
-        for (int i = 0; i < 60; i++) {
-            resultModel.getLaps().add(i, cursor.getFloat(i + 7));
+        // try to get the laps when different 0
+        boolean previewLapIsNull = false;
+        int indexLap = 0;
+        while (!previewLapIsNull && indexLap < 60) {
+            if (cursor.getFloat(indexLap + 7) == 0) {
+                previewLapIsNull = true;
+            } else {
+                resultModel.getLaps().add(indexLap, cursor.getFloat(indexLap + 7));
+            }
+            indexLap++;
         }
         return resultModel;
     }
@@ -109,9 +116,9 @@ public class ResultUtilities {
             if (resultModel.isRelay()) {
                 contentValues.put(table.TEAM_COLUMNS_AS_STRING_TAB[indSw], resultModel.getTeam().get(indSw).getIdFFN());
             } else {
-                if(indSw ==0){
+                if (indSw == 0) {
                     contentValues.put(table.TEAM_COLUMNS_AS_STRING_TAB[indSw], resultModel.getSwimmerModel().getIdFFN());
-                }else{
+                } else {
                     contentValues.put(table.TEAM_COLUMNS_AS_STRING_TAB[indSw], 0);
                 }
             }
