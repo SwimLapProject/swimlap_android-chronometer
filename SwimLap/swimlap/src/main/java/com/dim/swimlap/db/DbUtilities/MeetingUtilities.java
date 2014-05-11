@@ -15,7 +15,9 @@ import com.dim.swimlap.db.tables.DbTableMeetings;
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.SeasonModel;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MeetingUtilities {
     private SQLiteDatabase sqLiteDatabaseSwimLap;
@@ -27,18 +29,18 @@ public class MeetingUtilities {
     }
 
     /* GETTERS */
-//    public List<MeetingModel> getAllMeetings_FromDb() {
-//        List<MeetingModel> allMeetings = new ArrayList<MeetingModel>();
-//        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
-//        cursor.moveToFirst();
-//        while (!cursor.isAfterLast()) {
-//            MeetingModel meeting = getDataMeeting_FromDb(cursor);
-//            allMeetings.add(meeting);
-//            cursor.moveToNext();
-//        }
-//        cursor.close();
-//        return allMeetings;
-//    }
+    public ArrayList<MeetingModel> getAllMeetings_FromDb() {
+        ArrayList<MeetingModel> allMeetings = new ArrayList<MeetingModel>();
+        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            MeetingModel meeting = getDataMeeting_FromDb(cursor);
+            allMeetings.add(meeting);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return allMeetings;
+    }
 
     public MeetingModel getOneMeetingById_FromDb(int idMeeting) {
         MeetingModel meetingModel = null;

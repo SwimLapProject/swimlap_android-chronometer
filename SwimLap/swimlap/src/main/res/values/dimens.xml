@@ -30,4 +30,10 @@
     <dimen name="dimen_textview_settings_width">100dp</dimen>
 
     <dimen name="dimen_textview_scroll_lap">150dp</dimen>
+
+    <!-- list -->
+    <dimen name="dimen_text_list_name">20sp</dimen>
+    <dimen name="dimen_text_list_second">18sp</dimen>
+    <dimen name="dimen_text_list_third">15sp</dimen>
+
 </resources>

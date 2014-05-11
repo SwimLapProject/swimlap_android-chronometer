@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:layout_marginBottom="5dp"
+              android:layout_marginTop="5dp"
+              android:weightSum="1">
+
+    <Button
+        android:id="@+id/id_button_add_manually_model"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dimen_button_little_side_size"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_basic_with_shadow"
+        android:textColor="@color/redstop"
+        android:textSize="@dimen/dimen_text_button_menu"
+        />
 
 </LinearLayout>
