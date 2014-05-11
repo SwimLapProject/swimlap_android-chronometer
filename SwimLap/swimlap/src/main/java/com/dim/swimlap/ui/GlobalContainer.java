@@ -53,7 +53,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
     private FragmentTitleLap fragmentTitleLap;
     private FragmentNavLap fragmentNavLap;
-    //    private FragmentDataLap fragmentDataLap;
     private HashMap<Integer, FragmentDataLap> mapOfFragmentLap;
     private ArrayList<ResultModel> savedLapList;
 
@@ -75,7 +74,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
     private int currentView, lastView;
     private Singleton singleton;
-    private boolean todayHasAMeeting;
 
     private static int
             VIEW_MENU = 0,
@@ -96,7 +94,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_global_container);
         singleton = Singleton.getInstance();
-        singleton.buildEvent(getApplicationContext());
+        singleton.buildMeetingOfTheDay(getApplicationContext());
 
         // FRAGMENT FOR THE VIEW MENU
         fragmentDirect = new FragmentDirect();
@@ -155,11 +153,10 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataMenu);
                 newTransaction.addToBackStack(null);
             } else if (code == VIEW_LAP) {
-                if (singleton.buildEvent(getApplicationContext())) {
+                if (singleton.buildMeetingOfTheDay(getApplicationContext())) {
                     newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleLap);
                     newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavLap);
                     addFragmentDataLapDependOnRaceId(newTransaction, singleton.getCurrentRaceId());
-                    newTransaction.addToBackStack(null);
                 } else {
                     Toast.makeText(getApplicationContext(), "No meeting Today.\nUse Simple Chronometer.", Toast.LENGTH_SHORT).show();
                     code = -1;
@@ -218,27 +215,34 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     private void addFragmentDataLapDependOnRaceId(FragmentTransaction newTransaction, int newRaceId) {
         FragmentDataLap fragmentLapToAdd = mapOfFragmentLap.get(newRaceId);
         newTransaction.replace(R.id.id_IN_fragment_data, fragmentLapToAdd);
-        singleton.setCurrentRaceId(newRaceId);
     }
 
     @Override
     public void getGlobalLap(View view) {
-//        Toast.makeText(this.getApplicationContext(),"Global: "+ position, Toast.LENGTH_SHORT).show();
-        float milli = fragmentDirect.getMillisecondsLap();
-        FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(singleton.getCurrentRaceId());
-        fragmentDataLap.addLapToModel(view, milli);
+        float lapInMilli = fragmentDirect.getMillisecondsLap();
+
+        String[] tag = String.valueOf(view.getTag()).split("_");
+        int raceIdClicked = Integer.valueOf(tag[2]);
+
+        FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(raceIdClicked);
+        fragmentDataLap.addLapToModel(view, lapInMilli);
 
     }
 
     @Override
     public void resetLap(View view) {
-        FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(singleton.getCurrentRaceId());
+        String[] tag = String.valueOf(view.getTag()).split("_");
+        int raceId = Integer.valueOf(tag[2]);
+        FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(raceId);
         fragmentDataLap.resetLaps(view);
     }
 
     @Override
     public void recordLap(View view) {
-        FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(singleton.getCurrentRaceId());
+        String[] tag = String.valueOf(view.getTag()).split("_");
+        int raceIdClicked = Integer.valueOf(tag[2]);
+
+        FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(raceIdClicked);
         fragmentDataLap.recordLaps(view);
     }
 
@@ -284,6 +288,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                     });
             AlertDialog alert = builder.create();
             alert.show();
+        } else if (currentView == VIEW_LAP) {
+            // do nothing
         } else {
             fragmentDirect.changeButtonDirect(lastView);
             currentView = lastView;
@@ -301,7 +307,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         } else {
             mapOfFragmentLap.clear();
         }
-        if (singleton.buildEvent(getApplicationContext())) {
+        if (singleton.buildMeetingOfTheDay(getApplicationContext())) {
             ArrayList<EventModel> events = singleton.getAllEventsByOrderInMeeting();
             for (int indexEvent = 0; indexEvent < events.size(); indexEvent++) {
                 int raceId = events.get(indexEvent).getRaceModel().getId();

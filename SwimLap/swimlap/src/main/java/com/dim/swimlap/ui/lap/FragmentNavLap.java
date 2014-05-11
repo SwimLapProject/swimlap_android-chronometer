@@ -35,7 +35,6 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_nav_lap, container, false);
         linearLayout = (LinearLayout) view.findViewById(R.id.id_linearlayout_in_horizontalscrollview);
         singleton = Singleton.getInstance();
-        communication = (CommunicationFragments) this.getActivity();
 
         return view;
     }
@@ -43,10 +42,10 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (singleton.buildEvent(getActivity())) {
+        if (singleton.buildMeetingOfTheDay(getActivity())) {
             ArrayList<EventModel> eventsOfTheDay = singleton.getAllEventsByOrderInMeeting();
-            for (int indexRace = eventsOfTheDay.size() - 1; indexRace >= 0; indexRace--) {
-                RaceModel race = eventsOfTheDay.get(indexRace).getRaceModel();
+            for (int indexEvent = 0; indexEvent < eventsOfTheDay.size(); indexEvent++) {
+                RaceModel race = eventsOfTheDay.get(indexEvent).getRaceModel();
                 String nameToPutInButton = race.getDistance() + " " + race.getStyle() + " " + race.getGender();
                 int idRace = race.getId();
 
@@ -65,17 +64,16 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
         }
     }
 
-
     @Override
     public void onClick(View view) {
         String tag = (String) view.getTag();
         String[] splitedTag = tag.split("_");
         int newRaceId = Integer.valueOf(splitedTag[1]);
         modifyButtonRaceSelected(newRaceId);
-        singleton.setCurrentRaceId(newRaceId);
-        communication.replaceFragmentDataLap(newRaceId);
-//        Toast.makeText(view.getContext(), b, Toast.LENGTH_SHORT).show();
 
+        singleton.setCurrentRaceId(newRaceId);
+        communication = (CommunicationFragments) this.getActivity();
+        communication.replaceFragmentDataLap(newRaceId);
     }
 
     public void modifyButtonRaceSelected(int newIdRace) {

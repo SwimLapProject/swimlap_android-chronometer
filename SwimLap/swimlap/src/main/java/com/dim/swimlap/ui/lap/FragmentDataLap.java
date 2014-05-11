@@ -7,6 +7,7 @@
 
 package com.dim.swimlap.ui.lap;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,9 +32,7 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     private ListView listViewForLap;
     private TextView textViewNoMeetingInLap;
     private LapAdapter adapter;
-    private FormatTimeAsString formatTime;
     private boolean chronoIsStarted;
-    private ArrayList<ResultModel> list;
     private Singleton singleton;
     private int raceIdOfThisFragment;
 
@@ -45,7 +44,7 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_lap, container, false);
         singleton = Singleton.getInstance();
-        boolean meetingOfTheDayIsBuilt = singleton.buildEvent(getActivity());
+        boolean meetingOfTheDayIsBuilt = singleton.buildMeetingOfTheDay(getActivity());
 
         listViewForLap = (ListView) view.findViewById(R.id.id_listview_lap);
         listViewForLap.setOnScrollListener(this);
@@ -79,28 +78,34 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
 
     }
 
-    public void addLapToModel(View view, float milli) {
-        Integer position = getPositionOfView(view);
+    public void addLapToModel(View view, float lapInMilli) {
+        String[] tag = String.valueOf(view.getTag()).split("_");
+        int resultId = Integer.valueOf(tag[1]);
+        int raceId = Integer.valueOf(tag[2]);
+        int position = Integer.valueOf(tag[3]);
+
         FormatTimeAsString formatTime = new FormatTimeAsString();
 
         View viewRow = listViewForLap.getChildAt(position);
-        ResultModel ResultModel = singleton.getResultOfTheDay(position);
 
-        int nbSplitRemaining = ResultModel.getnbSplitRemaining();
+        ResultModel resultInSingleton = singleton.getResultOfTheDay(resultId);
+
+        int nbSplitRemaining = resultInSingleton.getnbSplitRemaining();
         if (nbSplitRemaining > 0) {
-            float lapDiff = ResultModel.checkLap(milli);
+            float lapDiff = resultInSingleton.checkLap(lapInMilli);
             String splitAsString = formatTime.makeString(lapDiff);
-            String lapAsString = formatTime.makeString(milli);
-            String tripName = ResultModel.getSplitName();
+            String lapAsString = formatTime.makeString(lapInMilli);
+            String tripName = resultInSingleton.getSplitName();
 
-            TextView textViewLast = (TextView) viewRow.findViewWithTag("TV_last_" + position);
-            TextView textViewAll = (TextView) viewRow.findViewWithTag("TV_all_" + position);
+            TextView textViewLast = (TextView) viewRow.findViewWithTag("TextViewLast_" + resultId + "_" + raceId + "_" + position);
+            TextView textViewAll = (TextView) viewRow.findViewWithTag("TexViewAll_" + resultId + "_" + raceId + "_" + position);
             textViewAll.append("\n" + tripName + ": " + splitAsString + " - " + lapAsString);
 
             ScrollView scrollView = (ScrollView) viewRow.findViewById(R.id.id_scrollview_laps);
             scrollView.fullScroll(ScrollView.FOCUS_DOWN);
 
             if (nbSplitRemaining == 1) {
+                resultInSingleton.setSwimTime(lapInMilli);
                 textViewLast.setTextColor(getResources().getColor(R.color.redstop));
                 textViewLast.setText("FINAL : " + lapAsString);
             } else {
@@ -133,43 +138,53 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
                     viewRow.findViewById(R.id.id_button_reset_lap).setVisibility(View.VISIBLE);
                     viewRow.findViewById(R.id.id_button_record_lap).setVisibility((View.VISIBLE));
                 }
+                TextView textViewLastLap = (TextView) viewRow.findViewById(R.id.id_textview_last);
+                if (textViewLastLap.getText().subSequence(0, 1).equals("F")) {
+                    textViewLastLap.setTextColor(getResources().getColor(R.color.redstop));
+                }
             }
         }
     }
-
 
     public void setChronoIsStarted(boolean isStarted) {
         this.chronoIsStarted = isStarted;
     }
 
     public void resetLaps(View view) {
-        int position = getPositionOfView(view);
+        String[] tag = String.valueOf(view.getTag()).split("_");
+        int resultId = Integer.valueOf(tag[1]);
+        int raceId = Integer.valueOf(tag[2]);
+        int position = Integer.valueOf(tag[3]);
+
         //reset data
-        singleton.getResultOfTheDay(position).resetLaps();
+        singleton.getResultOfTheDay(resultId).resetLaps();
 
         //reset view
         View viewRow = listViewForLap.getChildAt(position);
-        TextView textViewAll = (TextView) viewRow.findViewById(R.id.id_textview_all_laps);
+        TextView textViewAll = (TextView) viewRow.findViewWithTag("TexViewAll_" + resultId + "_" + raceId + "_" + position);
         textViewAll.setText("All laps");
-        TextView textViewLast = (TextView) viewRow.findViewById(R.id.id_textview_last);
+        TextView textViewLast = (TextView) viewRow.findViewWithTag("TextViewLast_" + resultId + "_" + raceId + "_" + position);
         textViewLast.setText("Last: 0:00.00");
-        textViewLast.setTextColor(getResources().getColor(R.color.bluesea));
 
+        textViewAll.setTextColor(Color.BLACK);
     }
 
     public void recordLaps(View view) {
-        int position = getPositionOfView(view);
-        //reset data
-        singleton.getResultOfTheDay(position).recordLapsInDB(getActivity());
+        String[] tag = String.valueOf(view.getTag()).split("_");
+        int resultId = Integer.valueOf(tag[1]);
+        int raceId = Integer.valueOf(tag[2]);
+        int position = Integer.valueOf(tag[3]);
 
-        //modify view
+
+        singleton.getResultOfTheDay(resultId).recordLapsInDB(getActivity());
+        View viewRow = listViewForLap.getChildAt(position);
+
+        TextView textViewAll = (TextView) viewRow.findViewWithTag("TexViewAll_" + resultId + "_" + raceId + "_" + position);
+        textViewAll.setTextColor(getResources().getColor(R.color.bluesea));
+
+        Toast.makeText(getActivity(), "Laps has been recorded in database.", Toast.LENGTH_SHORT).show();
     }
 
-    private int getPositionOfView(View view) {
-        String posString = (String) view.getTag();
-        posString = posString.substring(4);
-        return Integer.valueOf(posString);
-    }
 
     @Override
     public void onScrollStateChanged(AbsListView absListView, int i) {
@@ -182,5 +197,4 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
         int last = first + count - 1;
         doChangeButtonLap(first, last);
     }
-
 }

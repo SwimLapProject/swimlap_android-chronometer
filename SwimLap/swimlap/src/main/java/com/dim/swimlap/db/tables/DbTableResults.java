@@ -35,70 +35,70 @@ public class DbTableResults implements DbTableMODEL {
 
 
     // SWIMMER SPECIFICATIONS
-    public static final String COL_EVE_QUALIFYING_TIME = "col_eve_qualifying_time"; // IMPORTANT !!!
-    public static final String COL_EVE_SWIM_TIME = "col_eve_swim_time"; // final time
+    public static final String COL_RES_QUALIFYING_TIME = "col_res_qualifying_time"; // IMPORTANT !!!
+    public static final String COL_RES_SWIM_TIME = "col_res_swim_time"; // final time
 
     // LAP SPECIFICATION
-    public static final String COL_EVE_SPLIT_25 = "col_eve_split_25";
-    public static final String COL_EVE_SPLIT_50 = "col_eve_split_50";
-    public static final String COL_EVE_SPLIT_75 = "col_eve_split_75";
-    public static final String COL_EVE_SPLIT_100 = "col_eve_split_100";
-    public static final String COL_EVE_SPLIT_125 = "col_eve_split_125";
-    public static final String COL_EVE_SPLIT_150 = "col_eve_split_150";
-    public static final String COL_EVE_SPLIT_175 = "col_eve_split_175";
-    public static final String COL_EVE_SPLIT_200 = "col_eve_split_200";
-    public static final String COL_EVE_SPLIT_225 = "col_eve_split_225";
-    public static final String COL_EVE_SPLIT_250 = "col_eve_split_250";
-    public static final String COL_EVE_SPLIT_275 = "col_eve_split_275";
-    public static final String COL_EVE_SPLIT_300 = "col_eve_split_300";
-    public static final String COL_EVE_SPLIT_325 = "col_eve_split_325";
-    public static final String COL_EVE_SPLIT_350 = "col_eve_split_350";
-    public static final String COL_EVE_SPLIT_375 = "col_eve_split_375";
-    public static final String COL_EVE_SPLIT_400 = "col_eve_split_400";
-    public static final String COL_EVE_SPLIT_425 = "col_eve_split_425";
-    public static final String COL_EVE_SPLIT_450 = "col_eve_split_450";
-    public static final String COL_EVE_SPLIT_475 = "col_eve_split_475";
-    public static final String COL_EVE_SPLIT_500 = "col_eve_split_500";
-    public static final String COL_EVE_SPLIT_525 = "col_eve_split_525";
-    public static final String COL_EVE_SPLIT_550 = "col_eve_split_550";
-    public static final String COL_EVE_SPLIT_575 = "col_eve_split_575";
-    public static final String COL_EVE_SPLIT_600 = "col_eve_split_600";
-    public static final String COL_EVE_SPLIT_625 = "col_eve_split_625";
-    public static final String COL_EVE_SPLIT_650 = "col_eve_split_650";
-    public static final String COL_EVE_SPLIT_675 = "col_eve_split_675";
-    public static final String COL_EVE_SPLIT_700 = "col_eve_split_700";
-    public static final String COL_EVE_SPLIT_725 = "col_eve_split_725";
-    public static final String COL_EVE_SPLIT_750 = "col_eve_split_750";
-    public static final String COL_EVE_SPLIT_775 = "col_eve_split_775";
-    public static final String COL_EVE_SPLIT_800 = "col_eve_split_800";
-    public static final String COL_EVE_SPLIT_825 = "col_eve_split_825";
-    public static final String COL_EVE_SPLIT_850 = "col_eve_split_850";
-    public static final String COL_EVE_SPLIT_875 = "col_eve_split_875";
-    public static final String COL_EVE_SPLIT_900 = "col_eve_split_900";
-    public static final String COL_EVE_SPLIT_925 = "col_eve_split_925";
-    public static final String COL_EVE_SPLIT_950 = "col_eve_split_950";
-    public static final String COL_EVE_SPLIT_975 = "col_eve_split_975";
-    public static final String COL_EVE_SPLIT_1000 = "col_eve_split_1000";
-    public static final String COL_EVE_SPLIT_1025 = "col_eve_split_1025";
-    public static final String COL_EVE_SPLIT_1050 = "col_eve_split_1050";
-    public static final String COL_EVE_SPLIT_1075 = "col_eve_split_1075";
-    public static final String COL_EVE_SPLIT_1100 = "col_eve_split_1100";
-    public static final String COL_EVE_SPLIT_1125 = "col_eve_split_1125";
-    public static final String COL_EVE_SPLIT_1150 = "col_eve_split_1150";
-    public static final String COL_EVE_SPLIT_1175 = "col_eve_split_1175";
-    public static final String COL_EVE_SPLIT_1200 = "col_eve_split_1200";
-    public static final String COL_EVE_SPLIT_1225 = "col_eve_split_1225";
-    public static final String COL_EVE_SPLIT_1250 = "col_eve_split_1250";
-    public static final String COL_EVE_SPLIT_1275 = "col_eve_split_1275";
-    public static final String COL_EVE_SPLIT_1300 = "col_eve_split_1300";
-    public static final String COL_EVE_SPLIT_1325 = "col_eve_split_1325";
-    public static final String COL_EVE_SPLIT_1350 = "col_eve_split_1350";
-    public static final String COL_EVE_SPLIT_1375 = "col_eve_split_1375";
-    public static final String COL_EVE_SPLIT_1400 = "col_eve_split_1400";
-    public static final String COL_EVE_SPLIT_1425 = "col_eve_split_1425";
-    public static final String COL_EVE_SPLIT_1450 = "col_eve_split_1450";
-    public static final String COL_EVE_SPLIT_1475 = "col_eve_split_1475";
-    public static final String COL_EVE_SPLIT_1500 = "col_eve_split_1500";
+    public static final String COL_RES_SPLIT_0 = "col_res_split_0";
+    public static final String COL_RES_SPLIT_1 = "col_res_split_1";
+    public static final String COL_RES_SPLIT_2 = "col_res_split_2";
+    public static final String COL_RES_SPLIT_3 = "col_res_split_3";
+    public static final String COL_RES_SPLIT_4 = "col_res_split_4";
+    public static final String COL_RES_SPLIT_5 = "col_res_split_5";
+    public static final String COL_RES_SPLIT_6 = "col_res_split_6";
+    public static final String COL_RES_SPLIT_7 = "col_res_split_7";
+    public static final String COL_RES_SPLIT_8 = "col_res_split_8";
+    public static final String COL_RES_SPLIT_9 = "col_res_split_9";
+    public static final String COL_RES_SPLIT_10 = "col_res_split_10";
+    public static final String COL_RES_SPLIT_11 = "col_res_split_11";
+    public static final String COL_RES_SPLIT_12 = "col_res_split_12";
+    public static final String COL_RES_SPLIT_13 = "col_res_split_13";
+    public static final String COL_RES_SPLIT_14 = "col_res_split_14";
+    public static final String COL_RES_SPLIT_15 = "col_res_split_15";
+    public static final String COL_RES_SPLIT_16 = "col_res_split_16";
+    public static final String COL_RES_SPLIT_17 = "col_res_split_17";
+    public static final String COL_RES_SPLIT_18 = "col_res_split_18";
+    public static final String COL_RES_SPLIT_19 = "col_res_split_19";
+    public static final String COL_RES_SPLIT_20 = "col_res_split_20";
+    public static final String COL_RES_SPLIT_21 = "col_res_split_21";
+    public static final String COL_RES_SPLIT_22 = "col_res_split_22";
+    public static final String COL_RES_SPLIT_23 = "col_res_split_23";
+    public static final String COL_RES_SPLIT_24 = "col_res_split_24";
+    public static final String COL_RES_SPLIT_25 = "col_res_split_25";
+    public static final String COL_RES_SPLIT_26 = "col_res_split_26";
+    public static final String COL_RES_SPLIT_27 = "col_res_split_27";
+    public static final String COL_RES_SPLIT_28 = "col_res_split_28";
+    public static final String COL_RES_SPLIT_29 = "col_res_split_29";
+    public static final String COL_RES_SPLIT_30 = "col_res_split_30";
+    public static final String COL_RES_SPLIT_31 = "col_res_split_31";
+    public static final String COL_RES_SPLIT_32 = "col_res_split_32";
+    public static final String COL_RES_SPLIT_33 = "col_res_split_33";
+    public static final String COL_RES_SPLIT_34 = "col_res_split_34";
+    public static final String COL_RES_SPLIT_35 = "col_res_split_35";
+    public static final String COL_RES_SPLIT_36 = "col_res_split_36";
+    public static final String COL_RES_SPLIT_37 = "col_res_split_37";
+    public static final String COL_RES_SPLIT_38 = "col_res_split_38";
+    public static final String COL_RES_SPLIT_39 = "col_res_split_39";
+    public static final String COL_RES_SPLIT_40 = "col_res_split_40";
+    public static final String COL_RES_SPLIT_41 = "col_res_split_41";
+    public static final String COL_RES_SPLIT_42 = "col_res_split_42";
+    public static final String COL_RES_SPLIT_43 = "col_res_split_43";
+    public static final String COL_RES_SPLIT_44 = "col_res_split_44";
+    public static final String COL_RES_SPLIT_45 = "col_res_split_45";
+    public static final String COL_RES_SPLIT_46 = "col_res_split_46";
+    public static final String COL_RES_SPLIT_47 = "col_res_split_47";
+    public static final String COL_RES_SPLIT_48 = "col_res_split_48";
+    public static final String COL_RES_SPLIT_49 = "col_res_split_49";
+    public static final String COL_RES_SPLIT_50 = "col_res_split_50";
+    public static final String COL_RES_SPLIT_51 = "col_res_split_51";
+    public static final String COL_RES_SPLIT_52 = "col_res_split_52";
+    public static final String COL_RES_SPLIT_53 = "col_res_split_53";
+    public static final String COL_RES_SPLIT_54 = "col_res_split_54";
+    public static final String COL_RES_SPLIT_55 = "col_res_split_55";
+    public static final String COL_RES_SPLIT_56 = "col_res_split_56";
+    public static final String COL_RES_SPLIT_57 = "col_res_split_57";
+    public static final String COL_RES_SPLIT_58 = "col_res_split_58";
+    public static final String COL_RES_SPLIT_59 = "col_res_split_59";
 
     public static final String
             REQUEST_TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
@@ -124,70 +124,70 @@ public class DbTableResults implements DbTableMODEL {
             COL_RES_ID_RACE + " INTEGER , " +
 
             // SWIMMER SPECIFICATIONS
-            COL_EVE_QUALIFYING_TIME + " REAL , " +
-            COL_EVE_SWIM_TIME + " REAL , " +
+            COL_RES_QUALIFYING_TIME + " REAL , " +
+            COL_RES_SWIM_TIME + " REAL , " +
 
             // RACE SPECIFICATION
-            COL_EVE_SPLIT_25 + " REAL , " +
-            COL_EVE_SPLIT_50 + " REAL , " +
-            COL_EVE_SPLIT_75 + " REAL , " +
-            COL_EVE_SPLIT_100 + " REAL , " +
-            COL_EVE_SPLIT_125 + " REAL , " +
-            COL_EVE_SPLIT_150 + " REAL , " +
-            COL_EVE_SPLIT_175 + " REAL , " +
-            COL_EVE_SPLIT_200 + " REAL , " +
-            COL_EVE_SPLIT_225 + " REAL , " +
-            COL_EVE_SPLIT_250 + " REAL , " +
-            COL_EVE_SPLIT_275 + " REAL , " +
-            COL_EVE_SPLIT_300 + " REAL , " +
-            COL_EVE_SPLIT_325 + " REAL , " +
-            COL_EVE_SPLIT_350 + " REAL , " +
-            COL_EVE_SPLIT_375 + " REAL , " +
-            COL_EVE_SPLIT_400 + " REAL , " +
-            COL_EVE_SPLIT_425 + " REAL , " +
-            COL_EVE_SPLIT_450 + " REAL , " +
-            COL_EVE_SPLIT_475 + " REAL , " +
-            COL_EVE_SPLIT_500 + " REAL , " +
-            COL_EVE_SPLIT_525 + " REAL , " +
-            COL_EVE_SPLIT_550 + " REAL , " +
-            COL_EVE_SPLIT_575 + " REAL , " +
-            COL_EVE_SPLIT_600 + " REAL , " +
-            COL_EVE_SPLIT_625 + " REAL , " +
-            COL_EVE_SPLIT_650 + " REAL , " +
-            COL_EVE_SPLIT_675 + " REAL , " +
-            COL_EVE_SPLIT_700 + " REAL , " +
-            COL_EVE_SPLIT_725 + " REAL , " +
-            COL_EVE_SPLIT_750 + " REAL , " +
-            COL_EVE_SPLIT_775 + " REAL , " +
-            COL_EVE_SPLIT_800 + " REAL , " +
-            COL_EVE_SPLIT_825 + " REAL , " +
-            COL_EVE_SPLIT_850 + " REAL , " +
-            COL_EVE_SPLIT_875 + " REAL , " +
-            COL_EVE_SPLIT_900 + " REAL , " +
-            COL_EVE_SPLIT_925 + " REAL , " +
-            COL_EVE_SPLIT_950 + " REAL , " +
-            COL_EVE_SPLIT_975 + " REAL , " +
-            COL_EVE_SPLIT_1000 + " REAL , " +
-            COL_EVE_SPLIT_1025 + " REAL , " +
-            COL_EVE_SPLIT_1050 + " REAL , " +
-            COL_EVE_SPLIT_1075 + " REAL , " +
-            COL_EVE_SPLIT_1100 + " REAL , " +
-            COL_EVE_SPLIT_1125 + " REAL , " +
-            COL_EVE_SPLIT_1150 + " REAL , " +
-            COL_EVE_SPLIT_1175 + " REAL , " +
-            COL_EVE_SPLIT_1200 + " REAL , " +
-            COL_EVE_SPLIT_1225 + " REAL , " +
-            COL_EVE_SPLIT_1250 + " REAL , " +
-            COL_EVE_SPLIT_1275 + " REAL , " +
-            COL_EVE_SPLIT_1300 + " REAL , " +
-            COL_EVE_SPLIT_1325 + " REAL , " +
-            COL_EVE_SPLIT_1350 + " REAL , " +
-            COL_EVE_SPLIT_1375 + " REAL , " +
-            COL_EVE_SPLIT_1400 + " REAL , " +
-            COL_EVE_SPLIT_1425 + " REAL , " +
-            COL_EVE_SPLIT_1450 + " REAL , " +
-            COL_EVE_SPLIT_1475 + " REAL , " +
-            COL_EVE_SPLIT_1500 + " REAL " +
+            COL_RES_SPLIT_0 + " REAL , " +
+            COL_RES_SPLIT_1 + " REAL , " +
+            COL_RES_SPLIT_2 + " REAL , " +
+            COL_RES_SPLIT_3 + " REAL , " +
+            COL_RES_SPLIT_4 + " REAL , " +
+            COL_RES_SPLIT_5 + " REAL , " +
+            COL_RES_SPLIT_6 + " REAL , " +
+            COL_RES_SPLIT_7 + " REAL , " +
+            COL_RES_SPLIT_8 + " REAL , " +
+            COL_RES_SPLIT_9 + " REAL , " +
+            COL_RES_SPLIT_10 + " REAL , " +
+            COL_RES_SPLIT_11 + " REAL , " +
+            COL_RES_SPLIT_12 + " REAL , " +
+            COL_RES_SPLIT_13 + " REAL , " +
+            COL_RES_SPLIT_14 + " REAL , " +
+            COL_RES_SPLIT_15 + " REAL , " +
+            COL_RES_SPLIT_16 + " REAL , " +
+            COL_RES_SPLIT_17 + " REAL , " +
+            COL_RES_SPLIT_18 + " REAL , " +
+            COL_RES_SPLIT_19 + " REAL , " +
+            COL_RES_SPLIT_20 + " REAL , " +
+            COL_RES_SPLIT_21 + " REAL , " +
+            COL_RES_SPLIT_22 + " REAL , " +
+            COL_RES_SPLIT_23 + " REAL , " +
+            COL_RES_SPLIT_24 + " REAL , " +
+            COL_RES_SPLIT_25 + " REAL , " +
+            COL_RES_SPLIT_26 + " REAL , " +
+            COL_RES_SPLIT_27 + " REAL , " +
+            COL_RES_SPLIT_28 + " REAL , " +
+            COL_RES_SPLIT_29 + " REAL , " +
+            COL_RES_SPLIT_30 + " REAL , " +
+            COL_RES_SPLIT_31 + " REAL , " +
+            COL_RES_SPLIT_32 + " REAL , " +
+            COL_RES_SPLIT_33 + " REAL , " +
+            COL_RES_SPLIT_34 + " REAL , " +
+            COL_RES_SPLIT_35 + " REAL , " +
+            COL_RES_SPLIT_36 + " REAL , " +
+            COL_RES_SPLIT_37 + " REAL , " +
+            COL_RES_SPLIT_38 + " REAL , " +
+            COL_RES_SPLIT_39 + " REAL , " +
+            COL_RES_SPLIT_40 + " REAL , " +
+            COL_RES_SPLIT_41 + " REAL , " +
+            COL_RES_SPLIT_42 + " REAL , " +
+            COL_RES_SPLIT_43 + " REAL , " +
+            COL_RES_SPLIT_44 + " REAL , " +
+            COL_RES_SPLIT_45 + " REAL , " +
+            COL_RES_SPLIT_46 + " REAL , " +
+            COL_RES_SPLIT_47 + " REAL , " +
+            COL_RES_SPLIT_48 + " REAL , " +
+            COL_RES_SPLIT_49 + " REAL , " +
+            COL_RES_SPLIT_50 + " REAL , " +
+            COL_RES_SPLIT_51 + " REAL , " +
+            COL_RES_SPLIT_52 + " REAL , " +
+            COL_RES_SPLIT_53 + " REAL , " +
+            COL_RES_SPLIT_54 + " REAL , " +
+            COL_RES_SPLIT_55 + " REAL , " +
+            COL_RES_SPLIT_56 + " REAL , " +
+            COL_RES_SPLIT_57 + " REAL , " +
+            COL_RES_SPLIT_58 + " REAL , " +
+            COL_RES_SPLIT_59 + " REAL " +
             ");";
 
     public static final String[] TEAM_COLUMNS_AS_STRING_TAB = {COL_SWI_0_ID_FFN,
@@ -202,66 +202,66 @@ public class DbTableResults implements DbTableMODEL {
             COL_SWI_9_ID_FFN};
 
     public static final String[] LAPS_COLUMNS_AS_STRING_TAB = {
-            COL_EVE_SPLIT_25,
-            COL_EVE_SPLIT_50,
-            COL_EVE_SPLIT_75,
-            COL_EVE_SPLIT_100,
-            COL_EVE_SPLIT_125,
-            COL_EVE_SPLIT_150,
-            COL_EVE_SPLIT_175,
-            COL_EVE_SPLIT_200,
-            COL_EVE_SPLIT_225,
-            COL_EVE_SPLIT_250,
-            COL_EVE_SPLIT_275,
-            COL_EVE_SPLIT_300,
-            COL_EVE_SPLIT_325,
-            COL_EVE_SPLIT_350,
-            COL_EVE_SPLIT_375,
-            COL_EVE_SPLIT_400,
-            COL_EVE_SPLIT_425,
-            COL_EVE_SPLIT_450,
-            COL_EVE_SPLIT_475,
-            COL_EVE_SPLIT_500,
-            COL_EVE_SPLIT_525,
-            COL_EVE_SPLIT_550,
-            COL_EVE_SPLIT_575,
-            COL_EVE_SPLIT_600,
-            COL_EVE_SPLIT_625,
-            COL_EVE_SPLIT_650,
-            COL_EVE_SPLIT_675,
-            COL_EVE_SPLIT_700,
-            COL_EVE_SPLIT_725,
-            COL_EVE_SPLIT_750,
-            COL_EVE_SPLIT_775,
-            COL_EVE_SPLIT_800,
-            COL_EVE_SPLIT_825,
-            COL_EVE_SPLIT_850,
-            COL_EVE_SPLIT_875,
-            COL_EVE_SPLIT_900,
-            COL_EVE_SPLIT_925,
-            COL_EVE_SPLIT_950,
-            COL_EVE_SPLIT_975,
-            COL_EVE_SPLIT_1000,
-            COL_EVE_SPLIT_1025,
-            COL_EVE_SPLIT_1050,
-            COL_EVE_SPLIT_1075,
-            COL_EVE_SPLIT_1100,
-            COL_EVE_SPLIT_1125,
-            COL_EVE_SPLIT_1150,
-            COL_EVE_SPLIT_1175,
-            COL_EVE_SPLIT_1200,
-            COL_EVE_SPLIT_1225,
-            COL_EVE_SPLIT_1250,
-            COL_EVE_SPLIT_1275,
-            COL_EVE_SPLIT_1300,
-            COL_EVE_SPLIT_1325,
-            COL_EVE_SPLIT_1350,
-            COL_EVE_SPLIT_1375,
-            COL_EVE_SPLIT_1400,
-            COL_EVE_SPLIT_1425,
-            COL_EVE_SPLIT_1450,
-            COL_EVE_SPLIT_1475,
-            COL_EVE_SPLIT_1500
+            COL_RES_SPLIT_0,
+            COL_RES_SPLIT_1,
+            COL_RES_SPLIT_2,
+            COL_RES_SPLIT_3,
+            COL_RES_SPLIT_4,
+            COL_RES_SPLIT_5,
+            COL_RES_SPLIT_6,
+            COL_RES_SPLIT_7,
+            COL_RES_SPLIT_8,
+            COL_RES_SPLIT_9,
+            COL_RES_SPLIT_10,
+            COL_RES_SPLIT_11,
+            COL_RES_SPLIT_12,
+            COL_RES_SPLIT_13,
+            COL_RES_SPLIT_14,
+            COL_RES_SPLIT_15,
+            COL_RES_SPLIT_16,
+            COL_RES_SPLIT_17,
+            COL_RES_SPLIT_18,
+            COL_RES_SPLIT_19,
+            COL_RES_SPLIT_20,
+            COL_RES_SPLIT_21,
+            COL_RES_SPLIT_22,
+            COL_RES_SPLIT_23,
+            COL_RES_SPLIT_24,
+            COL_RES_SPLIT_25,
+            COL_RES_SPLIT_26,
+            COL_RES_SPLIT_27,
+            COL_RES_SPLIT_28,
+            COL_RES_SPLIT_29,
+            COL_RES_SPLIT_30,
+            COL_RES_SPLIT_31,
+            COL_RES_SPLIT_32,
+            COL_RES_SPLIT_33,
+            COL_RES_SPLIT_34,
+            COL_RES_SPLIT_35,
+            COL_RES_SPLIT_36,
+            COL_RES_SPLIT_37,
+            COL_RES_SPLIT_38,
+            COL_RES_SPLIT_39,
+            COL_RES_SPLIT_40,
+            COL_RES_SPLIT_41,
+            COL_RES_SPLIT_42,
+            COL_RES_SPLIT_43,
+            COL_RES_SPLIT_44,
+            COL_RES_SPLIT_45,
+            COL_RES_SPLIT_46,
+            COL_RES_SPLIT_47,
+            COL_RES_SPLIT_48,
+            COL_RES_SPLIT_49,
+            COL_RES_SPLIT_50,
+            COL_RES_SPLIT_51,
+            COL_RES_SPLIT_52,
+            COL_RES_SPLIT_53,
+            COL_RES_SPLIT_54,
+            COL_RES_SPLIT_55,
+            COL_RES_SPLIT_56,
+            COL_RES_SPLIT_57,
+            COL_RES_SPLIT_58,
+            COL_RES_SPLIT_59
     };
 
     public static final String[] ALL_COLUMNS_AS_STRING_TAB = {
@@ -281,69 +281,69 @@ public class DbTableResults implements DbTableMODEL {
             COL_MEE_ID_MEET,
             COL_EVE_ID_EVENT,
             COL_RES_ID_RACE,
-            COL_EVE_QUALIFYING_TIME,
-            COL_EVE_SWIM_TIME,
+            COL_RES_QUALIFYING_TIME,
+            COL_RES_SWIM_TIME,
 
-            COL_EVE_SPLIT_25,//16
-            COL_EVE_SPLIT_50,
-            COL_EVE_SPLIT_75,
-            COL_EVE_SPLIT_100,
-            COL_EVE_SPLIT_125,
-            COL_EVE_SPLIT_150,
-            COL_EVE_SPLIT_175,
-            COL_EVE_SPLIT_200,
-            COL_EVE_SPLIT_225,
-            COL_EVE_SPLIT_250,
-            COL_EVE_SPLIT_275,
-            COL_EVE_SPLIT_300,
-            COL_EVE_SPLIT_325,
-            COL_EVE_SPLIT_350,
-            COL_EVE_SPLIT_375,
-            COL_EVE_SPLIT_400,
-            COL_EVE_SPLIT_425,
-            COL_EVE_SPLIT_450,
-            COL_EVE_SPLIT_475,
-            COL_EVE_SPLIT_500,
-            COL_EVE_SPLIT_525,
-            COL_EVE_SPLIT_550,
-            COL_EVE_SPLIT_575,
-            COL_EVE_SPLIT_600,
-            COL_EVE_SPLIT_625,
-            COL_EVE_SPLIT_650,
-            COL_EVE_SPLIT_675,
-            COL_EVE_SPLIT_700,
-            COL_EVE_SPLIT_725,
-            COL_EVE_SPLIT_750,
-            COL_EVE_SPLIT_775,
-            COL_EVE_SPLIT_800,
-            COL_EVE_SPLIT_825,
-            COL_EVE_SPLIT_850,
-            COL_EVE_SPLIT_875,
-            COL_EVE_SPLIT_900,
-            COL_EVE_SPLIT_925,
-            COL_EVE_SPLIT_950,
-            COL_EVE_SPLIT_975,
-            COL_EVE_SPLIT_1000,
-            COL_EVE_SPLIT_1025,
-            COL_EVE_SPLIT_1050,
-            COL_EVE_SPLIT_1075,
-            COL_EVE_SPLIT_1100,
-            COL_EVE_SPLIT_1125,
-            COL_EVE_SPLIT_1150,
-            COL_EVE_SPLIT_1175,
-            COL_EVE_SPLIT_1200,
-            COL_EVE_SPLIT_1225,
-            COL_EVE_SPLIT_1250,
-            COL_EVE_SPLIT_1275,
-            COL_EVE_SPLIT_1300,
-            COL_EVE_SPLIT_1325,
-            COL_EVE_SPLIT_1350,
-            COL_EVE_SPLIT_1375,
-            COL_EVE_SPLIT_1400,
-            COL_EVE_SPLIT_1425,
-            COL_EVE_SPLIT_1450,
-            COL_EVE_SPLIT_1475,
-            COL_EVE_SPLIT_1500};
+            COL_RES_SPLIT_0,//16
+            COL_RES_SPLIT_1,
+            COL_RES_SPLIT_2,
+            COL_RES_SPLIT_3,
+            COL_RES_SPLIT_4,
+            COL_RES_SPLIT_5,
+            COL_RES_SPLIT_6,
+            COL_RES_SPLIT_7,
+            COL_RES_SPLIT_8,
+            COL_RES_SPLIT_9,
+            COL_RES_SPLIT_10,
+            COL_RES_SPLIT_11,
+            COL_RES_SPLIT_12,
+            COL_RES_SPLIT_13,
+            COL_RES_SPLIT_14,
+            COL_RES_SPLIT_15,
+            COL_RES_SPLIT_16,
+            COL_RES_SPLIT_17,
+            COL_RES_SPLIT_18,
+            COL_RES_SPLIT_19,
+            COL_RES_SPLIT_20,
+            COL_RES_SPLIT_21,
+            COL_RES_SPLIT_22,
+            COL_RES_SPLIT_23,
+            COL_RES_SPLIT_24,
+            COL_RES_SPLIT_25,
+            COL_RES_SPLIT_26,
+            COL_RES_SPLIT_27,
+            COL_RES_SPLIT_28,
+            COL_RES_SPLIT_29,
+            COL_RES_SPLIT_30,
+            COL_RES_SPLIT_31,
+            COL_RES_SPLIT_32,
+            COL_RES_SPLIT_33,
+            COL_RES_SPLIT_34,
+            COL_RES_SPLIT_35,
+            COL_RES_SPLIT_36,
+            COL_RES_SPLIT_37,
+            COL_RES_SPLIT_38,
+            COL_RES_SPLIT_39,
+            COL_RES_SPLIT_40,
+            COL_RES_SPLIT_41,
+            COL_RES_SPLIT_42,
+            COL_RES_SPLIT_43,
+            COL_RES_SPLIT_44,
+            COL_RES_SPLIT_45,
+            COL_RES_SPLIT_46,
+            COL_RES_SPLIT_47,
+            COL_RES_SPLIT_48,
+            COL_RES_SPLIT_49,
+            COL_RES_SPLIT_50,
+            COL_RES_SPLIT_51,
+            COL_RES_SPLIT_52,
+            COL_RES_SPLIT_53,
+            COL_RES_SPLIT_54,
+            COL_RES_SPLIT_55,
+            COL_RES_SPLIT_56,
+            COL_RES_SPLIT_57,
+            COL_RES_SPLIT_58,
+            COL_RES_SPLIT_59};
 
     @Override
     public String getTableName() {

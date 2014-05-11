@@ -34,6 +34,7 @@ public class LapAdapter extends ArrayAdapter {
         this.resultModelList = resultModelList;
         this.formatTime = new FormatTimeAsString();
         this.chronoIsStarted = chronoIsStarted;
+
     }
 
     @Override
@@ -41,6 +42,10 @@ public class LapAdapter extends ArrayAdapter {
 
         View rowView = convertView;
         ViewHolder viewHolder;
+
+        int resultId = resultModelList.get(position).getId();
+        int raceId = resultModelList.get(position).getEventModel().getRaceModel().getId();
+
         if (rowView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             rowView = inflater.inflate(R.layout.viewforlist_data_lap, parent, false);
@@ -49,21 +54,21 @@ public class LapAdapter extends ArrayAdapter {
         } else {
             viewHolder = (ViewHolder) rowView.getTag();
         }
-        // BUILD ELEMENT OF ROW
+        // BUILD ELEMENTS OF ROW
 
         // BUTTON LAP
         viewHolder.buttonTakeLap = (Button) rowView.findViewById(R.id.id_button_take_lap);
-        viewHolder.buttonTakeLap.setTag("lap_" + position);
+        viewHolder.buttonTakeLap.setTag("lap_" + resultId + "_" + raceId + "_" + position);
         viewHolder.buttonTakeLap.setBackgroundResource(R.drawable.button_basic_with_shadow);
 
         //BUTTON RECORD
         viewHolder.buttonRecordLap = (Button) rowView.findViewById(R.id.id_button_record_lap);
-        viewHolder.buttonRecordLap.setTag("rec_" + position);
+        viewHolder.buttonRecordLap.setTag("rec_" + resultId + "_" + raceId + "_" + position);
         viewHolder.buttonRecordLap.setBackgroundResource(R.drawable.button_basic_with_shadow);
 
         //BUTTON RESET
         viewHolder.buttonResetLap = (Button) rowView.findViewById(R.id.id_button_reset_lap);
-        viewHolder.buttonResetLap.setTag("res_" + position);
+        viewHolder.buttonResetLap.setTag("res_" + resultId + "_" + raceId + "_" + position);
         viewHolder.buttonResetLap.setBackgroundResource(R.drawable.button_basic_with_shadow);
 
 
@@ -80,13 +85,15 @@ public class LapAdapter extends ArrayAdapter {
         String qualifTimeAsString = formatTime.makeString(qualifyingTime);
 
         viewHolder.textViewSwimmerDetails.setText(name + "  " + firstName + "  " + yearOfBirth);
-        viewHolder.textViewQualifiedTime.setText(qualifTimeAsString);
+        viewHolder.textViewQualifiedTime.setText("Qualif: " + qualifTimeAsString);
 
         viewHolder.textViewAllLaps = (TextView) rowView.findViewById(R.id.id_textview_all_laps);
-        viewHolder.textViewAllLaps.setTag("TV_all_" + position);
+        viewHolder.textViewAllLaps.setTag("TexViewAll_" + resultId + "_" + raceId + "_" + position);
 
         viewHolder.textViewLastLap = (TextView) rowView.findViewById(R.id.id_textview_last);
-        viewHolder.textViewLastLap.setTag("TV_last_" + position);
+        viewHolder.textViewLastLap.setTag("TextViewLast_" + resultId + "_" + raceId + "_" + position);
+        viewHolder.textViewLastLap.setTextColor(context.getResources().getColor(R.color.bluesea));
+
 
         if (chronoIsStarted) {
             viewHolder.buttonTakeLap.setVisibility(View.VISIBLE);
@@ -98,14 +105,18 @@ public class LapAdapter extends ArrayAdapter {
             viewHolder.buttonRecordLap.setVisibility((View.VISIBLE));
         }
 
-        if (resultModelList.get(position).trueIfSomeLapsAreAlreadyTaken()) {
-            ArrayList<String> listOfLineToInsertInAllLaps = resultModelList.get(position).giveBackLapsToInsertInTextViewAllLaps();
-            String stringToInsert = null;
-            for (int indexLap = 0; indexLap < listOfLineToInsertInAllLaps.size(); indexLap++) {
-                stringToInsert += listOfLineToInsertInAllLaps.get(indexLap);
+        if (resultModelList.get(position).areLapsTaken() || resultModelList.get(position).getLaps().size() > 0) {
+            ArrayList<String> linesToInsertInAllLaps = resultModelList.get(position).giveBackLapsToInsertInTextViewAllLaps();
+            String stringToInsert = "";
+            for (int indexLap = 0; indexLap < linesToInsertInAllLaps.size(); indexLap++) {
+                stringToInsert += linesToInsertInAllLaps.get(indexLap);
             }
             viewHolder.textViewAllLaps.setText(stringToInsert);
-            viewHolder.textViewLastLap.setText(resultModelList.get(position).giveBackLastLap());
+            viewHolder.textViewLastLap.setText("FINAL: " + resultModelList.get(position).giveBackLastLap());
+            viewHolder.textViewLastLap.setTextColor(context.getResources().getColor(R.color.redstop));
+
+            viewHolder.textViewAllLaps.setTextColor(context.getResources().getColor(R.color.bluesea));
+
         }
 
         rowView.setTag(viewHolder);
@@ -113,12 +124,9 @@ public class LapAdapter extends ArrayAdapter {
         return rowView;
     }
 
-
     private static class ViewHolder {
         public static Button buttonTakeLap, buttonResetLap, buttonRecordLap;
         public static TextView textViewSwimmerDetails, textViewQualifiedTime, textViewAllLaps, textViewLastLap;
-
     }
-
 }
 

@@ -157,7 +157,7 @@ public class FFNexParser {
                         qualifyingTimeInResult = Float.valueOf(xpp.getAttributeValue(null, "qualifyingtime"));
                     }
                 } else if (xpp.getName().equals("SOLO")) {
-                    System.out.println("$$$ Start tag " + xpp.getName());
+//                    System.out.println("$$$ Start tag " + xpp.getName());
 
                     // add result in meeting only if clubid is the corresponding one to the application club code
                     if (clubIdInTheResult == clubIdInThisMeeting) {
@@ -249,7 +249,7 @@ public class FFNexParser {
                                     events.add(eventToUseInResult);
                                 }
                                 /** BUILD attributes with qualifying time in milliseconds and poolsize from meeting **/
-                                result.buildContent(qualifyingTimeInResult * 100000, meetingModel.getPoolSize(), meetingModel.getId(),eventToUseInResult);
+                                result.buildContent(qualifyingTimeInResult * 100000, meetingModel.getPoolSize(), meetingModel.getId(), eventToUseInResult);
 
                                 /** ADDING IN MEETING MODEL **/
                                 meetingModel.addResult(result);

@@ -21,20 +21,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResultUtilities {
-    private SQLiteDatabase sqLiteDatabaseSwimLap;
+    private SQLiteDatabase db;
     private DbTableResults table;
 
-    public ResultUtilities(SQLiteDatabase sqLiteDatabaseSwimLap, DbTableResults dbTableResults) {
-        this.sqLiteDatabaseSwimLap = sqLiteDatabaseSwimLap;
+    public ResultUtilities(SQLiteDatabase db, DbTableResults dbTableResults) {
+        this.db = db;
         this.table = dbTableResults;
     }
 
 
     /* GETTERS */
-    public List<ResultModel> getAllResultsFromDb_ByMeeting(int idMeeting) {
+    public List<ResultModel> getAllResultsByTimeOrderByMeeting_FromDb(int idMeeting) {
         List<ResultModel> allResults = new ArrayList<ResultModel>();
         String condition = table.COL_MEE_ID_MEET + "=" + idMeeting;
-        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
+        String orderBy = table.COL_RES_QUALIFYING_TIME + " DESC";
+        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, orderBy);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             ResultModel resultModel = getDataResult_FromDb(cursor);
@@ -44,12 +45,11 @@ public class ResultUtilities {
         cursor.close();
         return allResults;
     }
-
 
     public List<ResultModel> getAllResultsBySwimmer_FromDb(int idFFNSwimmer) {
         List<ResultModel> allResults = new ArrayList<ResultModel>();
         String condition = table.COL_SWI_0_ID_FFN + "=" + idFFNSwimmer;
-        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
+        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             ResultModel resultModel = getDataResult_FromDb(cursor);
@@ -60,10 +60,11 @@ public class ResultUtilities {
         return allResults;
     }
 
-    public List<ResultModel> getAllResultsByRace_FromDb(int idRace) {
+    public List<ResultModel> getAllResultsByTimeOrderByRace_FromDb(int idRace) {
         List<ResultModel> allResults = new ArrayList<ResultModel>();
         String condition = table.COL_RES_ID_RACE + "=" + idRace;
-        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
+        String orderBy = table.COL_RES_QUALIFYING_TIME;
+        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             ResultModel resultModel = getDataResult_FromDb(cursor);
@@ -72,6 +73,19 @@ public class ResultUtilities {
         }
         cursor.close();
         return allResults;
+    }
+
+    public ResultModel getResultById_Fromdb(int resultId) {
+        ResultModel resultToReturn = null;
+        String condition = table.COL_RES_ID + "=" + resultId;
+        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            resultToReturn = getDataResult_FromDb(cursor);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return resultToReturn;
     }
 
     /* GET CONTENT */
@@ -93,16 +107,11 @@ public class ResultUtilities {
         resultModel.setEventModel(eventModel); // ADD eventModel
         resultModel.setQualifyingTime(cursor.getFloat(14)); //qualifyinfTime
         resultModel.setSwimTime(cursor.getFloat(15));// swimTime
-        // try to get the laps when different 0
-        boolean previewLapIsNull = false;
-        int indexLap = 0;
-        while (!previewLapIsNull && indexLap < 60) {
-            if (cursor.getFloat(indexLap + 7) == 0) {
-                previewLapIsNull = true;
-            } else {
-                resultModel.getLaps().add(indexLap, cursor.getFloat(indexLap + 7));
+        for (int indexLap = 0; indexLap < 60; indexLap++) {
+            float lapToGetFromDb = cursor.getFloat(indexLap + 16);
+            if (lapToGetFromDb != 0) {
+                resultModel.getLaps().add(lapToGetFromDb);
             }
-            indexLap++;
         }
         return resultModel;
     }
@@ -127,8 +136,8 @@ public class ResultUtilities {
         contentValues.put(table.COL_MEE_ID_MEET, resultModel.getMeetingId());
         contentValues.put(table.COL_EVE_ID_EVENT, resultModel.getEventModel().getId());
         contentValues.put(table.COL_RES_ID_RACE, resultModel.getEventModel().getRaceModel().getId());
-        contentValues.put(table.COL_EVE_QUALIFYING_TIME, resultModel.getQualifyingTime());
-        contentValues.put(table.COL_EVE_SWIM_TIME, resultModel.getSwimTime());
+        contentValues.put(table.COL_RES_QUALIFYING_TIME, resultModel.getQualifyingTime());
+        contentValues.put(table.COL_RES_SWIM_TIME, resultModel.getSwimTime());
 
         /** LAPS **/
         ArrayList<Float> laps = resultModel.getLaps();
@@ -140,13 +149,13 @@ public class ResultUtilities {
             contentValues.put(table.LAPS_COLUMNS_AS_STRING_TAB[indexLap], 0);
         }
 
-        sqLiteDatabaseSwimLap.insert(table.TABLE_NAME, null, contentValues);
+        db.insert(table.TABLE_NAME, null, contentValues);
     }
 
     /* DELETER */
     public void deleteResultWithId_InDb(int idResult) {
         String condition = table.COL_RES_ID + " = " + idResult;
-        sqLiteDatabaseSwimLap.delete(table.TABLE_NAME, condition, null);
+        db.delete(table.TABLE_NAME, condition, null);
     }
 
     public void deleteResultDependOnAttributes_InDb(int idSwimmer0, int idMeeting, int idEvent, int idRace) {
@@ -154,11 +163,11 @@ public class ResultUtilities {
                 + " AND " + table.COL_MEE_ID_MEET + " = " + idMeeting
                 + " AND " + table.COL_EVE_ID_EVENT + " = " + idEvent
                 + " AND " + table.COL_RES_ID_RACE + " = " + idRace;
-        sqLiteDatabaseSwimLap.delete(table.TABLE_NAME, condition, null);
+        db.delete(table.TABLE_NAME, condition, null);
     }
 
     /* UPDATER */
-    public void updateResult_InDb(ResultModel resultModel) {
+    public void updateResultForTime_InDb(ResultModel resultModel) {
         deleteResultWithId_InDb(resultModel.getId());
         addResult_InDb(resultModel);
     }
@@ -166,7 +175,7 @@ public class ResultUtilities {
     /* VERIFY ENTRY */
     public boolean tableIsEmpty() {
         boolean isEmpty;
-        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
 
         if (cursor.getCount() == 0) {
             isEmpty = true;

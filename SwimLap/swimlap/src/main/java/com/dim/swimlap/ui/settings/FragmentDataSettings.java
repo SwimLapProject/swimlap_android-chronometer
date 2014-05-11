@@ -7,11 +7,13 @@
 
 package com.dim.swimlap.ui.settings;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -32,7 +34,6 @@ public class FragmentDataSettings extends Fragment implements View.OnClickListen
     private DatePicker datePickerStart, datePickerStop;
     private Button buttonSeason, buttonClub;
     private EditText editTextclubName, editTextclubCodeffn, editTextSeasonName;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +61,9 @@ public class FragmentDataSettings extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
+        // TO HIDE KEYBOARD
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+
         RecordSettings recordSettings = new RecordSettings(getActivity());
         DateTransformer transformer = new DateTransformer();
         if (view.getId() == R.id.id_button_modifyclub) {
@@ -67,6 +71,10 @@ public class FragmentDataSettings extends Fragment implements View.OnClickListen
             ClubModel clubModel = new ClubModel(0, codeClubFFN);
             clubModel.setName(editTextclubName.getText().toString());
             recordSettings.recordClub(clubModel);
+
+            imm.hideSoftInputFromWindow(editTextclubName.getWindowToken(), 0);
+            imm.hideSoftInputFromWindow(editTextclubCodeffn.getWindowToken(), 0);
+
             Toast.makeText(view.getContext(), "Club Recorded", Toast.LENGTH_SHORT).show();
 
 
@@ -79,6 +87,9 @@ public class FragmentDataSettings extends Fragment implements View.OnClickListen
             seasonModel.setStartDate(dateStart);
             seasonModel.setStopDate(dateStop);
             recordSettings.recordSeason(seasonModel);
+
+            imm.hideSoftInputFromWindow(editTextclubCodeffn.getWindowToken(), 0);
+
             Toast.makeText(view.getContext(), "Season Recorded", Toast.LENGTH_SHORT).show();
 
         }
@@ -94,10 +105,10 @@ public class FragmentDataSettings extends Fragment implements View.OnClickListen
 
         ClubModel club = getter.getClubRecordedInDb();
         editTextclubName.setText(club.getName(), TextView.BufferType.EDITABLE);
-        editTextclubCodeffn.setText(String.valueOf(club.getCodeFFN()),TextView.BufferType.EDITABLE);
+        editTextclubCodeffn.setText(String.valueOf(club.getCodeFFN()), TextView.BufferType.EDITABLE);
 
         SeasonModel season = getter.getCurrentSeasonInDb();
-        editTextSeasonName.setText(season.getName(),TextView.BufferType.EDITABLE);
+        editTextSeasonName.setText(season.getName(), TextView.BufferType.EDITABLE);
         HashMap<String, Integer> start = transformer.getDateAsMap(season.getStartDate());
         datePickerStart.updateDate(start.get("year"), start.get("month"), start.get("day"));
         HashMap<String, Integer> stop = transformer.getDateAsMap(season.getStopDate());

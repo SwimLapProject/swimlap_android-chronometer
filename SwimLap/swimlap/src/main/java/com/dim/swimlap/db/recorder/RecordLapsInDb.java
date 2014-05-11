@@ -17,17 +17,15 @@ import java.sql.SQLException;
 public class RecordLapsInDb {
 
     private DbUtilitiesBuilder db;
-    private Context context;
 
     public RecordLapsInDb(Context context) {
-        this.context = context;
         db = new DbUtilitiesBuilder(context);
     }
 
     public void recordLaps(ResultModel resultModel) {
         try {
             db.open();
-            db.getResultUtilities().updateResult_InDb(resultModel);
+            db.getResultUtilities().updateResultForTime_InDb(resultModel);
 
         } catch (SQLException e) {
             e.printStackTrace();

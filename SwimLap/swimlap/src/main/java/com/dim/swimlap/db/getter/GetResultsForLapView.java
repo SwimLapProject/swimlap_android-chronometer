@@ -62,7 +62,7 @@ public class GetResultsForLapView {
 
         try {
             db2.open();
-            resultsInDB = db2.getResultUtilities().getAllResultsFromDb_ByMeeting(meetingOfTheDay.getId());
+            resultsInDB = db2.getResultUtilities().getAllResultsByTimeOrderByMeeting_FromDb(meetingOfTheDay.getId());
 
             /** FOR EACH RESULT IN DB OF MEETING **/
             for (int indexResult = 0; indexResult < resultsInDB.size(); indexResult++) {
@@ -88,7 +88,7 @@ public class GetResultsForLapView {
                 float qualifyingTime = resultToFillThenToAdd.getQualifyingTime();
                 int poolSize = meetingOfTheDay.getPoolSize();
                 int meetingId = meetingOfTheDay.getId();
-                resultToFillThenToAdd.buildContent(qualifyingTime,poolSize,meetingId,eventFromDb);
+                resultToFillThenToAdd.buildContent(qualifyingTime, poolSize, meetingId, eventFromDb);
 
                 /** ADD EACH RESULT GETTED FROM DB IN MEETING */
                 meetingOfTheDay.addResult(resultToFillThenToAdd);

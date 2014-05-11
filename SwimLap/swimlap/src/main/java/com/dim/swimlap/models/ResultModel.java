@@ -35,6 +35,8 @@ public class ResultModel {
     private int poolSize;
     private boolean isRelay;
 
+    private boolean lapsAreTaken;
+
     public ResultModel(int id) {
         this.id = id;
         laps = new ArrayList<Float>();
@@ -49,34 +51,34 @@ public class ResultModel {
         team.add(swimmerModel);
     }
 
-    public void buildContent(float qualifyingTime, int poolSize, int meetingId,EventModel eventModel) {
+    public void buildContent(float qualifyingTime, int poolSize, int meetingId, EventModel eventModel) {
         this.eventModel = eventModel;
         this.meetingId = meetingId;
         this.poolSize = poolSize;
         // qualifying time must be in milliseconds
         this.qualifyingTime = qualifyingTime;
         numberOfLap = this.eventModel.getRaceModel().getDistance() / poolSize;
-        currentLapSwimming = 0;
         lapMin = (qualifyingTime * 10000 / numberOfLap) * 75 / 100;
         lapMax = (qualifyingTime * 10000 / numberOfLap) * 125 / 100;
-    }
-
-    public boolean trueIfSomeLapsAreAlreadyTaken() {
-        boolean lapsAllreadytaken = false;
-        if (laps.size() != 0 && laps.get(0)!=0) {//todo verify if laps.get(0) works
-            lapsAllreadytaken = true;
+        if (laps.size() > 0) {
+            lapsAreTaken = true;
+            currentLapSwimming = numberOfLap;
+        } else {
+            lapsAreTaken = false;
+            currentLapSwimming = 0;
         }
-        return lapsAllreadytaken;
     }
 
     public ArrayList<String> giveBackLapsToInsertInTextViewAllLaps() {
         FormatTimeAsString format = new FormatTimeAsString();
         ArrayList<String> allLapsAlreadyTaken = new ArrayList<String>();
 
-        for (int lapIndex = 0; lapIndex < currentLapSwimming; lapIndex++) {
-            String lapStringToAdd = String.valueOf(poolSize * lapIndex) + ": ";
+        for (int lapIndex = 0; lapIndex < laps.size(); lapIndex++) {
+            String lapStringToAdd = String.valueOf(poolSize * (lapIndex + 1)) + "m : ";
             lapStringToAdd += format.makeString(giveSplit(laps.get(lapIndex), lapIndex));
+            lapStringToAdd += "  -  ";
             lapStringToAdd += format.makeString(laps.get(lapIndex));
+            lapStringToAdd += "\n";
             allLapsAlreadyTaken.add(lapStringToAdd);
         }
         return allLapsAlreadyTaken;
@@ -84,7 +86,12 @@ public class ResultModel {
 
     public String giveBackLastLap() {
         FormatTimeAsString format = new FormatTimeAsString();
-        return format.makeString(laps.get(laps.size() - 1));
+        int index = laps.size() - 1;
+        if (index < 0) {
+            return format.makeString(0);
+        } else {
+            return format.makeString(laps.get(laps.size() - 1));
+        }
     }
 
     private float giveSplit(float lap, int currentPosition) {
@@ -107,7 +114,6 @@ public class ResultModel {
         } else {
             split = 0;
         }
-
         return split;
     }
 
@@ -126,6 +132,7 @@ public class ResultModel {
     public void resetLaps() {
         this.currentLapSwimming = 0;
         this.laps.clear();
+        lapsAreTaken = false;
     }
 
     public boolean isRelay() {
@@ -139,9 +146,14 @@ public class ResultModel {
     public void recordLapsInDB(Context context) {
         RecordLapsInDb recorder = new RecordLapsInDb(context);
         recorder.recordLaps(this);
+        lapsAreTaken = true;
     }
 
     // GETTERS AND SETTERS
+    public boolean areLapsTaken() {
+        return lapsAreTaken;
+    }
+
     public float getQualifyingTime() {
         return qualifyingTime;
     }
@@ -191,22 +203,6 @@ public class ResultModel {
         this.swimTime = swimTime;
     }
 
-    public int getCurrentLapSwimming() {
-        return currentLapSwimming;
-    }
-
-    public void setCurrentLapSwimming(int currentLapSwimming) {
-        this.currentLapSwimming = currentLapSwimming;
-    }
-
-    public int getNumberOfLap() {
-        return numberOfLap;
-    }
-
-    public void setNumberOfLap(int numberOfLap) {
-        this.numberOfLap = numberOfLap;
-    }
-
     public int getId() {
         return id;
     }
@@ -219,16 +215,7 @@ public class ResultModel {
         return team;
     }
 
-    public void setTeam(ArrayList<SwimmerModel> team) {
-        this.team = team;
-    }
-
     public int getMeetingId() {
         return meetingId;
     }
-
-    public void setMeetingId(int meetingId) {
-        this.meetingId = meetingId;
-    }
-
 }

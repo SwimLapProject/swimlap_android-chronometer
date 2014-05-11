@@ -45,8 +45,12 @@ public class FragmentNavSettings extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.id_button_scan_ffnex) {
+            Button btn = (Button) view;
+            btn.setTextColor(getResources().getColor(R.color.bluesea));
+
             Toast.makeText(getActivity(), "Start parsing", Toast.LENGTH_SHORT).show();
             doParsing();
+            btn.setTextColor(getResources().getColor(R.color.redstop));
         }
     }
 
@@ -58,7 +62,7 @@ public class FragmentNavSettings extends Fragment implements View.OnClickListene
             String[] files = ffnexGetter.getFiles();
             final String[] items = files;
 
-            if (files == null || files.length==0) {
+            if (files == null || files.length == 0) {
                 Toast.makeText(getActivity(), "NO file in swimlap directory", Toast.LENGTH_SHORT).show();
 
             } else {
@@ -81,13 +85,13 @@ public class FragmentNavSettings extends Fragment implements View.OnClickListene
 
                 File fileToParse = ffnexGetter.getFFNExFile(fileNameToParse);
                 String stringXMLToParse = ffnexGetter.transformFileToString(fileToParse);
-                meetingModel = ffnexGetter.getResultOfParsing(stringXMLToParse,getActivity());
+                meetingModel = ffnexGetter.getResultOfParsing(stringXMLToParse, getActivity());
 
                 // RECORD IN DB
-                ffnexGetter.recordParsedMeetingInDb(meetingModel,getActivity());
-                if(ffnexGetter.recordParsingHasBeenDone(meetingModel.getId(),getActivity())){
+                ffnexGetter.recordParsedMeetingInDb(meetingModel, getActivity());
+                if (ffnexGetter.recordParsingHasBeenDone(meetingModel.getId(), getActivity())) {
                     ffnexGetter.moveFFNexParsed(fileNameToParse);
-                    Toast.makeText(getActivity(), "MEETING !\n" + meetingModel.getName()+"\nHAS BEEN RECORDED IN PHONE", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "MEETING !\n" + meetingModel.getName() + "\nHAS BEEN RECORDED IN PHONE", Toast.LENGTH_SHORT).show();
                 }
             }
         } catch (IOException e) {

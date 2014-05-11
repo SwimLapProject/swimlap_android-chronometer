@@ -18,8 +18,6 @@ import java.util.ArrayList;
 
 public final class Singleton {
 
-    private static final String FFNEX_DATE_FORMAT = "yyyy-MM-dd";
-
     private static volatile Singleton instance = null;
     private MeetingModel meetingOfTheDay;
     private int currentRaceId;
@@ -40,7 +38,7 @@ public final class Singleton {
         return Singleton.instance;
     }
 
-    public boolean buildEvent(Context context) {
+    public boolean buildMeetingOfTheDay(Context context) {
         boolean meetingOfTheDayIsBuilt = false;
         if (meetingOfTheDay != null) {
             meetingOfTheDayIsBuilt = true;
@@ -51,18 +49,26 @@ public final class Singleton {
         }
         if (meetingOfTheDay != null) {
             meetingOfTheDayIsBuilt = true;
-            builRaceOrder();
+            buildEventByOrder();
             if (currentRaceId == 0) {
-                setFirstIdRaceOfResults();
+                currentRaceId = allEventsByOrder.get(0).getRaceModel().getId();
             }
         }
 
         return meetingOfTheDayIsBuilt;
     }
 
-    public ResultModel getResultOfTheDay(int eventPosition) {
-        return meetingOfTheDay.getAllResults().get(eventPosition);
+    public ResultModel getResultOfTheDay(int resultId) {
+        ArrayList<ResultModel> results = meetingOfTheDay.getAllResults();
+        ResultModel resultToReturn = null;
+        for (int index = 0; index < results.size(); index++) {
+            if (results.get(index).getId() == resultId) {
+                resultToReturn = results.get(index);
+            }
+        }
+        return resultToReturn;
     }
+
 
     public ArrayList<ResultModel> getResultsByRace(int raceId) {
         ArrayList<ResultModel> resultsForIdRace = new ArrayList<ResultModel>();
@@ -78,44 +84,49 @@ public final class Singleton {
         return allEventsByOrder;
     }
 
-    private void builRaceOrder() {
-        allEventsByOrder = new ArrayList<EventModel>();
+    private void buildEventByOrder() {
+        ArrayList<EventModel> allEvents = new ArrayList<EventModel>();
         ArrayList<ResultModel> allResultsInMeeting = getAllResultsOfDay();
 
         for (int indexResult = 0; indexResult < allResultsInMeeting.size(); indexResult++) {
-            boolean thisRaceIsAlreadyAdded = false;
-            int idRaceInTheResult = allResultsInMeeting.get(indexResult).getEventModel().getRaceModel().getId();
-            int orderInMeeting = allResultsInMeeting.get(indexResult).getEventModel().getOrder();
-            for (int indexRace = 0; indexRace < allEventsByOrder.size(); indexRace++) {
-                int idRaceAlreadyInList = allEventsByOrder.get(indexRace).getRaceModel().getId();
-                if (idRaceAlreadyInList == idRaceInTheResult) {
-                    thisRaceIsAlreadyAdded = true;
+            int idRaceToInsert = allResultsInMeeting.get(indexResult).getEventModel().getRaceModel().getId();
+            // if raceid is not in allEventByOrder then insert it at tha right place
+            if (!eventAlreadyInList(allEvents, idRaceToInsert)) {
+                allEvents.add(allResultsInMeeting.get(indexResult).getEventModel());
+            }
+        }
+        sortEvents(allEvents);
+    }
+
+    private void sortEvents(ArrayList<EventModel> listToSort) {
+        allEventsByOrder = new ArrayList<EventModel>();
+        int positionOfSmaller = 0;
+        int smaller = 999999;
+        while (listToSort.size() > 0) {
+            for (int indexCursor = 0; indexCursor < listToSort.size(); indexCursor++) {
+                if (smaller > listToSort.get(indexCursor).getOrder()) {
+                    smaller = listToSort.get(indexCursor).getOrder();
+                    positionOfSmaller = indexCursor;
                 }
             }
-            int positionToInsert = 0;
-            if (!thisRaceIsAlreadyAdded) {
-                for (int indexOrder = allEventsByOrder.size() - 1; indexOrder >= 0; indexOrder--) {
-                    int orderInEventsList = allEventsByOrder.get(indexOrder).getOrder();
-                    if (orderInMeeting < orderInEventsList) {
-                        allEventsByOrder.add(indexOrder + 1, allResultsInMeeting.get(indexOrder).getEventModel());
-                        positionToInsert = indexOrder;
-                    }
-                }
-                allEventsByOrder.add(positionToInsert, allResultsInMeeting.get(indexResult).getEventModel());
-            }
+            allEventsByOrder.add(listToSort.get(positionOfSmaller));
+            listToSort.remove(positionOfSmaller);
+            smaller = 999999;
         }
     }
 
+    private boolean eventAlreadyInList(ArrayList<EventModel> list, int idRace) {
+        boolean isAlreadyIn = false;
+        for (int indexEvent = 0; indexEvent < list.size(); indexEvent++) {
+            if (idRace == list.get(indexEvent).getRaceModel().getId()) {
+                isAlreadyIn = true;
+            }
+        }
+        return isAlreadyIn;
+    }
 
     public ArrayList<ResultModel> getAllResultsOfDay() {
-            return meetingOfTheDay.getAllResults();
-    }
-
-
-    public void setFirstIdRaceOfResults() {
-        if (getAllResultsOfDay().size() > 0) {
-            currentRaceId = getAllResultsOfDay().get(0).getEventModel().getRaceModel().getId();
-        }
+        return meetingOfTheDay.getAllResults();
     }
 
     public int getCurrentRaceId() {

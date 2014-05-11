@@ -15,9 +15,7 @@ import com.dim.swimlap.db.tables.DbTableMeetings;
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.SeasonModel;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class MeetingUtilities {
     private SQLiteDatabase sqLiteDatabaseSwimLap;
@@ -29,18 +27,18 @@ public class MeetingUtilities {
     }
 
     /* GETTERS */
-    public List<MeetingModel> getAllMeetings_FromDb() {
-        List<MeetingModel> allMeetings = new ArrayList<MeetingModel>();
-        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            MeetingModel meeting = getDataMeeting_FromDb(cursor);
-            allMeetings.add(meeting);
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return allMeetings;
-    }
+//    public List<MeetingModel> getAllMeetings_FromDb() {
+//        List<MeetingModel> allMeetings = new ArrayList<MeetingModel>();
+//        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+//        cursor.moveToFirst();
+//        while (!cursor.isAfterLast()) {
+//            MeetingModel meeting = getDataMeeting_FromDb(cursor);
+//            allMeetings.add(meeting);
+//            cursor.moveToNext();
+//        }
+//        cursor.close();
+//        return allMeetings;
+//    }
 
     public MeetingModel getOneMeetingById_FromDb(int idMeeting) {
         MeetingModel meetingModel = null;
@@ -55,18 +53,18 @@ public class MeetingUtilities {
         return meetingModel;
     }
 
-    public MeetingModel getAMeetingByName_FromDb(String meetingName) {
-        MeetingModel meetingModel = new MeetingModel();
-        String condition = table.COL_MEE_MEETING_NAME + "=" + meetingName;
-        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            meetingModel = getDataMeeting_FromDb(cursor);
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return meetingModel;
-    }
+//    public MeetingModel getAMeetingByName_FromDb(String meetingName) {
+//        MeetingModel meetingModel = new MeetingModel();
+//        String condition = table.COL_MEE_MEETING_NAME + "=" + meetingName;
+//        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null, null);
+//        cursor.moveToFirst();
+//        while (!cursor.isAfterLast()) {
+//            meetingModel = getDataMeeting_FromDb(cursor);
+//            cursor.moveToNext();
+//        }
+//        cursor.close();
+//        return meetingModel;
+//    }
 
     public MeetingModel getMeetingWithDates(Date today) {
         MeetingModel meetingToday = null;
@@ -138,15 +136,15 @@ public class MeetingUtilities {
         return isPresent;
     }
 
-    public boolean tableIsEmpty() {
-        boolean isEmpty;
-        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
-
-        if (cursor.getCount() == 0) {
-            isEmpty = true;
-        } else {
-            isEmpty = false;
-        }
-        return isEmpty;
-    }
+//    public boolean tableIsEmpty() {
+//        boolean isEmpty;
+//        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+//
+//        if (cursor.getCount() == 0) {
+//            isEmpty = true;
+//        } else {
+//            isEmpty = false;
+//        }
+//        return isEmpty;
+//    }
 }

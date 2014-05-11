@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.splash_screen);
         Thread splash = new Thread() {
             int logoTimer;
+
             public void run() {
                 try {
                     logoTimer = 0;
@@ -42,7 +43,7 @@ public class MainActivity extends Activity {
                     e.printStackTrace();
                 } finally {
                     finish();
-                    logoTimer=0;
+                    logoTimer = 0;
                     Intent UI = new Intent(getApplicationContext(), GlobalContainer.class);
                     UI.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(UI);
