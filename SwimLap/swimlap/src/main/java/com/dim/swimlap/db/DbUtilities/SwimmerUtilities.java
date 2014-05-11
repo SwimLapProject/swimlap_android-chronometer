@@ -31,7 +31,8 @@ public class SwimmerUtilities {
     /* GETTERS */
     public ArrayList<SwimmerModel> getAllSwimmers_FromDb() {
         ArrayList<SwimmerModel> allSwimmers = new ArrayList<SwimmerModel>();
-        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+        String orderBy = table.COL_SWI_NAME;
+        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, orderBy);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             SwimmerModel swimmer = getDataSwimmer_FromDb(cursor);

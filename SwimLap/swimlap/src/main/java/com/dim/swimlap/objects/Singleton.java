@@ -136,5 +136,9 @@ public final class Singleton {
     public void setCurrentRaceId(int currentRaceId) {
         this.currentRaceId = currentRaceId;
     }
+
+    public String getMeetingName(){
+        return meetingOfTheDay.getName();
+    }
 }
 

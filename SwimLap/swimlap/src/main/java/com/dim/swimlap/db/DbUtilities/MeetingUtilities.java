@@ -31,7 +31,8 @@ public class MeetingUtilities {
     /* GETTERS */
     public ArrayList<MeetingModel> getAllMeetings_FromDb() {
         ArrayList<MeetingModel> allMeetings = new ArrayList<MeetingModel>();
-        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+        String orderBy = table.COL_MEE_START_DATE+" DESC";
+        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, orderBy);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             MeetingModel meeting = getDataMeeting_FromDb(cursor);

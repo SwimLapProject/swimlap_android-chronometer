@@ -53,10 +53,10 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dimen_button_little_side_size"
 
-            android:background="@drawable/button_basic_with_shadow"
+            android:background="@drawable/button_ranking"
 
             android:text="Rankings"
-            android:textColor="@color/white"
+            android:textColor="@color/bluesea"
             android:textSize="@dimen/dimen_text_button_little"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"/>

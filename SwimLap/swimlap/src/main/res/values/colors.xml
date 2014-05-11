@@ -5,7 +5,8 @@
     <color name="bluesea">#046675</color>
     <color name="greenstart">#0FA30F</color>
     <color name="redstop">#9E0016</color>
-
+    <color name="yellowdark">#FFCC00</color>FFFF66
+    <color name="yellowlight">#FFFF66</color>
 
 
 </resources>
