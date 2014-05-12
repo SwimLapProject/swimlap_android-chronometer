@@ -7,18 +7,18 @@
 
 package com.dim.swimlap.ui.menu;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.dim.swimlap.R;
-;
 import com.dim.swimlap.ui.CommunicationFragments;
+
+;
 
 public class FragmentDataMenu extends Fragment implements View.OnClickListener {
     private Button buttonSimple, buttonMeetings, buttonSwimmers, buttonSettings;
@@ -30,6 +30,7 @@ public class FragmentDataMenu extends Fragment implements View.OnClickListener {
             VIEW_SETTING = 5,
             VIEW_RANKING_MEET = 6,
             VIEW_RANKING_SW = 7;
+    private ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,7 +39,8 @@ public class FragmentDataMenu extends Fragment implements View.OnClickListener {
         buttonMeetings = (Button) view.findViewById(R.id.id_button_to_meetings);
         buttonSwimmers = (Button) view.findViewById(R.id.id_button_to_swimmers);
         buttonSettings = (Button) view.findViewById(R.id.id_button_to_settings);
-
+        progressBar = (ProgressBar) view.findViewById(R.id.id_progress_bar);
+        progressBar.setVisibility(View.INVISIBLE);
         return view;
     }
 
@@ -55,15 +57,16 @@ public class FragmentDataMenu extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setIndeterminate(true);
         if (view.getId() == R.id.id_button_to_settings) {
             communicationFragments.changeFragment(VIEW_SETTING);
         } else if (view.getId() == R.id.id_button_to_swimmers) {
             communicationFragments.changeFragment(VIEW_SWIMMER);
-        }else if (view.getId() == R.id.id_button_to_meetings) {
+        } else if (view.getId() == R.id.id_button_to_meetings) {
             communicationFragments.changeFragment(VIEW_MEETING);
-        }else if (view.getId() == R.id.id_button_to_simplechronometer) {
+        } else if (view.getId() == R.id.id_button_to_simplechronometer) {
             communicationFragments.changeFragment(VIEW_SIMPLE);
         }
     }
-
 }

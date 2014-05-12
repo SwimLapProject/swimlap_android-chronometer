@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.dim.swimlap.R;
 import com.dim.swimlap.models.MeetingModel;
+import com.dim.swimlap.parser.FFNexMaker;
 
 public class FragmentNavMeetingDetails extends Fragment implements View.OnClickListener {
 
@@ -43,8 +44,8 @@ public class FragmentNavMeetingDetails extends Fragment implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(view.getContext(), "Export ffnex soon", Toast.LENGTH_SHORT).show();
-
-        //todo run process to make ffnex
+        FFNexMaker maker = new FFNexMaker();
+        maker.makeFFNex(meeting);
+        maker.sendNewFFNexByMail(getActivity(),meeting.getName());
     }
 }

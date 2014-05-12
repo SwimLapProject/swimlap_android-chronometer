@@ -7,6 +7,11 @@
 
 package com.dim.swimlap.parser;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
+
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.models.SwimmerModel;
@@ -14,8 +19,7 @@ import com.dim.swimlap.models.SwimmerModel;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -31,8 +35,18 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 public class FFNexMaker {
+    private File ffnexExport;
+    private File newFFNex;
+
+    public FFNexMaker() {
+        File root = Environment.getExternalStorageDirectory();
+        File swimLapDir = new File(root, "swimlap");
+        ffnexExport = new File(swimLapDir, "ffnexExport");
+        ffnexExport.mkdir();
+    }
 
     public void makeFFNex(MeetingModel meeting) {
+        String meetingIdAsString = String.valueOf(meeting.getId());
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
@@ -50,7 +64,7 @@ public class FFNexMaker {
 
             /** MEET in meets **/
             Element MEET = document.createElement("MEET");
-            MEET.setAttribute("id", String.valueOf(meeting.getId()));
+            MEET.setAttribute("id", meetingIdAsString);
             MEET.setAttribute("name", meeting.getName());
             MEET.setAttribute("city", meeting.getCity());
             MEET.setAttribute("startdate", meeting.getStartDate());
@@ -137,7 +151,7 @@ public class FFNexMaker {
                 /** SPLITS in result **/
                 if (result.getLaps().size() > 0) {
                     Element SPLITS = document.createElement("SPLITS");
-                    RESULT.appendChild(RESULT);
+                    RESULT.appendChild(SPLITS);
 
                     /** SPLIT in splits **/
                     for (int indexLap = 0; indexLap < result.getLaps().size(); indexLap++) {
@@ -156,6 +170,7 @@ public class FFNexMaker {
 
             TransformerFactory factory = TransformerFactory.newInstance();
             Transformer transformer = factory.newTransformer();
+
             Properties outFormat = new Properties();
             outFormat.setProperty(OutputKeys.INDENT, "yes");
             outFormat.setProperty(OutputKeys.METHOD, "xml");
@@ -163,12 +178,11 @@ public class FFNexMaker {
             outFormat.setProperty(OutputKeys.VERSION, "1.0");
             outFormat.setProperty(OutputKeys.ENCODING, "UTF-8");
             transformer.setOutputProperties(outFormat);
-            DOMSource domSource =
-                    new DOMSource(document.getDocumentElement());
-            OutputStream output = new ByteArrayOutputStream();
-            StreamResult result = new StreamResult(output);
-            transformer.transform(domSource, result);
-// what to do do now
+
+            DOMSource source = new DOMSource(document);
+            newFFNex = new File(ffnexExport, "ffnex_" + meetingIdAsString + ".xml");
+            StreamResult result = new StreamResult(newFFNex);
+            transformer.transform(source, result);
 
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
@@ -191,6 +205,20 @@ public class FFNexMaker {
         milli = (int) Math.floor(milli / 10);
         String timeAsString = String.valueOf(minutes) + "." + String.valueOf(seconds) + String.valueOf(milli);
         return timeAsString;
+    }
+
+    public void sendNewFFNexByMail(Context context, String meetingName) {
+
+        String PATH = newFFNex.getAbsolutePath();
+        Uri uri = Uri.parse("file://" + PATH);
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("text/plain");
+//            String[] email = {"stephen.broyer@gmail.com"};
+//            i.putExtra(Intent.EXTRA_EMAIL, email);
+        i.putExtra(Intent.EXTRA_SUBJECT, "New SwimLap Result");
+        i.putExtra(Intent.EXTRA_TEXT, "SwimLap: " + meetingName);
+        i.putExtra(Intent.EXTRA_STREAM, uri);
+        context.startActivity(Intent.createChooser(i, "Select application"));
     }
 }
 

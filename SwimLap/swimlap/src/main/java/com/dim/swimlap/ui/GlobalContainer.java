@@ -9,8 +9,10 @@ package com.dim.swimlap.ui;
 
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -25,11 +27,11 @@ import com.dim.swimlap.objects.Singleton;
 import com.dim.swimlap.ui.lap.FragmentDataLap;
 import com.dim.swimlap.ui.lap.FragmentNavLap;
 import com.dim.swimlap.ui.lap.FragmentTitleLap;
+import com.dim.swimlap.ui.meeting.FragmentTitleMeeting;
 import com.dim.swimlap.ui.meeting.detail.FragmentDataMeetingDetails;
 import com.dim.swimlap.ui.meeting.detail.FragmentNavMeetingDetails;
 import com.dim.swimlap.ui.meeting.list.FragmentDataMeetingList;
 import com.dim.swimlap.ui.meeting.list.FragmentNavMeetingList;
-import com.dim.swimlap.ui.meeting.FragmentTitleMeeting;
 import com.dim.swimlap.ui.menu.FragmentDataMenu;
 import com.dim.swimlap.ui.menu.FragmentNavMenu;
 import com.dim.swimlap.ui.menu.FragmentTitleMenu;
@@ -347,5 +349,4 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         newTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         newTransaction.commit();
     }
-
 }
