@@ -13,37 +13,44 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dim.swimlap.R;
 import com.dim.swimlap.db.getter.GetMeetingDetailsForList;
-import com.dim.swimlap.db.getter.GetSwimmerDetailsForList;
 import com.dim.swimlap.models.MeetingModel;
-import com.dim.swimlap.models.SwimmerModel;
-;import java.util.ArrayList;
+import com.dim.swimlap.ui.CommunicationFragments;
 
-public class FragmentDataMeeting extends Fragment implements AdapterView.OnItemClickListener, AbsListView.OnScrollListener{
+import java.util.ArrayList;
+
+;
+
+public class FragmentDataMeetingList extends Fragment {
 
     private ListView listViewForMeetings;
     private TextView textViewNoMeetingInLap;
     private MeetingAdapter adapter;
+    private ArrayList<MeetingModel> meetings;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_model_list, container, false);
+        final CommunicationFragments comm = (CommunicationFragments) this.getActivity();
 
 
         listViewForMeetings = (ListView) view.findViewById(R.id.id_listview_model);
-        listViewForMeetings.setOnScrollListener(this);
+        listViewForMeetings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                comm.replaceFragmentsMeetingToDetails(meetings.get(position));
+            }
+        });
 
         textViewNoMeetingInLap = (TextView) view.findViewById(R.id.id_textview_no_model_in_db);
 
         GetMeetingDetailsForList getter = new GetMeetingDetailsForList(getActivity());
-        ArrayList<MeetingModel> meetings = getter.getAllMeetings();
+        meetings = getter.getAllMeetings();
 
 
         if (meetings.size() == 0) {
@@ -63,20 +70,10 @@ public class FragmentDataMeeting extends Fragment implements AdapterView.OnItemC
         super.onActivityCreated(savedInstanceState);
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(view.getContext(), "swimmer", Toast.LENGTH_SHORT).show();
+//    @Override
+//    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+//        CommunicationFragments comm = (CommunicationFragments) this.getActivity();
+//        comm.replaceFragmentsMeetingToDetails( meetings.get(position));
+//    }
 
-    }
-
-
-    @Override
-    public void onScrollStateChanged(AbsListView absListView, int i) {
-        // do nothing
-    }
-
-    @Override
-    public void onScroll(AbsListView absListView, int first, int count, int total) {
-
-    }
 }

@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.db.getter.GetSwimmerDetailsForList;
+import com.dim.swimlap.db.getter.GetSwimmers;
 import com.dim.swimlap.models.SwimmerModel;
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class FragmentDataSwimmer extends Fragment implements AdapterView.OnItemC
 
         textViewNoSwimmerInLap = (TextView) view.findViewById(R.id.id_textview_no_model_in_db);
 
-        GetSwimmerDetailsForList getter = new GetSwimmerDetailsForList(getActivity());
+        GetSwimmers getter = new GetSwimmers(getActivity());
         ArrayList<SwimmerModel> swimmers = getter.getSwimmerList();
 
 

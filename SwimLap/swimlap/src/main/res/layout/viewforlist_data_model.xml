@@ -60,6 +60,7 @@
         android:layout_weight="1"
         android:text="Ranking"
         android:background="@drawable/button_ranking"
-        android:textColor="@color/bluesea"/>
+        android:textColor="@color/bluesea"
+        android:focusable="false"/>
 
 </LinearLayout>

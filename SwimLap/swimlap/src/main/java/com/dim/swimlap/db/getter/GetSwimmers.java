@@ -16,11 +16,11 @@ import com.dim.swimlap.models.SwimmerModel;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class GetSwimmerDetailsForList {
+public class GetSwimmers {
 
     private Context context;
 
-    public GetSwimmerDetailsForList(Context context) {
+    public GetSwimmers(Context context) {
         this.context = context;
     }
 

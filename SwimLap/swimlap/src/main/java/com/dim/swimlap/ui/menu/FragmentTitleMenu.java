@@ -17,12 +17,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dim.swimlap.R;
+import com.dim.swimlap.ui.CommunicationFragments;
 ;
 
 public class FragmentTitleMenu extends Fragment implements View.OnClickListener {
     private TextView textViewTitle;
     private ImageView imageViewLogo;
     private Button buttonLink;
+    private CommunicationFragments communication;
+    private int VIEW_RANKING = 6;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,11 +35,12 @@ public class FragmentTitleMenu extends Fragment implements View.OnClickListener 
         textViewTitle = (TextView) view.findViewById(R.id.id_textview_title);
         buttonLink = (Button) view.findViewById(R.id.id_button_link);
         buttonLink.setOnClickListener(this);
+        communication = (CommunicationFragments) this.getActivity();
         return view;
     }
 
     @Override
     public void onClick(View view) {
-
+        communication.changeFragment(VIEW_RANKING);
     }
 }

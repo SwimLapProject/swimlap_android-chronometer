@@ -18,15 +18,16 @@ import android.widget.Chronometer;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
+import com.dim.swimlap.objects.Singleton;
 
 public class FragmentDirect extends Fragment implements View.OnClickListener {
 
     private Button buttonStart, buttonStop;
     private Button buttonDirect, buttonBackToMenu;
     private Chronometer chronometer;
-    private boolean chronoIsStarted;
     private int currentView;
     private CommunicationFragments communicationFragments;
+    private Singleton singleton;
     private static int
             VIEW_MENU = 0,
             VIEW_LAP = 1,
@@ -61,7 +62,8 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
         buttonStop.setVisibility(View.INVISIBLE);
 
         currentView = 0;
-        chronoIsStarted = false;
+        singleton=Singleton.getInstance();
+        singleton.setChronoIsStarted(false);
         return view;
     }
 
@@ -76,15 +78,15 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
         if (view.getId() == R.id.id_button_start) {
             chronometer.setBase(SystemClock.elapsedRealtime());
             chronometer.start();
-            chronoIsStarted = true;
+            singleton.setChronoIsStarted(true);
             changeButtonStartStop();
-            communicationFragments.inverseButtonsInLap(true);
+            communicationFragments.inverseButtonsInLap();
             Toast.makeText(view.getContext(), "START", Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.id_button_stop) {
             chronometer.stop();
-            chronoIsStarted = false;
+            singleton.setChronoIsStarted(false);
             changeButtonStartStop();
-            communicationFragments.inverseButtonsInLap(false);
+            communicationFragments.inverseButtonsInLap();
             Toast.makeText(view.getContext(), "STOP", Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.id_button_direct) {
             communicationFragments.changeFragment(VIEW_LAP);
@@ -110,7 +112,7 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
     }
 
     public void changeButtonStartStop() {
-        if (chronoIsStarted) {
+        if (singleton.isChronoStarted()) {
             buttonStart.setVisibility(View.INVISIBLE);
             buttonStop.setVisibility(View.VISIBLE);
         } else {

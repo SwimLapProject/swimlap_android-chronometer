@@ -14,9 +14,9 @@ import android.database.sqlite.SQLiteDatabase;
 import com.dim.swimlap.db.tables.DbTableSeasons;
 import com.dim.swimlap.models.SeasonModel;
 import com.dim.swimlap.objects.DateTransformer;
-import com.dim.swimlap.objects.FormatTimeAsString;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class SeasonUtilities {
@@ -30,7 +30,7 @@ public class SeasonUtilities {
     }
 
     /* GETTERS */
-    public SeasonModel getSeason_FromDb(String dateAsString) {
+    public SeasonModel getSeasonByDate_FromDb(String dateAsString) {
         SeasonModel seasonToFind = null;
         if (tableIsEmpty()) {
             Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
@@ -60,6 +60,37 @@ public class SeasonUtilities {
         }
 
         return seasonToFind;
+    }
+
+    public SeasonModel getSeasonById_FromDb(int seasonId) {
+        SeasonModel seasonToFind = null;
+        if (!tableIsEmpty()) {
+            String condition = table.COL_SEA_ID + "=" + seasonId;
+            Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                seasonToFind = getDataSeason_FromDb(cursor);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        return seasonToFind;
+    }
+
+    public ArrayList<SeasonModel> getAllSeasons_FromDb() {
+        ArrayList<SeasonModel> seasons = new ArrayList<SeasonModel>();
+        if (!tableIsEmpty()) {
+            String orderBy = table.COL_SEA_DATE_START + " DESC";
+            Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, orderBy);
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                SeasonModel season = getDataSeason_FromDb(cursor);
+                seasons.add(season);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        return seasons;
     }
 
     /* GET CONTENT */
@@ -111,7 +142,7 @@ public class SeasonUtilities {
     /* VERIFY ENTRY */
     public boolean seasonAlready_InDb(String startDate) {
         boolean isPresent;
-        if (getSeason_FromDb(startDate) == null) {
+        if (getSeasonByDate_FromDb(startDate) == null) {
             isPresent = false;
         } else {
             isPresent = true;

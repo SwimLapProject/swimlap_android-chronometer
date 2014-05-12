@@ -23,7 +23,7 @@ public class FragmentNavSwimmer extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_nav_model, container, false);
 
-        Button buttonAddSwimmer = (Button) view.findViewById(R.id.id_button_add_manually_model);
+        Button buttonAddSwimmer = (Button) view.findViewById(R.id.id_button_nav_model);
         buttonAddSwimmer.setTag("add_swimmer");
         buttonAddSwimmer.setText("Add Swimmer");
         return view;

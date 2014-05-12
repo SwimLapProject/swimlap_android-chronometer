@@ -31,7 +31,6 @@ public class ResultModel {
     // UTILITIES
     private int currentLapSwimming;
     private int numberOfLap;
-    private float lapMin, lapMax;
     private int poolSize;
     private boolean isRelay;
 
@@ -58,8 +57,6 @@ public class ResultModel {
         // qualifying time must be in milliseconds
         this.qualifyingTime = qualifyingTime;
         numberOfLap = this.eventModel.getRaceModel().getDistance() / poolSize;
-        lapMin = (qualifyingTime * 10000 / numberOfLap) * 75 / 100;
-        lapMax = (qualifyingTime * 10000 / numberOfLap) * 125 / 100;
         if (laps.size() > 0) {
             lapsAreTaken = true;
             currentLapSwimming = numberOfLap;
@@ -107,7 +104,6 @@ public class ResultModel {
     public float checkLap(float lap) {
         float split = giveSplit(lap, currentLapSwimming);
         // VERIFY IF THE TIME BETWEEN LAST LAP AND THE NEW ONE IS COHERENT AND IF ALL THE LAPS ARE NOT FILLED (RACE FINISH)
-//        (split > lapMin) && (split < lapMax) &&
         if ((currentLapSwimming < numberOfLap)) {
             laps.add(currentLapSwimming, lap);
             currentLapSwimming++;
@@ -218,4 +214,5 @@ public class ResultModel {
     public int getMeetingId() {
         return meetingId;
     }
+
 }

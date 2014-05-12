@@ -53,7 +53,7 @@ public class GetDataForSettings {
         SeasonModel season = null;
         try{
             db.open();
-            season = db.getSeasonUtilities().getSeason_FromDb(todayAsString);
+            season = db.getSeasonUtilities().getSeasonByDate_FromDb(todayAsString);
 
         } catch (SQLException e) {
             e.printStackTrace();

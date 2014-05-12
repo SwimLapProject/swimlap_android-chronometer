@@ -128,7 +128,7 @@ public class GetResultsForLapView {
 
         try {
             db4.open();
-            seasonOfMeeting = db4.getSeasonUtilities().getSeason_FromDb(startDateOfMeeting);
+            seasonOfMeeting = db4.getSeasonUtilities().getSeasonByDate_FromDb(startDateOfMeeting);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

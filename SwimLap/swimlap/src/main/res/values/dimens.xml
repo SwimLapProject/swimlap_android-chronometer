@@ -36,4 +36,9 @@
     <dimen name="dimen_text_list_second">18sp</dimen>
     <dimen name="dimen_text_list_third">15sp</dimen>
 
+    <!-- DETAILS -->
+    <dimen name="dimen_detail_BIG">25sp</dimen>
+    <dimen name="dimen_detail_MEDIUM">18sp</dimen>
+    <dimen name="dimen_detail_LITTLE">15sp</dimen>
+
 </resources>

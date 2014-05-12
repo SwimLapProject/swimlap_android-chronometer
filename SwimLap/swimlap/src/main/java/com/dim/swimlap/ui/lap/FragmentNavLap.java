@@ -46,7 +46,7 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
             ArrayList<EventModel> eventsOfTheDay = singleton.getAllEventsByOrderInMeeting();
             for (int indexEvent = 0; indexEvent < eventsOfTheDay.size(); indexEvent++) {
                 RaceModel race = eventsOfTheDay.get(indexEvent).getRaceModel();
-                String nameToPutInButton = race.getDistance() + " " + race.getStyle() + " " + race.getGender();
+                String nameToPutInButton = race.getCompleteName();
                 int idRace = race.getId();
 
                 Button button = new Button(this.getActivity());

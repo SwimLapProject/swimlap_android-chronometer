@@ -16,14 +16,14 @@ import android.widget.Button;
 
 import com.dim.swimlap.R;
 
-public class FragmentNavMeeting extends Fragment {
+public class FragmentNavMeetingList extends Fragment {
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_nav_model, container, false);
 
-        Button buttonAddSwimmer = (Button) view.findViewById(R.id.id_button_add_manually_model);
+        Button buttonAddSwimmer = (Button) view.findViewById(R.id.id_button_nav_model);
         buttonAddSwimmer.setTag("add_meeting");
         buttonAddSwimmer.setText("Add Meeting");
         return view;

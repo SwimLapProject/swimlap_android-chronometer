@@ -22,6 +22,7 @@ public final class Singleton {
     private MeetingModel meetingOfTheDay;
     private int currentRaceId;
     private ArrayList<EventModel> allEventsByOrder;
+    private boolean chronoIsStarted;
 
     private Singleton() {
         super();
@@ -140,5 +141,14 @@ public final class Singleton {
     public String getMeetingName(){
         return meetingOfTheDay.getName();
     }
+
+    public boolean isChronoStarted() {
+        return chronoIsStarted;
+    }
+
+    public void setChronoIsStarted(boolean chronoIsStarted) {
+        this.chronoIsStarted = chronoIsStarted;
+    }
+
 }
 

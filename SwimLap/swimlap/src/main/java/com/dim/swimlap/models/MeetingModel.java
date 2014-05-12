@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class MeetingModel {
 
@@ -26,6 +27,7 @@ public class MeetingModel {
 
     private SeasonModel seasonModel;
     private ArrayList<ResultModel> allResults;
+    private HashMap<Integer, String> racesBySwimmers;
 
     public MeetingModel() {
         allResults = new ArrayList<ResultModel>();
@@ -156,5 +158,32 @@ public class MeetingModel {
 
     public ArrayList<ResultModel> getAllResults() {
         return allResults;
+    }
+
+    public ArrayList<SwimmerModel> getAllSwimmersInMeetting() {
+        if (racesBySwimmers == null) {
+            racesBySwimmers = new HashMap<Integer, String>();
+        } else {
+            racesBySwimmers.clear();
+        }
+        ArrayList<SwimmerModel> swimmers = new ArrayList<SwimmerModel>();
+        for (int indexResult = 0; indexResult < allResults.size(); indexResult++) {
+            int swimmerId = allResults.get(indexResult).getSwimmerModel().getIdFFN();
+            if (racesBySwimmers.containsKey(swimmerId)) {
+                String content = racesBySwimmers.get(swimmerId);
+                content += allResults.get(indexResult).getEventModel().getRaceModel().getCompleteName() + "\n";
+                racesBySwimmers.remove(swimmerId);
+                racesBySwimmers.put(swimmerId, content);
+            } else {
+                String content = allResults.get(indexResult).getEventModel().getRaceModel().getCompleteName() + "\n";
+                racesBySwimmers.put(swimmerId, content);
+                swimmers.add(allResults.get(indexResult).getSwimmerModel());
+            }
+        }
+        return swimmers;
+    }
+
+    public HashMap<Integer, String> getRacesBySwimmers() {
+        return racesBySwimmers;
     }
 }

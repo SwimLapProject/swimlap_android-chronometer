@@ -19,26 +19,32 @@ import android.widget.Toast;
 
 import com.dim.swimlap.R;
 import com.dim.swimlap.models.EventModel;
+import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.objects.Singleton;
 import com.dim.swimlap.ui.lap.FragmentDataLap;
 import com.dim.swimlap.ui.lap.FragmentNavLap;
 import com.dim.swimlap.ui.lap.FragmentTitleLap;
-import com.dim.swimlap.ui.meeting.list.FragmentDataMeeting;
-import com.dim.swimlap.ui.meeting.list.FragmentNavMeeting;
+import com.dim.swimlap.ui.meeting.detail.FragmentDataMeetingDetails;
+import com.dim.swimlap.ui.meeting.detail.FragmentNavMeetingDetails;
+import com.dim.swimlap.ui.meeting.list.FragmentDataMeetingList;
+import com.dim.swimlap.ui.meeting.list.FragmentNavMeetingList;
 import com.dim.swimlap.ui.meeting.FragmentTitleMeeting;
 import com.dim.swimlap.ui.menu.FragmentDataMenu;
 import com.dim.swimlap.ui.menu.FragmentNavMenu;
 import com.dim.swimlap.ui.menu.FragmentTitleMenu;
+import com.dim.swimlap.ui.ranking.FragmentDataRanking;
+import com.dim.swimlap.ui.ranking.FragmentNavRanking;
+import com.dim.swimlap.ui.ranking.FragmentTitleRanking;
 import com.dim.swimlap.ui.settings.FragmentDataSettings;
 import com.dim.swimlap.ui.settings.FragmentNavSettings;
 import com.dim.swimlap.ui.settings.FragmentTitleSettings;
 import com.dim.swimlap.ui.simple.FragmentDataSimple;
 import com.dim.swimlap.ui.simple.FragmentNavSimple;
 import com.dim.swimlap.ui.simple.FragmentTitleSimple;
+import com.dim.swimlap.ui.swimmer.FragmentTitleSwimmer;
 import com.dim.swimlap.ui.swimmer.list.FragmentDataSwimmer;
 import com.dim.swimlap.ui.swimmer.list.FragmentNavSwimmer;
-import com.dim.swimlap.ui.swimmer.FragmentTitleSwimmer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,8 +67,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     private FragmentDataSimple fragmentDataSimple;
 
     private FragmentTitleMeeting fragmentTitleMeeting;
-    private FragmentNavMeeting fragmentNavMeeting;
-    private FragmentDataMeeting fragmentDataMeeting;
+    private FragmentNavMeetingList fragmentNavMeetingList;
+    private FragmentDataMeetingList fragmentDataMeetingList;
 
     private FragmentTitleSwimmer fragmentTitleSwimmer;
     private FragmentNavSwimmer fragmentNavSwimmer;
@@ -71,6 +77,10 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     private FragmentTitleSettings fragmentTitleSettings;
     private FragmentNavSettings fragmentNavSettings;
     private FragmentDataSettings fragmentDataSettings;
+
+    private FragmentTitleRanking fragmentTitleRanking;
+    private FragmentNavRanking fragmentNavRanking;
+    private FragmentDataRanking fragmentDataRanking;
 
     private int currentView, lastView;
     private Singleton singleton;
@@ -82,8 +92,9 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             VIEW_MEETING = 3,
             VIEW_SWIMMER = 4,
             VIEW_SETTING = 5,
-            VIEW_RANKING_MEET = 6,
-            VIEW_RANKING_SW = 7;
+            VIEW_RANKING = 6,
+            VIEW_MEETING_DETAILS = 7;
+
 
     public GlobalContainer() {
 
@@ -116,8 +127,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
         // FRAGMENT FOR THE VIEW MEETING
         fragmentTitleMeeting = new FragmentTitleMeeting();
-        fragmentNavMeeting = new FragmentNavMeeting();
-        fragmentDataMeeting = new FragmentDataMeeting();
+        fragmentNavMeetingList = new FragmentNavMeetingList();
+        fragmentDataMeetingList = new FragmentDataMeetingList();
 
         //FRAGMENT FOR VIEW SWIMMER
         fragmentTitleSwimmer = new FragmentTitleSwimmer();
@@ -129,6 +140,10 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         fragmentNavSettings = new FragmentNavSettings();
         fragmentDataSettings = new FragmentDataSettings();
 
+        // FRAGMENT FOR RANKING
+        fragmentTitleRanking = new FragmentTitleRanking();
+        fragmentNavRanking = new FragmentNavRanking();
+        fragmentDataRanking = new FragmentDataRanking();
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -168,8 +183,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                 newTransaction.addToBackStack(null);
             } else if (code == VIEW_MEETING) {
                 newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleMeeting);
-                newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavMeeting);
-                newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataMeeting);
+                newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavMeetingList);
+                newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataMeetingList);
                 newTransaction.addToBackStack(null);
             } else if (code == VIEW_SWIMMER) {
                 newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleSwimmer);
@@ -182,10 +197,10 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSettings);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSettings);
                 newTransaction.addToBackStack(null);
-            } else if (code == VIEW_RANKING_MEET) {
-                newTransaction.addToBackStack(null);
-
-            } else if (code == VIEW_RANKING_SW) {
+            } else if (code == VIEW_RANKING) {
+                newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleRanking);
+                newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavRanking);
+                newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataRanking);
                 newTransaction.addToBackStack(null);
 
             } else {
@@ -259,11 +274,10 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
 
     @Override
-    public void inverseButtonsInLap(boolean chronoIsStarted) {
+    public void inverseButtonsInLap() {
         FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(singleton.getCurrentRaceId());
-        fragmentDataLap.setChronoIsStarted(chronoIsStarted);
         if (currentView == VIEW_LAP) {
-            fragmentDataLap.changeButtonLap(chronoIsStarted);
+            fragmentDataLap.changeButtonLap();
         } else {
             changeFragment(VIEW_LAP);
         }
@@ -316,4 +330,22 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             }
         }
     }
+
+    public void replaceFragmentsMeetingToDetails(MeetingModel meetingToDetails) {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction newTransaction = manager.beginTransaction();
+        lastView = currentView;
+        currentView = VIEW_MEETING_DETAILS;
+
+        FragmentNavMeetingDetails fragmentNav = new FragmentNavMeetingDetails(meetingToDetails);
+        FragmentDataMeetingDetails fragmentData = new FragmentDataMeetingDetails(meetingToDetails);
+
+        newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNav);
+        newTransaction.replace(R.id.id_IN_fragment_data, fragmentData);
+
+        newTransaction.addToBackStack(null);
+        newTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        newTransaction.commit();
+    }
+
 }

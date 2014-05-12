@@ -56,11 +56,11 @@ public class RaceModel {
         this.style = style;
     }
 
-    public boolean isIs_relay() {
+    public boolean isRelay() {
         return is_relay;
     }
 
-    public void setIs_relay(boolean is_relay) {
+    public void setIsRelay(boolean is_relay) {
         this.is_relay = is_relay;
     }
 
@@ -70,6 +70,10 @@ public class RaceModel {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getCompleteName(){
+        return String.valueOf(distance)+" "+style+" "+gender;
     }
 
 

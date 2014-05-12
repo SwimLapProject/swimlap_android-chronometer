@@ -26,7 +26,7 @@ public class RecordSettings {
     public void recordSeason(SeasonModel seasonToAdd) {
         try {
             db.open();
-            SeasonModel seasonFromDb = db.getSeasonUtilities().getSeason_FromDb(seasonToAdd.getStartDate());
+            SeasonModel seasonFromDb = db.getSeasonUtilities().getSeasonByDate_FromDb(seasonToAdd.getStartDate());
             if (seasonFromDb == null) {
                 db.getSeasonUtilities().addSeason_InDb(seasonToAdd);
             } else {

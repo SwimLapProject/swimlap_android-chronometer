@@ -14,11 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.dim.swimlap.R;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.objects.FormatTimeAsString;
+import com.dim.swimlap.objects.Singleton;
 
 import java.util.ArrayList;
 
@@ -26,15 +28,14 @@ public class LapAdapter extends ArrayAdapter {
     private final Context context;
     public final ArrayList<ResultModel> resultModelList;
     private FormatTimeAsString formatTime;
-    private boolean chronoIsStarted;
+    private Singleton singleton;
 
-    public LapAdapter(Context context, ArrayList<ResultModel> resultModelList, boolean chronoIsStarted) {
+    public LapAdapter(Context context, ArrayList<ResultModel> resultModelList) {
         super(context, R.layout.viewforlist_data_lap, resultModelList);
         this.context = context;
         this.resultModelList = resultModelList;
         this.formatTime = new FormatTimeAsString();
-        this.chronoIsStarted = chronoIsStarted;
-
+        singleton = Singleton.getInstance();
     }
 
     @Override
@@ -95,7 +96,7 @@ public class LapAdapter extends ArrayAdapter {
         viewHolder.textViewLastLap.setTextColor(context.getResources().getColor(R.color.bluesea));
 
 
-        if (chronoIsStarted) {
+        if (singleton.isChronoStarted()) {
             viewHolder.buttonTakeLap.setVisibility(View.VISIBLE);
             viewHolder.buttonResetLap.setVisibility(View.INVISIBLE);
             viewHolder.buttonRecordLap.setVisibility((View.INVISIBLE));
@@ -112,12 +113,19 @@ public class LapAdapter extends ArrayAdapter {
                 stringToInsert += linesToInsertInAllLaps.get(indexLap);
             }
             viewHolder.textViewAllLaps.setText(stringToInsert);
-            viewHolder.textViewLastLap.setText("FINAL: " + resultModelList.get(position).giveBackLastLap());
-            viewHolder.textViewLastLap.setTextColor(context.getResources().getColor(R.color.redstop));
-
-            viewHolder.textViewAllLaps.setTextColor(context.getResources().getColor(R.color.bluesea));
-
+            viewHolder.textViewLastLap.setText(resultModelList.get(position).giveBackLastLap());
+            if (resultModelList.get(position).getnbSplitRemaining() <= 0) {
+                viewHolder.textViewLastLap.setTextColor(context.getResources().getColor(R.color.redstop));
+                viewHolder.textViewAllLaps.setTextColor(context.getResources().getColor(R.color.bluesea));
+            }
+        } else {
+            viewHolder.textViewAllLaps.setText("All laps:");
+            viewHolder.textViewLastLap.setText("00:00.00");
+            viewHolder.textViewLastLap.setTextColor(context.getResources().getColor(R.color.bluesea));
+            viewHolder.textViewAllLaps.setTextColor(context.getResources().getColor(R.color.black));
         }
+        ScrollView scrollView = (ScrollView) rowView.findViewById(R.id.id_scrollview_laps);
+        scrollView.fullScroll(ScrollView.FOCUS_DOWN);
 
         rowView.setTag(viewHolder);
 

@@ -31,8 +31,8 @@ public class ResultUtilities {
 
 
     /* GETTERS */
-    public List<ResultModel> getAllResultsByTimeOrderByMeeting_FromDb(int idMeeting) {
-        List<ResultModel> allResults = new ArrayList<ResultModel>();
+    public ArrayList<ResultModel> getAllResultsByTimeOrderByMeeting_FromDb(int idMeeting) {
+        ArrayList<ResultModel> allResults = new ArrayList<ResultModel>();
         String condition = table.COL_MEE_ID_MEET + "=" + idMeeting;
         String orderBy = table.COL_RES_QUALIFYING_TIME + " DESC";
         Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, orderBy);
@@ -46,8 +46,23 @@ public class ResultUtilities {
         return allResults;
     }
 
-    public List<ResultModel> getAllResultsBySwimmer_FromDb(int idFFNSwimmer) {
-        List<ResultModel> allResults = new ArrayList<ResultModel>();
+    public ArrayList<ResultModel> getAllResultsBySwimmerOrderByMeeting_FromDb(int idMeeting) {
+        ArrayList<ResultModel> allResults = new ArrayList<ResultModel>();
+        String condition = table.COL_MEE_ID_MEET + "=" + idMeeting;
+        String orderBy = table.COL_SWI_0_ID_FFN;
+        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, orderBy);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            ResultModel resultModel = getDataResult_FromDb(cursor);
+            allResults.add(resultModel);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return allResults;
+    }
+
+    public ArrayList<ResultModel> getAllResultsBySwimmer_FromDb(int idFFNSwimmer) {
+        ArrayList<ResultModel> allResults = new ArrayList<ResultModel>();
         String condition = table.COL_SWI_0_ID_FFN + "=" + idFFNSwimmer;
         Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
         cursor.moveToFirst();
@@ -60,10 +75,9 @@ public class ResultUtilities {
         return allResults;
     }
 
-    public List<ResultModel> getAllResultsByTimeOrderByRace_FromDb(int idRace) {
-        List<ResultModel> allResults = new ArrayList<ResultModel>();
+    public ArrayList<ResultModel> getAllResultsByRace_FromDb(int idRace) {
+        ArrayList<ResultModel> allResults = new ArrayList<ResultModel>();
         String condition = table.COL_RES_ID_RACE + "=" + idRace;
-        String orderBy = table.COL_RES_QUALIFYING_TIME;
         Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {

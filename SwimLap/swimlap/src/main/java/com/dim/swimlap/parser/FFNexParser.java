@@ -154,7 +154,14 @@ public class FFNexParser {
                         resultIdInResult = Integer.valueOf(xpp.getAttributeValue(null, "id"));
                         raceIdInResult = Integer.valueOf(xpp.getAttributeValue(null, "raceid"));
                         roundIdInResult = Integer.valueOf(xpp.getAttributeValue(null, "roundid"));
-                        qualifyingTimeInResult = Float.valueOf(xpp.getAttributeValue(null, "qualifyingtime"));
+
+                        // qualifyingTimeInResult  is in millisecond in application and with format MM.ssmm in FFnex
+                        String qualifTimeAsString = xpp.getAttributeValue(null, "qualifyingtime");
+                        String[] splitedTime = qualifTimeAsString.split("\\.");//todo error?
+                        float minutes = Float.valueOf(splitedTime[0]);
+                        float cents = Float.valueOf(splitedTime[1]);
+
+                        qualifyingTimeInResult = minutes*60000+cents*10;
                     }
                 } else if (xpp.getName().equals("SOLO")) {
 //                    System.out.println("$$$ Start tag " + xpp.getName());
@@ -193,7 +200,7 @@ public class FFNexParser {
                             events.add(eventToUseInResult);
                         }
                         /** BUILD attributes with qualifying time in milliseconds and poolsize from meeting **/
-                        result.buildContent(qualifyingTimeInResult * 100000, meetingModel.getPoolSize(), meetingModel.getId(), eventToUseInResult);
+                        result.buildContent(qualifyingTimeInResult, meetingModel.getPoolSize(), meetingModel.getId(), eventToUseInResult);
 
                         /** ADDING IN MEETING MODEL **/
                         meetingModel.addResult(result);
