@@ -21,6 +21,8 @@ public interface CommunicationFragments {
 
     public void getGlobalLap(View view);
 
+    public void unLapLast(View view);
+
     public void inverseButtonsInLap();
 
     public void resetLap(View view);

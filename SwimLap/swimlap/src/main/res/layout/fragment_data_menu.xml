@@ -20,7 +20,7 @@
             android:layout_width="@dimen/dimen_button_menu_width"
             android:layout_height="@dimen/dimen_button_menu_height"
 
-            android:background="@drawable/button_menu"
+            android:background="@drawable/button_clickable"
 
             android:text="Simple chronometer"
             android:textSize="@dimen/dimen_text_button_menu"
@@ -40,7 +40,7 @@
             android:layout_width="@dimen/dimen_button_menu_width"
             android:layout_height="@dimen/dimen_button_menu_height"
 
-            android:background="@drawable/button_menu"
+            android:background="@drawable/button_clickable"
 
             android:text="Settings"
             android:textSize="@dimen/dimen_text_button_menu"
@@ -77,7 +77,7 @@
             android:layout_width="@dimen/dimen_button_menu_width"
             android:layout_height="@dimen/dimen_button_menu_height"
 
-            android:background="@drawable/button_menu"
+            android:background="@drawable/button_clickable"
 
             android:text="Meetings"
             android:textSize="@dimen/dimen_text_button_menu"
@@ -99,7 +99,7 @@
             android:layout_width="@dimen/dimen_button_menu_width"
             android:layout_height="@dimen/dimen_button_menu_height"
 
-            android:background="@drawable/button_menu"
+            android:background="@drawable/button_clickable"
 
             android:text="Swimmers"
             android:textSize="@dimen/dimen_text_button_menu"

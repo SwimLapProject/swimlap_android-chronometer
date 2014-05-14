@@ -1,117 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              android:orientation="horizontal"
               android:layout_width="fill_parent"
               android:layout_height="140dp">
 
-    <TextView
-        android:id="@+id/id_textview_lap_swimmerdetails"
-        android:layout_width="fill_parent"
-        android:layout_height="20dp"
-        android:text="NAME FIRST NAME"
-        android:textSize="@dimen/dimen_text_title"
-        android:textColor="@color/bluesea"
-
-        />
-
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="120dp">
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="4"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/id_textview_lap_swimmerdetails"
+            android:layout_width="274dp"
+            android:layout_height="20dp"
+            android:text="NAME FIRST NAME"
+            android:textSize="@dimen/dimen_text_title"
+            android:textColor="@color/bluesea"
+
+            />
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_weight="4"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="120dp">
 
-            <TextView
-                android:id="@+id/id_textview_qualifiedTime"
-                android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:text="Qualified : "
-                android:textAlignment="center"
-                android:textColor="@color/bluesky"/>
-
-            <TextView
-                android:id="@+id/id_textview_last"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                android:text="LAST : 0:00.00 "
-                android:textSize="15dp"
-                android:textColor="@color/bluesea"
-                android:textStyle="bold"
-                android:layout_margin="1dp"/>
-
-            <ScrollView
-                android:id="@+id/id_scrollview_laps"
-                android:layout_width="fill_parent"
-                android:layout_height="85dp"
-                android:background="@drawable/lap_content_scrollview_with_border"
-                >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_weight="4"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/id_textview_all_laps"
+                    android:id="@+id/id_textview_qualifiedTime"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="all laps : "
-                    android:textColor="#000000"
+                    android:layout_height="15dp"
+                    android:text="Qualified : "
+                    android:textAlignment="center"
+                    android:textColor="@color/bluesky"/>
 
-                    />
+                <TextView
+                    android:id="@+id/id_textview_last"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:text="LAST : 0:00.00 "
+                    android:textSize="15dp"
+                    android:textColor="@color/bluesea"
+                    android:textStyle="bold"
+                    android:layout_margin="1dp"/>
 
-            </ScrollView>
+                <ScrollView
+                    android:id="@+id/id_scrollview_laps"
+                    android:layout_width="fill_parent"
+                    android:layout_height="85dp"
+                    android:background="@drawable/lap_content_scrollview_with_border"
+                    >
+
+                    <TextView
+                        android:id="@+id/id_textview_all_laps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="all laps : "
+                        android:textColor="#000000"
+
+                        />
+
+                </ScrollView>
+            </LinearLayout>
+
+
         </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="2">
 
-            <Button
-                android:id="@+id/id_button_take_lap"
-
-                android:layout_width="@dimen/dimen_button_basic_side_size"
-                android:layout_height="@dimen/dimen_button_basic_side_size"
-                android:background="@drawable/button_basic_with_shadow"
-                android:text="Lap"
-                android:onClick="getGlobalLap"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_above="@+id/id_button_reset_lap"
-                android:layout_centerHorizontal="true"/>
-
-            <Button
-                android:id="@+id/id_button_reset_lap"
-
-                android:layout_width="@dimen/dimen_button_basic_half_size"
-                android:layout_height="@dimen/dimen_button_basic_half_size"
-                android:background="@drawable/button_basic_with_shadow"
-                android:text="Reset"
-                android:onClick="resetLap"
-
-                android:layout_gravity="right"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                />
-
-
-            <Button
-                android:id="@+id/id_button_record_lap"
-
-                android:layout_width="@dimen/dimen_button_basic_half_size"
-                android:layout_height="@dimen/dimen_button_basic_half_size"
-                android:background="@drawable/button_basic_with_shadow"
-                android:text="Record"
-                android:onClick="recordLap"
-
-                android:layout_gravity="right"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"/>
-        </RelativeLayout>
 
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="139dp"
+        android:layout_weight="1">
 
+        <Button
+            android:id="@+id/id_button_take_lap"
+            android:layout_width="@dimen/dimen_button_basic_side_size"
+            android:layout_height="@dimen/dimen_button_basic_side_size"
+            android:background="@drawable/button_clickable"
+            android:text="Lap"
+            android:onClick="getGlobalLap"
+            android:layout_gravity="center_horizontal|bottom"
+            android:textColor="@color/white"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            />
+
+        <Button
+            android:id="@+id/id_button_reset_lap"
+
+            android:layout_width="@dimen/dimen_button_basic_half_size"
+            android:layout_height="@dimen/dimen_button_basic_half_size"
+
+            android:background="@drawable/button_clickable"
+            android:text="Reset"
+            android:onClick="resetLap"
+
+            android:layout_gravity="right"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/white"
+            />
+
+
+        <Button
+            android:id="@+id/id_button_record_lap"
+
+            android:layout_width="@dimen/dimen_button_basic_half_size"
+            android:layout_height="@dimen/dimen_button_basic_half_size"
+
+            android:background="@drawable/button_clickable"
+            android:text="Record"
+            android:onClick="recordLap"
+
+            android:layout_gravity="right"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/white"/>
+        <Button
+            android:id="@+id/id_button_unlap"
+
+            android:layout_width="@dimen/dimen_button_basic_side_size"
+            android:layout_height="@dimen/dimen_button_basic_half_size"
+
+            android:background="@drawable/button_clickable"
+            android:text="UnLap"
+            android:onClick="unLapLast"
+
+            android:layout_gravity="right"
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
 </LinearLayout>

@@ -9,10 +9,8 @@ package com.dim.swimlap.ui;
 
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -245,7 +243,13 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         fragmentDataLap.addLapToModel(view, lapInMilli);
 
     }
-
+    @Override
+    public void unLapLast(View view) {
+        String[] tag = String.valueOf(view.getTag()).split("_");
+        int raceId = Integer.valueOf(tag[2]);
+        FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(raceId);
+        fragmentDataLap.unLapLast(view);
+    }
     @Override
     public void resetLap(View view) {
         String[] tag = String.valueOf(view.getTag()).split("_");

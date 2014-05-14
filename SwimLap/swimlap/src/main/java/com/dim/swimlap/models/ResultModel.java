@@ -34,7 +34,10 @@ public class ResultModel {
     private int poolSize;
     private boolean isRelay;
 
-    private boolean lapsAreTaken;
+    private boolean someLapsAreTaken;
+    private boolean lapsAreRecodedInDb;
+
+
 
     public ResultModel(int id) {
         this.id = id;
@@ -57,12 +60,14 @@ public class ResultModel {
         // qualifying time must be in milliseconds
         this.qualifyingTime = qualifyingTime;
         numberOfLap = this.eventModel.getRaceModel().getDistance() / poolSize;
-        if (laps.size() > 0) {
-            lapsAreTaken = true;
-            currentLapSwimming = numberOfLap;
-        } else {
-            lapsAreTaken = false;
+        if (laps.size()== 0) {
+            someLapsAreTaken = false;
+            lapsAreRecodedInDb=false;
             currentLapSwimming = 0;
+        } else {
+            someLapsAreTaken = true;
+            lapsAreRecodedInDb=true;
+            currentLapSwimming = numberOfLap;
         }
     }
 
@@ -128,7 +133,8 @@ public class ResultModel {
     public void resetLaps() {
         this.currentLapSwimming = 0;
         this.laps.clear();
-        lapsAreTaken = false;
+        someLapsAreTaken = false;
+        lapsAreRecodedInDb=false;
     }
 
     public boolean isRelay() {
@@ -142,12 +148,19 @@ public class ResultModel {
     public void recordLapsInDB(Context context) {
         RecordLapsInDb recorder = new RecordLapsInDb(context);
         recorder.recordLaps(this);
-        lapsAreTaken = true;
+        someLapsAreTaken = true;
+        lapsAreRecodedInDb=true;
     }
 
+    public void removeOneWhenUnLap(){
+        if(currentLapSwimming>0){
+            laps.remove(currentLapSwimming-1);
+            currentLapSwimming--;
+        }
+    }
     // GETTERS AND SETTERS
     public boolean areLapsTaken() {
-        return lapsAreTaken;
+        return someLapsAreTaken;
     }
 
     public float getQualifyingTime() {
@@ -215,4 +228,11 @@ public class ResultModel {
         return meetingId;
     }
 
+    public boolean areLapsRecodedInDb() {
+        return lapsAreRecodedInDb;
+    }
+
+    public void setLapsAreRecodedInDb(boolean lapsAreRecodedInDb) {
+        this.lapsAreRecodedInDb = lapsAreRecodedInDb;
+    }
 }

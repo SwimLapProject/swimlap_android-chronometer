@@ -54,9 +54,12 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
                 button.setTag("ButtonRace_" + idRace);
                 button.setOnClickListener(this);
                 if (idRace == singleton.getCurrentRaceId()) {
-                    button.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_race_selected));
+                    button.setBackgroundResource(R.drawable.button_race_selected);
+                    button.setTextColor(getResources().getColor(R.color.white));
+
                 } else {
-                    button.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_race));
+                    button.setBackgroundResource(R.drawable.button_race);
+                    button.setTextColor(getResources().getColor(R.color.bluesea));
 
                 }
                 linearLayout.addView(button);
@@ -79,7 +82,12 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
     public void modifyButtonRaceSelected(int newIdRace) {
         Button previousSelectedButton = (Button) linearLayout.findViewWithTag("ButtonRace_" + singleton.getCurrentRaceId());
         Button newSelectedButton = (Button) linearLayout.findViewWithTag("ButtonRace_" + newIdRace);
-        previousSelectedButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_race));
-        newSelectedButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_race_selected));
+
+        previousSelectedButton.setBackgroundResource(R.drawable.button_race);
+        previousSelectedButton.setTextColor(getResources().getColor(R.color.bluesea));
+
+
+        newSelectedButton.setBackgroundResource(R.drawable.button_race_selected);
+        newSelectedButton.setTextColor(getResources().getColor(R.color.white));
     }
 }

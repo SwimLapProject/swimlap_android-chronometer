@@ -15,5 +15,6 @@
         android:width="@dimen/dimen_button_little_side_size"
         android:height="@dimen/dimen_button_little_side_size"
         />
-    <solid android:color="@color/redstop"/>
+    <solid android:color="@color/bluesea"/>
+
 </shape>

@@ -16,7 +16,7 @@
             android:id="@+id/id_button_direct"
             android:layout_width="@dimen/dimen_button_basic_side_size"
             android:layout_height="@dimen/dimen_button_basic_side_size"
-            android:background="@drawable/clickable_button"
+            android:background="@drawable/button_clickable"
 
             android:layout_margin="@dimen/dimen_margin_around_button"
 
@@ -29,11 +29,11 @@
             android:id="@+id/id_button_back_to_menu"
             android:layout_width="@dimen/dimen_button_basic_side_size"
             android:layout_height="@dimen/dimen_button_basic_side_size"
-            android:background="@drawable/button_basic_with_shadow"
+            android:background="@drawable/button_clickable"
 
             android:layout_margin="@dimen/dimen_margin_around_button"
             android:text="MENU"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/dimen_text_button_basic"
 
             />

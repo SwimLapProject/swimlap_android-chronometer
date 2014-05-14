@@ -15,8 +15,8 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:text="Scan FFNex"
-        android:background="@drawable/button_basic_with_shadow"
-        android:textColor="@color/redstop"
+        android:background="@drawable/button_clickable"
+        android:textColor="@color/white"
         android:textSize="@dimen/dimen_text_button_menu"
 
         />

@@ -85,6 +85,14 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
         }
     }
 
+    public void unLapLast(View view) {
+        String[] tag = String.valueOf(view.getTag()).split("_");
+        int resultId = Integer.valueOf(tag[1]);
+        ResultModel resultInSingleton = singleton.getResultOfTheDay(resultId);
+        resultInSingleton.removeOneWhenUnLap();
+        adapter.notifyDataSetChanged();
+    }
+
     public void changeButtonLap() {
         adapter.notifyDataSetChanged();
     }
@@ -101,6 +109,7 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
         String[] tag = String.valueOf(view.getTag()).split("_");
         int resultId = Integer.valueOf(tag[1]);
         singleton.getResultOfTheDay(resultId).recordLapsInDB(getActivity());
+        adapter.notifyDataSetChanged();
         Toast.makeText(getActivity(), "Laps has been recorded in database.", Toast.LENGTH_SHORT).show();
     }
 }

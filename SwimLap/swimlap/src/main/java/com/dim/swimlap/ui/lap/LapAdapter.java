@@ -29,6 +29,8 @@ public class LapAdapter extends ArrayAdapter {
     public final ArrayList<ResultModel> resultModelList;
     private FormatTimeAsString formatTime;
     private Singleton singleton;
+    private ViewHolder viewHolder;
+
 
     public LapAdapter(Context context, ArrayList<ResultModel> resultModelList) {
         super(context, R.layout.viewforlist_data_lap, resultModelList);
@@ -42,7 +44,7 @@ public class LapAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View rowView = convertView;
-        ViewHolder viewHolder;
+
 
         int resultId = resultModelList.get(position).getId();
         int raceId = resultModelList.get(position).getEventModel().getRaceModel().getId();
@@ -60,17 +62,18 @@ public class LapAdapter extends ArrayAdapter {
         // BUTTON LAP
         viewHolder.buttonTakeLap = (Button) rowView.findViewById(R.id.id_button_take_lap);
         viewHolder.buttonTakeLap.setTag("lap_" + resultId + "_" + raceId + "_" + position);
-        viewHolder.buttonTakeLap.setBackgroundResource(R.drawable.button_basic_with_shadow);
+
+        // BUTTON LAP
+        viewHolder.buttonUnLap = (Button) rowView.findViewById(R.id.id_button_unlap);
+        viewHolder.buttonUnLap.setTag("lap_" + resultId + "_" + raceId + "_" + position);
 
         //BUTTON RECORD
         viewHolder.buttonRecordLap = (Button) rowView.findViewById(R.id.id_button_record_lap);
         viewHolder.buttonRecordLap.setTag("rec_" + resultId + "_" + raceId + "_" + position);
-        viewHolder.buttonRecordLap.setBackgroundResource(R.drawable.button_basic_with_shadow);
 
         //BUTTON RESET
         viewHolder.buttonResetLap = (Button) rowView.findViewById(R.id.id_button_reset_lap);
         viewHolder.buttonResetLap.setTag("res_" + resultId + "_" + raceId + "_" + position);
-        viewHolder.buttonResetLap.setBackgroundResource(R.drawable.button_basic_with_shadow);
 
 
         // TEXT VIEW
@@ -98,10 +101,12 @@ public class LapAdapter extends ArrayAdapter {
 
         if (singleton.isChronoStarted()) {
             viewHolder.buttonTakeLap.setVisibility(View.VISIBLE);
+            viewHolder.buttonUnLap.setVisibility(View.VISIBLE);
             viewHolder.buttonResetLap.setVisibility(View.INVISIBLE);
             viewHolder.buttonRecordLap.setVisibility((View.INVISIBLE));
         } else {
             viewHolder.buttonTakeLap.setVisibility(View.INVISIBLE);
+            viewHolder.buttonUnLap.setVisibility(View.INVISIBLE);
             viewHolder.buttonResetLap.setVisibility(View.VISIBLE);
             viewHolder.buttonRecordLap.setVisibility((View.VISIBLE));
         }
@@ -116,7 +121,7 @@ public class LapAdapter extends ArrayAdapter {
             viewHolder.textViewLastLap.setText(resultModelList.get(position).giveBackLastLap());
             if (resultModelList.get(position).getnbSplitRemaining() <= 0) {
                 viewHolder.textViewLastLap.setTextColor(context.getResources().getColor(R.color.redstop));
-                viewHolder.textViewAllLaps.setTextColor(context.getResources().getColor(R.color.bluesea));
+                changeColorAllLapsWhenLapsRecordedInDb(resultModelList.get(position).areLapsRecodedInDb());
             }
         } else {
             viewHolder.textViewAllLaps.setText("All laps:");
@@ -133,8 +138,16 @@ public class LapAdapter extends ArrayAdapter {
     }
 
     private static class ViewHolder {
-        public static Button buttonTakeLap, buttonResetLap, buttonRecordLap;
+        public static Button buttonTakeLap, buttonResetLap, buttonRecordLap, buttonUnLap;
         public static TextView textViewSwimmerDetails, textViewQualifiedTime, textViewAllLaps, textViewLastLap;
+    }
+
+    public void changeColorAllLapsWhenLapsRecordedInDb(boolean areRecorded) {
+        if (areRecorded) {
+            viewHolder.textViewAllLaps.setTextColor(context.getResources().getColor(R.color.bluesea));
+        } else {
+            viewHolder.textViewAllLaps.setTextColor(context.getResources().getColor(R.color.black));
+        }
     }
 }
 
