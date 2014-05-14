@@ -4,7 +4,9 @@
     <color name="bluesky">#48999E</color>
     <color name="bluesea">#046675</color>
     <color name="greenstart">#0FA30F</color>
+    <color name="greendark">#006633</color>
     <color name="redstop">#9E0016</color>
+    <color name="redlight">#FF0000</color>
     <color name="yellowdark">#FFCC00</color>FFFF66
     <color name="yellowlight">#FFFF66</color>
     <color name="black">#000000</color>

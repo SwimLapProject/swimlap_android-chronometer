@@ -46,6 +46,8 @@ public class FFNexMaker {
     }
 
     public void makeFFNex(MeetingModel meeting) {
+        TransformFloatTimeToString timeTransformer = new TransformFloatTimeToString();
+
         String meetingIdAsString = String.valueOf(meeting.getId());
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -118,7 +120,7 @@ public class FFNexMaker {
 
                 Element RESULT = document.createElement("RESULT");
                 RESULT.setAttribute("id", String.valueOf(result.getId()));
-                String swimTime = transformLapInFFNexFormatTime(result.getSwimTime());
+                String swimTime = timeTransformer.getFFNexFormatTime(result.getSwimTime());
 
                 RESULT.setAttribute("swimtime", swimTime);
                 RESULT.setAttribute("raceid", String.valueOf(result.getEventModel().getRaceModel().getId()));
@@ -157,7 +159,7 @@ public class FFNexMaker {
                     for (int indexLap = 0; indexLap < result.getLaps().size(); indexLap++) {
                         float lap = result.getLaps().get(indexLap);
                         if (lap != 0) {
-                            String lapAsString = transformLapInFFNexFormatTime(lap);
+                            String lapAsString = timeTransformer.getFFNexFormatTime(lap);
                             Element SPLIT = document.createElement("SPLIT");
                             SPLIT.setAttribute("qualifyingtime", lapAsString);
                             String distance = String.valueOf(meeting.getPoolSize() * (indexLap + 1));
@@ -191,20 +193,6 @@ public class FFNexMaker {
         } catch (TransformerException e) {
             e.printStackTrace();
         }
-
-    }
-
-    private String transformLapInFFNexFormatTime(float lap) {
-        int milli = (int) lap % 1000;
-        int seconds = (int) (lap - milli) / 1000;
-        int minutes = 0;
-        if (seconds > 60) {
-            minutes = (int) Math.floor(seconds / 60);
-            seconds = seconds - (minutes * 60);
-        }
-        milli = (int) Math.floor(milli / 10);
-        String timeAsString = String.valueOf(minutes) + "." + String.valueOf(seconds) + String.valueOf(milli);
-        return timeAsString;
     }
 
     public void sendNewFFNexByMail(Context context, String meetingName) {

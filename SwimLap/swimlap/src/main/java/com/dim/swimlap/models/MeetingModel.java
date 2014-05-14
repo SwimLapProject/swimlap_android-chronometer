@@ -7,6 +7,8 @@
 
 package com.dim.swimlap.models;
 
+import com.dim.swimlap.parser.TransformFloatTimeToString;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -161,6 +163,7 @@ public class MeetingModel {
     }
 
     public ArrayList<SwimmerModel> getAllSwimmersInMeetting() {
+        TransformFloatTimeToString timeTransformer = new TransformFloatTimeToString();
         if (racesBySwimmers == null) {
             racesBySwimmers = new HashMap<Integer, String>();
         } else {
@@ -171,11 +174,14 @@ public class MeetingModel {
             int swimmerId = allResults.get(indexResult).getSwimmerModel().getIdFFN();
             if (racesBySwimmers.containsKey(swimmerId)) {
                 String content = racesBySwimmers.get(swimmerId);
-                content += allResults.get(indexResult).getEventModel().getRaceModel().getCompleteName() + "\n";
+                content += allResults.get(indexResult).getEventModel().getRaceModel().getCompleteName() + "     "
+                +timeTransformer.getFFNexFormatTime(allResults.get(indexResult).getSwimTime())+"\n";
                 racesBySwimmers.remove(swimmerId);
                 racesBySwimmers.put(swimmerId, content);
             } else {
-                String content = allResults.get(indexResult).getEventModel().getRaceModel().getCompleteName() + "\n";
+
+                String content = allResults.get(indexResult).getEventModel().getRaceModel().getCompleteName() + "     "
+                        +timeTransformer.getFFNexFormatTime(allResults.get(indexResult).getSwimTime())+"\n";
                 racesBySwimmers.put(swimmerId, content);
                 swimmers.add(allResults.get(indexResult).getSwimmerModel());
             }

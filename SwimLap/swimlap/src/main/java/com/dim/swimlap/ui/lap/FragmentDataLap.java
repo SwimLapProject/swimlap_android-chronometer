@@ -108,8 +108,14 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     public void recordLaps(View view) {
         String[] tag = String.valueOf(view.getTag()).split("_");
         int resultId = Integer.valueOf(tag[1]);
-        singleton.getResultOfTheDay(resultId).recordLapsInDB(getActivity());
-        adapter.notifyDataSetChanged();
-        Toast.makeText(getActivity(), "Laps has been recorded in database.", Toast.LENGTH_SHORT).show();
+        if(singleton.getResultOfTheDay(resultId).getnbSplitRemaining()>0){
+            Toast.makeText(view.getContext(), "Some laps are missing.\nSwimLap will delete others.", Toast.LENGTH_SHORT).show();
+            resetLaps(view);
+        }else{
+            singleton.getResultOfTheDay(resultId).recordLapsInDB(getActivity());
+            adapter.notifyDataSetChanged();
+            Toast.makeText(getActivity(), "Laps has been recorded in database.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

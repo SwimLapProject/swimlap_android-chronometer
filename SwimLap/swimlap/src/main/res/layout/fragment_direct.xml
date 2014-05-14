@@ -59,7 +59,7 @@
             android:layout_alignParentRight="true"
             android:layout_margin="@dimen/dimen_margin_around_button"
 
-            android:background="@drawable/button_start_with_shadow"
+            android:background="@drawable/button_start_clickable"
 
             android:text="Start"
             android:textSize="@dimen/dimen_text_button_basic"
@@ -73,7 +73,7 @@
             android:layout_alignParentRight="true"
             android:layout_margin="@dimen/dimen_margin_around_button"
 
-            android:background="@drawable/button_stop_with_shadow"
+            android:background="@drawable/button_stop_clickable"
 
             android:text="Stop"
             android:textSize="@dimen/dimen_text_button_basic"
