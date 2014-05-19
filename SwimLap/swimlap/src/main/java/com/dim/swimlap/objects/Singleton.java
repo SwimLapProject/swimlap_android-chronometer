@@ -28,11 +28,28 @@ public final class Singleton {
         super();
     }
 
+    private Singleton(MeetingModel meetingForSimple){
+        super();
+        meetingOfTheDay = meetingForSimple;
+    }
+
+
     public final static Singleton getInstance() {
         if (Singleton.instance == null) {
             synchronized (Singleton.class) {
                 if (Singleton.instance == null) {
                     Singleton.instance = new Singleton();
+                }
+            }
+        }
+        return Singleton.instance;
+    }
+    public final static Singleton getInstance(MeetingModel meetingForSimple) {
+        if (Singleton.instance == null) {
+            synchronized (Singleton.class) {
+                if (Singleton.instance == null) {
+                    Singleton.instance = new Singleton(meetingForSimple);
+
                 }
             }
         }

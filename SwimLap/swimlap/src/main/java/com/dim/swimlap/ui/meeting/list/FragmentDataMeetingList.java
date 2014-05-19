@@ -53,7 +53,7 @@ public class FragmentDataMeetingList extends Fragment {
         meetings = getter.getAllMeetings();
 
 
-        if (meetings.size() == 0) {
+        if (meetings==null) {
             textViewNoMeetingInLap.setVisibility(View.VISIBLE);
         } else {
             textViewNoMeetingInLap.setVisibility(View.INVISIBLE);

@@ -19,17 +19,18 @@
     <dimen name="dimen_text_button_little">15sp</dimen>
 
 
+
     <!-- CHRONO -->
     <dimen name="dimen_text_chrono_direct">50dp</dimen>
+    <dimen name="dimen_textview_scroll_lap">150dp</dimen>
 
 
     <!-- SETTINGS -->
     <dimen name="dimen_settings_font_medium">25dp</dimen>
     <dimen name="dimen_settings_font_small">18dp</dimen>
+    <dimen name="dimen_settings_font_mention_legales">10dp</dimen>
 
     <dimen name="dimen_textview_settings_width">100dp</dimen>
-
-    <dimen name="dimen_textview_scroll_lap">150dp</dimen>
 
     <!-- list -->
     <dimen name="dimen_text_list_name">20sp</dimen>

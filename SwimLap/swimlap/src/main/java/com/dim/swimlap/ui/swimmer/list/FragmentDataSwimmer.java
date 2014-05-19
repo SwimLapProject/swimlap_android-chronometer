@@ -46,7 +46,7 @@ public class FragmentDataSwimmer extends Fragment implements AdapterView.OnItemC
         ArrayList<SwimmerModel> swimmers = getter.getSwimmerList();
 
 
-        if (swimmers.size() == 0) {
+        if (swimmers == null) {
             textViewNoSwimmerInLap.setVisibility(View.VISIBLE);
             textViewNoSwimmerInLap.setText("No swimmer found in database.");
         } else {

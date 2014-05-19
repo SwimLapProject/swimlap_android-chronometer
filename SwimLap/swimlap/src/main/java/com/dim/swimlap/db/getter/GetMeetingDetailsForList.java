@@ -41,10 +41,12 @@ public class GetMeetingDetailsForList {
                 // do nothing Toast in caller please
             } else {
                 meetings = db1.getMeetingUtilities().getAllMeetings_FromDb();
-                for(int indexMeeting =0; indexMeeting<meetings.size();indexMeeting++){
+                if (meetings != null) {
+                    for (int indexMeeting = 0; indexMeeting < meetings.size(); indexMeeting++) {
 
-                    fillMeetingWithResult(meetings.get(indexMeeting));
-                    fillMeetingWithSeason(meetings.get(indexMeeting));
+                        fillMeetingWithResult(meetings.get(indexMeeting));
+                        fillMeetingWithSeason(meetings.get(indexMeeting));
+                    }
                 }
             }
         } catch (SQLException e) {
@@ -72,12 +74,12 @@ public class GetMeetingDetailsForList {
                 if (resultToFillThenToAdd.isRelay()) {
                     for (int indexSwimmer = 0; indexSwimmer < resultToFillThenToAdd.getTeam().size(); indexSwimmer++) {
                         int idSwimmerToFill = resultToFillThenToAdd.getTeam().get(indexSwimmer).getIdFFN();
-                        resultToFillThenToAdd.getTeam().add(fillSwimmerWithClub(idSwimmerToFill,meetingToFill));
+                        resultToFillThenToAdd.getTeam().add(fillSwimmerWithClub(idSwimmerToFill, meetingToFill));
                     }
                 } else {
                     /** SWIMMER **/
                     int idSwimmerToFill = resultToFillThenToAdd.getSwimmerModel().getIdFFN();
-                    resultToFillThenToAdd.setSwimmerModel(fillSwimmerWithClub(idSwimmerToFill,meetingToFill));
+                    resultToFillThenToAdd.setSwimmerModel(fillSwimmerWithClub(idSwimmerToFill, meetingToFill));
                 }
                 /** EVENT **/
                 int idEvent = resultToFillThenToAdd.getEventModel().getId();

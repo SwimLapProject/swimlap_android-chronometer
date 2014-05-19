@@ -15,8 +15,8 @@ public class SeasonModel {
     private String startDate;
     private String stopDate;
 
-    public SeasonModel(int id) {
-        this.id = id;
+    public SeasonModel(int idAsStartYearOfSeason) {
+        makeContent(idAsStartYearOfSeason);
     }
 
     public SeasonModel(String startDate) {
@@ -25,12 +25,15 @@ public class SeasonModel {
         if (monthOfMeeting < 8) {
             startYearOfSeason--;
         }
+        makeContent(startYearOfSeason);
+    }
+
+    private void makeContent(int startYearOfSeason) {
         this.id = startYearOfSeason;
         this.name = String.valueOf(startYearOfSeason);
         this.startDate = startYearOfSeason + "-09-01";
         int secondYearOfSeason = startYearOfSeason + 1;
         this.stopDate = secondYearOfSeason + "-08-31";
-
     }
 
     public int getId() {

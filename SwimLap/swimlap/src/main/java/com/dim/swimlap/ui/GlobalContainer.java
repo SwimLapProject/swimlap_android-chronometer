@@ -24,25 +24,18 @@ import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.objects.Singleton;
 import com.dim.swimlap.ui.lap.FragmentDataLap;
 import com.dim.swimlap.ui.lap.FragmentNavLap;
-import com.dim.swimlap.ui.lap.FragmentTitleLap;
-import com.dim.swimlap.ui.meeting.FragmentTitleMeeting;
 import com.dim.swimlap.ui.meeting.detail.FragmentDataMeetingDetails;
 import com.dim.swimlap.ui.meeting.detail.FragmentNavMeetingDetails;
 import com.dim.swimlap.ui.meeting.list.FragmentDataMeetingList;
 import com.dim.swimlap.ui.meeting.list.FragmentNavMeetingList;
 import com.dim.swimlap.ui.menu.FragmentDataMenu;
 import com.dim.swimlap.ui.menu.FragmentNavMenu;
-import com.dim.swimlap.ui.menu.FragmentTitleMenu;
 import com.dim.swimlap.ui.ranking.FragmentDataRanking;
 import com.dim.swimlap.ui.ranking.FragmentNavRanking;
-import com.dim.swimlap.ui.ranking.FragmentTitleRanking;
 import com.dim.swimlap.ui.settings.FragmentDataSettings;
 import com.dim.swimlap.ui.settings.FragmentNavSettings;
-import com.dim.swimlap.ui.settings.FragmentTitleSettings;
 import com.dim.swimlap.ui.simple.FragmentDataSimple;
 import com.dim.swimlap.ui.simple.FragmentNavSimple;
-import com.dim.swimlap.ui.simple.FragmentTitleSimple;
-import com.dim.swimlap.ui.swimmer.FragmentTitleSwimmer;
 import com.dim.swimlap.ui.swimmer.list.FragmentDataSwimmer;
 import com.dim.swimlap.ui.swimmer.list.FragmentNavSwimmer;
 
@@ -52,33 +45,27 @@ import java.util.HashMap;
 public class GlobalContainer extends FragmentActivity implements CommunicationFragments {
 
     private FragmentDirect fragmentDirect;
+    private FragmentTitle fragmentTitle;
 
-    private FragmentTitleMenu fragmentTitleMenu;
     private FragmentNavMenu fragmentNavMenu;
     private FragmentDataMenu fragmentDataMenu;
 
-    private FragmentTitleLap fragmentTitleLap;
     private FragmentNavLap fragmentNavLap;
     private HashMap<Integer, FragmentDataLap> mapOfFragmentLap;
     private ArrayList<ResultModel> savedLapList;
 
-    private FragmentTitleSimple fragmentTitleSimple;
     private FragmentNavSimple fragmentNavSimple;
     private FragmentDataSimple fragmentDataSimple;
 
-    private FragmentTitleMeeting fragmentTitleMeeting;
     private FragmentNavMeetingList fragmentNavMeetingList;
     private FragmentDataMeetingList fragmentDataMeetingList;
 
-    private FragmentTitleSwimmer fragmentTitleSwimmer;
     private FragmentNavSwimmer fragmentNavSwimmer;
     private FragmentDataSwimmer fragmentDataSwimmer;
 
-    private FragmentTitleSettings fragmentTitleSettings;
     private FragmentNavSettings fragmentNavSettings;
     private FragmentDataSettings fragmentDataSettings;
 
-    private FragmentTitleRanking fragmentTitleRanking;
     private FragmentNavRanking fragmentNavRanking;
     private FragmentDataRanking fragmentDataRanking;
 
@@ -94,10 +81,19 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             VIEW_SETTING = 5,
             VIEW_RANKING = 6,
             VIEW_MEETING_DETAILS = 7;
+    private HashMap<Integer, String> titles;
 
 
     public GlobalContainer() {
-
+        titles = new HashMap<Integer, String>();
+        titles.put(VIEW_MENU, "SwimLap");
+        titles.put(VIEW_SIMPLE, "SimpleChronometer");
+        titles.put(VIEW_LAP, "Compétition");
+        titles.put(VIEW_MEETING, "Meetings");
+        titles.put(VIEW_SWIMMER, "Swimmers");
+        titles.put(VIEW_SETTING, "Settings");
+        titles.put(VIEW_RANKING, "Ranking");
+        titles.put(VIEW_MEETING_DETAILS, "Meetings");
     }
 
     @Override
@@ -109,46 +105,42 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
         // FRAGMENT FOR THE VIEW MENU
         fragmentDirect = new FragmentDirect();
-        fragmentTitleMenu = new FragmentTitleMenu();
+        fragmentTitle = new FragmentTitle(titles.get(VIEW_MENU));
+
         fragmentNavMenu = new FragmentNavMenu();
         fragmentDataMenu = new FragmentDataMenu();
 
         // FRAGMENT FOR THE VIEW LAP
-        fragmentTitleLap = new FragmentTitleLap();
         fragmentNavLap = new FragmentNavLap();
         buildFragmentsForLapData();
 
 //        fragmentDataLap = new FragmentDataLap();
 
         // FRAGMENT FOR VIEW SIMPLE CHRONOMETER
-        fragmentTitleSimple = new FragmentTitleSimple();
-        fragmentNavSimple = new FragmentNavSimple();
-        fragmentDataSimple = new FragmentDataSimple();
+//        fragmentNavSimple = new FragmentNavSimple();
+//        fragmentDataSimple = new FragmentDataSimple();
 
         // FRAGMENT FOR THE VIEW MEETING
-        fragmentTitleMeeting = new FragmentTitleMeeting();
         fragmentNavMeetingList = new FragmentNavMeetingList();
         fragmentDataMeetingList = new FragmentDataMeetingList();
 
         //FRAGMENT FOR VIEW SWIMMER
-        fragmentTitleSwimmer = new FragmentTitleSwimmer();
         fragmentNavSwimmer = new FragmentNavSwimmer();
         fragmentDataSwimmer = new FragmentDataSwimmer();
 
         // FRAGMENT FOR THE VIEW SETTING
-        fragmentTitleSettings = new FragmentTitleSettings();
         fragmentNavSettings = new FragmentNavSettings();
         fragmentDataSettings = new FragmentDataSettings();
 
         // FRAGMENT FOR RANKING
-        fragmentTitleRanking = new FragmentTitleRanking();
         fragmentNavRanking = new FragmentNavRanking();
         fragmentDataRanking = new FragmentDataRanking();
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.id_IN_fragment_direct, fragmentDirect);
-        transaction.add(R.id.id_IN_fragment_title, fragmentTitleMenu);
+
+        transaction.add(R.id.id_IN_fragment_title, fragmentTitle);
         transaction.add(R.id.id_IN_fragment_nav, fragmentNavMenu);
         transaction.replace(R.id.id_IN_fragment_data, fragmentDataMenu);
         currentView = VIEW_MENU;
@@ -162,14 +154,14 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         } else {
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction newTransaction = manager.beginTransaction();
+            fragmentTitle.setTitle(titles.get(code));
             if (code == VIEW_MENU) {
-                newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleMenu);
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavMenu);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataMenu);
                 newTransaction.addToBackStack(null);
             } else if (code == VIEW_LAP) {
                 if (singleton.buildMeetingOfTheDay(getApplicationContext())) {
-                    newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleLap);
+                    fragmentTitle.setTitle(singleton.getMeetingName());
                     newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavLap);
                     addFragmentDataLapDependOnRaceId(newTransaction, singleton.getCurrentRaceId());
                 } else {
@@ -177,28 +169,23 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                     code = -1;
                 }
             } else if (code == VIEW_SIMPLE) {
-                newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleSimple);
-                newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSimple);
-                newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSimple);
-                newTransaction.addToBackStack(null);
+//                newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSimple);
+//                newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSimple);
+//                newTransaction.addToBackStack(null);
             } else if (code == VIEW_MEETING) {
-                newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleMeeting);
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavMeetingList);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataMeetingList);
                 newTransaction.addToBackStack(null);
             } else if (code == VIEW_SWIMMER) {
-                newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleSwimmer);
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSwimmer);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSwimmer);
                 newTransaction.addToBackStack(null);
 
             } else if (code == VIEW_SETTING) {
-                newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleSettings);
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSettings);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSettings);
                 newTransaction.addToBackStack(null);
             } else if (code == VIEW_RANKING) {
-                newTransaction.replace(R.id.id_IN_fragment_title, fragmentTitleRanking);
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavRanking);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataRanking);
                 newTransaction.addToBackStack(null);
@@ -243,6 +230,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         fragmentDataLap.addLapToModel(view, lapInMilli);
 
     }
+
     @Override
     public void unLapLast(View view) {
         String[] tag = String.valueOf(view.getTag()).split("_");
@@ -250,6 +238,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(raceId);
         fragmentDataLap.unLapLast(view);
     }
+
     @Override
     public void resetLap(View view) {
         String[] tag = String.valueOf(view.getTag()).split("_");
@@ -311,6 +300,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         } else if (currentView == VIEW_LAP) {
             // do nothing
         } else {
+            fragmentTitle.setTitle(titles.get(lastView));
             fragmentDirect.changeButtonDirect(lastView);
             currentView = lastView;
             lastView = 0;
@@ -353,4 +343,10 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         newTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         newTransaction.commit();
     }
+
+    public MeetingModel buildAMeetingForSimpleChrono() {
+        //todo ??? where we build a false meeting for simple
+        return null;
+    }
+
 }

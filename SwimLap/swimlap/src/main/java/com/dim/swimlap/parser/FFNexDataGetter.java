@@ -45,7 +45,7 @@ public class FFNexDataGetter {
         return files;
     }
 
-    public File getFFNExFile(String name) {
+    public File getFFNexFile(String name) {
         File ffnex = new File(ffnexDir, name);
         return ffnex;
     }

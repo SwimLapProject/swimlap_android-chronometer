@@ -36,7 +36,9 @@ public class GetSwimmers {
         } finally {
             db1.close();
         }
-        fillSwimmerWithClub(swimmerList);
+        if (swimmerList != null) {
+            fillSwimmerWithClub(swimmerList);
+        }
         return swimmerList;
     }
 

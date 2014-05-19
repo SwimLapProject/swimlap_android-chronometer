@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 
 import com.dim.swimlap.R;
 import com.dim.swimlap.models.EventModel;
+import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.RaceModel;
 import com.dim.swimlap.objects.Singleton;
 import com.dim.swimlap.ui.CommunicationFragments;
@@ -30,11 +31,18 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
     private Singleton singleton;
     private CommunicationFragments communication;
 
+    public FragmentNavLap() {
+        singleton = Singleton.getInstance();
+    }
+
+    public FragmentNavLap(MeetingModel meetingForSimple) {
+        singleton = Singleton.getInstance(meetingForSimple);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_nav_lap, container, false);
         linearLayout = (LinearLayout) view.findViewById(R.id.id_linearlayout_in_horizontalscrollview);
-        singleton = Singleton.getInstance();
 
         return view;
     }

@@ -49,18 +49,6 @@
                 />
         </LinearLayout>
 
-
     </LinearLayout>
-
-
-    <Button
-        android:id="@+id/id_button_link"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/dimen_button_little_side_size"
-        android:layout_weight="1"
-        android:text="Ranking"
-        android:background="@drawable/button_ranking"
-        android:textColor="@color/bluesea"
-        android:focusable="false"/>
 
 </LinearLayout>

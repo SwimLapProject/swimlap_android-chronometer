@@ -87,117 +87,24 @@
             android:orientation="horizontal"
             android:background="@drawable/application_background"/>
         <!-- ************************************** -->
+        <!-- MENTIONS LEGALES -->
 
-        <!-- SEASON -->
-        <!-- title -->
-
-        <LinearLayout
+        <TextView
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal"
-            >
+            android:layout_height="wrap_content"
+            android:text="Mentions Légales"
+            android:textColor="@color/bluesea"
+            />
 
-            <TextView
-                android:layout_width="@dimen/dimen_textview_settings_width"
-                android:layout_height="fill_parent"
-                android:text="Season"
-                android:textColor="@color/bluesea"
-                android:textSize="@dimen/dimen_settings_font_medium"
-                />
-
-            <Button
-                android:id="@+id/id_button_modifyseason"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_alignParentRight="true"
-                android:text="Save"
-                android:background="@drawable/button_clickable"
-                />
-
-        </LinearLayout>
-
-        <!-- season name -->
-        <LinearLayout
+        <TextView
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="@dimen/dimen_textview_settings_width"
-                android:layout_height="fill_parent"
-                android:text="Name"
-                android:textColor="@color/bluesea"
-                android:textSize="@dimen/dimen_settings_font_small"
-
-                />
-
-            <EditText
-                android:id="@+id/id_edittext_seasonname"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                />
-
-        </LinearLayout>
-
-        <!-- start date -->
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="@dimen/dimen_textview_settings_width"
-                android:layout_height="fill_parent"
-                android:text="Start Date"
-                android:textColor="@color/bluesea"
-                android:textSize="@dimen/dimen_settings_font_small"
-                />
-
-            <DatePicker
-                android:id="@+id/id_datepicker_startdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleX="0.8"
-                android:scaleY="0.8"
-                android:textSize="10dp"
-                />
-
-        </LinearLayout>
-
-        <!-- stop date -->
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="@dimen/dimen_textview_settings_width"
-                android:layout_height="fill_parent"
-                android:text="Stop Date"
-                android:textColor="@color/bluesea"
-                android:textSize="@dimen/dimen_settings_font_small"
-                />
-
-            <DatePicker
-                android:id="@+id/id_datepicker_stopdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleX="0.8"
-                android:scaleY="0.8"
-                />
-
-        </LinearLayout>
-
-        <!-- ************************************** -->
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="25dp"
-            android:orientation="horizontal"
-            android:background="@drawable/application_background"/>
-        <!-- ************************************** -->
-
+            android:layout_height="wrap_content"
+            android:text="@string/mentions_legales"
+            android:textColor="@color/bluesea"
+            android:textSize="@dimen/dimen_settings_font_mention_legales"
+            android:id="@+id/id_textview_clubidffn"
+            android:layout_gravity="left|right"
+            />
     </LinearLayout>
 
 </ScrollView>

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
+import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.objects.Singleton;
 
@@ -33,12 +34,16 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
 
     public FragmentDataLap(int raceId) {
         raceIdOfThisFragment = raceId;
+        singleton = Singleton.getInstance();
+    }
+    public FragmentDataLap(int raceId,MeetingModel meetingModel) {
+        raceIdOfThisFragment = raceId;
+        singleton = Singleton.getInstance(meetingModel);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_lap, container, false);
-        singleton = Singleton.getInstance();
         boolean meetingOfTheDayIsBuilt = singleton.buildMeetingOfTheDay(getActivity());
 
         listViewForLap = (ListView) view.findViewById(R.id.id_listview_lap);

@@ -43,12 +43,6 @@ public class FragmentDataSettings extends Fragment implements View.OnClickListen
         buttonClub.setOnClickListener(this);
         editTextclubName = (EditText) view.findViewById(R.id.id_edittext_clubname);
         editTextclubCodeffn = (EditText) view.findViewById(R.id.id_edittext_club_codeffn);
-        // SEASON
-        buttonSeason = (Button) view.findViewById(R.id.id_button_modifyseason);
-        buttonSeason.setOnClickListener(this);
-        editTextSeasonName = (EditText) view.findViewById(R.id.id_edittext_seasonname);
-        datePickerStart = (DatePicker) view.findViewById(R.id.id_datepicker_startdate);
-        datePickerStop = (DatePicker) view.findViewById(R.id.id_datepicker_stopdate);
 
         return view;
     }
@@ -77,21 +71,6 @@ public class FragmentDataSettings extends Fragment implements View.OnClickListen
 
             Toast.makeText(view.getContext(), "Club Recorded", Toast.LENGTH_SHORT).show();
 
-
-        } else if (view.getId() == R.id.id_button_modifyseason) {
-
-            String dateStart = transformer.getDateAsStringWithFFNexFormat(datePickerStart.getYear(), datePickerStart.getMonth(), datePickerStart.getDayOfMonth());
-            String dateStop = transformer.getDateAsStringWithFFNexFormat(datePickerStop.getYear(), datePickerStop.getMonth(), datePickerStop.getDayOfMonth());
-            SeasonModel seasonModel = new SeasonModel(dateStart);
-            seasonModel.setName(editTextSeasonName.getText().toString());
-            seasonModel.setStartDate(dateStart);
-            seasonModel.setStopDate(dateStop);
-            recordSettings.recordSeason(seasonModel);
-
-            imm.hideSoftInputFromWindow(editTextclubCodeffn.getWindowToken(), 0);
-
-            Toast.makeText(view.getContext(), "Season Recorded", Toast.LENGTH_SHORT).show();
-
         }
     }
 
@@ -106,13 +85,6 @@ public class FragmentDataSettings extends Fragment implements View.OnClickListen
         ClubModel club = getter.getClubRecordedInDb();
         editTextclubName.setText(club.getName(), TextView.BufferType.EDITABLE);
         editTextclubCodeffn.setText(String.valueOf(club.getCodeFFN()), TextView.BufferType.EDITABLE);
-
-        SeasonModel season = getter.getCurrentSeasonInDb();
-        editTextSeasonName.setText(season.getName(), TextView.BufferType.EDITABLE);
-        HashMap<String, Integer> start = transformer.getDateAsMap(season.getStartDate());
-        datePickerStart.updateDate(start.get("year"), start.get("month"), start.get("day"));
-        HashMap<String, Integer> stop = transformer.getDateAsMap(season.getStopDate());
-        datePickerStop.updateDate(stop.get("year"), stop.get("month"), stop.get("day"));
     }
 
 
