@@ -36,6 +36,14 @@ public class FormatTimeAsString {
         float minutes = (secondsTotal - seconds) / 60;
 
         float timeFFNex = minutes + seconds / 100 + hundredtSec / 10000;
-        return String.valueOf(timeFFNex);
+
+        String toReturn = String.valueOf(timeFFNex);
+        toReturn += "0000";
+        if(minutes>9){
+            toReturn = toReturn.substring(0, 7);
+        }else{
+            toReturn = toReturn.substring(0, 6);
+        }
+        return toReturn;
     }
 }

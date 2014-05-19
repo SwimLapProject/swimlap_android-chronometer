@@ -89,7 +89,6 @@ public class SimpleChronoDataBuilder {
                 results.add(resultForEachKindOfRace);
             }
         }
-
     }
 
     public MeetingModel getBuiltMeetingForSimple(){

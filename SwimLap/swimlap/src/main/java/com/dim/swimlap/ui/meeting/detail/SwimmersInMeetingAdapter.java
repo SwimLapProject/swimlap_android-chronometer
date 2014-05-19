@@ -15,21 +15,20 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.models.SwimmerModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SwimmersInMeetingAdapter extends ArrayAdapter {
     private Context context;
-    private ArrayList<SwimmerModel> swimmers;
-    private HashMap<Integer, String> racesBySwimmers;
+    private ArrayList<String> allMeetingsName;
+    private HashMap<String, String> stringOfRacesAndTime;
 
-    public SwimmersInMeetingAdapter(Context context, ArrayList<SwimmerModel> swimmers, HashMap<Integer, String> racesBySwimmers) {
-        super(context, R.layout.viewforlist_details_meeting_swimmers, swimmers);
+    public SwimmersInMeetingAdapter(Context context, ArrayList<String> allMeetingsName, HashMap<String, String> stringOfRacesAndTime) {
+        super(context, R.layout.viewforlist_details, allMeetingsName);
         this.context = context;
-        this.swimmers = swimmers;
-        this.racesBySwimmers = racesBySwimmers;
+        this.allMeetingsName = allMeetingsName;
+        this.stringOfRacesAndTime = stringOfRacesAndTime;
     }
 
     @Override
@@ -40,22 +39,22 @@ public class SwimmersInMeetingAdapter extends ArrayAdapter {
 
         if (rowView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            rowView = inflater.inflate(R.layout.viewforlist_details_meeting_swimmers, parent, false);
+            rowView = inflater.inflate(R.layout.viewforlist_details, parent, false);
 
             viewHolder = new ViewHolder();
         } else {
             viewHolder = (ViewHolder) rowView.getTag();
         }
-        String name = swimmers.get(position).getName();
-        String firstName = swimmers.get(position).getFirstname();
-        String allRacesBySwimmer = racesBySwimmers.get(swimmers.get(position).getIdFFN());
+        String name = allMeetingsName.get(position);
+        String races = stringOfRacesAndTime.get(name);
 
-        viewHolder.tvName = (TextView) rowView.findViewById(R.id.id_textview_meeting_details_swimmerlist_name);
-        viewHolder.tvName.setText(name);
-        viewHolder.tvFirstName = (TextView) rowView.findViewById(R.id.id_textview_meeting_details_swimmerlist_firstname);
-        viewHolder.tvFirstName.setText(firstName);
-        viewHolder.tvRaces = (TextView) rowView.findViewById(R.id.id_textview_meeting_details_swimmerlist_races);
-        viewHolder.tvRaces.setText(allRacesBySwimmer);
+
+        viewHolder.tvMeetingName = (TextView) rowView.findViewById(R.id.id_textview_details_list_name);
+        viewHolder.tvMeetingName.setText(name);
+        viewHolder.tvRacesWithTime = (TextView) rowView.findViewById(R.id.id_textview_details_list_races);
+        viewHolder.tvRacesWithTime.setText(races);
+        viewHolder.tvFirstNameToInvisible = (TextView) rowView.findViewById(R.id.id_textview_details_list_firstname);
+        viewHolder.tvFirstNameToInvisible.setVisibility(View.INVISIBLE);
 
         rowView.setTag(viewHolder);
 
@@ -63,6 +62,6 @@ public class SwimmersInMeetingAdapter extends ArrayAdapter {
     }
 
     private static class ViewHolder {
-        public static TextView tvName, tvFirstName, tvRaces;
+        public static TextView tvMeetingName, tvRacesWithTime, tvFirstNameToInvisible;
     }
 }

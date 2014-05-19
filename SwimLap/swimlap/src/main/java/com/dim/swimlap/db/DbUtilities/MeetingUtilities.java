@@ -56,6 +56,19 @@ public class MeetingUtilities {
         return meetingModel;
     }
 
+    public String getMeetingName_FromDb(int idMeeting) {
+        String  meetingName = "";
+        String condition = table.COL_MEE_ID + "=" + idMeeting;
+        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            meetingName = cursor.getString(1);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return meetingName;
+    }
+
 //    public MeetingModel getAMeetingByName_FromDb(String meetingName) {
 //        MeetingModel meetingModel = new MeetingModel();
 //        String condition = table.COL_MEE_MEETING_NAME + "=" + meetingName;

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.dim.swimlap.R;
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.SwimmerModel;
+import com.dim.swimlap.ui.swimmer.detail.MeetingsSwimInSwimmerAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,7 +54,7 @@ public class FragmentDataMeetingDetails extends Fragment {
         HashMap<Integer,String> racesBySwimmer = meeting.getRacesBySwimmers();
 
         swimmersListView = (ListView) view.findViewById(R.id.id_listview_meeting_details_swimmers);
-        SwimmersInMeetingAdapter adapter = new SwimmersInMeetingAdapter(getActivity(),swimmers,racesBySwimmer);
+        MeetingsSwimInSwimmerAdapter adapter = new MeetingsSwimInSwimmerAdapter(getActivity(),swimmers,racesBySwimmer);
         swimmersListView.setAdapter(adapter);
 
         return view;

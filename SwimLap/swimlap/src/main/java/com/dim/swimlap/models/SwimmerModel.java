@@ -69,4 +69,6 @@ public class SwimmerModel {
     public void setClubModel(ClubModel clubModel) {
         this.clubModel = clubModel;
     }
+
+
 }

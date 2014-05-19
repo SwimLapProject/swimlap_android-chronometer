@@ -21,6 +21,7 @@ import com.dim.swimlap.R;
 import com.dim.swimlap.models.EventModel;
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
+import com.dim.swimlap.models.SwimmerModel;
 import com.dim.swimlap.objects.Singleton;
 import com.dim.swimlap.ui.lap.FragmentDataLap;
 import com.dim.swimlap.ui.lap.FragmentNavLap;
@@ -36,7 +37,9 @@ import com.dim.swimlap.ui.settings.FragmentDataSettings;
 import com.dim.swimlap.ui.settings.FragmentNavSettings;
 import com.dim.swimlap.ui.simple.FragmentDataSimple;
 import com.dim.swimlap.ui.simple.FragmentNavSimple;
-import com.dim.swimlap.ui.swimmer.list.FragmentDataSwimmer;
+import com.dim.swimlap.ui.swimmer.detail.FragmentDataSwimmerDetail;
+import com.dim.swimlap.ui.swimmer.detail.FragmentNavSwimmerDetails;
+import com.dim.swimlap.ui.swimmer.list.FragmentDataSwimmerList;
 import com.dim.swimlap.ui.swimmer.list.FragmentNavSwimmer;
 
 import java.util.ArrayList;
@@ -61,7 +64,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     private FragmentDataMeetingList fragmentDataMeetingList;
 
     private FragmentNavSwimmer fragmentNavSwimmer;
-    private FragmentDataSwimmer fragmentDataSwimmer;
+    private FragmentDataSwimmerList fragmentDataSwimmer;
 
     private FragmentNavSettings fragmentNavSettings;
     private FragmentDataSettings fragmentDataSettings;
@@ -80,7 +83,9 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             VIEW_SWIMMER = 4,
             VIEW_SETTING = 5,
             VIEW_RANKING = 6,
-            VIEW_MEETING_DETAILS = 7;
+            VIEW_MEETING_DETAILS = 7,
+            VIEW_SWIMMER_DETAILS = 8;
+
     private HashMap<Integer, String> titles;
 
 
@@ -126,7 +131,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
         //FRAGMENT FOR VIEW SWIMMER
         fragmentNavSwimmer = new FragmentNavSwimmer();
-        fragmentDataSwimmer = new FragmentDataSwimmer();
+        fragmentDataSwimmer = new FragmentDataSwimmerList();
 
         // FRAGMENT FOR THE VIEW SETTING
         fragmentNavSettings = new FragmentNavSettings();
@@ -327,7 +332,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         }
     }
 
-    public void replaceFragmentsMeetingToDetails(MeetingModel meetingToDetails) {
+    @Override
+    public void replaceFragmentMeetingToDetails(MeetingModel meetingToDetails) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction newTransaction = manager.beginTransaction();
         lastView = currentView;
@@ -343,6 +349,26 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         newTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         newTransaction.commit();
     }
+
+    @Override
+
+    public void replaceFragmentSwimmerToDetails(SwimmerModel swimmerToDetails) {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction newTransaction = manager.beginTransaction();
+        lastView = currentView;
+        currentView = VIEW_SWIMMER_DETAILS;
+
+        FragmentNavSwimmerDetails fragmentNav = new FragmentNavSwimmerDetails(swimmerToDetails);
+        FragmentDataSwimmerDetail fragmentData = new FragmentDataSwimmerDetail(swimmerToDetails);
+
+        newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNav);
+        newTransaction.replace(R.id.id_IN_fragment_data, fragmentData);
+
+        newTransaction.addToBackStack(null);
+        newTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        newTransaction.commit();
+    }
+
 
     public MeetingModel buildAMeetingForSimpleChrono() {
         //todo ??? where we build a false meeting for simple

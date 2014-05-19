@@ -12,20 +12,20 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/id_textview_meeting_details_swimmerlist_name"
+            android:id="@+id/id_textview_details_list_name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
         <TextView
-            android:id="@+id/id_textview_meeting_details_swimmerlist_firstname"
+            android:id="@+id/id_textview_details_list_firstname"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
     </LinearLayout>
 
     <TextView
-        android:id="@+id/id_textview_meeting_details_swimmerlist_races"
+        android:id="@+id/id_textview_details_list_races"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="3"/>

@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
+import com.dim.swimlap.models.SwimmerModel;
 
 import java.util.ArrayList;
 
@@ -35,6 +36,9 @@ public interface CommunicationFragments {
 
     public void replaceFragmentDataLap(int raceId);
 
-    public void replaceFragmentsMeetingToDetails(MeetingModel meetingToDetails);
+    public void replaceFragmentMeetingToDetails(MeetingModel meetingToDetails);
+
+    public void replaceFragmentSwimmerToDetails(SwimmerModel swimmerToDetails);
+
 
 }

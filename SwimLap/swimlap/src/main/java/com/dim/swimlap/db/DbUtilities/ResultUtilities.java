@@ -18,7 +18,6 @@ import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.models.SwimmerModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ResultUtilities {
     private SQLiteDatabase db;
@@ -115,7 +114,7 @@ public class ResultUtilities {
                 resultModel.addSwimmersInTeam(new SwimmerModel(cursor.getInt(i)));
             }
         }
-        //cursor.getInt(11) is meetingId
+        resultModel.setMeetingId(cursor.getInt(11)); // meetingId
         EventModel eventModel = new EventModel(cursor.getInt(12)); //enventId
         eventModel.setRaceModel(new RaceModel(cursor.getInt(13)));  //raceId
         resultModel.setEventModel(eventModel); // ADD eventModel

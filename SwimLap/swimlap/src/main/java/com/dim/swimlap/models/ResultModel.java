@@ -21,7 +21,6 @@ public class ResultModel {
     private SwimmerModel swimmerModel;
     private ArrayList<SwimmerModel> team;
     private EventModel eventModel;
-
     private int meetingId;
     // DATA
     private float qualifyingTime;
@@ -226,6 +225,10 @@ public class ResultModel {
 
     public int getMeetingId() {
         return meetingId;
+    }
+
+    public void setMeetingId(int meetingId) {
+        this.meetingId = meetingId;
     }
 
     public boolean areLapsRecodedInDb() {

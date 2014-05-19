@@ -43,7 +43,7 @@ public class FragmentDataMeetingList extends Fragment {
         listViewForMeetings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                comm.replaceFragmentsMeetingToDetails(meetings.get(position));
+                comm.replaceFragmentMeetingToDetails(meetings.get(position));
             }
         });
 
@@ -64,16 +64,5 @@ public class FragmentDataMeetingList extends Fragment {
         }
         return view;
     }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
-//    @Override
-//    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-//        CommunicationFragments comm = (CommunicationFragments) this.getActivity();
-//        comm.replaceFragmentsMeetingToDetails( meetings.get(position));
-//    }
 
 }

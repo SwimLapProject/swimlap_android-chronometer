@@ -10,9 +10,11 @@ package com.dim.swimlap.ui.lap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,12 +33,14 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     private LapAdapter adapter;
     private Singleton singleton;
     private int raceIdOfThisFragment;
+    private LinearLayout layout;
 
     public FragmentDataLap(int raceId) {
         raceIdOfThisFragment = raceId;
         singleton = Singleton.getInstance();
     }
-    public FragmentDataLap(int raceId,MeetingModel meetingModel) {
+
+    public FragmentDataLap(int raceId, MeetingModel meetingModel) {
         raceIdOfThisFragment = raceId;
         singleton = Singleton.getInstance(meetingModel);
     }
@@ -113,14 +117,15 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     public void recordLaps(View view) {
         String[] tag = String.valueOf(view.getTag()).split("_");
         int resultId = Integer.valueOf(tag[1]);
-        if(singleton.getResultOfTheDay(resultId).getnbSplitRemaining()>0){
+        if (singleton.getResultOfTheDay(resultId).getnbSplitRemaining() > 0) {
             Toast.makeText(view.getContext(), "Some laps are missing.\nSwimLap will delete others.", Toast.LENGTH_SHORT).show();
             resetLaps(view);
-        }else{
+        } else {
             singleton.getResultOfTheDay(resultId).recordLapsInDB(getActivity());
             adapter.notifyDataSetChanged();
             Toast.makeText(getActivity(), "Laps has been recorded in database.", Toast.LENGTH_SHORT).show();
         }
 
     }
+
 }

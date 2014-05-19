@@ -75,7 +75,7 @@ public class FFNexMaker {
 
             /** POOL in meet **/
             Element POOL = document.createElement("POOL");
-            MEET.setAttribute("size", String.valueOf(meeting.getPoolSize()));
+            POOL.setAttribute("size", String.valueOf(meeting.getPoolSize()));
             MEET.appendChild(POOL);
 
             /** CLUBS in meet **/
@@ -161,7 +161,7 @@ public class FFNexMaker {
                         if (lap != 0) {
                             String lapAsString = timeTransformer.getFFNexFormatTime(lap);
                             Element SPLIT = document.createElement("SPLIT");
-                            SPLIT.setAttribute("qualifyingtime", lapAsString);
+                            SPLIT.setAttribute("swimtime", lapAsString);
                             String distance = String.valueOf(meeting.getPoolSize() * (indexLap + 1));
                             SPLIT.setAttribute("distance", distance);
                             SPLITS.appendChild(SPLIT);

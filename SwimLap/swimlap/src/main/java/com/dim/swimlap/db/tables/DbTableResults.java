@@ -278,7 +278,7 @@ public class DbTableResults implements DbTableMODEL {
             COL_SWI_8_ID_FFN,
             COL_SWI_9_ID_FFN,
 
-            COL_MEE_ID_MEET,
+            COL_MEE_ID_MEET,//11
             COL_EVE_ID_EVENT,
             COL_RES_ID_RACE,
             COL_RES_QUALIFYING_TIME,
