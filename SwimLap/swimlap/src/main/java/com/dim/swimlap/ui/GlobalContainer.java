@@ -15,6 +15,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
@@ -74,6 +76,9 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
     private int currentView, lastView;
     private Singleton singleton;
+    private ProgressBar progressBar;
+    private RelativeLayout layout;
+
 
     private static int
             VIEW_MENU = 0,
@@ -105,6 +110,18 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_global_container);
+
+        /* PROGRESS BAR */
+        layout = (RelativeLayout) findViewById(R.id.id_global_container);
+        progressBar = new ProgressBar(getApplicationContext(), null, android.R.attr.progressBarStyleLarge);
+        progressBar.setIndeterminate(true);
+        progressBar.setTag("ProgressBar");
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(100, 100);
+        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        layout.addView(progressBar, params);
+        progressBar.setVisibility(View.INVISIBLE);
+
+        /* SINGLETON */
         singleton = Singleton.getInstance();
         singleton.buildMeetingOfTheDay(getApplicationContext());
 
@@ -152,11 +169,14 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         transaction.commit();
     }
 
+
     @Override
     public void changeFragment(int code) {
         if (currentView == code) {
             // do nothing
         } else {
+            changeVisiblilityOfProgressBar(true);
+
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction newTransaction = manager.beginTransaction();
             fragmentTitle.setTitle(titles.get(code));
@@ -286,6 +306,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
     @Override
     public void onBackPressed() {
+
         if (currentView == VIEW_MENU) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Are you sure to quit?\n You will lost current chronometer !")
@@ -305,6 +326,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         } else if (currentView == VIEW_LAP) {
             // do nothing
         } else {
+            changeVisiblilityOfProgressBar(true);
+
             fragmentTitle.setTitle(titles.get(lastView));
             fragmentDirect.changeButtonDirect(lastView);
             currentView = lastView;
@@ -334,6 +357,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
     @Override
     public void replaceFragmentMeetingToDetails(MeetingModel meetingToDetails) {
+        changeVisiblilityOfProgressBar(true);
+
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction newTransaction = manager.beginTransaction();
         lastView = currentView;
@@ -353,6 +378,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     @Override
 
     public void replaceFragmentSwimmerToDetails(SwimmerModel swimmerToDetails) {
+        changeVisiblilityOfProgressBar(true);
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction newTransaction = manager.beginTransaction();
         lastView = currentView;
@@ -375,4 +401,12 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         return null;
     }
 
+    public void changeVisiblilityOfProgressBar(boolean mustBeVisible) {
+        if (mustBeVisible) {
+            progressBar.setVisibility(View.VISIBLE);
+            progressBar.bringToFront();
+        } else {
+            progressBar.setVisibility(View.INVISIBLE);
+        }
+    }
 }

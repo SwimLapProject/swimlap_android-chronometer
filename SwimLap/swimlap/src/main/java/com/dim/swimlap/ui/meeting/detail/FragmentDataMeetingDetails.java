@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.dim.swimlap.R;
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.SwimmerModel;
+import com.dim.swimlap.ui.CommunicationFragments;
 import com.dim.swimlap.ui.swimmer.detail.MeetingsSwimInSwimmerAdapter;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class FragmentDataMeetingDetails extends Fragment {
     private MeetingModel meeting;
     private TextView tvName, tvCity, tvStartdate, tvStopdate, tvPoolsize;
     private ListView swimmersListView;
+    private CommunicationFragments comm;
 
     public FragmentDataMeetingDetails(MeetingModel meeting) {
         this.meeting = meeting;
@@ -38,6 +40,9 @@ public class FragmentDataMeetingDetails extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_meeting_details, container, false);
+
+        comm = (CommunicationFragments) getActivity();
+
         tvName = (TextView) view.findViewById(R.id.id_textview_meeting_details_name);
         tvCity = (TextView) view.findViewById(R.id.id_textview_meeting_details_city);
         tvPoolsize = (TextView) view.findViewById(R.id.id_textview_meeting_details_poolsize);
@@ -46,15 +51,15 @@ public class FragmentDataMeetingDetails extends Fragment {
 
         tvName.setText(meeting.getName());
         tvCity.setText(meeting.getCity());
-        tvPoolsize.setText(String.valueOf(meeting.getPoolSize())+"m");
-        tvStartdate.setText("FROM: "+meeting.getStartDate());
-        tvStopdate.setText("TO: "+meeting.getStopDate());
+        tvPoolsize.setText(String.valueOf(meeting.getPoolSize()) + "m");
+        tvStartdate.setText("FROM: " + meeting.getStartDate());
+        tvStopdate.setText("TO: " + meeting.getStopDate());
 
         ArrayList<SwimmerModel> swimmers = meeting.getAllSwimmersInMeetting();
-        HashMap<Integer,String> racesBySwimmer = meeting.getRacesBySwimmers();
+        HashMap<Integer, String> racesBySwimmer = meeting.getRacesBySwimmers();
 
         swimmersListView = (ListView) view.findViewById(R.id.id_listview_meeting_details_swimmers);
-        MeetingsSwimInSwimmerAdapter adapter = new MeetingsSwimInSwimmerAdapter(getActivity(),swimmers,racesBySwimmer);
+        MeetingsSwimInSwimmerAdapter adapter = new MeetingsSwimInSwimmerAdapter(getActivity(), swimmers, racesBySwimmer);
         swimmersListView.setAdapter(adapter);
 
         return view;
@@ -63,5 +68,6 @@ public class FragmentDataMeetingDetails extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        comm.changeVisiblilityOfProgressBar(false);
     }
 }

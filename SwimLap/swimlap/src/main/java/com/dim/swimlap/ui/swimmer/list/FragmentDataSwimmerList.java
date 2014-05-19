@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dim.swimlap.R;
 import com.dim.swimlap.db.getter.GetSwimmers;
@@ -25,18 +24,18 @@ import com.dim.swimlap.ui.CommunicationFragments;
 import java.util.ArrayList;
 
 
-public class FragmentDataSwimmerList extends Fragment  {
+public class FragmentDataSwimmerList extends Fragment {
 
     private ListView listViewForSwimmers;
     private TextView textViewNoSwimmerInLap;
     private SwimmerAdapter adapter;
     private ArrayList<SwimmerModel> swimmers;
+    private CommunicationFragments comm;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_model_list, container, false);
-        final CommunicationFragments comm = (CommunicationFragments) this.getActivity();
-
+        comm = (CommunicationFragments) this.getActivity();
 
         listViewForSwimmers = (ListView) view.findViewById(R.id.id_listview_model);
         textViewNoSwimmerInLap = (TextView) view.findViewById(R.id.id_textview_no_model_in_db);
@@ -68,5 +67,6 @@ public class FragmentDataSwimmerList extends Fragment  {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+      comm.changeVisiblilityOfProgressBar(false);
     }
 }

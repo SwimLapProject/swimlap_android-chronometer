@@ -24,20 +24,20 @@ import com.dim.swimlap.R;
 import com.dim.swimlap.db.getter.GetDataForSettings;
 import com.dim.swimlap.db.recorder.RecordSettings;
 import com.dim.swimlap.models.ClubModel;
-import com.dim.swimlap.models.SeasonModel;
 import com.dim.swimlap.objects.DateTransformer;
-
-import java.util.HashMap;
+import com.dim.swimlap.ui.CommunicationFragments;
 
 public class FragmentDataSettings extends Fragment implements View.OnClickListener {
 
     private DatePicker datePickerStart, datePickerStop;
     private Button buttonSeason, buttonClub;
     private EditText editTextclubName, editTextclubCodeffn, editTextSeasonName;
+    private CommunicationFragments comm;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_settings, container, false);
+        comm = (CommunicationFragments) getActivity();
         // CLUB
         buttonClub = (Button) view.findViewById(R.id.id_button_modifyclub);
         buttonClub.setOnClickListener(this);
@@ -51,6 +51,7 @@ public class FragmentDataSettings extends Fragment implements View.OnClickListen
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         updateDataInUI();
+        comm.changeVisiblilityOfProgressBar(false);
     }
 
     @Override

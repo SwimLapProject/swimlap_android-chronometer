@@ -10,7 +10,6 @@ package com.dim.swimlap.ui.lap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -23,6 +22,7 @@ import com.dim.swimlap.R;
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.objects.Singleton;
+import com.dim.swimlap.ui.CommunicationFragments;
 
 import java.util.ArrayList;
 
@@ -34,6 +34,7 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     private Singleton singleton;
     private int raceIdOfThisFragment;
     private LinearLayout layout;
+    private CommunicationFragments comm;
 
     public FragmentDataLap(int raceId) {
         raceIdOfThisFragment = raceId;
@@ -48,6 +49,8 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_lap, container, false);
+        comm = (CommunicationFragments) getActivity();
+
         boolean meetingOfTheDayIsBuilt = singleton.buildMeetingOfTheDay(getActivity());
 
         listViewForLap = (ListView) view.findViewById(R.id.id_listview_lap);
@@ -69,6 +72,7 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        comm.changeVisiblilityOfProgressBar(false);
     }
 
     @Override

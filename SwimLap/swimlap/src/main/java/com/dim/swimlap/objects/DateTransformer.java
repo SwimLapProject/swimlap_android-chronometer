@@ -7,11 +7,8 @@
 
 package com.dim.swimlap.objects;
 
-import com.dim.swimlap.models.SeasonModel;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -73,8 +70,8 @@ public class DateTransformer {
         return dateAsTring;
     }
 
-    public String getTodayAsString(){
-      return   formater.format(new Date());
+    public String getTodayAsString() {
+        return formater.format(new Date());
     }
 
 }

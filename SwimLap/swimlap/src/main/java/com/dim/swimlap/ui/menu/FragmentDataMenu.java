@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.dim.swimlap.R;
 import com.dim.swimlap.ui.CommunicationFragments;
@@ -22,7 +23,8 @@ import com.dim.swimlap.ui.CommunicationFragments;
 
 public class FragmentDataMenu extends Fragment implements View.OnClickListener {
     private Button buttonSimple, buttonMeetings, buttonSwimmers, buttonSettings;
-    private CommunicationFragments communicationFragments;
+    private CommunicationFragments comm;
+    private RelativeLayout relativeLayout;
     private static int
             VIEW_SIMPLE = 2,
             VIEW_MEETING = 3,
@@ -39,8 +41,9 @@ public class FragmentDataMenu extends Fragment implements View.OnClickListener {
         buttonMeetings = (Button) view.findViewById(R.id.id_button_to_meetings);
         buttonSwimmers = (Button) view.findViewById(R.id.id_button_to_swimmers);
         buttonSettings = (Button) view.findViewById(R.id.id_button_to_settings);
-        progressBar = (ProgressBar) view.findViewById(R.id.id_progress_bar);
-        progressBar.setVisibility(View.INVISIBLE);
+//        progressBar = (ProgressBar) view.findViewById(R.id.id_progress_bar);
+//        progressBar.setVisibility(View.INVISIBLE);
+        relativeLayout = (RelativeLayout) view.findViewById(R.id.id_menu_container);
         return view;
     }
 
@@ -52,21 +55,27 @@ public class FragmentDataMenu extends Fragment implements View.OnClickListener {
         buttonSwimmers.setOnClickListener(this);
         buttonSettings.setOnClickListener(this);
 
-        communicationFragments = (CommunicationFragments) this.getActivity();
+        comm = (CommunicationFragments) this.getActivity();
+        comm.changeVisiblilityOfProgressBar(false);
     }
 
     @Override
     public void onClick(View view) {
-        progressBar.setVisibility(View.VISIBLE);
-        progressBar.setIndeterminate(true);
+//        ProgressBar progressBar = new ProgressBar(getActivity(), null, android.R.attr.progressBarStyleLarge);
+//        progressBar.setIndeterminate(true);
+//        progressBar.setVisibility(View.VISIBLE);
+//        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(100, 100);
+//        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+//        relativeLayout.addView(progressBar, params);
+
         if (view.getId() == R.id.id_button_to_settings) {
-            communicationFragments.changeFragment(VIEW_SETTING);
+            comm.changeFragment(VIEW_SETTING);
         } else if (view.getId() == R.id.id_button_to_swimmers) {
-            communicationFragments.changeFragment(VIEW_SWIMMER);
+            comm.changeFragment(VIEW_SWIMMER);
         } else if (view.getId() == R.id.id_button_to_meetings) {
-            communicationFragments.changeFragment(VIEW_MEETING);
+            comm.changeFragment(VIEW_MEETING);
         } else if (view.getId() == R.id.id_button_to_simplechronometer) {
-            communicationFragments.changeFragment(VIEW_SIMPLE);
+            comm.changeFragment(VIEW_SIMPLE);
         }
     }
 }

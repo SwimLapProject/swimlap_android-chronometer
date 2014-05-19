@@ -23,6 +23,7 @@ import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.objects.SimpleChronoDataBuilder;
 import com.dim.swimlap.objects.Singleton;
+import com.dim.swimlap.ui.CommunicationFragments;
 import com.dim.swimlap.ui.lap.LapAdapter;
 ;import java.util.ArrayList;
 
@@ -34,6 +35,7 @@ public class FragmentDataSimple extends Fragment{
     private int raceIdOfThisFragment;
     private SimpleChronoDataBuilder simple;
     private MeetingModel meeting;
+    private CommunicationFragments comm;
 
 
 
@@ -46,6 +48,7 @@ public class FragmentDataSimple extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_lap, container, false);
+        comm = (CommunicationFragments)getActivity();
 ////        singleton = Singleton.getInstance();
 ////        boolean meetingOfTheDayIsBuilt = singleton.buildMeetingOfTheDay(getActivity());
 //
@@ -114,5 +117,10 @@ public class FragmentDataSimple extends Fragment{
 //            Toast.makeText(getActivity(), "Laps has been recorded in database.", Toast.LENGTH_SHORT).show();
 //        }
 
+    }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        comm.changeVisiblilityOfProgressBar(false);
     }
 }

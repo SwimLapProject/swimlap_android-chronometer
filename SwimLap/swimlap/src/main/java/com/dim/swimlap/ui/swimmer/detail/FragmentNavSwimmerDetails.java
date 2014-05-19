@@ -38,11 +38,6 @@ public class FragmentNavSwimmerDetails  extends Fragment implements View.OnClick
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    @Override
     public void onClick(View view) {
         Toast.makeText(view.getContext(), "DO SOMETHING", Toast.LENGTH_SHORT).show();
 

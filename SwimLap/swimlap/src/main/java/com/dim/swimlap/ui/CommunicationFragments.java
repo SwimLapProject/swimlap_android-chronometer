@@ -40,5 +40,7 @@ public interface CommunicationFragments {
 
     public void replaceFragmentSwimmerToDetails(SwimmerModel swimmerToDetails);
 
+    public void changeVisiblilityOfProgressBar(boolean mustBeVisible);
+
 
 }

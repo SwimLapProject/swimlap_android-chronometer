@@ -32,12 +32,12 @@ public class FragmentDataMeetingList extends Fragment {
     private TextView textViewNoMeetingInLap;
     private MeetingAdapter adapter;
     private ArrayList<MeetingModel> meetings;
+    private CommunicationFragments comm;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_model_list, container, false);
-        final CommunicationFragments comm = (CommunicationFragments) this.getActivity();
-
+        comm = (CommunicationFragments) this.getActivity();
 
         listViewForMeetings = (ListView) view.findViewById(R.id.id_listview_model);
         listViewForMeetings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -53,7 +53,7 @@ public class FragmentDataMeetingList extends Fragment {
         meetings = getter.getAllMeetings();
 
 
-        if (meetings==null) {
+        if (meetings == null) {
             textViewNoMeetingInLap.setVisibility(View.VISIBLE);
         } else {
             textViewNoMeetingInLap.setVisibility(View.INVISIBLE);
@@ -65,4 +65,9 @@ public class FragmentDataMeetingList extends Fragment {
         return view;
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        comm.changeVisiblilityOfProgressBar(false);
+    }
 }
