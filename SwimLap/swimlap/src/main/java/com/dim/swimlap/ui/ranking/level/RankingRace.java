@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-public class ThirdChild extends BaseExpandableListAdapter {
+public class RankingRace extends BaseExpandableListAdapter {
     private Context context;
 
-    public ThirdChild(Context context) {
+    public RankingRace(Context context) {
         this.context = context;
     }
 
@@ -34,7 +34,7 @@ public class ThirdChild extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 //        ExpandableListView secondLevel = new ExpandableListView(context);
-//        secondLevel.setAdapter(new SecondChild(context));
+//        secondLevel.setAdapter(new RankingSwimmer(context));
 //        secondLevel.setGroupIndicator(null);
 //        return secondLevel;
         return null;

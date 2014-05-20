@@ -29,7 +29,7 @@ public class MeetingModel {
 
     private SeasonModel seasonModel;
     private ArrayList<ResultModel> allResults;
-    private HashMap<Integer, String> racesBySwimmers;
+    private HashMap<Integer, String> concatStringRaceBySwim;
 
     public MeetingModel() {
         allResults = new ArrayList<ResultModel>();
@@ -164,25 +164,25 @@ public class MeetingModel {
 
     public ArrayList<SwimmerModel> getAllSwimmersInMeetting() {
         TransformFloatTimeToString timeTransformer = new TransformFloatTimeToString();
-        if (racesBySwimmers == null) {
-            racesBySwimmers = new HashMap<Integer, String>();
+        if (concatStringRaceBySwim == null) {
+            concatStringRaceBySwim = new HashMap<Integer, String>();
         } else {
-            racesBySwimmers.clear();
+            concatStringRaceBySwim.clear();
         }
         ArrayList<SwimmerModel> swimmers = new ArrayList<SwimmerModel>();
         for (int indexResult = 0; indexResult < allResults.size(); indexResult++) {
             int swimmerId = allResults.get(indexResult).getSwimmerModel().getIdFFN();
-            if (racesBySwimmers.containsKey(swimmerId)) {
-                String content = racesBySwimmers.get(swimmerId);
+            if (concatStringRaceBySwim.containsKey(swimmerId)) {
+                String content = concatStringRaceBySwim.get(swimmerId);
                 content += allResults.get(indexResult).getEventModel().getRaceModel().getCompleteName() + "     "
-                +timeTransformer.getFFNexFormatTime(allResults.get(indexResult).getSwimTime())+"\n";
-                racesBySwimmers.remove(swimmerId);
-                racesBySwimmers.put(swimmerId, content);
+                        + timeTransformer.getFFNexFormatTime(allResults.get(indexResult).getSwimTime()) + "\n";
+                concatStringRaceBySwim.remove(swimmerId);
+                concatStringRaceBySwim.put(swimmerId, content);
             } else {
 
                 String content = allResults.get(indexResult).getEventModel().getRaceModel().getCompleteName() + "     "
-                        +timeTransformer.getFFNexFormatTime(allResults.get(indexResult).getSwimTime())+"\n";
-                racesBySwimmers.put(swimmerId, content);
+                        + timeTransformer.getFFNexFormatTime(allResults.get(indexResult).getSwimTime()) + "\n";
+                concatStringRaceBySwim.put(swimmerId, content);
                 swimmers.add(allResults.get(indexResult).getSwimmerModel());
             }
         }
@@ -190,6 +190,16 @@ public class MeetingModel {
     }
 
     public HashMap<Integer, String> getRacesBySwimmers() {
-        return racesBySwimmers;
+        return concatStringRaceBySwim;
+    }
+
+    public ArrayList<ResultModel> getResultsForSwimmer(int swimmerId) {
+        ArrayList<ResultModel> resultsForSwimmer = new ArrayList<ResultModel>();
+        for (int indexResult = 0; indexResult < allResults.size(); indexResult++) {
+            if (allResults.get(indexResult).getSwimmerModel().getIdFFN() == swimmerId) {
+                resultsForSwimmer.add(allResults.get(indexResult));
+            }
+        }
+        return resultsForSwimmer;
     }
 }

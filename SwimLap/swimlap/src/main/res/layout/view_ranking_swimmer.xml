@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+    >
+
+    <TextView
+        android:id="@+id/id_ranking_textview_swimmer"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dimen_ranking_swimmer_rowsize"
+        android:textColor="@color/bluesea"
+        android:textSize="@dimen/dimen_detail_MEDIUM"/>
+
+
+    <LinearLayout
+        android:id="@+id/id_ranking_layout_swimmer_tofill"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="40dp"/>
+
+</LinearLayout>

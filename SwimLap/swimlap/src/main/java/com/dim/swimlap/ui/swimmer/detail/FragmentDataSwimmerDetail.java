@@ -20,6 +20,7 @@ import com.dim.swimlap.db.getter.GetAllMeetingsForListInSwimmerDetails;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.models.SwimmerModel;
 import com.dim.swimlap.objects.FormatTimeAsString;
+import com.dim.swimlap.ui.CommunicationFragments;
 import com.dim.swimlap.ui.meeting.detail.SwimmersInMeetingAdapter;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class FragmentDataSwimmerDetail extends Fragment {
     private SwimmerModel swimmer;
     private TextView tvName, tvFirstName, tvDateOFBirth;
     private ListView meetingsListView;
+    private CommunicationFragments comm;
 
     public FragmentDataSwimmerDetail(SwimmerModel swimmer) {
         this.swimmer = swimmer;
@@ -40,6 +42,7 @@ public class FragmentDataSwimmerDetail extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_swimmers_details, container, false);
+        comm = (CommunicationFragments) getActivity();
 
         tvName = (TextView) view.findViewById(R.id.id_textview_swimmer_details_name);
         tvFirstName = (TextView) view.findViewById(R.id.id_textview_swimmer_details_firstname);
@@ -54,7 +57,7 @@ public class FragmentDataSwimmerDetail extends Fragment {
         GetAllMeetingsForListInSwimmerDetails getter = new GetAllMeetingsForListInSwimmerDetails(getActivity());
         ArrayList<ResultModel> resultForOneSwimmer = getter.getAllMeetingForSwimmerId(swimmer.getIdFFN());
         HashMap<String, String> stringOfRacesAndTime = new HashMap<String, String>();
-        ArrayList <String> allMeetingsName = new ArrayList<String>();
+        ArrayList<String> allMeetingsName = new ArrayList<String>();
 
         for (int indexResult = 0; indexResult < resultForOneSwimmer.size(); indexResult++) {
             ResultModel result = resultForOneSwimmer.get(indexResult);
@@ -80,7 +83,7 @@ public class FragmentDataSwimmerDetail extends Fragment {
         }
 
         meetingsListView = (ListView) view.findViewById(R.id.id_listview_swimmer_details_meetings_swum);
-        SwimmersInMeetingAdapter adapter = new SwimmersInMeetingAdapter(getActivity(), allMeetingsName,stringOfRacesAndTime);
+        SwimmersInMeetingAdapter adapter = new SwimmersInMeetingAdapter(getActivity(), allMeetingsName, stringOfRacesAndTime);
         meetingsListView.setAdapter(adapter);
 
         return view;
@@ -89,5 +92,6 @@ public class FragmentDataSwimmerDetail extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        comm.changeVisiblilityOfProgressBar(false);
     }
 }

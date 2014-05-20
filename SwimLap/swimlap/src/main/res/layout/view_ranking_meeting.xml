@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/id_ranking_textview_meeting"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dimen_ranking_meeting_rowsize"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_detail_BIG"/>
+
+    <LinearLayout
+        android:id="@+id/id_ranking_layout_meeting_tofill"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"/>
+
+
+</LinearLayout>

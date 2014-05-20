@@ -46,7 +46,7 @@ public class GetAllMeetingsForListInSwimmerDetails {
     }
 
     public String getMeetingName(int idMeeting) {
-        String meetingName="";
+        String meetingName = "";
         try {
             db.open();
             meetingName = db.getMeetingUtilities().getMeetingName_FromDb(idMeeting);
@@ -56,6 +56,7 @@ public class GetAllMeetingsForListInSwimmerDetails {
         } finally {
             db.close();
         }
-       return meetingName;
+        return meetingName;
     }
+
 }

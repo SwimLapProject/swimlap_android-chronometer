@@ -19,7 +19,6 @@
     <dimen name="dimen_text_button_little">15sp</dimen>
 
 
-
     <!-- CHRONO -->
     <dimen name="dimen_text_chrono_direct">50dp</dimen>
     <dimen name="dimen_textview_scroll_lap">150dp</dimen>
@@ -41,5 +40,13 @@
     <dimen name="dimen_detail_BIG">25sp</dimen>
     <dimen name="dimen_detail_MEDIUM">18sp</dimen>
     <dimen name="dimen_detail_LITTLE">15sp</dimen>
+    <dimen name="dimen_detail_TINY">12sp</dimen>
+
+    <!-- RANKING -->
+    <dimen name="dimen_ranking_meeting_rowsize">45sp</dimen>
+    <dimen name="dimen_ranking_swimmer_rowsize">40sp</dimen>
+    <dimen name="dimen_ranking_race_rowsize">35sp</dimen>
+    <dimen name="dimen_ranking_lap_rowsize">10sp</dimen>
+
 
 </resources>

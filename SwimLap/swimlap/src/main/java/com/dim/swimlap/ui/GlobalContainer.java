@@ -71,9 +71,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     private FragmentNavSettings fragmentNavSettings;
     private FragmentDataSettings fragmentDataSettings;
 
-    private FragmentNavRanking fragmentNavRanking;
-    private FragmentDataRanking fragmentDataRanking;
-
     private int currentView, lastView;
     private Singleton singleton;
     private ProgressBar progressBar;
@@ -154,10 +151,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         fragmentNavSettings = new FragmentNavSettings();
         fragmentDataSettings = new FragmentDataSettings();
 
-        // FRAGMENT FOR RANKING
-        fragmentNavRanking = new FragmentNavRanking();
-        fragmentDataRanking = new FragmentDataRanking();
-
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.id_IN_fragment_direct, fragmentDirect);
@@ -211,6 +204,9 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSettings);
                 newTransaction.addToBackStack(null);
             } else if (code == VIEW_RANKING) {
+                FragmentNavRanking fragmentNavRanking = new FragmentNavRanking();
+                FragmentDataRanking fragmentDataRanking = new FragmentDataRanking();
+
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavRanking);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataRanking);
                 newTransaction.addToBackStack(null);
@@ -355,6 +351,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         }
     }
 
+
     @Override
     public void replaceFragmentMeetingToDetails(MeetingModel meetingToDetails) {
         changeVisiblilityOfProgressBar(true);
@@ -409,4 +406,5 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             progressBar.setVisibility(View.INVISIBLE);
         }
     }
+
 }
