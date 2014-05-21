@@ -19,8 +19,6 @@ import android.widget.RelativeLayout;
 import com.dim.swimlap.R;
 import com.dim.swimlap.ui.CommunicationFragments;
 
-;
-
 public class FragmentDataMenu extends Fragment implements View.OnClickListener {
     private Button buttonSimple, buttonMeetings, buttonSwimmers, buttonSettings;
     private CommunicationFragments comm;
@@ -61,13 +59,6 @@ public class FragmentDataMenu extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-//        ProgressBar progressBar = new ProgressBar(getActivity(), null, android.R.attr.progressBarStyleLarge);
-//        progressBar.setIndeterminate(true);
-//        progressBar.setVisibility(View.VISIBLE);
-//        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(100, 100);
-//        params.addRule(RelativeLayout.CENTER_IN_PARENT);
-//        relativeLayout.addView(progressBar, params);
-
         if (view.getId() == R.id.id_button_to_settings) {
             comm.changeFragment(VIEW_SETTING);
         } else if (view.getId() == R.id.id_button_to_swimmers) {

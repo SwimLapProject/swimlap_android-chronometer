@@ -33,24 +33,27 @@ public class FragmentDataMeetingList extends Fragment {
     private MeetingAdapter adapter;
     private ArrayList<MeetingModel> meetings;
     private CommunicationFragments comm;
+    private GetMeetingDetailsForList getter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_model_list, container, false);
         comm = (CommunicationFragments) this.getActivity();
 
+        getter = new GetMeetingDetailsForList(getActivity());
+        meetings = getter.getAllMeetingsUnFilled();
+
         listViewForMeetings = (ListView) view.findViewById(R.id.id_listview_model);
         listViewForMeetings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                getter.fillMeetingWithResult(meetings.get(position));
+                getter.fillMeetingWithSeason(meetings.get(position));
                 comm.replaceFragmentMeetingToDetails(meetings.get(position));
             }
         });
 
         textViewNoMeetingInLap = (TextView) view.findViewById(R.id.id_textview_no_model_in_db);
-
-        GetMeetingDetailsForList getter = new GetMeetingDetailsForList(getActivity());
-        meetings = getter.getAllMeetings();
 
 
         if (meetings == null) {

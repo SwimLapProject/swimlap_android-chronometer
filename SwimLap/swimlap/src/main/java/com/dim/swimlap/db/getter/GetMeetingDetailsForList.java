@@ -19,20 +19,18 @@ import com.dim.swimlap.models.SwimmerModel;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class GetMeetingDetailsForList {
     private Context context;
     private ArrayList<MeetingModel> meetings;
+    private ArrayList<MeetingModel> meetingsUnFilled;
 
     public GetMeetingDetailsForList(Context context) {
         this.context = context;
     }
 
     public ArrayList<MeetingModel> getAllMeetings() {
-        // GET DATE OF THE DAY TO KNOW IF A MEETING EXIST
-        Date today = new Date();
         DbUtilitiesBuilder db1 = new DbUtilitiesBuilder(context);
         try {
             db1.open();
@@ -58,7 +56,23 @@ public class GetMeetingDetailsForList {
         return meetings;
     }
 
-    private void fillMeetingWithResult(MeetingModel meetingToFill) {
+    public ArrayList<MeetingModel> getAllMeetingsUnFilled() {
+        DbUtilitiesBuilder db1 = new DbUtilitiesBuilder(context);
+        try {
+            db1.open();
+            ClubModel club = db1.getClubUtilities().getClub_FromDb();
+            if (club != null) {
+                meetingsUnFilled = db1.getMeetingUtilities().getAllMeetings_FromDb();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            db1.close();
+        }
+        return meetingsUnFilled;
+    }
+
+    public void fillMeetingWithResult(MeetingModel meetingToFill) {
         List<ResultModel> resultsInDB = new ArrayList<ResultModel>();
         DbUtilitiesBuilder db2 = new DbUtilitiesBuilder(context);
 
@@ -123,7 +137,7 @@ public class GetMeetingDetailsForList {
         return swimmerToFill;
     }
 
-    private void fillMeetingWithSeason(MeetingModel meetingToFill) {
+    public void fillMeetingWithSeason(MeetingModel meetingToFill) {
         SeasonModel seasonOfMeeting = meetingToFill.getSeasonModel();
         String startDateOfMeeting = meetingToFill.getStartDate();
         DbUtilitiesBuilder db4 = new DbUtilitiesBuilder(context);

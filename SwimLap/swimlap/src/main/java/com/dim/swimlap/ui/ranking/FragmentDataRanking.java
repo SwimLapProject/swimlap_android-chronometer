@@ -151,10 +151,18 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
         view.requestFocusFromTouch();
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        comm.changeVisiblilityOfProgressBar(false);
+    }
+
+
     private void getMeetings() {
         GetMeetingDetailsForList getter = new GetMeetingDetailsForList(getActivity());
         meetingModels = getter.getAllMeetings();
     }
+
 
     private void addSwimmersToMeeting(int meetingPosition) {
         ArrayList<SwimmerModel> swimmersInMeeting = meetingModels.get(meetingPosition).getAllSwimmersInMeetting();
@@ -284,10 +292,6 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
     }
 
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        comm.changeVisiblilityOfProgressBar(false);
-    }
+
 
 }

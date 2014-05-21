@@ -7,7 +7,6 @@
 
 package com.dim.swimlap.ui;
 
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -76,7 +75,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     private ProgressBar progressBar;
     private RelativeLayout layout;
 
-
     private static int
             VIEW_MENU = 0,
             VIEW_LAP = 1,
@@ -133,11 +131,9 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         fragmentNavLap = new FragmentNavLap();
         buildFragmentsForLapData();
 
-//        fragmentDataLap = new FragmentDataLap();
-
-        // FRAGMENT FOR VIEW SIMPLE CHRONOMETER
-//        fragmentNavSimple = new FragmentNavSimple();
-//        fragmentDataSimple = new FragmentDataSimple();
+        // FRAGMENT FOR THE VIEW SIMPLE CHRONOMETER
+        fragmentNavSimple = new FragmentNavSimple();
+        fragmentDataSimple = new FragmentDataSimple();
 
         // FRAGMENT FOR THE VIEW MEETING
         fragmentNavMeetingList = new FragmentNavMeetingList();
@@ -162,6 +158,38 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         transaction.commit();
     }
 
+    @Override
+    public void onBackPressed() {
+
+        if (currentView == VIEW_MENU) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure to quit?\n You will lost current chronometer !")
+                    .setCancelable(true)
+                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            //do nothing: don't quit application
+                        }
+                    })
+                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        } else if (currentView == VIEW_LAP) {
+            // do nothing
+        } else {
+            changeVisiblilityOfProgressBar(true);
+
+            fragmentTitle.setTitle(titles.get(lastView));
+            fragmentDirect.changeButtonDirect(lastView);
+            currentView = lastView;
+            lastView = 0;
+            super.onBackPressed();
+        }
+
+    }
 
     @Override
     public void changeFragment(int code) {
@@ -187,9 +215,9 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                     code = -1;
                 }
             } else if (code == VIEW_SIMPLE) {
-//                newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSimple);
-//                newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSimple);
-//                newTransaction.addToBackStack(null);
+                newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSimple);
+                newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSimple);
+                newTransaction.addToBackStack(null);
             } else if (code == VIEW_MEETING) {
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavMeetingList);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataMeetingList);
@@ -288,7 +316,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         return savedLapList;
     }
 
-
     @Override
     public void inverseButtonsInLap() {
         FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(singleton.getCurrentRaceId());
@@ -298,59 +325,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             changeFragment(VIEW_LAP);
         }
     }
-
-
-    @Override
-    public void onBackPressed() {
-
-        if (currentView == VIEW_MENU) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Are you sure to quit?\n You will lost current chronometer !")
-                    .setCancelable(true)
-                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            //do nothing: don't quit application
-                        }
-                    })
-                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            finish();
-                        }
-                    });
-            AlertDialog alert = builder.create();
-            alert.show();
-        } else if (currentView == VIEW_LAP) {
-            // do nothing
-        } else {
-            changeVisiblilityOfProgressBar(true);
-
-            fragmentTitle.setTitle(titles.get(lastView));
-            fragmentDirect.changeButtonDirect(lastView);
-            currentView = lastView;
-            lastView = 0;
-            super.onBackPressed();
-        }
-
-    }
-
-    public void buildFragmentsForLapData() {
-
-        if (mapOfFragmentLap == null) {
-            mapOfFragmentLap = new HashMap<Integer, FragmentDataLap>();
-
-        } else {
-            mapOfFragmentLap.clear();
-        }
-        if (singleton.buildMeetingOfTheDay(getApplicationContext())) {
-            ArrayList<EventModel> events = singleton.getAllEventsByOrderInMeeting();
-            for (int indexEvent = 0; indexEvent < events.size(); indexEvent++) {
-                int raceId = events.get(indexEvent).getRaceModel().getId();
-                FragmentDataLap fragmentToAdd = new FragmentDataLap(raceId);
-                mapOfFragmentLap.put(raceId, fragmentToAdd);
-            }
-        }
-    }
-
 
     @Override
     public void replaceFragmentMeetingToDetails(MeetingModel meetingToDetails) {
@@ -373,7 +347,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     }
 
     @Override
-
     public void replaceFragmentSwimmerToDetails(SwimmerModel swimmerToDetails) {
         changeVisiblilityOfProgressBar(true);
         FragmentManager manager = getSupportFragmentManager();
@@ -392,19 +365,50 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         newTransaction.commit();
     }
 
-
-    public MeetingModel buildAMeetingForSimpleChrono() {
-        //todo ??? where we build a false meeting for simple
-        return null;
-    }
-
+    @Override
     public void changeVisiblilityOfProgressBar(boolean mustBeVisible) {
         if (mustBeVisible) {
             progressBar.setVisibility(View.VISIBLE);
-            progressBar.bringToFront();
         } else {
             progressBar.setVisibility(View.INVISIBLE);
         }
     }
 
+    @Override
+    public void clickFromSimpleLap(View view) {
+        String[] tag = String.valueOf(view.getTag()).split("_");
+        int position = Integer.valueOf(tag[1]);
+
+        if (view.getId() == R.id.id_button_simple_takelap) {
+            float lap = fragmentNavSimple.getMillisecondsSimpleLap();
+            fragmentDataSimple.takeLap(lap, position);
+        } else if (view.getId() == R.id.id_button_simple_unlap) {
+            fragmentDataSimple.removeLastLap(position);
+        }
+    }
+
+    @Override
+    public void removeAllSimpleLaps() {
+        fragmentDataSimple.removeAllLapsTaken();
+    }
+
+    public void buildFragmentsForLapData() {
+
+        if (mapOfFragmentLap == null) {
+            mapOfFragmentLap = new HashMap<Integer, FragmentDataLap>();
+
+        } else {
+            mapOfFragmentLap.clear();
+        }
+        if (singleton.buildMeetingOfTheDay(getApplicationContext())) {
+            ArrayList<EventModel> events = singleton.getAllEventsByOrderInMeeting();
+            for (int indexEvent = 0; indexEvent < events.size(); indexEvent++) {
+                int raceId = events.get(indexEvent).getRaceModel().getId();
+                FragmentDataLap fragmentToAdd = new FragmentDataLap(raceId);
+                mapOfFragmentLap.put(raceId, fragmentToAdd);
+            }
+        }
+    }
+
 }
+

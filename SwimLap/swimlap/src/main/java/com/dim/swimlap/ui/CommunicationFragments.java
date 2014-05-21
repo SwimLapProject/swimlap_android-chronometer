@@ -42,5 +42,7 @@ public interface CommunicationFragments {
 
     public void changeVisiblilityOfProgressBar(boolean mustBeVisible);
 
+    public void clickFromSimpleLap(View view);
 
+    public void removeAllSimpleLaps();
 }

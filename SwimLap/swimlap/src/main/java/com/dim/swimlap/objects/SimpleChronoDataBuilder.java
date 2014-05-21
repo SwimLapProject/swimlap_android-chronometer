@@ -7,7 +7,10 @@
 
 package com.dim.swimlap.objects;
 
+import android.content.Context;
+
 import com.dim.swimlap.data.RaceData;
+import com.dim.swimlap.db.getter.GetDataForSettings;
 import com.dim.swimlap.models.ClubModel;
 import com.dim.swimlap.models.EventModel;
 import com.dim.swimlap.models.MeetingModel;
@@ -15,6 +18,7 @@ import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.models.SeasonModel;
 import com.dim.swimlap.models.SwimmerModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleChronoDataBuilder {
@@ -26,10 +30,15 @@ public class SimpleChronoDataBuilder {
     private static final float DEFAULT_TIME = 60000; //1 minute
 
     private ClubModel club;
+    private ArrayList<EventModel> eventOfSimpleMeeting;
 
 
-    public SimpleChronoDataBuilder(ClubModel clubModel, int poolSize, boolean byTeam) {
-        this.club = clubModel;
+    public SimpleChronoDataBuilder(int poolSize, Context context) {
+        GetDataForSettings getter = new GetDataForSettings(context);
+        this.club = getter.getClubRecordedInDb();
+
+        eventOfSimpleMeeting = new ArrayList<EventModel>();
+
         meetingForSimple = new MeetingModel();
         meetingForSimple.setId(DEFAULT_ID);
         meetingForSimple.setName(DEFAULT_STRING);
@@ -40,7 +49,7 @@ public class SimpleChronoDataBuilder {
         meetingForSimple.setSeasonModel(new SeasonModel(transformer.getTodayAsString()));
         meetingForSimple.setClubCode(club.getCodeFFN());
         meetingForSimple.setPoolSize(poolSize);
-        meetingForSimple.setByTeam(byTeam);
+        meetingForSimple.setByTeam(true);
         buildResults();
     }
 
@@ -61,6 +70,7 @@ public class SimpleChronoDataBuilder {
 
                 // SET EVENT
                 EventModel eventDefaultByRace = new EventModel(indexRace, 60); // 60 is default round id and is heat
+                eventOfSimpleMeeting.add(eventDefaultByRace);
                 // BUILD CONTENT MEAN  set poolSize, qualifyingTime, numberOfLap, currentLapSwimming,lapMin,lapMax
                 // BUT NEED EVENT ALREADY SETTED !!
                 resultForEachKindOfRace.buildContent(DEFAULT_TIME, meetingForSimple.getPoolSize(), meetingForSimple.getId(), eventDefaultByRace);
@@ -91,7 +101,11 @@ public class SimpleChronoDataBuilder {
         }
     }
 
-    public MeetingModel getBuiltMeetingForSimple(){
+    public MeetingModel getBuiltMeetingForSimple() {
         return meetingForSimple;
+    }
+
+    public ArrayList<EventModel> getAllEventOfSimpleMeeting() {
+        return eventOfSimpleMeeting;
     }
 }

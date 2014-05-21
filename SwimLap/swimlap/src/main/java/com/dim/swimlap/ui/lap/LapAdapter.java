@@ -45,7 +45,6 @@ public class LapAdapter extends ArrayAdapter {
 
         View rowView = convertView;
 
-
         int resultId = resultModelList.get(position).getId();
         int raceId = resultModelList.get(position).getEventModel().getRaceModel().getId();
 

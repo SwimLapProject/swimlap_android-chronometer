@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dimen_button_little_side_size"
 
-            android:background="@drawable/button_ranking"
+            android:background="@drawable/button_ranking_clickable"
 
             android:text="Rankings"
             android:textColor="@color/bluesea"

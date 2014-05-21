@@ -62,7 +62,6 @@ public class MeetingAdapter extends ArrayAdapter {
     }
 
     private static class ViewHolder {
-        public static Button buttonRanking;
         public static TextView tvMeetingName, tvMeetingCity, tvMeetingStartDate;
     }
 }
