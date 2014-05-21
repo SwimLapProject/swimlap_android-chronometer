@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -38,6 +39,7 @@ public class FragmentTitle extends Fragment implements View.OnClickListener {
         imageViewLogo = (ImageView) view.findViewById(R.id.id_imageview_logo_swimlap);
         textViewTitle = (TextView) view.findViewById(R.id.id_textview_title);
         textViewTitle.setText(this.title);
+        textViewTitle.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.title_moving));
 
         buttonLink = (Button) view.findViewById(R.id.id_button_link);
         buttonLink.setOnClickListener(this);

@@ -92,7 +92,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     public GlobalContainer() {
         titles = new HashMap<Integer, String>();
         titles.put(VIEW_MENU, "SwimLap");
-        titles.put(VIEW_SIMPLE, "SimpleChronometer");
+        titles.put(VIEW_SIMPLE, "Simple Chronometer");
         titles.put(VIEW_LAP, "Compétition");
         titles.put(VIEW_MEETING, "Meetings");
         titles.put(VIEW_SWIMMER, "Swimmers");
