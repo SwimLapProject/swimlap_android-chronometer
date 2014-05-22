@@ -30,20 +30,13 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
     private Singleton singleton;
     private static int
             VIEW_MENU = 0,
-            VIEW_LAP = 1,
-            VIEW_SIMPLE = 2,
-            VIEW_MEETING = 3,
-            VIEW_SWIMMER = 4,
-            VIEW_SETTING = 5,
-            VIEW_RANKING_MEET = 6,
-            VIEW_RANKING_SW = 7;
-
+            VIEW_LAP = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_direct, container, false);
 
-        buttonDirect = (Button) view.findViewById(R.id.id_button_direct);
+        buttonDirect = (Button) view.findViewById(R.id.id_button_direct_to_lap);
         buttonDirect.setOnClickListener(this);
 
         buttonBackToMenu = (Button) view.findViewById(R.id.id_button_back_to_menu);
@@ -62,7 +55,7 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
         buttonStop.setVisibility(View.INVISIBLE);
 
         currentView = 0;
-        singleton=Singleton.getInstance();
+        singleton = Singleton.getInstance();
         singleton.setChronoIsStarted(false);
         return view;
     }
@@ -88,14 +81,12 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
             changeButtonStartStop();
             communicationFragments.inverseButtonsInLap();
             Toast.makeText(view.getContext(), "STOP", Toast.LENGTH_SHORT).show();
-        } else if (view.getId() == R.id.id_button_direct) {
+        } else if (view.getId() == R.id.id_button_direct_to_lap) {
             communicationFragments.changeFragment(VIEW_LAP);
-            buttonBackToMenu.setVisibility(View.VISIBLE);
-            buttonDirect.setVisibility(View.INVISIBLE);
+            changeButtonDirect(VIEW_LAP);
         } else if (view.getId() == R.id.id_button_back_to_menu) {
             communicationFragments.changeFragment(VIEW_MENU);
-            buttonBackToMenu.setVisibility(View.INVISIBLE);
-            buttonDirect.setVisibility(View.VISIBLE);
+            changeButtonDirect(VIEW_MENU);
         }
     }
 
@@ -103,33 +94,31 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
         return SystemClock.elapsedRealtime() - chronometer.getBase();
     }
 
-    public void changeStatusOfContent(int newStatus) {
-        currentView = newStatus;
-    }
-
-    public int getCurrentView() {
-        return currentView;
-    }
-
     public void changeButtonStartStop() {
-        if (singleton.isChronoStarted()) {
-            buttonStart.setVisibility(View.INVISIBLE);
-            buttonStop.setVisibility(View.VISIBLE);
-        } else {
-            buttonStart.setVisibility(View.VISIBLE);
-            buttonStop.setVisibility(View.INVISIBLE);
+        if (singleton.isThereMeetingToday()) {
+            if (singleton.isChronoStarted()) {
+                buttonStart.setVisibility(View.INVISIBLE);
+                buttonStop.setVisibility(View.VISIBLE);
+            } else {
+                buttonStart.setVisibility(View.VISIBLE);
+                buttonStop.setVisibility(View.INVISIBLE);
+            }
         }
+
     }
 
     public void changeButtonDirect(int code) {
-        if (code == VIEW_LAP) {
-            buttonBackToMenu.setVisibility(View.VISIBLE);
-            buttonDirect.setVisibility(View.INVISIBLE);
+        if (singleton.isThereMeetingToday()) {
+            if (code == VIEW_LAP) {
+                buttonBackToMenu.setVisibility(View.VISIBLE);
+                buttonDirect.setVisibility(View.INVISIBLE);
 
-        } else {
-            buttonBackToMenu.setVisibility(View.INVISIBLE);
-            buttonDirect.setVisibility(View.VISIBLE);
+            } else {
+                buttonBackToMenu.setVisibility(View.INVISIBLE);
+                buttonDirect.setVisibility(View.VISIBLE);
+            }
         }
+
     }
 
 }

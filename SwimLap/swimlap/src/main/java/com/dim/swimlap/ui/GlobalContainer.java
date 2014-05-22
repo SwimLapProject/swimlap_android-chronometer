@@ -56,7 +56,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
     private FragmentNavLap fragmentNavLap;
     private HashMap<Integer, FragmentDataLap> mapOfFragmentLap;
-    private ArrayList<ResultModel> savedLapList;
 
     private FragmentNavSimple fragmentNavSimple;
     private FragmentDataSimple fragmentDataSimple;
@@ -177,15 +176,14 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                     });
             AlertDialog alert = builder.create();
             alert.show();
-        } else if (currentView == VIEW_LAP) {
-            // do nothing
-        } else {
+        } else if (currentView != VIEW_LAP) {
             changeVisiblilityOfProgressBar(true);
-
             fragmentTitle.setTitle(titles.get(lastView));
-            fragmentDirect.changeButtonDirect(lastView);
+            if (singleton.isThereMeetingToday()) {
+                fragmentDirect.changeButtonDirect(lastView);
+            }
             currentView = lastView;
-            lastView = 0;
+            lastView = VIEW_MENU;
             super.onBackPressed();
         }
 
@@ -193,9 +191,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
     @Override
     public void changeFragment(int code) {
-        if (currentView == code) {
-            // do nothing
-        } else {
+        if (currentView != code) {
             changeVisiblilityOfProgressBar(true);
 
             FragmentManager manager = getSupportFragmentManager();
@@ -205,15 +201,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavMenu);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataMenu);
                 newTransaction.addToBackStack(null);
-            } else if (code == VIEW_LAP) {
-                if (singleton.buildMeetingOfTheDay(getApplicationContext())) {
-                    fragmentTitle.setTitle(singleton.getMeetingName());
-                    newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavLap);
-                    addFragmentDataLapDependOnRaceId(newTransaction, singleton.getCurrentRaceId());
-                } else {
-                    Toast.makeText(getApplicationContext(), "No meeting Today.\nUse Simple Chronometer.", Toast.LENGTH_SHORT).show();
-                    code = -1;
-                }
             } else if (code == VIEW_SIMPLE) {
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSimple);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSimple);
@@ -238,18 +225,29 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavRanking);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataRanking);
                 newTransaction.addToBackStack(null);
-
+            } else if (code == VIEW_LAP) {
+                if (singleton.isThereMeetingToday()) {
+                    fragmentTitle.setTitle(singleton.getMeetingName());
+                    newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavLap);
+                    addFragmentDataLapDependOnRaceId(newTransaction, singleton.getCurrentRaceId());
+                } else {
+                    Toast.makeText(getApplicationContext(), "No meeting Today.\nUse Simple Chronometer.", Toast.LENGTH_SHORT).show();
+                    changeVisiblilityOfProgressBar(false);
+                    // FOLLOWING PERMITS TO NOT  CHANGE currentView WHEN THERE IS NO MEETING OF THE DAY AND SOMEONE CLICK ON LAP_VIEW
+                    // OTHERWISE YOU CAN'T GET OUT FROM OTHER VIEW WITH BACK BUTTON BECAUSE LAST VIEW BECOMES VIEW_LAP
+                    code = currentView;
+                    currentView = lastView;
+                }
             } else {
                 Toast.makeText(this.getApplicationContext(), "A problem appear to get the good fragment", Toast.LENGTH_SHORT).show();
             }
-            if (code != -1) {
-                lastView = currentView;
-                currentView = code;
-                fragmentDirect.changeButtonDirect(code);
-                fragmentDirect.changeButtonStartStop();
-                newTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                newTransaction.commit();
-            }
+
+            fragmentDirect.changeButtonStartStop();
+            lastView = currentView;
+            currentView = code;
+            fragmentDirect.changeButtonDirect(code);
+            newTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            newTransaction.commit();
         }
     }
 
@@ -303,17 +301,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
         FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(raceIdClicked);
         fragmentDataLap.recordLaps(view);
-    }
-
-    @Override
-    public void saveLapList(ArrayList<ResultModel> list) {
-        savedLapList = new ArrayList<ResultModel>();
-        savedLapList = (ArrayList<ResultModel>) list.clone();
-    }
-
-    @Override
-    public ArrayList<ResultModel> giveBackLapList() {
-        return savedLapList;
     }
 
     @Override
@@ -400,7 +387,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         } else {
             mapOfFragmentLap.clear();
         }
-        if (singleton.buildMeetingOfTheDay(getApplicationContext())) {
+        if (singleton.isThereMeetingToday()) {
             ArrayList<EventModel> events = singleton.getAllEventsByOrderInMeeting();
             for (int indexEvent = 0; indexEvent < events.size(); indexEvent++) {
                 int raceId = events.get(indexEvent).getRaceModel().getId();
@@ -409,6 +396,5 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             }
         }
     }
-
 }
 

@@ -23,6 +23,7 @@ public final class Singleton {
     private int currentRaceId;
     private ArrayList<EventModel> allEventsByOrder;
     private boolean chronoIsStarted;
+    private boolean thereIsMeetingToday;
 
     private Singleton() {
         super();
@@ -57,23 +58,23 @@ public final class Singleton {
     }
 
     public boolean buildMeetingOfTheDay(Context context) {
-        boolean meetingOfTheDayIsBuilt = false;
+         thereIsMeetingToday = false;
         if (meetingOfTheDay != null) {
-            meetingOfTheDayIsBuilt = true;
+            thereIsMeetingToday = true;
         } else {
             GetResultsForLapView getter = new GetResultsForLapView(context);
             meetingOfTheDay = getter.getMeetingOfTheDay();
 
         }
         if (meetingOfTheDay != null) {
-            meetingOfTheDayIsBuilt = true;
+            thereIsMeetingToday = true;
             buildEventByOrder();
             if (currentRaceId == 0) {
                 currentRaceId = allEventsByOrder.get(0).getRaceModel().getId();
             }
         }
 
-        return meetingOfTheDayIsBuilt;
+        return thereIsMeetingToday;
     }
 
     public ResultModel getResultOfTheDay(int resultId) {
@@ -167,5 +168,8 @@ public final class Singleton {
         this.chronoIsStarted = chronoIsStarted;
     }
 
+    public boolean isThereMeetingToday(){
+        return thereIsMeetingToday;
+    }
 }
 

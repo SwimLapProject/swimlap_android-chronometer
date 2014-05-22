@@ -50,7 +50,14 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
         getMeetings();
         LayoutInflater factory = LayoutInflater.from(getActivity());
         meetingViews = new ArrayList<View>();
+        TextView textViewNoRanking = (TextView) view.findViewById(R.id.id_textview_no_ranking);
 
+        if (meetingModels == null || meetingModels.size() == 0) {
+            textViewNoRanking.setVisibility(View.VISIBLE);
+        } else {
+            textViewNoRanking.setVisibility(View.INVISIBLE);
+
+        }
         for (int meetingPosition = 0; meetingPosition < meetingModels.size(); meetingPosition++) {
             meetingViews.add(meetingPosition, factory.inflate(R.layout.view_ranking_meeting, null));
             meetingViews.get(meetingPosition).setTag("VIEW_meeting_" + meetingPosition);
@@ -290,8 +297,6 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
                 .findViewById(R.id.id_ranking_layout_race_tofill);
         raceLayoutToEmpty.removeAllViews();
     }
-
-
 
 
 }

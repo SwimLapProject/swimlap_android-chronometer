@@ -5,6 +5,15 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/id_textview_no_model_in_db"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/bluesea"
+        android:visibility="invisible"
+        android:text="No data to display"
+        />
+
     <ListView
         android:id="@+id/id_listview_model"
         android:layout_width="fill_parent"
@@ -13,10 +22,6 @@
 
     </ListView>
 
-    <TextView
-        android:id="@+id/id_textview_no_model_in_db"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        />
+
 
 </LinearLayout>

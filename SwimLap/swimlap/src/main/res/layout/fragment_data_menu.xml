@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/id_layout_fragment_menu"
     android:layout_width="match_parent"
@@ -9,100 +9,62 @@
     android:orientation="vertical"
     >
 
-    <RelativeLayout
-        android:id="@+id/id_menu_container"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
+    <Button
+        android:id="@+id/id_button_to_simplechronometer"
+        android:layout_width="@dimen/dimen_button_menu_width"
+        android:layout_height="@dimen/dimen_button_menu_height"
 
-        <Button
-            android:id="@+id/id_button_to_simplechronometer"
-            android:layout_width="@dimen/dimen_button_menu_width"
-            android:layout_height="@dimen/dimen_button_menu_height"
+        android:background="@drawable/button_clickable"
 
-            android:background="@drawable/button_clickable"
+        android:text="Simple chronometer"
+        android:textSize="@dimen/dimen_text_button_menu"
+        android:textColor="@color/bluesea"
+        android:layout_below="@+id/id_button_to_settings"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
 
-            android:text="Simple chronometer"
-            android:textSize="@dimen/dimen_text_button_menu"
-            android:textColor="@color/bluesea"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
-    </RelativeLayout>
+    <Button
+        android:id="@+id/id_button_to_settings"
+        android:layout_width="@dimen/dimen_button_menu_width"
+        android:layout_height="@dimen/dimen_button_menu_height"
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
+        android:background="@drawable/button_clickable"
 
-        <Button
-            android:id="@+id/id_button_to_settings"
-            android:layout_width="@dimen/dimen_button_menu_width"
-            android:layout_height="@dimen/dimen_button_menu_height"
+        android:text="Settings"
+        android:textSize="@dimen/dimen_text_button_menu"
+        android:textColor="@color/bluesea"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/id_button_to_simplechronometer"
+        android:layout_alignStart="@+id/id_button_to_simplechronometer"/>
 
-            android:background="@drawable/button_clickable"
+    <Button
+        android:id="@+id/id_button_to_meetings"
+        android:layout_width="@dimen/dimen_button_menu_width"
+        android:layout_height="@dimen/dimen_button_menu_height"
 
-            android:text="Settings"
-            android:textSize="@dimen/dimen_text_button_menu"
-            android:textColor="@color/bluesea"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
-    </RelativeLayout>
+        android:background="@drawable/button_clickable"
 
-    <RelativeLayout
-        android:id="@+id/id_for_progress_bar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        >
+        android:text="Meetings"
+        android:textSize="@dimen/dimen_text_button_menu"
+        android:textColor="@color/bluesea"
+        android:layout_marginTop="75dp"
+        android:layout_below="@+id/id_button_to_simplechronometer"
+        android:layout_alignLeft="@+id/id_button_to_simplechronometer"
+        android:layout_alignStart="@+id/id_button_to_simplechronometer"/>
 
+    <Button
+        android:id="@+id/id_button_to_swimmers"
+        android:layout_width="@dimen/dimen_button_menu_width"
+        android:layout_height="@dimen/dimen_button_menu_height"
 
+        android:background="@drawable/button_clickable"
 
-    </RelativeLayout>
+        android:text="Swimmers"
+        android:textSize="@dimen/dimen_text_button_menu"
+        android:textColor="@color/bluesea"
+        android:layout_below="@+id/id_button_to_meetings"
+        android:layout_alignLeft="@+id/id_button_to_meetings"
+        android:layout_alignStart="@+id/id_button_to_meetings"
+        android:layout_marginTop="55dp"/>
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
-
-        <Button
-            android:id="@+id/id_button_to_meetings"
-            android:layout_width="@dimen/dimen_button_menu_width"
-            android:layout_height="@dimen/dimen_button_menu_height"
-
-            android:background="@drawable/button_clickable"
-
-            android:text="Meetings"
-            android:textSize="@dimen/dimen_text_button_menu"
-            android:textColor="@color/bluesea"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"/>
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
-
-        <Button
-            android:id="@+id/id_button_to_swimmers"
-            android:layout_width="@dimen/dimen_button_menu_width"
-            android:layout_height="@dimen/dimen_button_menu_height"
-
-            android:background="@drawable/button_clickable"
-
-            android:text="Swimmers"
-            android:textSize="@dimen/dimen_text_button_menu"
-            android:textColor="@color/bluesea"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"/>
-
-
-    </RelativeLayout>
-
-
-</LinearLayout>
+</RelativeLayout>

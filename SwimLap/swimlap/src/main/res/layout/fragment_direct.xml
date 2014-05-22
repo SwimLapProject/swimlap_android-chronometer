@@ -13,7 +13,7 @@
         >
 
         <Button
-            android:id="@+id/id_button_direct"
+            android:id="@+id/id_button_direct_to_lap"
             android:layout_width="@dimen/dimen_button_basic_side_size"
             android:layout_height="@dimen/dimen_button_basic_side_size"
             android:background="@drawable/button_clickable"

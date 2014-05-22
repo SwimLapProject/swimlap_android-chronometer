@@ -1,8 +1,7 @@
 <resources>
     <dimen name="dimen_text_title">20dp</dimen>
 
-    <!-- BUTTON -->
-    <!-- shape -->
+    <!-- Button -->
     <dimen name="dimen_margin_around_button">1dp</dimen>
     <dimen name="dimen_padding_left_button_menu">15dp</dimen>
 
@@ -13,28 +12,22 @@
     <dimen name="dimen_button_menu_width">200dp</dimen>
     <dimen name="dimen_button_menu_height">50dp</dimen>
 
-    <!-- text -->
+    <!-- TextView -->
     <dimen name="dimen_text_button_basic">25sp</dimen>
     <dimen name="dimen_text_button_menu">20sp</dimen>
     <dimen name="dimen_text_button_little">15sp</dimen>
-
-
-    <!-- CHRONO -->
     <dimen name="dimen_text_chrono_direct">50dp</dimen>
     <dimen name="dimen_textview_scroll_lap">150dp</dimen>
+    <dimen name="dimen_text_list_name">20sp</dimen>
+    <dimen name="dimen_text_list_second">18sp</dimen>
+    <dimen name="dimen_text_list_third">15sp</dimen>
 
-
-    <!-- SETTINGS -->
+    <!-- font -->
     <dimen name="dimen_settings_font_medium">25dp</dimen>
     <dimen name="dimen_settings_font_small">18dp</dimen>
     <dimen name="dimen_settings_font_mention_legales">10dp</dimen>
 
     <dimen name="dimen_textview_settings_width">100dp</dimen>
-
-    <!-- list -->
-    <dimen name="dimen_text_list_name">20sp</dimen>
-    <dimen name="dimen_text_list_second">18sp</dimen>
-    <dimen name="dimen_text_list_third">15sp</dimen>
 
     <!-- DETAILS -->
     <dimen name="dimen_detail_BIG">25sp</dimen>

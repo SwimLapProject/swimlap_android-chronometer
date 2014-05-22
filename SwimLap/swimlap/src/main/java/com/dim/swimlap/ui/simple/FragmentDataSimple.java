@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.dim.swimlap.R;
+import com.dim.swimlap.objects.Singleton;
 import com.dim.swimlap.ui.CommunicationFragments;
 
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class FragmentDataSimple extends Fragment {
         TextView textViewNoMeeting = (TextView) view.findViewById(R.id.id_textview_no_meeting_in_lap);
         textViewNoMeeting.setVisibility(View.INVISIBLE);
 
-        lapForRace = buildtNameRaces();
+        lapForRace = buildNameRaces();
 
         adapter = new SimpleLapAdapter(this.getActivity(), raceNames, lapForRace);
         listViewForSimpleLap.setAdapter(adapter);
@@ -67,24 +68,25 @@ public class FragmentDataSimple extends Fragment {
 
     public void removeLastLap(int position) {
         ArrayList<Float> laps = lapForRace.get(raceNames.get(position));
-        int lastLap = laps.size()-1;
+        int lastLap = laps.size() - 1;
         laps.remove(lastLap);
         adapter.notifyDataSetChanged();
 
     }
 
-    private HashMap<String, ArrayList<Float>> buildtNameRaces() {
+    private HashMap<String, ArrayList<Float>> buildNameRaces() {
         raceNames = new ArrayList<String>();
         HashMap<String, ArrayList<Float>> lapForRace = new HashMap<String, ArrayList<Float>>();
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < 5; i++) {
             String name = "Race_" + i;
             raceNames.add(name);
             lapForRace.put(name, new ArrayList<Float>());
         }
         return lapForRace;
     }
-    public void removeAllLapsTaken(){
-        for(int indexRace=0;indexRace<raceNames.size();indexRace++){
+
+    public void removeAllLapsTaken() {
+        for (int indexRace = 0; indexRace < raceNames.size(); indexRace++) {
             lapForRace.get(raceNames.get(indexRace)).clear();
         }
         adapter.notifyDataSetChanged();

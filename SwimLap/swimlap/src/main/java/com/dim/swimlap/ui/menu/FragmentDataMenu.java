@@ -22,7 +22,6 @@ import com.dim.swimlap.ui.CommunicationFragments;
 public class FragmentDataMenu extends Fragment implements View.OnClickListener {
     private Button buttonSimple, buttonMeetings, buttonSwimmers, buttonSettings;
     private CommunicationFragments comm;
-    private RelativeLayout relativeLayout;
     private static int
             VIEW_SIMPLE = 2,
             VIEW_MEETING = 3,
@@ -39,9 +38,7 @@ public class FragmentDataMenu extends Fragment implements View.OnClickListener {
         buttonMeetings = (Button) view.findViewById(R.id.id_button_to_meetings);
         buttonSwimmers = (Button) view.findViewById(R.id.id_button_to_swimmers);
         buttonSettings = (Button) view.findViewById(R.id.id_button_to_settings);
-//        progressBar = (ProgressBar) view.findViewById(R.id.id_progress_bar);
-//        progressBar.setVisibility(View.INVISIBLE);
-        relativeLayout = (RelativeLayout) view.findViewById(R.id.id_menu_container);
+
         return view;
     }
 

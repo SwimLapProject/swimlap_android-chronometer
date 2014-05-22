@@ -30,9 +30,9 @@ public interface CommunicationFragments {
 
     public void recordLap(View view);
 
-    public void saveLapList(ArrayList<ResultModel> list);
-
-    public ArrayList<ResultModel> giveBackLapList();
+//    public void saveLapList(ArrayList<ResultModel> list);
+//
+//    public ArrayList<ResultModel> giveBackLapList();
 
     public void replaceFragmentDataLap(int raceId);
 

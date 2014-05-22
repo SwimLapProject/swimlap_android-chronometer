@@ -51,9 +51,9 @@ public class FragmentDataSwimmerList extends Fragment {
             }
         });
 
-        if (swimmers == null) {
+        if (swimmers == null || swimmers.size() == 0) {
             textViewNoSwimmerInLap.setVisibility(View.VISIBLE);
-            textViewNoSwimmerInLap.setText("No swimmer found in database.");
+            textViewNoSwimmerInLap.setText("There is no swimmer in database.");
         } else {
             textViewNoSwimmerInLap.setVisibility(View.INVISIBLE);
 
@@ -67,6 +67,6 @@ public class FragmentDataSwimmerList extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-      comm.changeVisiblilityOfProgressBar(false);
+        comm.changeVisiblilityOfProgressBar(false);
     }
 }

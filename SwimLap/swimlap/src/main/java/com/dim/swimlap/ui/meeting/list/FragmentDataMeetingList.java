@@ -56,14 +56,13 @@ public class FragmentDataMeetingList extends Fragment {
         textViewNoMeetingInLap = (TextView) view.findViewById(R.id.id_textview_no_model_in_db);
 
 
-        if (meetings == null) {
+        if (meetings == null || meetings.size() == 0) {
+            textViewNoMeetingInLap.setText("There is no meeting in database.");
             textViewNoMeetingInLap.setVisibility(View.VISIBLE);
         } else {
             textViewNoMeetingInLap.setVisibility(View.INVISIBLE);
-
             adapter = new MeetingAdapter(this.getActivity(), meetings);
             listViewForMeetings.setAdapter(adapter);
-
         }
         return view;
     }
