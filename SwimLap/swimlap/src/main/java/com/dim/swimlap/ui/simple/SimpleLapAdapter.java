@@ -39,8 +39,6 @@ public class SimpleLapAdapter extends ArrayAdapter {
         this.raceNames = raceNames;
         this.lapForRaces = lapForRaces;
         this.formatTime = new FormatTimeAsString();
-        //todo put the name, and do takelap and reset in fragmentDataSimple
-
     }
 
     @Override

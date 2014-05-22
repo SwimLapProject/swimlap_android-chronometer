@@ -28,15 +28,15 @@ public class RecordParsingInDb {
         db = new DbUtilitiesBuilder(context);
     }
 
-    public void recordMeetingFromFFNex(MeetingModel meetingModel) {
+    public boolean recordMeetingFromFFNex(MeetingModel meetingModel) {
+        boolean isRecorded = false;
         try {
             db.open();
             if (db.getMeetingUtilities().meetingAlready_InDb(meetingModel.getId())) {
-                //todo : tell user, the meeting already exists
+                isRecorded = false;
             } else {
                 /** SEASON **/
-            // todo next : remove season from db using SeasonData
-                if(!db.getSeasonUtilities().seasonAlready_InDb(meetingModel.getStartDate())){
+                if (!db.getSeasonUtilities().seasonAlready_InDb(meetingModel.getStartDate())) {
                     db.getSeasonUtilities().addSeason_InDb(meetingModel.getSeasonModel());
                 }
                 /** MEETING **/
@@ -70,11 +70,13 @@ public class RecordParsingInDb {
                         db.getEventUtilities().addEvent_InDb(event, allResults.get(indexResult).getMeetingId());
                     }
                 }
+                isRecorded = true;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             db.close();
         }
+        return isRecorded;
     }
 }

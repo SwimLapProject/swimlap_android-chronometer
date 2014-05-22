@@ -86,11 +86,16 @@ public class FragmentNavSettings extends Fragment implements View.OnClickListene
                     meetingModel = ffnexGetter.getResultOfParsing(stringXMLToParse, getActivity());
 
                     // RECORD IN DB
-                    ffnexGetter.recordParsedMeetingInDb(meetingModel, getActivity());
+                    boolean hasBeenRecorded = ffnexGetter.recordParsedMeetingInDb(meetingModel, getActivity());
+                    boolean hasBeenFoundInDb = ffnexGetter.recordParsingHasBeenDone(meetingModel.getId(), getActivity());
 
-                    if (ffnexGetter.recordParsingHasBeenDone(meetingModel.getId(), getActivity())) {
+                    if (hasBeenRecorded && hasBeenFoundInDb) {
                         ffnexGetter.moveFFNexParsed(fileNameToParse);
                         Toast.makeText(getActivity(), "MEETING !\n" + meetingModel.getName() + "\nHAS BEEN RECORDED IN PHONE", Toast.LENGTH_SHORT).show();
+                    } else if (!hasBeenRecorded && hasBeenFoundInDb) {
+                        Toast.makeText(getActivity(), "MEETING !\n" + meetingModel.getName() + "\nALREADY EXISTS", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), "A PROBLEM OCCURS DURING PARSING", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

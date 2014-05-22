@@ -157,7 +157,7 @@ public class FFNexParser {
 
                         // qualifyingTimeInResult  is in millisecond in application and with format MM.ssmm in FFnex
                         String qualifTimeAsString = xpp.getAttributeValue(null, "qualifyingtime");
-                        String[] splitedTime = qualifTimeAsString.split("\\.");//todo error?
+                        String[] splitedTime = qualifTimeAsString.split("\\.");
                         float minutes = Float.valueOf(splitedTime[0]);
                         float cents = Float.valueOf(splitedTime[1]);
 

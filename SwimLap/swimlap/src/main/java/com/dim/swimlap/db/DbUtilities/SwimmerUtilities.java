@@ -89,7 +89,6 @@ public class SwimmerUtilities {
     /* DELETER */
     public void deleteSwimmer_InDb(int swimmerIdToDelete) {
         sqLiteDatabaseSwimLap.delete(table.TABLE_NAME, table.COL_SWI_ID + " = " + swimmerIdToDelete, null);
-        //todo ON DELETE CASCADE FOR RECORDS EVENTS ??
     }
 
     /* UPDATER */

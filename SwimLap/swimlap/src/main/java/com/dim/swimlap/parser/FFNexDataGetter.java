@@ -67,9 +67,10 @@ public class FFNexDataGetter {
         return meetingModel;
     }
 
-    public void recordParsedMeetingInDb(MeetingModel meetingModel, Context context) {
+    public boolean recordParsedMeetingInDb(MeetingModel meetingModel, Context context) {
         RecordParsingInDb recorder = new RecordParsingInDb(context);
-        recorder.recordMeetingFromFFNex(meetingModel);
+        boolean isRecorded = recorder.recordMeetingFromFFNex(meetingModel);
+        return isRecorded;
     }
 
     public boolean recordParsingHasBeenDone(int idMeetting, Context context) {

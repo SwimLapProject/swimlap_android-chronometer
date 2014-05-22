@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
 import com.dim.swimlap.R;
@@ -30,6 +31,9 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
     private LinearLayout linearLayout;
     private Singleton singleton;
     private CommunicationFragments communication;
+    private HorizontalScrollView scroll;
+    private static int BUTTON_WITH = 150, BUTTON_HEIGHT = 30;
+    private int positionButtonSelected;
 
     public FragmentNavLap() {
         singleton = Singleton.getInstance();
@@ -43,7 +47,7 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_nav_lap, container, false);
         linearLayout = (LinearLayout) view.findViewById(R.id.id_linearlayout_in_horizontalscrollview);
-
+        scroll = (HorizontalScrollView) view.findViewById(R.id.id_horizontalscrollview_nav_lap);
         return view;
     }
 
@@ -57,7 +61,8 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
                 String nameToPutInButton = race.getCompleteName();
                 int idRace = race.getId();
 
-                Button button = new Button(this.getActivity());
+                final Button button = new Button(this.getActivity());
+                button.setWidth(150);
                 button.setText(nameToPutInButton);
                 button.setTag("ButtonRace_" + idRace);
                 button.setOnClickListener(this);
@@ -66,12 +71,28 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
                     button.setTextColor(getResources().getColor(R.color.white));
 
                 } else {
-                    button.setBackgroundResource(R.drawable.button_race);
-                    button.setTextColor(getResources().getColor(R.color.bluesea));
-
+                    int size = nameToPutInButton.length();
+                    char gender = nameToPutInButton.charAt(size-1);
+                    if(gender=='F'){
+                        button.setBackgroundResource(R.drawable.button_race_f);
+                        button.setTextColor(getResources().getColor(R.color.bluesea));
+                    }else {
+                        button.setBackgroundResource(R.drawable.button_race_m);
+                        button.setTextColor(getResources().getColor(R.color.bluesea));
+                    }
                 }
                 linearLayout.addView(button);
+
+                if (idRace == singleton.getCurrentRaceId()) {
+                    positionButtonSelected = (indexEvent-1) * BUTTON_WITH;
+                }
             }
+            scroll.post(new Runnable() {
+                @Override
+                public void run() {
+                    scroll.scrollTo(positionButtonSelected, 0);
+                }
+            });
         }
     }
 
@@ -91,11 +112,19 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
         Button previousSelectedButton = (Button) linearLayout.findViewWithTag("ButtonRace_" + singleton.getCurrentRaceId());
         Button newSelectedButton = (Button) linearLayout.findViewWithTag("ButtonRace_" + newIdRace);
 
-        previousSelectedButton.setBackgroundResource(R.drawable.button_race);
         previousSelectedButton.setTextColor(getResources().getColor(R.color.bluesea));
-
-
         newSelectedButton.setBackgroundResource(R.drawable.button_race_selected);
         newSelectedButton.setTextColor(getResources().getColor(R.color.white));
+
+        String nameOfButton = String.valueOf(newSelectedButton.getText());
+        int size = nameOfButton.length();
+        char gender = nameOfButton.charAt(size - 1);
+        if(gender=='F'){
+            previousSelectedButton.setBackgroundResource(R.drawable.button_race_f);
+        }else {
+            previousSelectedButton.setBackgroundResource(R.drawable.button_race_m);
+        }
     }
+
+
 }
