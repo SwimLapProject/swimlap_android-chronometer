@@ -1,44 +1,5 @@
 <resources>
-    <!--
-    <dimen name="dimen_text_title">20dp</dimen>
-
-    <dimen name="dimen_margin_around_button">1dp</dimen>
-
-    <dimen name="dimen_button_basic_side_size">75dp</dimen>
-    <dimen name="dimen_button_basic_half_size">50dp</dimen>
-
-    <dimen name="dimen_button_little_side_size">30dp</dimen>
-    <dimen name="dimen_button_menu_width">200dp</dimen>
-    <dimen name="dimen_button_menu_height">50dp</dimen>
-
-    <dimen name="dimen_text_button_basic">25sp</dimen>
-    <dimen name="dimen_text_button_menu">20dp</dimen>
-    <dimen name="dimen_text_button_little">15sp</dimen>
-    <dimen name="direct_chrono_font">50dp</dimen>
-    <dimen name="dimen_textview_scroll_lap">150dp</dimen>
-    <dimen name="dimen_text_list_name">20sp</dimen>
-    <dimen name="dimen_text_list_second">18sp</dimen>
-    <dimen name="dimen_text_list_third">15sp</dimen>
-
-    <dimen name="dimen_settings_font_medium">25dp</dimen>
-    <dimen name="dimen_settings_font_small">18dp</dimen>
-    <dimen name="dimen_settings_font_mention_legales">10dp</dimen>
-
-    <dimen name="dimen_textview_settings_width">100dp</dimen>
-
-    <dimen name="dimen_detail_BIG">25sp</dimen>
-    <dimen name="dimen_detail_MEDIUM">18sp</dimen>
-    <dimen name="dimen_detail_LITTLE">15sp</dimen>
-    <dimen name="dimen_detail_TINY">12sp</dimen>
-
-    <dimen name="dimen_ranking_meeting_rowsize">45sp</dimen>
-    <dimen name="dimen_ranking_swimmer_rowsize">40sp</dimen>
-    <dimen name="dimen_ranking_race_rowsize">35sp</dimen>
-    <dimen name="dimen_ranking_lap_rowsize">10sp</dimen>
-    -->
-    <!-- *********************************************************************** -->
-
-    <!-- GLOBAL -->
+     <!-- GLOBAL -->
     <dimen name="global_padding_or_margin_small">1dp</dimen>
     <dimen name="global_padding_or_margin_medium">5dp</dimen>
     <dimen name="global_padding_or_margin_large">10dp</dimen>
