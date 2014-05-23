@@ -12,6 +12,7 @@
         android:textColor="@color/bluesea"
         android:visibility="invisible"
         android:text="No data to display"
+        android:textSize="@dimen/model_textview_no_model"
         />
 
     <ListView

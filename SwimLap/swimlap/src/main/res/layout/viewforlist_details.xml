@@ -15,19 +15,28 @@
             android:id="@+id/id_textview_details_list_name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textSize="@dimen/detail_textview_medium_font"
+            android:textColor="@color/bluesea"/>
+
 
         <TextView
             android:id="@+id/id_textview_details_list_firstname"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textSize="@dimen/detail_textview_medium_font"
+            android:textColor="@color/bluesea"/>
+
     </LinearLayout>
 
     <TextView
         android:id="@+id/id_textview_details_list_races"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="3"/>
+        android:layout_weight="3"
+        android:textSize="@dimen/detail_textview_small_font"
+        android:textColor="@color/bluesky"/>
+
 
 </LinearLayout>

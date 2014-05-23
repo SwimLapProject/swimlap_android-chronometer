@@ -41,7 +41,7 @@ public class FragmentTitle extends Fragment implements View.OnClickListener {
         textViewTitle.setText(this.title);
         textViewTitle.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.title_moving));
 
-        buttonLink = (Button) view.findViewById(R.id.id_button_link);
+        buttonLink = (Button) view.findViewById(R.id.id_button_goto_ranking);
         buttonLink.setOnClickListener(this);
         communication = (CommunicationFragments) this.getActivity();
         return view;

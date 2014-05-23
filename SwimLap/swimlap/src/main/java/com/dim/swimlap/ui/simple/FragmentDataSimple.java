@@ -16,7 +16,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.objects.Singleton;
 import com.dim.swimlap.ui.CommunicationFragments;
 
 import java.util.ArrayList;
@@ -69,9 +68,10 @@ public class FragmentDataSimple extends Fragment {
     public void removeLastLap(int position) {
         ArrayList<Float> laps = lapForRace.get(raceNames.get(position));
         int lastLap = laps.size() - 1;
-        laps.remove(lastLap);
+        if (lastLap >= 0) {
+            laps.remove(lastLap);
+        }
         adapter.notifyDataSetChanged();
-
     }
 
     private HashMap<String, ArrayList<Float>> buildNameRaces() {

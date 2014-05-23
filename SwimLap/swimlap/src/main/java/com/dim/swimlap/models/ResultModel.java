@@ -235,6 +235,10 @@ public class ResultModel {
         return lapsAreRecodedInDb;
     }
 
+    public int getNumberOfLap() {
+        return numberOfLap;
+    }
+
     public void setLapsAreRecodedInDb(boolean lapsAreRecodedInDb) {
         this.lapsAreRecodedInDb = lapsAreRecodedInDb;
     }

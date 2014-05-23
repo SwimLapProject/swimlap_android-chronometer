@@ -50,7 +50,6 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_lap, container, false);
         comm = (CommunicationFragments) getActivity();
-
         boolean meetingOfTheDayIsBuilt = singleton.buildMeetingOfTheDay(getActivity());
 
         listViewForLap = (ListView) view.findViewById(R.id.id_listview_lap);

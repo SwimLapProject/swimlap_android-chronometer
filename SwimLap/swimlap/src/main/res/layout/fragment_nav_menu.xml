@@ -4,8 +4,8 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:layout_marginBottom="5dp"
-              android:layout_marginTop="5dp"
+              android:layout_marginBottom="@dimen/global_padding_or_margin_medium"
+              android:layout_marginTop="@dimen/global_padding_or_margin_medium"
               android:background="@drawable/application_background">
 
 </LinearLayout>

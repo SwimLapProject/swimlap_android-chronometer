@@ -3,10 +3,10 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
           android:id="@+id/id_ranking_textview_lap"
           android:layout_width="0dp"
-          android:layout_height="@dimen/dimen_ranking_lap_rowsize"
+          android:layout_height="wrap_content"
           android:layout_weight="1"
           android:textColor="@color/black"
-          android:textSize="@dimen/dimen_detail_TINY"
+          android:textSize="@dimen/ranking_textview_row_lap_font"
     />
 
 

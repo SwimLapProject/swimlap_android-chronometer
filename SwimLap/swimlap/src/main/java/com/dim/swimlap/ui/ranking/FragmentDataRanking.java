@@ -50,12 +50,16 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
         getMeetings();
         LayoutInflater factory = LayoutInflater.from(getActivity());
         meetingViews = new ArrayList<View>();
-        TextView textViewNoRanking = (TextView) view.findViewById(R.id.id_textview_no_ranking);
 
         if (meetingModels == null || meetingModels.size() == 0) {
-            textViewNoRanking.setVisibility(View.VISIBLE);
+            TextView textViewNo = new TextView(getActivity());
+            textViewNo.setText("There is no ranking in database.");
+            textViewNo.setTextColor(getResources().getColor(R.color.bluesea));
+            textViewNo.setTextSize(getResources().getDimension(R.dimen.ranking_textview_no_ranking_font));
+            layoutContainer.addView(textViewNo);
+
         } else {
-            textViewNoRanking.setVisibility(View.INVISIBLE);
+            layoutContainer.removeAllViews();
 
         }
         for (int meetingPosition = 0; meetingPosition < meetingModels.size(); meetingPosition++) {
@@ -174,7 +178,7 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
     private void addSwimmersToMeeting(int meetingPosition) {
         ArrayList<SwimmerModel> swimmersInMeeting = meetingModels.get(meetingPosition).getAllSwimmersInMeetting();
         LayoutInflater factory = LayoutInflater.from(getActivity());
-        LinearLayout meetingLayout = (LinearLayout) meetingViews.get(meetingPosition).findViewById(R.id.id_ranking_layout_meeting_tofill);
+        LinearLayout meetingLayout = (LinearLayout) meetingViews.get(meetingPosition).findViewById(R.id.id_ranking_layout_meeting_tofill_with_swimmer);
         meetingLayout.removeAllViews();
 
         if (swimmersInMeeting.size() == 0) {
@@ -203,7 +207,7 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
     }
 
     private void removeSwimmersFromMeetingView(int meetingPosition) {
-        LinearLayout layoutMeeting = (LinearLayout) meetingViews.get(meetingPosition).findViewById(R.id.id_ranking_layout_meeting_tofill);
+        LinearLayout layoutMeeting = (LinearLayout) meetingViews.get(meetingPosition).findViewById(R.id.id_ranking_layout_meeting_tofill_with_swimmer);
         layoutMeeting.removeAllViews();
     }
 
@@ -224,7 +228,7 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
         LayoutInflater factory = LayoutInflater.from(getActivity());
         LinearLayout swimmerLayoutToFill = (LinearLayout) meetingViews.get(meetingPosition)
                 .findViewWithTag("VIEW_swimmer_" + meetingPosition + "_" + swimmerId)
-                .findViewById(R.id.id_ranking_layout_swimmer_tofill);
+                .findViewById(R.id.id_ranking_layout_swimmer_tofill_with_race);
         swimmerLayoutToFill.removeAllViews();
 
         if (resultsForSwimmer.size() == 0) {
@@ -262,7 +266,7 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
     private void removeRaceFromSwimmerView(int meetingPosition, int swimmerId) {
         LinearLayout swimmerLayoutToEmpty = (LinearLayout) meetingViews.get(meetingPosition)
                 .findViewWithTag("VIEW_swimmer_" + meetingPosition + "_" + swimmerId)
-                .findViewById(R.id.id_ranking_layout_swimmer_tofill);
+                .findViewById(R.id.id_ranking_layout_swimmer_tofill_with_race);
         swimmerLayoutToEmpty.removeAllViews();
     }
 
@@ -287,6 +291,7 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
                 raceLayoutToFill.addView(lapView);
                 TextView lapText = (TextView) lapView.findViewById(R.id.id_ranking_textview_lap);
                 lapText.setText(allLapsAsString.get(indexLap));
+                lapText.setHeight((int)getResources().getDimension(R.dimen.ranking_textview_row_lap_heigh));
             }
         }
     }

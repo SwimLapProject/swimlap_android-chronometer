@@ -11,14 +11,13 @@
         android:type="linear"
         />
     <padding
-        android:left="3dp"
-        android:top="3dp"
-        android:right="3dp"
-        android:bottom="3dp"
+        android:left="@dimen/global_padding_or_margin_small"
+        android:top="@dimen/global_padding_or_margin_small"
+        android:right="@dimen/global_padding_or_margin_small"
+        android:bottom="@dimen/global_padding_or_margin_small"
         />
     <size
-        android:width="@dimen/dimen_button_little_side_size"
-        android:height="@dimen/dimen_button_little_side_size"
+        android:width="@dimen/lap_button_race_width"
         />
     <stroke android:color="@color/white"/>
 </shape>

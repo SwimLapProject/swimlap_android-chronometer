@@ -8,16 +8,16 @@
     <TextView
         android:id="@+id/id_ranking_textview_meeting"
         android:layout_width="fill_parent"
-        android:layout_height="@dimen/dimen_ranking_meeting_rowsize"
+        android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:textSize="@dimen/dimen_detail_BIG"/>
+        android:textSize="@dimen/ranking_textview_row_meeting_font"/>
 
     <LinearLayout
-        android:id="@+id/id_ranking_layout_meeting_tofill"
+        android:id="@+id/id_ranking_layout_meeting_tofill_with_swimmer"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="20dp"/>
+        android:paddingLeft="@dimen/ranking_padding_row_swimmer"/>
 
 
 </LinearLayout>

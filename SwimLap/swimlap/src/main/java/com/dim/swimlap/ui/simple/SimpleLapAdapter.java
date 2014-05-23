@@ -59,7 +59,7 @@ public class SimpleLapAdapter extends ArrayAdapter {
         String raceName = raceNames.get(position);
         ArrayList<Float> laps = lapForRaces.get(raceName);
         int lastLapIndex = laps.size() - 1;
-        String lastLap = "0.0000";
+        String lastLap = "0:00.00";
         int placeOfRace = position+1;
         if (laps.size() > 0) {
             lastLap = formatTime.makeString(laps.get(lastLapIndex));
@@ -79,7 +79,7 @@ public class SimpleLapAdapter extends ArrayAdapter {
         // TEXT VIEW
 
         viewHolder.textViewRaceName = (TextView) rowView.findViewById(R.id.id_textview_lap_simple_race_name);
-        viewHolder.textViewRaceName.setText("Race "+ placeOfRace);
+        viewHolder.textViewRaceName.setText("Swimmer "+ placeOfRace);
 
 
         viewHolder.textViewAllLaps = (TextView) rowView.findViewById(R.id.id_textview_simple_all_laps);

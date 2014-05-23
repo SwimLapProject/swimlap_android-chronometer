@@ -4,7 +4,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
     >
-    <!-- CLUB -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,24 +18,25 @@
             android:weightSum="1">
 
             <TextView
-                android:layout_width="@dimen/dimen_textview_settings_width"
+                android:layout_width="@dimen/setting_textview_club_width"
                 android:layout_height="fill_parent"
                 android:text="Club"
                 android:textColor="@color/bluesea"
-                android:textSize="@dimen/dimen_settings_font_medium"
+                android:textSize="@dimen/setting_textview_club_font"
                 />
 
             <Button
                 android:id="@+id/id_button_modifyclub"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
+                android:layout_width="@dimen/setting_button_save_club_width"
+                android:layout_height="@dimen/setting_button_save_club_heigh"
                 android:text="Save"
                 android:background="@drawable/button_clickable"
-
-                />
+                android:textSize="@dimen/setting_button_save_club_font"
+                android:layout_margin="@dimen/global_padding_or_margin_small"
+                android:layout_gravity="center"
+               />
 
         </LinearLayout>
-        <!-- club name -->
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -44,65 +45,71 @@
             >
 
             <TextView
-                android:layout_width="@dimen/dimen_textview_settings_width"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:text="Name"
                 android:textColor="@color/bluesea"
-                android:textSize="@dimen/dimen_settings_font_small"
+                android:textSize="@dimen/setting_textview_other_font"
                 />
 
             <EditText
                 android:id="@+id/id_edittext_clubname"
-                android:layout_width="fill_parent"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:textSize="@dimen/setting_textview_other_font"
+
+
                 />
         </LinearLayout>
-        <!-- id club -->
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/global_padding_or_margin_large">
 
             <TextView
-                android:layout_width="@dimen/dimen_textview_settings_width"
+                android:id="@+id/id_textview_clubidffn"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:text="id FFN"
                 android:textColor="@color/bluesea"
-                android:textSize="@dimen/dimen_settings_font_small"
-                android:id="@+id/id_textview_clubidffn"
+                android:textSize="@dimen/setting_textview_other_font"
                 />
 
             <EditText
                 android:id="@+id/id_edittext_club_codeffn"
-                android:layout_width="fill_parent"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:textSize="@dimen/setting_textview_other_font"
+
                 />
         </LinearLayout>
 
-        <!-- ************************************** -->
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="25dp"
-            android:orientation="horizontal"
-            android:background="@drawable/application_background"/>
-        <!-- ************************************** -->
-        <!-- MENTIONS LEGALES -->
+
+
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Mentions Légales"
             android:textColor="@color/bluesea"
+            android:textSize="@dimen/setting_textview_mention_title_font"
+            android:layout_marginBottom="@dimen/global_padding_or_margin_medium"
+
             />
 
         <TextView
+            android:id="@+id/id_textview_clubidffn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/mentions_legales"
             android:textColor="@color/bluesea"
-            android:textSize="@dimen/dimen_settings_font_mention_legales"
-            android:id="@+id/id_textview_clubidffn"
+            android:textSize="@dimen/setting_textview_mention_text_font"
             android:layout_gravity="left|right"
             />
     </LinearLayout>

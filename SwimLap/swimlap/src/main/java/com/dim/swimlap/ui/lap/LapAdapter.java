@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -47,6 +48,7 @@ public class LapAdapter extends ArrayAdapter {
 
         int resultId = resultModelList.get(position).getId();
         int raceId = resultModelList.get(position).getEventModel().getRaceModel().getId();
+        int nbOfLap = resultModelList.get(position).getNumberOfLap();
 
         if (rowView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

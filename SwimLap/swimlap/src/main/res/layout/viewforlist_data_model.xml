@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="fill_parent"
-              android:layout_height="70dp">
+              android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -16,23 +16,23 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="NAME"
-            android:textSize="@dimen/dimen_text_list_name"
+            android:textSize="@dimen/model_textview_name_font"
             android:textColor="@color/bluesea"
 
             />
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/id_textview_list_model_second"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:text="FIRST"
-                android:textSize="@dimen/dimen_text_list_second"
+                android:textSize="@dimen/model_textview_medium_font"
                 android:textColor="@color/bluesea"
 
                 />
@@ -40,10 +40,10 @@
             <TextView
                 android:id="@+id/id_textview_list_model_third"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="YEAR"
-                android:textSize="@dimen/dimen_text_list_third"
+                android:textSize="@dimen/model_textview_small_font"
                 android:textColor="@color/bluesea"
 
                 />

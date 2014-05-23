@@ -12,14 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/id_textview_no_ranking"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/bluesea"
-            android:visibility="invisible"
-            android:text="There is no ranking in database."
-            />
     </LinearLayout>
 
 </ScrollView>

@@ -70,8 +70,4 @@ public class FragmentDataMeetingDetails extends Fragment {
         super.onActivityCreated(savedInstanceState);
         comm.changeVisiblilityOfProgressBar(false);
     }
-
-    public ListView getListViewToDisplayProgressBar(){
-        return swimmersListView;
-    }
 }

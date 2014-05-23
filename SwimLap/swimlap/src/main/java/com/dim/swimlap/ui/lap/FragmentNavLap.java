@@ -9,6 +9,7 @@ package com.dim.swimlap.ui.lap;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +63,11 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
                 int idRace = race.getId();
 
                 final Button button = new Button(this.getActivity());
-                button.setWidth(150);
+                button.setWidth((int)getResources().getDimension(R.dimen.lap_button_race_width));
+                button.setHeight((int) getResources().getDimension(R.dimen.lap_button_race_heigh));
+                button.setTextSize(getResources().getDimension(R.dimen.lap_button_race_font));
+                button.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                button.setSingleLine();
                 button.setText(nameToPutInButton);
                 button.setTag("ButtonRace_" + idRace);
                 button.setOnClickListener(this);
@@ -72,11 +77,11 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
 
                 } else {
                     int size = nameToPutInButton.length();
-                    char gender = nameToPutInButton.charAt(size-1);
-                    if(gender=='F'){
+                    char gender = nameToPutInButton.charAt(size - 1);
+                    if (gender == 'F') {
                         button.setBackgroundResource(R.drawable.button_race_f);
                         button.setTextColor(getResources().getColor(R.color.bluesea));
-                    }else {
+                    } else {
                         button.setBackgroundResource(R.drawable.button_race_m);
                         button.setTextColor(getResources().getColor(R.color.bluesea));
                     }
@@ -84,7 +89,8 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
                 linearLayout.addView(button);
 
                 if (idRace == singleton.getCurrentRaceId()) {
-                    positionButtonSelected = (indexEvent-1) * BUTTON_WITH;
+                    int buttonWidth = (int) getResources().getDimension(R.dimen.lap_button_race_width);
+                    positionButtonSelected = (indexEvent - 1) * buttonWidth;
                 }
             }
             scroll.post(new Runnable() {
@@ -119,9 +125,9 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
         String nameOfButton = String.valueOf(newSelectedButton.getText());
         int size = nameOfButton.length();
         char gender = nameOfButton.charAt(size - 1);
-        if(gender=='F'){
+        if (gender == 'F') {
             previousSelectedButton.setBackgroundResource(R.drawable.button_race_f);
-        }else {
+        } else {
             previousSelectedButton.setBackgroundResource(R.drawable.button_race_m);
         }
     }

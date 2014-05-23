@@ -4,19 +4,19 @@
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:layout_marginBottom="5dp"
-              android:layout_marginTop="5dp"
+              android:layout_marginBottom="@dimen/global_padding_or_margin_medium"
+              android:layout_marginTop="@dimen/global_padding_or_margin_medium"
               android:weightSum="1">
 
     <Button
         android:id="@+id/id_button_nav_model"
         android:layout_width="fill_parent"
-        android:layout_height="@dimen/dimen_button_little_side_size"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="@dimen/model_button_add_model_heigh"
+        android:layout_marginBottom="@dimen/global_padding_or_margin_small"
+        android:layout_marginTop="@dimen/global_padding_or_margin_small"
         android:background="@drawable/button_clickable"
         android:textColor="@color/white"
-        android:textSize="@dimen/dimen_text_button_menu"
+        android:textSize="@dimen/model_button_add_model_font"
         />
 
 </LinearLayout>

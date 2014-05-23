@@ -14,13 +14,12 @@
 
         <Button
             android:id="@+id/id_button_start_simple"
-            android:layout_width="@dimen/dimen_button_basic_half_size"
-            android:layout_height="@dimen/dimen_button_basic_half_size"
-
+            android:layout_width="@dimen/simple_button_start_stop_side"
+            android:layout_height="@dimen/simple_button_start_stop_side"
             android:background="@drawable/button_simple_start_clickable"
-
+            android:layout_margin="@dimen/global_padding_or_margin_small"
             android:text="Start"
-            android:textSize="@dimen/dimen_text_button_little"
+            android:textSize="@dimen/simple_button_start_stop_font"
             android:textColor="@color/white"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -40,19 +39,15 @@
         android:layout_weight="1"
         >
 
-
-
         <Button
             android:id="@+id/id_button_stop_simple"
-            android:layout_width="@dimen/dimen_button_basic_half_size"
-            android:layout_height="@dimen/dimen_button_basic_half_size"
+            android:layout_width="@dimen/simple_button_start_stop_side"
+            android:layout_height="@dimen/simple_button_start_stop_side"
             android:layout_alignParentRight="true"
-            android:layout_margin="@dimen/dimen_margin_around_button"
-
+            android:layout_margin="@dimen/global_padding_or_margin_small"
             android:background="@drawable/button_simple_stop_clickable"
-
             android:text="Stop"
-            android:textSize="@dimen/dimen_text_button_little"
+            android:textSize="@dimen/simple_button_start_stop_font"
             android:textColor="@color/white"
             />
     </RelativeLayout>

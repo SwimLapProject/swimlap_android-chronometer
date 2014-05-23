@@ -4,8 +4,8 @@
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:layout_marginBottom="5dp"
-              android:layout_marginTop="5dp"
+              android:layout_marginBottom="@dimen/global_padding_or_margin_medium"
+              android:layout_marginTop="@dimen/global_padding_or_margin_medium"
     >
 
     <RelativeLayout
@@ -35,7 +35,7 @@
             android:id="@+id/id_textview_title"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Swim Lapkezfhihfvilqh fvlihfiesf"
+            android:text="SwimLAp"
             style="@style/titleContent"
             />
     </HorizontalScrollView>
@@ -48,15 +48,15 @@
         >
 
         <Button
-            android:id="@+id/id_button_link"
+            android:id="@+id/id_button_goto_ranking"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/dimen_button_little_side_size"
+            android:layout_height="@dimen/title_button_goto_ranking_heigh"
 
             android:background="@drawable/button_ranking_clickable"
 
             android:text="Rankings"
             android:textColor="@color/bluesea"
-            android:textSize="@dimen/dimen_text_button_little"
+            android:textSize="@dimen/title_button_goto_ranking_font"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"/>
 

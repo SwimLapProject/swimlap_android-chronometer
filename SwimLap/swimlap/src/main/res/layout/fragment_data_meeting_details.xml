@@ -9,7 +9,7 @@
         android:id="@+id/id_textview_meeting_details_name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/dimen_detail_BIG"
+        android:textSize="@dimen/detail_textview_big_font"
         android:textColor="@color/bluesea"
         android:text="name"
         />
@@ -22,9 +22,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="3"
-        android:textSize="@dimen/dimen_detail_MEDIUM"
         android:textColor="@color/bluesea"
         android:text="city"
+        android:textSize="@dimen/detail_textview_medium_font"
         />
 
     <TextView
@@ -32,9 +32,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="@dimen/dimen_detail_MEDIUM"
         android:textColor="@color/redstop"
         android:text="poolsize"
+        android:textSize="@dimen/detail_textview_big_font"
         />
 
     </LinearLayout>
@@ -49,19 +49,20 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="@dimen/dimen_detail_LITTLE"
         android:textColor="@color/bluesea"
         android:text="startdate"
-        android:layout_gravity="left"/>
+        android:layout_gravity="left"
+        android:textSize="@dimen/detail_textview_small_font"
+        />
 
     <TextView
         android:id="@+id/id_textview_meeting_details_stopdate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="@dimen/dimen_detail_LITTLE"
         android:textColor="@color/bluesea"
         android:text="stopdate"
+        android:textSize="@dimen/detail_textview_small_font"
         />
 
     </LinearLayout>
