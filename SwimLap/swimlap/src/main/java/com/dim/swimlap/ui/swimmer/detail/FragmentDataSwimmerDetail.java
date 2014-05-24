@@ -55,12 +55,12 @@ public class FragmentDataSwimmerDetail extends Fragment {
 
         // DATA TO FILL THE LIST
         GetAllMeetingsForListInSwimmerDetails getter = new GetAllMeetingsForListInSwimmerDetails(getActivity());
-        ArrayList<ResultModel> resultForOneSwimmer = getter.getAllMeetingForSwimmerId(swimmer.getIdFFN());
+        ArrayList<ResultModel> resultsForOneSwimmer = getter.getAllMeetingForSwimmerId(swimmer.getIdFFN());
         HashMap<String, String> stringOfRacesAndTime = new HashMap<String, String>();
         ArrayList<String> allMeetingsName = new ArrayList<String>();
 
-        for (int indexResult = 0; indexResult < resultForOneSwimmer.size(); indexResult++) {
-            ResultModel result = resultForOneSwimmer.get(indexResult);
+        for (int indexResult = 0; indexResult < resultsForOneSwimmer.size(); indexResult++) {
+            ResultModel result = resultsForOneSwimmer.get(indexResult);
             String meetingName = getter.getMeetingName(result.getMeetingId());
             FormatTimeAsString formater = new FormatTimeAsString();
 

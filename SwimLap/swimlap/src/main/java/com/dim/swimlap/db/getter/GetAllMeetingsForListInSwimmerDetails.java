@@ -26,24 +26,25 @@ public class GetAllMeetingsForListInSwimmerDetails {
     }
 
     public ArrayList<ResultModel> getAllMeetingForSwimmerId(int swimmerId) {
-        ArrayList<ResultModel> resultBySwimmer = null;
+        ArrayList<ResultModel> resultsBySwimmer = null;
 
         try {
             db.open();
-            resultBySwimmer = db.getResultUtilities().getAllResultsBySwimmer_FromDb(swimmerId);
+            resultsBySwimmer = db.getResultUtilities().getAllResultsBySwimmer_FromDb(swimmerId);
 
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             db.close();
         }
-        if (resultBySwimmer != null) {
-            for (int indexResult = 0; indexResult < resultBySwimmer.size(); indexResult++) {
+        if (resultsBySwimmer != null) {
+            for (int indexResult = 0; indexResult < resultsBySwimmer.size(); indexResult++) {
 
             }
         }
-        return resultBySwimmer;
+        return resultsBySwimmer;
     }
+
 
     public String getMeetingName(int idMeeting) {
         String meetingName = "";
@@ -58,5 +59,7 @@ public class GetAllMeetingsForListInSwimmerDetails {
         }
         return meetingName;
     }
+
+
 
 }

@@ -63,7 +63,8 @@ public class ResultUtilities {
     public ArrayList<ResultModel> getAllResultsBySwimmer_FromDb(int idFFNSwimmer) {
         ArrayList<ResultModel> allResults = new ArrayList<ResultModel>();
         String condition = table.COL_SWI_0_ID_FFN + "=" + idFFNSwimmer;
-        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
+        String orderBy = table.COL_MEE_ID_MEET + " DESC";
+        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, orderBy);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             ResultModel resultModel = getDataResult_FromDb(cursor);

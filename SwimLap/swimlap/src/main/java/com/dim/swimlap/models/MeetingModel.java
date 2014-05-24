@@ -222,12 +222,13 @@ public class MeetingModel {
         }
         return sortResultsByRaceId(resultsForSwimmer);
     }
-    private ArrayList<ResultModel> sortResultsByRaceId(ArrayList<ResultModel> resultsUnSort){
+
+    private ArrayList<ResultModel> sortResultsByRaceId(ArrayList<ResultModel> resultsUnSort) {
         ArrayList<ResultModel> resultsSort = new ArrayList<ResultModel>();
         while (resultsUnSort.size() > 1) {
             int indexToMove = 0;
             for (int i = 1; i < resultsUnSort.size(); i++) {
-                if (resultsUnSort.get(indexToMove).getEventModel().getRaceModel().getId()>resultsUnSort.get(i).getEventModel().getRaceModel().getId()) {
+                if (resultsUnSort.get(indexToMove).getEventModel().getRaceModel().getId() > resultsUnSort.get(i).getEventModel().getRaceModel().getId()) {
                     indexToMove = i;
                 }
             }
