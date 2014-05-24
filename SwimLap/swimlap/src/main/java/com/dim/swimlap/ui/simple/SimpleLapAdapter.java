@@ -17,8 +17,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.objects.FormatTimeAsString;
-import com.dim.swimlap.ui.CommunicationFragments;
+import com.dim.swimlap.objects.TimeConverter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,10 +25,9 @@ import java.util.HashMap;
 public class SimpleLapAdapter extends ArrayAdapter {
 
     private final Context context;
-    private FormatTimeAsString formatTime;
+    private TimeConverter converter;
     private ViewHolder viewHolder;
     private ArrayList<String> raceNames;
-    private CommunicationFragments comm;
     private HashMap<String, ArrayList<Float>> lapForRaces;
 
 
@@ -38,13 +36,12 @@ public class SimpleLapAdapter extends ArrayAdapter {
         this.context = context;
         this.raceNames = raceNames;
         this.lapForRaces = lapForRaces;
-        this.formatTime = new FormatTimeAsString();
+        this.converter = new TimeConverter();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View rowView = convertView;
-        comm = (CommunicationFragments) getContext();
 
         if (rowView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -60,9 +57,9 @@ public class SimpleLapAdapter extends ArrayAdapter {
         ArrayList<Float> laps = lapForRaces.get(raceName);
         int lastLapIndex = laps.size() - 1;
         String lastLap = "0:00.00";
-        int placeOfRace = position+1;
+        int placeOfRace = position + 1;
         if (laps.size() > 0) {
-            lastLap = formatTime.makeString(laps.get(lastLapIndex));
+            lastLap = converter.makeString(laps.get(lastLapIndex));
         }
         String allLapsAsString = buildAllLapsString(laps);
 
@@ -79,7 +76,7 @@ public class SimpleLapAdapter extends ArrayAdapter {
         // TEXT VIEW
 
         viewHolder.textViewRaceName = (TextView) rowView.findViewById(R.id.id_textview_lap_simple_race_name);
-        viewHolder.textViewRaceName.setText("Swimmer "+ placeOfRace);
+        viewHolder.textViewRaceName.setText("Swimmer " + placeOfRace);
 
 
         viewHolder.textViewAllLaps = (TextView) rowView.findViewById(R.id.id_textview_simple_all_laps);
@@ -109,20 +106,19 @@ public class SimpleLapAdapter extends ArrayAdapter {
     private String buildAllLapsString(ArrayList<Float> laps) {
         String allLapsAsString = "";
         for (int indexLap = 0; indexLap < laps.size(); indexLap++) {
-            float split = 0;
+            float split;
             if (indexLap == 0) {
                 split = laps.get(indexLap);
             } else {
                 split = laps.get(indexLap) - laps.get(indexLap - 1);
             }
-            int lapNumber = indexLap+1;
+            int lapNumber = indexLap + 1;
             allLapsAsString += lapNumber + " : "
-                    + formatTime.makeString(split)
+                    + converter.makeString(split)
                     + " , "
-                    + formatTime.makeString(laps.get(indexLap))
+                    + converter.makeString(laps.get(indexLap))
                     + "\n";
         }
         return allLapsAsString;
     }
-
 }

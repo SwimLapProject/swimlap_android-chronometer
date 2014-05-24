@@ -16,7 +16,6 @@ import com.dim.swimlap.models.ClubModel;
 import com.dim.swimlap.models.SwimmerModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SwimmerUtilities {
 
@@ -45,7 +44,7 @@ public class SwimmerUtilities {
 
     public SwimmerModel getSwimmer_FromDb(int swimmerIdToGet) {
         String[] swimmerIdAsStrings = {String.valueOf(swimmerIdToGet)};
-        SwimmerModel swimmer =null;
+        SwimmerModel swimmer = null;
         Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, table.COL_SWI_ID + " = ?", swimmerIdAsStrings, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -64,16 +63,14 @@ public class SwimmerUtilities {
         swimmerModel.setFirstname(cursor.getString(2));
         swimmerModel.setDateOfBirth(cursor.getString(3));
         swimmerModel.setGender(cursor.getString(4));
-        swimmerModel.setClubModel(new ClubModel(0,cursor.getInt(5)));// id , codeFFN
+        swimmerModel.setClubModel(new ClubModel(0, cursor.getInt(5)));// id , codeFFN
         return swimmerModel;
     }
 
 
     /* ADDER */
     public void addSwimmer_InDb(SwimmerModel newSimmer) {
-        if (swimmerAlready_InDb(newSimmer.getIdFFN())) {
-            //do notthing
-        } else {
+        if (!swimmerAlready_InDb(newSimmer.getIdFFN())) {
             ContentValues contentValues = new ContentValues();
             contentValues.put(table.COL_SWI_ID, newSimmer.getIdFFN());
             contentValues.put(table.COL_SWI_NAME, newSimmer.getName());
@@ -87,36 +84,34 @@ public class SwimmerUtilities {
     }
 
     /* DELETER */
-    public void deleteSwimmer_InDb(int swimmerIdToDelete) {
-        sqLiteDatabaseSwimLap.delete(table.TABLE_NAME, table.COL_SWI_ID + " = " + swimmerIdToDelete, null);
-    }
+//    public void deleteSwimmer_InDb(int swimmerIdToDelete) {
+//        sqLiteDatabaseSwimLap.delete(table.TABLE_NAME, table.COL_SWI_ID + " = " + swimmerIdToDelete, null);
+//    }
 
     /* UPDATER */
-    public void updateSwimmer_InDb(SwimmerModel modifiedSwimmer) {
-        deleteSwimmer_InDb(modifiedSwimmer.getIdFFN());
-        addSwimmer_InDb(modifiedSwimmer);
-    }
+//    public void updateSwimmer_InDb(SwimmerModel modifiedSwimmer) {
+//        deleteSwimmer_InDb(modifiedSwimmer.getIdFFN());
+//        addSwimmer_InDb(modifiedSwimmer);
+//    }
 
     /* VERIFY ENTRY */
     public boolean swimmerAlready_InDb(int swimmerIdToSearch) {
-        boolean isPresent;
+        boolean isPresent = true;
         if (getSwimmer_FromDb(swimmerIdToSearch) == null) {
             isPresent = false;
-        } else {
-            isPresent = true;
         }
         return isPresent;
     }
 
-    public boolean tableIsEmpty(){
-        boolean isEmpty;
-        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
-
-        if (cursor.getCount() == 0) {
-            isEmpty = true;
-        } else {
-            isEmpty = false;
-        }
-        return isEmpty;
-    }
+//    public boolean tableIsEmpty(){
+//        boolean isEmpty;
+//        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+//
+//        if (cursor.getCount() == 0) {
+//            isEmpty = true;
+//        } else {
+//            isEmpty = false;
+//        }
+//        return isEmpty;
+//    }
 }

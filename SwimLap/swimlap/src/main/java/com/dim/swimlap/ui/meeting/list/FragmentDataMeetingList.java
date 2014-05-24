@@ -18,13 +18,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.db.getter.GetMeetingDetailsForList;
+import com.dim.swimlap.db.getter.GetMeetingsForLists;
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.ui.CommunicationFragments;
 
 import java.util.ArrayList;
 
-;
 
 public class FragmentDataMeetingList extends Fragment {
 
@@ -33,14 +32,14 @@ public class FragmentDataMeetingList extends Fragment {
     private MeetingAdapter adapter;
     private ArrayList<MeetingModel> meetings;
     private CommunicationFragments comm;
-    private GetMeetingDetailsForList getter;
+    private GetMeetingsForLists getter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_model_list, container, false);
         comm = (CommunicationFragments) this.getActivity();
 
-        getter = new GetMeetingDetailsForList(getActivity());
+        getter = new GetMeetingsForLists(getActivity());
         meetings = getter.getAllMeetingsUnFilled();
 
         listViewForMeetings = (ListView) view.findViewById(R.id.id_listview_model);

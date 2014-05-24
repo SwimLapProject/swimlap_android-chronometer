@@ -68,7 +68,6 @@ public class DbHelper extends SQLiteOpenHelper {
         for (int indexTable = 0; indexTable < tablesOfDb.size(); indexTable++) {
             sqLiteDatabase.execSQL(tablesOfDb.get(indexTable).getRequestTableCreate());
         }
-
     }
 
     @Override
@@ -79,13 +78,13 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public DbTableMODEL getTableFromDb(String tableName) {
-        DbTableMODEL dbTableMODEL = null;
-        for (int indexTable = 0; indexTable < tablesOfDb.size(); indexTable++) {
-            if (tableName.equals(tablesOfDb.get(indexTable).getTableName())) {
-                dbTableMODEL = tablesOfDb.get(indexTable);
-            }
-        }
-        return dbTableMODEL;
-    }
+//    public DbTableMODEL getTableFromDb(String tableName) {
+//        DbTableMODEL dbTableMODEL = null;
+//        for (int indexTable = 0; indexTable < tablesOfDb.size(); indexTable++) {
+//            if (tableName.equals(tablesOfDb.get(indexTable).getTableName())) {
+//                dbTableMODEL = tablesOfDb.get(indexTable);
+//            }
+//        }
+//        return dbTableMODEL;
+//    }
 }

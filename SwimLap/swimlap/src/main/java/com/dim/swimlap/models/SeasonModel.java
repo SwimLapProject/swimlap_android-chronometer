@@ -9,7 +9,6 @@ package com.dim.swimlap.models;
 
 public class SeasonModel {
 
-    private static final String FFNEX_DATE_FORMAT = "yyyy-MM-dd";
     private int id;
     private String name;
     private String startDate;
@@ -63,9 +62,4 @@ public class SeasonModel {
     public String getStopDate() {
         return stopDate;
     }
-
-    public void setStopDate(String stopDate) {
-        this.stopDate = stopDate;
-    }
-
 }

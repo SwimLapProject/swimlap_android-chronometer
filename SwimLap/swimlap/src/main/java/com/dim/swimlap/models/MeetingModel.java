@@ -7,17 +7,15 @@
 
 package com.dim.swimlap.models;
 
-import com.dim.swimlap.objects.FormatTimeAsString;
+import com.dim.swimlap.objects.DateConverter;
+import com.dim.swimlap.objects.TimeConverter;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
 public class MeetingModel {
 
-    private static final String FFNEX_DATE_FORMAT = "yyyy-MM-dd";
     private int id;
     private String name;
     private String city;
@@ -35,7 +33,7 @@ public class MeetingModel {
         allResults = new ArrayList<ResultModel>();
     }
 
-
+    /* GETTER AND SETTERS*/
     public int getClubId() {
         return clubId;
     }
@@ -85,19 +83,23 @@ public class MeetingModel {
     }
 
     public String getStartDate() {
-        return convertDateToString(startDate);
+        DateConverter converter = new DateConverter();
+        return converter.convertDateToString(startDate);
     }
 
     public void setStartDate(String startDate) {
-        this.startDate = convertStringToDate(startDate);
+        DateConverter converter = new DateConverter();
+        this.startDate = converter.convertStringToDate(startDate);
     }
 
     public String getStopDate() {
-        return convertDateToString(stopDate);
+        DateConverter converter = new DateConverter();
+        return converter.convertDateToString(stopDate);
     }
 
     public void setStopDate(String stopDate) {
-        this.stopDate = convertStringToDate(stopDate);
+        DateConverter converter = new DateConverter();
+        this.stopDate = converter.convertStringToDate(stopDate);
     }
 
     public SeasonModel getSeasonModel() {
@@ -113,31 +115,12 @@ public class MeetingModel {
         return seasonIsAdded;
     }
 
-
-    private String convertDateToString(Date dateToConvert) {
-        SimpleDateFormat formatter = new SimpleDateFormat(FFNEX_DATE_FORMAT);
-        String dateInString = formatter.format(dateToConvert);
-        return dateInString;
-
-    }
-
-    public Date convertStringToDate(String dateInString) {
-        SimpleDateFormat formatter = new SimpleDateFormat(FFNEX_DATE_FORMAT);
-        Date date = null;
-        try {
-            date = formatter.parse(dateInString);
-        } catch (ParseException e) {
-            date = null;
-        }
-        return date;
-    }
-
-    public boolean isByTeam() {
-        return byTeam;
-    }
-
     public void setByTeam(boolean byTeam) {
         this.byTeam = byTeam;
+    }
+
+    public ArrayList<ResultModel> getAllResults() {
+        return allResults;
     }
 
     public void addResult(ResultModel resultModel) {
@@ -145,25 +128,9 @@ public class MeetingModel {
         allResults.add(resultModel);
     }
 
-    public ResultModel getResult(int swimmerId, int eventId, int roundId) {
-        ResultModel resultToReturn = null;
-        for (int indexResult = 0; indexResult < allResults.size(); indexResult++) {
-            int idSwimmer = allResults.get(indexResult).getSwimmerModel().getIdFFN();
-            int idEvent = allResults.get(indexResult).getEventModel().getId();
-            int idRound = allResults.get(indexResult).getEventModel().getRoundModel().getId();
-            if (idSwimmer == swimmerId && idEvent == eventId && idRound == roundId) {
-                resultToReturn = allResults.get(indexResult);
-            }
-        }
-        return resultToReturn;
-    }
-
-    public ArrayList<ResultModel> getAllResults() {
-        return allResults;
-    }
-
-    public ArrayList<SwimmerModel> getAllSwimmersInMeetting() {
-        FormatTimeAsString formater = new FormatTimeAsString();
+    /* COMPLEX GETTER */
+    public ArrayList<SwimmerModel> getAllSortedSwimmersInMeetting() {
+        TimeConverter converter = new TimeConverter();
         if (concatStringRaceBySwim == null) {
             concatStringRaceBySwim = new HashMap<Integer, String>();
         } else {
@@ -175,19 +142,22 @@ public class MeetingModel {
             if (concatStringRaceBySwim.containsKey(swimmerId)) {
                 String content = concatStringRaceBySwim.get(swimmerId);
                 content += allResults.get(indexResult).getEventModel().getRaceModel().getCompleteName() + "     "
-                        + formater.makeString(allResults.get(indexResult).getSwimTime()) + "\n";
+                        + converter.makeString(allResults.get(indexResult).getSwimTime()) + "\n";
                 concatStringRaceBySwim.remove(swimmerId);
                 concatStringRaceBySwim.put(swimmerId, content);
             } else {
 
                 String content = allResults.get(indexResult).getEventModel().getRaceModel().getCompleteName() + "     "
-                        + formater.makeString(allResults.get(indexResult).getSwimTime()) + "\n";
+                        + converter.makeString(allResults.get(indexResult).getSwimTime()) + "\n";
                 concatStringRaceBySwim.put(swimmerId, content);
                 swimmers.add(allResults.get(indexResult).getSwimmerModel());
             }
         }
-
         return sortSwimmers(swimmers);
+    }
+
+    public HashMap<Integer, String> getRacesBySwimmers() {
+        return concatStringRaceBySwim;
     }
 
     private ArrayList<SwimmerModel> sortSwimmers(ArrayList<SwimmerModel> swimmersUnSort) {
@@ -209,11 +179,8 @@ public class MeetingModel {
         return swimmersSort;
     }
 
-    public HashMap<Integer, String> getRacesBySwimmers() {
-        return concatStringRaceBySwim;
-    }
 
-    public ArrayList<ResultModel> getResultsForSwimmer(int swimmerId) {
+    public ArrayList<ResultModel> getSortedResultsForSwimmer(int swimmerId) {
         ArrayList<ResultModel> resultsForSwimmer = new ArrayList<ResultModel>();
         for (int indexResult = 0; indexResult < allResults.size(); indexResult++) {
             if (allResults.get(indexResult).getSwimmerModel().getIdFFN() == swimmerId) {

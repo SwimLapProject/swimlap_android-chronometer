@@ -16,17 +16,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.db.getter.GetAllMeetingsForListInSwimmerDetails;
+import com.dim.swimlap.db.getter.GetMeetingsForLists;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.models.SwimmerModel;
-import com.dim.swimlap.objects.FormatTimeAsString;
+import com.dim.swimlap.objects.TimeConverter;
 import com.dim.swimlap.ui.CommunicationFragments;
 import com.dim.swimlap.ui.meeting.detail.SwimmersInMeetingAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-;
 
 public class FragmentDataSwimmerDetail extends Fragment {
     private SwimmerModel swimmer;
@@ -54,7 +52,7 @@ public class FragmentDataSwimmerDetail extends Fragment {
         tvDateOFBirth.setText(swimmer.getDateOfBirth());
 
         // DATA TO FILL THE LIST
-        GetAllMeetingsForListInSwimmerDetails getter = new GetAllMeetingsForListInSwimmerDetails(getActivity());
+        GetMeetingsForLists getter = new GetMeetingsForLists(getActivity());
         ArrayList<ResultModel> resultsForOneSwimmer = getter.getAllMeetingForSwimmerId(swimmer.getIdFFN());
         HashMap<String, String> stringOfRacesAndTime = new HashMap<String, String>();
         ArrayList<String> allMeetingsName = new ArrayList<String>();
@@ -62,12 +60,12 @@ public class FragmentDataSwimmerDetail extends Fragment {
         for (int indexResult = 0; indexResult < resultsForOneSwimmer.size(); indexResult++) {
             ResultModel result = resultsForOneSwimmer.get(indexResult);
             String meetingName = getter.getMeetingName(result.getMeetingId());
-            FormatTimeAsString formater = new FormatTimeAsString();
+            TimeConverter converter = new TimeConverter();
 
             if (stringOfRacesAndTime.containsKey(meetingName)) {
                 String content = stringOfRacesAndTime.get(meetingName);
                 String raceName = result.getEventModel().getRaceModel().getCompleteName();
-                String swimTime = formater.makeForFFNex(result.getSwimTime());
+                String swimTime = converter.makeForFFNex(result.getSwimTime());
                 content += raceName + "    " + swimTime + "\n";
                 stringOfRacesAndTime.remove(meetingName);
                 stringOfRacesAndTime.put(meetingName, content);
@@ -75,7 +73,7 @@ public class FragmentDataSwimmerDetail extends Fragment {
             } else {
                 allMeetingsName.add(meetingName);
                 String raceName = result.getEventModel().getRaceModel().getCompleteName();
-                String swimTime = formater.makeForFFNex(result.getSwimTime());
+                String swimTime = converter.makeForFFNex(result.getSwimTime());
                 String content = raceName + "    " + swimTime + "\n";
                 stringOfRacesAndTime.put(meetingName, content);
             }

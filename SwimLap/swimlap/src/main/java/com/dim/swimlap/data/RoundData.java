@@ -44,10 +44,7 @@ public class RoundData {
         round.put(62, "Séries lentes");
     }
 
-    public String getRoundName(int roundId){
+    public String getRoundName(int roundId) {
         return round.get(roundId);
     }
-
-
-
 }

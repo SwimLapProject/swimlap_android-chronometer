@@ -20,15 +20,15 @@ import java.util.ArrayList;
 
 public class RecordParsingInDb {
 
-    private DbUtilitiesBuilder db;
     private Context context;
 
     public RecordParsingInDb(Context context) {
         this.context = context;
-        db = new DbUtilitiesBuilder(context);
     }
 
     public boolean recordMeetingFromFFNex(MeetingModel meetingModel) {
+        DbUtilitiesBuilder db = new DbUtilitiesBuilder(context);
+
         boolean isRecorded = false;
         try {
             db.open();

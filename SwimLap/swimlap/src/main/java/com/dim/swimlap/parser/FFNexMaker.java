@@ -15,7 +15,7 @@ import android.os.Environment;
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.models.SwimmerModel;
-import com.dim.swimlap.objects.FormatTimeAsString;
+import com.dim.swimlap.objects.TimeConverter;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -47,7 +47,7 @@ public class FFNexMaker {
     }
 
     public void makeFFNex(MeetingModel meeting) {
-        FormatTimeAsString formater = new FormatTimeAsString();
+        TimeConverter converter = new TimeConverter();
 
         String meetingIdAsString = String.valueOf(meeting.getId());
         try {
@@ -94,7 +94,7 @@ public class FFNexMaker {
             Element SWIMMERS = document.createElement("SWIMMERS");
             MEET.appendChild(SWIMMERS);
 
-            ArrayList<SwimmerModel> swimmers = meeting.getAllSwimmersInMeetting();
+            ArrayList<SwimmerModel> swimmers = meeting.getAllSortedSwimmersInMeetting();
 
             /** SWIMMER in swimmers **/
             for (int indexSwimmer = 0; indexSwimmer < swimmers.size(); indexSwimmer++) {
@@ -121,7 +121,7 @@ public class FFNexMaker {
 
                 Element RESULT = document.createElement("RESULT");
                 RESULT.setAttribute("id", String.valueOf(result.getId()));
-                String swimTime = formater.makeForFFNex(result.getSwimTime());
+                String swimTime = converter.makeForFFNex(result.getSwimTime());
 
                 RESULT.setAttribute("swimtime", swimTime);
                 RESULT.setAttribute("raceid", String.valueOf(result.getEventModel().getRaceModel().getId()));
@@ -160,7 +160,7 @@ public class FFNexMaker {
                     for (int indexLap = 0; indexLap < result.getLaps().size(); indexLap++) {
                         float lap = result.getLaps().get(indexLap);
                         if (lap != 0) {
-                            String lapAsString = formater.makeForFFNex(lap);
+                            String lapAsString = converter.makeForFFNex(lap);
                             Element SPLIT = document.createElement("SPLIT");
                             SPLIT.setAttribute("swimtime", lapAsString);
                             String distance = String.valueOf(meeting.getPoolSize() * (indexLap + 1));

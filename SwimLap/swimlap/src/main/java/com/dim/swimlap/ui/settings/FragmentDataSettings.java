@@ -15,23 +15,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.db.getter.GetDataForSettings;
+import com.dim.swimlap.db.getter.GetClubForSettings;
 import com.dim.swimlap.db.recorder.RecordSettings;
 import com.dim.swimlap.models.ClubModel;
-import com.dim.swimlap.objects.DateTransformer;
 import com.dim.swimlap.ui.CommunicationFragments;
 
 public class FragmentDataSettings extends Fragment implements View.OnClickListener {
 
-    private DatePicker datePickerStart, datePickerStop;
-    private Button buttonSeason, buttonClub;
-    private EditText editTextclubName, editTextclubCodeffn, editTextSeasonName;
+    private Button buttonClub;
+    private EditText editTextclubName, editTextclubCodeffn;
     private CommunicationFragments comm;
 
     @Override
@@ -60,7 +57,6 @@ public class FragmentDataSettings extends Fragment implements View.OnClickListen
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
         RecordSettings recordSettings = new RecordSettings(getActivity());
-        DateTransformer transformer = new DateTransformer();
         if (view.getId() == R.id.id_button_modifyclub) {
             int codeClubFFN = Integer.valueOf(editTextclubCodeffn.getText().toString());
             ClubModel clubModel = new ClubModel(0, codeClubFFN);
@@ -70,23 +66,15 @@ public class FragmentDataSettings extends Fragment implements View.OnClickListen
             imm.hideSoftInputFromWindow(editTextclubName.getWindowToken(), 0);
             imm.hideSoftInputFromWindow(editTextclubCodeffn.getWindowToken(), 0);
 
-            Toast.makeText(view.getContext(), "Club Recorded", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Club Recorded", Toast.LENGTH_SHORT).show();
 
         }
     }
 
-    public String getDateFromPicker(DatePicker picker) {
-        return picker.getYear() + "-" + picker.getMonth() + "-" + picker.getDayOfMonth();
-    }
-
     public void updateDataInUI() {
-        DateTransformer transformer = new DateTransformer();
-        GetDataForSettings getter = new GetDataForSettings(getActivity());
-
+        GetClubForSettings getter = new GetClubForSettings(getActivity());
         ClubModel club = getter.getClubRecordedInDb();
         editTextclubName.setText(club.getName(), TextView.BufferType.EDITABLE);
         editTextclubCodeffn.setText(String.valueOf(club.getCodeFFN()), TextView.BufferType.EDITABLE);
     }
-
-
 }

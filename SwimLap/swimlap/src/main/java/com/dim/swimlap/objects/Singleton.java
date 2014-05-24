@@ -9,7 +9,7 @@ package com.dim.swimlap.objects;
 
 import android.content.Context;
 
-import com.dim.swimlap.db.getter.GetResultsForLapView;
+import com.dim.swimlap.db.getter.GetMeetingOfTheDay;
 import com.dim.swimlap.models.EventModel;
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
@@ -29,7 +29,7 @@ public final class Singleton {
         super();
     }
 
-    private Singleton(MeetingModel meetingForSimple){
+    private Singleton(MeetingModel meetingForSimple) {
         super();
         meetingOfTheDay = meetingForSimple;
     }
@@ -45,25 +45,14 @@ public final class Singleton {
         }
         return Singleton.instance;
     }
-    public final static Singleton getInstance(MeetingModel meetingForSimple) {
-        if (Singleton.instance == null) {
-            synchronized (Singleton.class) {
-                if (Singleton.instance == null) {
-                    Singleton.instance = new Singleton(meetingForSimple);
-
-                }
-            }
-        }
-        return Singleton.instance;
-    }
 
     public boolean buildMeetingOfTheDay(Context context) {
-         thereIsMeetingToday = false;
+        thereIsMeetingToday = false;
         if (meetingOfTheDay != null) {
             thereIsMeetingToday = true;
         } else {
-            GetResultsForLapView getter = new GetResultsForLapView(context);
-            meetingOfTheDay = getter.getMeetingOfTheDay();
+            GetMeetingOfTheDay getter = new GetMeetingOfTheDay(context);
+            meetingOfTheDay = getter.getFilledMeetingOfTheDay();
 
         }
         if (meetingOfTheDay != null) {
@@ -156,7 +145,7 @@ public final class Singleton {
         this.currentRaceId = currentRaceId;
     }
 
-    public String getMeetingName(){
+    public String getMeetingName() {
         return meetingOfTheDay.getName();
     }
 
@@ -168,7 +157,7 @@ public final class Singleton {
         this.chronoIsStarted = chronoIsStarted;
     }
 
-    public boolean isThereMeetingToday(){
+    public boolean isThereMeetingToday() {
         return thereIsMeetingToday;
     }
 }

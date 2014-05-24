@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.db.getter.GetSwimmers;
+import com.dim.swimlap.db.getter.GetSwimmersForLists;
 import com.dim.swimlap.models.SwimmerModel;
 import com.dim.swimlap.ui.CommunicationFragments;
 
@@ -40,7 +40,7 @@ public class FragmentDataSwimmerList extends Fragment {
         listViewForSwimmers = (ListView) view.findViewById(R.id.id_listview_model);
         textViewNoSwimmerInLap = (TextView) view.findViewById(R.id.id_textview_no_model_in_db);
 
-        GetSwimmers getter = new GetSwimmers(getActivity());
+        GetSwimmersForLists getter = new GetSwimmersForLists(getActivity());
         swimmers = getter.getSwimmerList();
 
         listViewForSwimmers = (ListView) view.findViewById(R.id.id_listview_model);

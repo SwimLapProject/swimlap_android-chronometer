@@ -25,7 +25,6 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
     private Button buttonStart, buttonStop;
     private Button buttonDirect, buttonBackToMenu;
     private Chronometer chronometer;
-    private int currentView;
     private CommunicationFragments communicationFragments;
     private Singleton singleton;
     private static int
@@ -54,7 +53,6 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
         buttonStop.setOnClickListener(this);
         buttonStop.setVisibility(View.INVISIBLE);
 
-        currentView = 0;
         singleton = Singleton.getInstance();
         singleton.setChronoIsStarted(false);
         return view;
@@ -74,13 +72,13 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
             singleton.setChronoIsStarted(true);
             changeButtonStartStop();
             communicationFragments.inverseButtonsInLap();
-            Toast.makeText(view.getContext(), "START", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "START", Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.id_button_stop) {
             chronometer.stop();
             singleton.setChronoIsStarted(false);
             changeButtonStartStop();
             communicationFragments.inverseButtonsInLap();
-            Toast.makeText(view.getContext(), "STOP", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "STOP", Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.id_button_direct_to_lap) {
             communicationFragments.changeFragment(VIEW_LAP);
             changeButtonDirect(VIEW_LAP);
@@ -104,7 +102,6 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
                 buttonStop.setVisibility(View.INVISIBLE);
             }
         }
-
     }
 
     public void changeButtonDirect(int code) {

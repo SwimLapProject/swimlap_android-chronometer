@@ -14,17 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dim.swimlap.R;
-;
 
-public class FragmentNavRanking extends Fragment{
+public class FragmentNavRanking extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_nav_ranking, container, false);
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        return inflater.inflate(R.layout.fragment_nav_ranking, container, false);
     }
 }

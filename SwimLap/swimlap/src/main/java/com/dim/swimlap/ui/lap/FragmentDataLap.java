@@ -12,38 +12,29 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.objects.Singleton;
 import com.dim.swimlap.ui.CommunicationFragments;
 
 import java.util.ArrayList;
 
-public class FragmentDataLap extends Fragment implements AdapterView.OnItemClickListener {
+public class FragmentDataLap extends Fragment {
 
     private ListView listViewForLap;
     private TextView textViewNoMeetingInLap;
     private LapAdapter adapter;
     private Singleton singleton;
     private int raceIdOfThisFragment;
-    private LinearLayout layout;
     private CommunicationFragments comm;
 
     public FragmentDataLap(int raceId) {
         raceIdOfThisFragment = raceId;
         singleton = Singleton.getInstance();
-    }
-
-    public FragmentDataLap(int raceId, MeetingModel meetingModel) {
-        raceIdOfThisFragment = raceId;
-        singleton = Singleton.getInstance(meetingModel);
     }
 
     @Override
@@ -74,11 +65,6 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
         comm.changeVisiblilityOfProgressBar(false);
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(view.getContext(), "fragment", Toast.LENGTH_SHORT).show();
-
-    }
 
     public void addLapToModel(View view, float lapInMilli) {
         String[] tag = String.valueOf(view.getTag()).split("_");
@@ -87,13 +73,13 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
 
         int nbSplitRemaining = resultInSingleton.getnbSplitRemaining();
         if (nbSplitRemaining > 0) {
-            float lapDiff = resultInSingleton.checkLap(lapInMilli);
+            resultInSingleton.checkLap(lapInMilli);
             if (nbSplitRemaining == 1) {
                 resultInSingleton.setSwimTime(lapInMilli);
             }
             adapter.notifyDataSetChanged();
         } else {
-            Toast.makeText(view.getContext(), "All laps taken !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "All laps taken !", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -121,7 +107,7 @@ public class FragmentDataLap extends Fragment implements AdapterView.OnItemClick
         String[] tag = String.valueOf(view.getTag()).split("_");
         int resultId = Integer.valueOf(tag[1]);
         if (singleton.getResultOfTheDay(resultId).getnbSplitRemaining() > 0) {
-            Toast.makeText(view.getContext(), "Some laps are missing.\nSwimLap will delete others.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Some laps are missing.\nSwimLap will delete others.", Toast.LENGTH_SHORT).show();
             resetLaps(view);
         } else {
             singleton.getResultOfTheDay(resultId).recordLapsInDB(getActivity());

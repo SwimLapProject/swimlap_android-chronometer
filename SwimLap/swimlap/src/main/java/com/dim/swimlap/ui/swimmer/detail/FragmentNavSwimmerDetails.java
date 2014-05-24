@@ -17,9 +17,8 @@ import android.widget.Toast;
 
 import com.dim.swimlap.R;
 import com.dim.swimlap.models.SwimmerModel;
-import com.dim.swimlap.parser.FFNexMaker;
 
-public class FragmentNavSwimmerDetails  extends Fragment implements View.OnClickListener{
+public class FragmentNavSwimmerDetails extends Fragment implements View.OnClickListener {
 
     private Button buttonExportFFNexRecord;
     private SwimmerModel swimmer;
@@ -39,8 +38,6 @@ public class FragmentNavSwimmerDetails  extends Fragment implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(view.getContext(), "DO SOMETHING", Toast.LENGTH_SHORT).show();
-
-
+        Toast.makeText(getActivity(), "This function will come soon.", Toast.LENGTH_SHORT).show();
     }
 }

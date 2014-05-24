@@ -7,7 +7,7 @@
 
 package com.dim.swimlap.objects;
 
-public class FormatTimeAsString {
+public class TimeConverter {
 
     public String makeString(float timeInMilli) {
         int milliSec = (int) timeInMilli % 1000;

@@ -41,8 +41,4 @@ public class ClubModel {
     public int getCodeFFN() {
         return codeFFN;
     }
-
-    public void setCodeFFN(int codeFFN) {
-        this.codeFFN = codeFFN;
-    }
 }

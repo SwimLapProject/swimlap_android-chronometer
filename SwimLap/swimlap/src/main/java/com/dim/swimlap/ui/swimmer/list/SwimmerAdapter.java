@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.dim.swimlap.R;
@@ -61,7 +60,6 @@ public class SwimmerAdapter extends ArrayAdapter {
     }
 
     private static class ViewHolder {
-        public static Button buttonRanking;
         public static TextView tvSwimmerName, tvSwimmerFirstNAme, tvSwimmerYear;
     }
 }

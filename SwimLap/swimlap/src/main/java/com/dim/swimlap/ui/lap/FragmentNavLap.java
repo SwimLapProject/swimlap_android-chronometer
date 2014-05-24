@@ -19,29 +19,21 @@ import android.widget.LinearLayout;
 
 import com.dim.swimlap.R;
 import com.dim.swimlap.models.EventModel;
-import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.RaceModel;
 import com.dim.swimlap.objects.Singleton;
 import com.dim.swimlap.ui.CommunicationFragments;
 
 import java.util.ArrayList;
 
-;
-
 public class FragmentNavLap extends Fragment implements View.OnClickListener {
     private LinearLayout linearLayout;
     private Singleton singleton;
     private CommunicationFragments communication;
     private HorizontalScrollView scroll;
-    private static int BUTTON_WITH = 150, BUTTON_HEIGHT = 30;
     private int positionButtonSelected;
 
     public FragmentNavLap() {
         singleton = Singleton.getInstance();
-    }
-
-    public FragmentNavLap(MeetingModel meetingForSimple) {
-        singleton = Singleton.getInstance(meetingForSimple);
     }
 
     @Override
@@ -63,7 +55,7 @@ public class FragmentNavLap extends Fragment implements View.OnClickListener {
                 int idRace = race.getId();
 
                 final Button button = new Button(this.getActivity());
-                button.setWidth((int)getResources().getDimension(R.dimen.lap_button_race_width));
+                button.setWidth((int) getResources().getDimension(R.dimen.lap_button_race_width));
                 button.setHeight((int) getResources().getDimension(R.dimen.lap_button_race_heigh));
                 button.setTextSize(getResources().getDimension(R.dimen.lap_button_race_font));
                 button.setEllipsize(TextUtils.TruncateAt.MARQUEE);

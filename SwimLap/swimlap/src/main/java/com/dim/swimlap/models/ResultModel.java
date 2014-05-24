@@ -10,7 +10,7 @@ package com.dim.swimlap.models;
 import android.content.Context;
 
 import com.dim.swimlap.db.recorder.RecordLapsInDb;
-import com.dim.swimlap.objects.FormatTimeAsString;
+import com.dim.swimlap.objects.TimeConverter;
 
 import java.util.ArrayList;
 
@@ -44,13 +44,7 @@ public class ResultModel {
         // with this constructor elements must be added: swimmer or team, eventmodel , poolsize , qualifyingtime
     }
 
-    public void addSwimmersInTeam(SwimmerModel swimmerModel) {
-        if (team == null) {
-            team = new ArrayList<SwimmerModel>();
-            isRelay = true;
-        }
-        team.add(swimmerModel);
-    }
+
 
     public void buildContent(float qualifyingTime, int poolSize, int meetingId, EventModel eventModel) {
         this.eventModel = eventModel;
@@ -69,16 +63,17 @@ public class ResultModel {
             currentLapSwimming = numberOfLap;
         }
     }
+    /* COMPLEX */
 
     public ArrayList<String> giveBackLapsToInsertInTextViewAllLaps() {
-        FormatTimeAsString format = new FormatTimeAsString();
+        TimeConverter converter = new TimeConverter();
         ArrayList<String> allLapsAlreadyTaken = new ArrayList<String>();
 
         for (int lapIndex = 0; lapIndex < laps.size(); lapIndex++) {
             String lapStringToAdd = String.valueOf(poolSize * (lapIndex + 1)) + "m : ";
-            lapStringToAdd += format.makeString(giveSplit(laps.get(lapIndex), lapIndex));
+            lapStringToAdd += converter.makeString(giveSplit(laps.get(lapIndex), lapIndex));
             lapStringToAdd += "  -  ";
-            lapStringToAdd += format.makeString(laps.get(lapIndex));
+            lapStringToAdd += converter.makeString(laps.get(lapIndex));
             lapStringToAdd += "\n";
             allLapsAlreadyTaken.add(lapStringToAdd);
         }
@@ -86,12 +81,12 @@ public class ResultModel {
     }
 
     public String giveBackLastLap() {
-        FormatTimeAsString format = new FormatTimeAsString();
+        TimeConverter converter = new TimeConverter();
         int index = laps.size() - 1;
         if (index < 0) {
-            return format.makeString(0);
+            return converter.makeString(0);
         } else {
-            return format.makeString(laps.get(laps.size() - 1));
+            return converter.makeString(laps.get(laps.size() - 1));
         }
     }
 
@@ -119,14 +114,6 @@ public class ResultModel {
 
     public int getnbSplitRemaining() {
         return numberOfLap - currentLapSwimming;
-    }
-
-    public String getSplitName() {
-        String lapName = null;
-        if (currentLapSwimming <= numberOfLap) {
-            lapName = String.valueOf(poolSize * currentLapSwimming);
-        }
-        return lapName;
     }
 
     public void resetLaps() {
@@ -172,14 +159,6 @@ public class ResultModel {
 
     public ArrayList<Float> getLaps() {
         return laps;
-    }
-
-    public void setLaps(ArrayList<Float> laps) {
-        this.laps = laps;
-    }
-
-    public int getPoolSize() {
-        return poolSize;
     }
 
     public void setPoolSize(int poolSize) {
@@ -238,8 +217,11 @@ public class ResultModel {
     public int getNumberOfLap() {
         return numberOfLap;
     }
-
-    public void setLapsAreRecodedInDb(boolean lapsAreRecodedInDb) {
-        this.lapsAreRecodedInDb = lapsAreRecodedInDb;
+    public void addSwimmersInTeam(SwimmerModel swimmerModel) {
+        if (team == null) {
+            team = new ArrayList<SwimmerModel>();
+            isRelay = true;
+        }
+        team.add(swimmerModel);
     }
 }

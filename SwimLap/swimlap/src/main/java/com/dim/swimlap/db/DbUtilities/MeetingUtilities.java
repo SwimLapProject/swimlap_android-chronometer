@@ -14,10 +14,10 @@ import android.database.sqlite.SQLiteDatabase;
 import com.dim.swimlap.db.tables.DbTableMeetings;
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.SeasonModel;
+import com.dim.swimlap.objects.DateConverter;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class MeetingUtilities {
     private SQLiteDatabase sqLiteDatabaseSwimLap;
@@ -31,7 +31,7 @@ public class MeetingUtilities {
     /* GETTERS */
     public ArrayList<MeetingModel> getAllMeetings_FromDb() {
         ArrayList<MeetingModel> allMeetings = new ArrayList<MeetingModel>();
-        String orderBy = table.COL_MEE_START_DATE+" DESC";
+        String orderBy = table.COL_MEE_START_DATE + " DESC";
         Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, orderBy);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -57,7 +57,7 @@ public class MeetingUtilities {
     }
 
     public String getMeetingName_FromDb(int idMeeting) {
-        String  meetingName = "";
+        String meetingName = "";
         String condition = table.COL_MEE_ID + "=" + idMeeting;
         Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null, null);
         cursor.moveToFirst();
@@ -84,12 +84,14 @@ public class MeetingUtilities {
 
     public MeetingModel getMeetingWithDates(Date today) {
         MeetingModel meetingToday = null;
+        DateConverter converter = new DateConverter();
+
         Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             MeetingModel meeting = getDataMeeting_FromDb(cursor);
-            Date startDate = meeting.convertStringToDate(meeting.getStartDate());
-            Date stopDate = meeting.convertStringToDate(meeting.getStopDate());
+            Date startDate = converter.convertStringToDate(meeting.getStartDate());
+            Date stopDate = converter.convertStringToDate(meeting.getStopDate());
             if (today.after(startDate) && today.before(stopDate)) {
                 meetingToday = meeting;
             }
@@ -136,18 +138,16 @@ public class MeetingUtilities {
     }
 
     /* UPDATER */
-    public void updateMeeting_InDb(MeetingModel meetingModel) {
-        deleteMeeting_InDb(meetingModel.getId());
-        addMeeting_InDb(meetingModel);
-    }
+//    public void updateMeeting_InDb(MeetingModel meetingModel) {
+//        deleteMeeting_InDb(meetingModel.getId());
+//        addMeeting_InDb(meetingModel);
+//    }
 
     /* VERIFY ENTRY */
     public boolean meetingAlready_InDb(int meetingId) {
-        boolean isPresent;
+        boolean isPresent = true;
         if (getOneMeetingById_FromDb(meetingId) == null) {
             isPresent = false;
-        } else {
-            isPresent = true;
         }
         return isPresent;
     }

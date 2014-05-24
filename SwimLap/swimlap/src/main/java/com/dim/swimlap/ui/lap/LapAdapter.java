@@ -14,21 +14,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.dim.swimlap.R;
 import com.dim.swimlap.models.ResultModel;
-import com.dim.swimlap.objects.FormatTimeAsString;
 import com.dim.swimlap.objects.Singleton;
+import com.dim.swimlap.objects.TimeConverter;
 
 import java.util.ArrayList;
 
 public class LapAdapter extends ArrayAdapter {
     private final Context context;
     public final ArrayList<ResultModel> resultModelList;
-    private FormatTimeAsString formatTime;
+    private TimeConverter converter;
     private Singleton singleton;
     private ViewHolder viewHolder;
 
@@ -37,7 +36,7 @@ public class LapAdapter extends ArrayAdapter {
         super(context, R.layout.viewforlist_data_lap, resultModelList);
         this.context = context;
         this.resultModelList = resultModelList;
-        this.formatTime = new FormatTimeAsString();
+        this.converter = new TimeConverter();
         singleton = Singleton.getInstance();
     }
 
@@ -48,7 +47,6 @@ public class LapAdapter extends ArrayAdapter {
 
         int resultId = resultModelList.get(position).getId();
         int raceId = resultModelList.get(position).getEventModel().getRaceModel().getId();
-        int nbOfLap = resultModelList.get(position).getNumberOfLap();
 
         if (rowView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -87,7 +85,7 @@ public class LapAdapter extends ArrayAdapter {
         String firstName = resultModelList.get(position).getSwimmerModel().getFirstname();
         String yearOfBirth = resultModelList.get(position).getSwimmerModel().getDateOfBirth().substring(0, 4);
         float qualifyingTime = resultModelList.get(position).getQualifyingTime();
-        String qualifTimeAsString = formatTime.makeString(qualifyingTime);
+        String qualifTimeAsString = converter.makeString(qualifyingTime);
 
         viewHolder.textViewSwimmerDetails.setText(name + "  " + firstName + "  " + yearOfBirth);
         viewHolder.textViewQualifiedTime.setText("Qualif: " + qualifTimeAsString);

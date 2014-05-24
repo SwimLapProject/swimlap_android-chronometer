@@ -5,7 +5,7 @@
  * CCI 74 & IUT Annecy Departement informatique
  */
 
-package com.dim.swimlap.db.recorder;
+package com.dim.swimlap.db.getter;
 
 import android.content.Context;
 
@@ -14,26 +14,31 @@ import com.dim.swimlap.models.ClubModel;
 
 import java.sql.SQLException;
 
-public class RecordSettings {
+public class GetClubForSettings {
 
     private Context context;
 
-    public RecordSettings(Context context) {
+    public GetClubForSettings(Context context) {
         this.context = context;
     }
 
-    public void recordClub(ClubModel clubModel) {
+    public ClubModel getClubRecordedInDb() {
         DbUtilitiesBuilder db = new DbUtilitiesBuilder(context);
+        ClubModel club = null;
         try {
             db.open();
-            // only one club in application:
-            // no need to update because the club in db is deleted before adding new one
-            db.getClubUtilities().addClub_InDb(clubModel);
+            club = db.getClubUtilities().getClub_FromDb();
 
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             db.close();
         }
+        if (club == null) {
+            // give an empty club if no club recorded in db
+            club = new ClubModel(0, 888888888);
+            club.setName("Club Name");
+        }
+        return club;
     }
 }

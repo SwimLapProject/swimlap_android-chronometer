@@ -44,37 +44,7 @@ public class RaceModel {
         return distance;
     }
 
-    public void setDistance(int distance) {
-        this.distance = distance;
-    }
-
-    public String getStyle() {
-        return style;
-    }
-
-    public void setStyle(String style) {
-        this.style = style;
-    }
-
-    public boolean isRelay() {
-        return is_relay;
-    }
-
-    public void setIsRelay(boolean is_relay) {
-        this.is_relay = is_relay;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public String getCompleteName(){
         return String.valueOf(distance)+" "+style+" "+gender;
     }
-
-
 }

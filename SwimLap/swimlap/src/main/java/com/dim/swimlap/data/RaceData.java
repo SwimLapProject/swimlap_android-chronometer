@@ -51,13 +51,13 @@ public class RaceData {
         return raceIdExists;
     }
 
-    public boolean isRelay(int raceId) {
-        boolean isRelay = false;
-        if (nbRelayers.containsKey(raceId)) {
-            isRelay = true;
-        }
-        return isRelay;
-    }
+//    public boolean isRelay(int raceId) {
+//        boolean isRelay = false;
+//        if (nbRelayers.containsKey(raceId)) {
+//            isRelay = true;
+//        }
+//        return isRelay;
+//    }
 
     public void makeData() {
 

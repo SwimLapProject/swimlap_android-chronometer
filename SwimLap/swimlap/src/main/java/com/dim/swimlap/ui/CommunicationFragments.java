@@ -11,10 +11,7 @@ package com.dim.swimlap.ui;
 import android.view.View;
 
 import com.dim.swimlap.models.MeetingModel;
-import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.models.SwimmerModel;
-
-import java.util.ArrayList;
 
 public interface CommunicationFragments {
 
@@ -29,10 +26,6 @@ public interface CommunicationFragments {
     public void resetLap(View view);
 
     public void recordLap(View view);
-
-//    public void saveLapList(ArrayList<ResultModel> list);
-//
-//    public ArrayList<ResultModel> giveBackLapList();
 
     public void replaceFragmentDataLap(int raceId);
 

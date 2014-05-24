@@ -13,12 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.dim.swimlap.R;
 
-;
-
-public class FragmentNavSwimmer extends Fragment {
+public class FragmentNavSwimmer extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_nav_model, container, false);
@@ -26,11 +25,17 @@ public class FragmentNavSwimmer extends Fragment {
         Button buttonAddSwimmer = (Button) view.findViewById(R.id.id_button_nav_model);
         buttonAddSwimmer.setTag("add_swimmer");
         buttonAddSwimmer.setText("Add Swimmer");
+        buttonAddSwimmer.setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onClick(View view) {
+        Toast.makeText(getActivity(), "This function will come soon.", Toast.LENGTH_SHORT).show();
     }
 }

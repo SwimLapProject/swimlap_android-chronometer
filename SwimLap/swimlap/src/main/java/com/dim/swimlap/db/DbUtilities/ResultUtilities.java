@@ -28,7 +28,6 @@ public class ResultUtilities {
         this.table = dbTableResults;
     }
 
-
     /* GETTERS */
     public ArrayList<ResultModel> getAllResultsByTimeOrderByMeeting_FromDb(int idMeeting) {
         ArrayList<ResultModel> allResults = new ArrayList<ResultModel>();
@@ -45,20 +44,20 @@ public class ResultUtilities {
         return allResults;
     }
 
-    public ArrayList<ResultModel> getAllResultsBySwimmerOrderByMeeting_FromDb(int idMeeting) {
-        ArrayList<ResultModel> allResults = new ArrayList<ResultModel>();
-        String condition = table.COL_MEE_ID_MEET + "=" + idMeeting;
-        String orderBy = table.COL_SWI_0_ID_FFN;
-        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, orderBy);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            ResultModel resultModel = getDataResult_FromDb(cursor);
-            allResults.add(resultModel);
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return allResults;
-    }
+//    public ArrayList<ResultModel> getAllResultsBySwimmerOrderByMeeting_FromDb(int idMeeting) {
+//        ArrayList<ResultModel> allResults = new ArrayList<ResultModel>();
+//        String condition = table.COL_MEE_ID_MEET + "=" + idMeeting;
+//        String orderBy = table.COL_SWI_0_ID_FFN;
+//        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, orderBy);
+//        cursor.moveToFirst();
+//        while (!cursor.isAfterLast()) {
+//            ResultModel resultModel = getDataResult_FromDb(cursor);
+//            allResults.add(resultModel);
+//            cursor.moveToNext();
+//        }
+//        cursor.close();
+//        return allResults;
+//    }
 
     public ArrayList<ResultModel> getAllResultsBySwimmer_FromDb(int idFFNSwimmer) {
         ArrayList<ResultModel> allResults = new ArrayList<ResultModel>();
@@ -75,32 +74,32 @@ public class ResultUtilities {
         return allResults;
     }
 
-    public ArrayList<ResultModel> getAllResultsByRace_FromDb(int idRace) {
-        ArrayList<ResultModel> allResults = new ArrayList<ResultModel>();
-        String condition = table.COL_RES_ID_RACE + "=" + idRace;
-        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            ResultModel resultModel = getDataResult_FromDb(cursor);
-            allResults.add(resultModel);
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return allResults;
-    }
+//    public ArrayList<ResultModel> getAllResultsByRace_FromDb(int idRace) {
+//        ArrayList<ResultModel> allResults = new ArrayList<ResultModel>();
+//        String condition = table.COL_RES_ID_RACE + "=" + idRace;
+//        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
+//        cursor.moveToFirst();
+//        while (!cursor.isAfterLast()) {
+//            ResultModel resultModel = getDataResult_FromDb(cursor);
+//            allResults.add(resultModel);
+//            cursor.moveToNext();
+//        }
+//        cursor.close();
+//        return allResults;
+//    }
 
-    public ResultModel getResultById_Fromdb(int resultId) {
-        ResultModel resultToReturn = null;
-        String condition = table.COL_RES_ID + "=" + resultId;
-        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            resultToReturn = getDataResult_FromDb(cursor);
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return resultToReturn;
-    }
+//    public ResultModel getResultById_Fromdb(int resultId) {
+//        ResultModel resultToReturn = null;
+//        String condition = table.COL_RES_ID + "=" + resultId;
+//        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
+//        cursor.moveToFirst();
+//        while (!cursor.isAfterLast()) {
+//            resultToReturn = getDataResult_FromDb(cursor);
+//            cursor.moveToNext();
+//        }
+//        cursor.close();
+//        return resultToReturn;
+//    }
 
     /* GET CONTENT */
     private ResultModel getDataResult_FromDb(Cursor cursor) {
@@ -155,7 +154,6 @@ public class ResultUtilities {
 
         /** LAPS **/
         ArrayList<Float> laps = resultModel.getLaps();
-        int i = laps.size();
         for (int indexLap = 0; indexLap < laps.size(); indexLap++) {
             contentValues.put(table.LAPS_COLUMNS_AS_STRING_TAB[indexLap], resultModel.getLaps().get(indexLap));
         }
@@ -172,13 +170,13 @@ public class ResultUtilities {
         db.delete(table.TABLE_NAME, condition, null);
     }
 
-    public void deleteResultDependOnAttributes_InDb(int idSwimmer0, int idMeeting, int idEvent, int idRace) {
-        String condition = table.COL_SWI_0_ID_FFN + " = " + idSwimmer0
-                + " AND " + table.COL_MEE_ID_MEET + " = " + idMeeting
-                + " AND " + table.COL_EVE_ID_EVENT + " = " + idEvent
-                + " AND " + table.COL_RES_ID_RACE + " = " + idRace;
-        db.delete(table.TABLE_NAME, condition, null);
-    }
+//    public void deleteResultDependOnAttributes_InDb(int idSwimmer0, int idMeeting, int idEvent, int idRace) {
+//        String condition = table.COL_SWI_0_ID_FFN + " = " + idSwimmer0
+//                + " AND " + table.COL_MEE_ID_MEET + " = " + idMeeting
+//                + " AND " + table.COL_EVE_ID_EVENT + " = " + idEvent
+//                + " AND " + table.COL_RES_ID_RACE + " = " + idRace;
+//        db.delete(table.TABLE_NAME, condition, null);
+//    }
 
     /* UPDATER */
     public void updateResultForTime_InDb(ResultModel resultModel) {
@@ -187,15 +185,15 @@ public class ResultUtilities {
     }
 
     /* VERIFY ENTRY */
-    public boolean tableIsEmpty() {
-        boolean isEmpty;
-        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
-
-        if (cursor.getCount() == 0) {
-            isEmpty = true;
-        } else {
-            isEmpty = false;
-        }
-        return isEmpty;
-    }
+//    public boolean tableIsEmpty() {
+//        boolean isEmpty;
+//        Cursor cursor = db.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+//
+//        if (cursor.getCount() == 0) {
+//            isEmpty = true;
+//        } else {
+//            isEmpty = false;
+//        }
+//        return isEmpty;
+//    }
 }

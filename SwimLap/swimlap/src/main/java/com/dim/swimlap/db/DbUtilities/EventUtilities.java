@@ -16,9 +16,6 @@ import com.dim.swimlap.models.EventModel;
 import com.dim.swimlap.models.RaceModel;
 import com.dim.swimlap.models.RoundModel;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class EventUtilities {
     private SQLiteDatabase sqLiteDatabaseSwimLap;
     private DbTableEvents table;
@@ -42,19 +39,19 @@ public class EventUtilities {
         return eventModel;
     }
 
-    public List<EventModel> getAllEventsInMeeting_FromDb(int idMeeting) {
-        List<EventModel> allEventsInMeeting = new ArrayList<EventModel>();
-        String condition = table.COL_MEE_ID_MEET + "=" + idMeeting;
-        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            EventModel event = getDataEvent_FromDb(cursor);
-            allEventsInMeeting.add(event);
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return allEventsInMeeting;
-    }
+//    public List<EventModel> getAllEventsInMeeting_FromDb(int idMeeting) {
+//        List<EventModel> allEventsInMeeting = new ArrayList<EventModel>();
+//        String condition = table.COL_MEE_ID_MEET + "=" + idMeeting;
+//        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, condition, null, null, null, null);
+//        cursor.moveToFirst();
+//        while (!cursor.isAfterLast()) {
+//            EventModel event = getDataEvent_FromDb(cursor);
+//            allEventsInMeeting.add(event);
+//            cursor.moveToNext();
+//        }
+//        cursor.close();
+//        return allEventsInMeeting;
+//    }
 
 
     /* GET CONTENT */
@@ -80,35 +77,33 @@ public class EventUtilities {
     }
 
     /* DELETER */
-    public void deleteEvent_InDb(int idEvent) {
-        sqLiteDatabaseSwimLap.delete(table.TABLE_NAME, table.COL_EVE_ID + " = " + idEvent, null);
-    }
+//    public void deleteEvent_InDb(int idEvent) {
+//        sqLiteDatabaseSwimLap.delete(table.TABLE_NAME, table.COL_EVE_ID + " = " + idEvent, null);
+//    }
 
     /* UPDATER */
-    public void updateEvent_FromDb(EventModel eventModel, int idMeeting) {
-        deleteEvent_InDb(eventModel.getId());
-        addEvent_InDb(eventModel, idMeeting);
-    }
+//    public void updateEvent_FromDb(EventModel eventModel, int idMeeting) {
+//        deleteEvent_InDb(eventModel.getId());
+//        addEvent_InDb(eventModel, idMeeting);
+//    }
 
     /* VERIFY ENTRY */
     public boolean eventAlready_InDb(int idEvent, int idMeeting) {
-        boolean isPresent;
+        boolean isPresent = true;
         if (getEventModel_FromDb(idEvent, idMeeting) == null) {
             isPresent = false;
-        } else {
-            isPresent = true;
         }
         return isPresent;
     }
-    public boolean tableIsEmpty(){
-        boolean isEmpty;
-        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
-
-        if (cursor.getCount() == 0) {
-            isEmpty = true;
-        } else {
-            isEmpty = false;
-        }
-        return isEmpty;
-    }
+//    public boolean tableIsEmpty(){
+//        boolean isEmpty;
+//        Cursor cursor = sqLiteDatabaseSwimLap.query(table.TABLE_NAME, table.ALL_COLUMNS_AS_STRING_TAB, null, null, null, null, null);
+//
+//        if (cursor.getCount() == 0) {
+//            isEmpty = true;
+//        } else {
+//            isEmpty = false;
+//        }
+//        return isEmpty;
+//    }
 }

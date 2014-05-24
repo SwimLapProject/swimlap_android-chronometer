@@ -16,13 +16,14 @@ import java.sql.SQLException;
 
 public class RecordLapsInDb {
 
-    private DbUtilitiesBuilder db;
+    private Context context;
 
     public RecordLapsInDb(Context context) {
-        db = new DbUtilitiesBuilder(context);
+        this.context = context;
     }
 
     public void recordLaps(ResultModel resultModel) {
+        DbUtilitiesBuilder db = new DbUtilitiesBuilder(context);
         try {
             db.open();
             db.getResultUtilities().updateResultForTime_InDb(resultModel);

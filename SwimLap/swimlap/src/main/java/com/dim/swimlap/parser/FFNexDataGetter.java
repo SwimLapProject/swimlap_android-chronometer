@@ -46,8 +46,7 @@ public class FFNexDataGetter {
     }
 
     public File getFFNexFile(String name) {
-        File ffnex = new File(ffnexDir, name);
-        return ffnex;
+        return new File(ffnexDir, name);
     }
 
     public String transformFileToString(File fileXML) throws IOException {
@@ -55,22 +54,18 @@ public class FFNexDataGetter {
         byte[] buffer = new byte[(int) fileXML.length()];
         new DataInputStream(fis).readFully(buffer);
         fis.close();
-        String stringFFNex = new String(buffer, "UTF-8");
-        return stringFFNex;
-
+        return  new String(buffer, "UTF-8");
     }
 
     public MeetingModel getResultOfParsing(String stringXML,Context context) throws IOException, XmlPullParserException {
         FFNexParser parser = new FFNexParser(context);
         parser.parseIt(stringXML);
-        MeetingModel meetingModel = parser.getBackMeetingModel();
-        return meetingModel;
+        return parser.getBackMeetingModel();
     }
 
     public boolean recordParsedMeetingInDb(MeetingModel meetingModel, Context context) {
         RecordParsingInDb recorder = new RecordParsingInDb(context);
-        boolean isRecorded = recorder.recordMeetingFromFFNex(meetingModel);
-        return isRecorded;
+        return recorder.recordMeetingFromFFNex(meetingModel);
     }
 
     public boolean recordParsingHasBeenDone(int idMeetting, Context context) {
@@ -114,7 +109,6 @@ public class FFNexDataGetter {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
     }
 }

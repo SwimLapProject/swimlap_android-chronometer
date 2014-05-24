@@ -17,11 +17,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dim.swimlap.R;
-import com.dim.swimlap.db.getter.GetMeetingDetailsForList;
+import com.dim.swimlap.db.getter.GetMeetingsForLists;
 import com.dim.swimlap.models.MeetingModel;
 import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.models.SwimmerModel;
-import com.dim.swimlap.objects.FormatTimeAsString;
+import com.dim.swimlap.objects.TimeConverter;
 import com.dim.swimlap.ui.CommunicationFragments;
 
 import java.util.ArrayList;
@@ -130,7 +130,7 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
                     isSwimmerDevelopped.put(idView, false);
                 } else {
                     addRacesToSwimmer(meetingPosition, swimmerId);
-                    isSwimmerDevelopped.remove(view);
+                    isSwimmerDevelopped.remove(idView);
                     isSwimmerDevelopped.put(idView, true);
                 }
             } else {
@@ -151,7 +151,7 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
                     isSwimmerDevelopped.put(idView, false);
                 } else {
                     addLapsToRace(meetingPosition, swimmerId, resultPosition);
-                    isSwimmerDevelopped.remove(view);
+                    isSwimmerDevelopped.remove(idView);
                     isSwimmerDevelopped.put(idView, true);
                 }
             } else {
@@ -170,13 +170,13 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
 
 
     private void getMeetings() {
-        GetMeetingDetailsForList getter = new GetMeetingDetailsForList(getActivity());
-        meetingModels = getter.getAllMeetings();
+        GetMeetingsForLists getter = new GetMeetingsForLists(getActivity());
+        meetingModels = getter.getAllMeetingsFilled();
     }
 
 
     private void addSwimmersToMeeting(int meetingPosition) {
-        ArrayList<SwimmerModel> swimmersInMeeting = meetingModels.get(meetingPosition).getAllSwimmersInMeetting();
+        ArrayList<SwimmerModel> swimmersInMeeting = meetingModels.get(meetingPosition).getAllSortedSwimmersInMeetting();
 
         LayoutInflater factory = LayoutInflater.from(getActivity());
         LinearLayout meetingLayout = (LinearLayout) meetingViews.get(meetingPosition).findViewById(R.id.id_ranking_layout_meeting_tofill_with_swimmer);
@@ -225,7 +225,7 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
 
 
     private void addRacesToSwimmer(int meetingPosition, int swimmerId) {
-        ArrayList<ResultModel> resultsForSwimmer = meetingModels.get(meetingPosition).getResultsForSwimmer(swimmerId);
+        ArrayList<ResultModel> resultsForSwimmer = meetingModels.get(meetingPosition).getSortedResultsForSwimmer(swimmerId);
         LayoutInflater factory = LayoutInflater.from(getActivity());
         LinearLayout swimmerLayoutToFill = (LinearLayout) meetingViews.get(meetingPosition)
                 .findViewWithTag("VIEW_swimmer_" + meetingPosition + "_" + swimmerId)
@@ -256,9 +256,9 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
                 raceText.setFocusable(true);
 
 
-                FormatTimeAsString formater = new FormatTimeAsString();
+                TimeConverter converter = new TimeConverter();
                 TextView swimtimeText = (TextView) raceView.findViewById(R.id.id_ranking_textview_swimtime);
-                swimtimeText.setText(formater.makeForFFNex(result.getSwimTime()));
+                swimtimeText.setText(converter.makeForFFNex(result.getSwimTime()));
             }
         }
 
@@ -272,7 +272,7 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
     }
 
     private void addLapsToRace(int meetingPosition, int swimmerId, int resultPosition) {
-        ArrayList<String> allLapsAsString = meetingModels.get(meetingPosition).getResultsForSwimmer(swimmerId).get(resultPosition).giveBackLapsToInsertInTextViewAllLaps();
+        ArrayList<String> allLapsAsString = meetingModels.get(meetingPosition).getSortedResultsForSwimmer(swimmerId).get(resultPosition).giveBackLapsToInsertInTextViewAllLaps();
         LayoutInflater factory = LayoutInflater.from(getActivity());
         LinearLayout raceLayoutToFill = (LinearLayout) meetingViews.get(meetingPosition)
                 .findViewWithTag("VIEW_race_" + meetingPosition + "_" + swimmerId + "_" + resultPosition)

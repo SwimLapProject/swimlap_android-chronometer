@@ -55,7 +55,7 @@ public class FragmentDataMeetingDetails extends Fragment {
         tvStartdate.setText("FROM: " + meeting.getStartDate());
         tvStopdate.setText("TO: " + meeting.getStopDate());
 
-        ArrayList<SwimmerModel> swimmers = meeting.getAllSwimmersInMeetting();
+        ArrayList<SwimmerModel> swimmers = meeting.getAllSortedSwimmersInMeetting();
         HashMap<Integer, String> racesBySwimmer = meeting.getRacesBySwimmers();
 
         swimmersListView = (ListView) view.findViewById(R.id.id_listview_meeting_details_swimmers);
