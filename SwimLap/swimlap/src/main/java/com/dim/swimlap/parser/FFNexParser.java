@@ -143,6 +143,7 @@ public class FFNexParser {
 
                         EventModel eventModel = new EventModel(Integer.valueOf(xpp.getAttributeValue(null, "id")));
                         eventModel.setRaceModel(new RaceModel(Integer.valueOf(xpp.getAttributeValue(null, "raceid"))));
+
                         eventModel.setRoundModel(new RoundModel(Integer.valueOf(xpp.getAttributeValue(null, "roundid"))));
                         eventModel.setOrder(Integer.valueOf(xpp.getAttributeValue(null, "order")));
                         events.add(eventModel);
@@ -161,7 +162,7 @@ public class FFNexParser {
                         float minutes = Float.valueOf(splitedTime[0]);
                         float cents = Float.valueOf(splitedTime[1]);
 
-                        qualifyingTimeInResult = minutes*60000+cents*10;
+                        qualifyingTimeInResult = minutes * 60000 + cents * 10;
                     }
                 } else if (xpp.getName().equals("SOLO")) {
 //                    System.out.println("$$$ Start tag " + xpp.getName());
@@ -186,16 +187,16 @@ public class FFNexParser {
                             result.setSwimmerModel(swimmerToReplaceNotFound);
                         }
                         /** EVENT **/
-                        boolean eventFound = false;
+                        boolean eventIsFound = false;
                         EventModel eventToUseInResult = null;
                         for (int indexEv = 0; indexEv < events.size(); indexEv++) {
                             if (raceIdInResult == events.get(indexEv).getRaceModel().getId() &&
                                     roundIdInResult == events.get(indexEv).getRoundModel().getId()) {
                                 eventToUseInResult = events.get(indexEv);
-                                eventFound = true;
+                                eventIsFound = true;
                             }
                         }
-                        if (!eventFound) {
+                        if (!eventIsFound) {
                             eventToUseInResult = new EventModel(raceIdInResult, roundIdInResult);
                             events.add(eventToUseInResult);
                         }

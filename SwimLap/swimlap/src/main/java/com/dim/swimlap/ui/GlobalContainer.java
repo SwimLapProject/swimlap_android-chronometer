@@ -180,9 +180,9 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             alert.show();
         } else if (currentView != VIEW_LAP) {
             changeVisiblilityOfProgressBar(true);
-            fragmentTitle.setTitle(titles.get(historyOfViews.get(currentView-1)));
+            fragmentTitle.setTitle(titles.get(historyOfViews.get(indexOfCurrentView-1)));
             if (singleton.isThereMeetingToday()) {
-                fragmentDirect.changeButtonDirect(historyOfViews.get(currentView-1));
+                fragmentDirect.changeButtonDirect(historyOfViews.get(indexOfCurrentView-1));
             }
             historyOfViews.remove(indexOfCurrentView);
             super.onBackPressed();
@@ -201,7 +201,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction newTransaction = manager.beginTransaction();
-            fragmentTitle.setTitle(titles.get(code));
             if (code == VIEW_MENU) {
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavMenu);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataMenu);
@@ -246,6 +245,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
             fragmentDirect.changeButtonStartStop();
             if (thereIsMeetingToday) {
+                fragmentTitle.setTitle(titles.get(code));
                 historyOfViews.add(code);
             }
             fragmentDirect.changeButtonDirect(code);
@@ -362,6 +362,9 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     public void changeVisiblilityOfProgressBar(boolean mustBeVisible) {
         if (mustBeVisible) {
             progressBar.setVisibility(View.VISIBLE);
+            progressBar.setIndeterminate(true);
+            progressBar.animate();
+            progressBar.bringToFront();
         } else {
             progressBar.setVisibility(View.INVISIBLE);
         }
@@ -402,5 +405,11 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             }
         }
     }
+    @Override
+    public void verifyMeetingOfTheDayAfterParsing(){
+        singleton.buildMeetingOfTheDay(getApplicationContext());
+        buildFragmentsForLapData();
+    }
+
 }
 

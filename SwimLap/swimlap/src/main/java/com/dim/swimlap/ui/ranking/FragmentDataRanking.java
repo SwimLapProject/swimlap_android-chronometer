@@ -177,6 +177,7 @@ public class FragmentDataRanking extends Fragment implements View.OnClickListene
 
     private void addSwimmersToMeeting(int meetingPosition) {
         ArrayList<SwimmerModel> swimmersInMeeting = meetingModels.get(meetingPosition).getAllSwimmersInMeetting();
+
         LayoutInflater factory = LayoutInflater.from(getActivity());
         LinearLayout meetingLayout = (LinearLayout) meetingViews.get(meetingPosition).findViewById(R.id.id_ranking_layout_meeting_tofill_with_swimmer);
         meetingLayout.removeAllViews();

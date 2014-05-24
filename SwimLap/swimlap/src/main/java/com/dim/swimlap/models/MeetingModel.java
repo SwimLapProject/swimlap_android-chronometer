@@ -186,7 +186,27 @@ public class MeetingModel {
                 swimmers.add(allResults.get(indexResult).getSwimmerModel());
             }
         }
-        return swimmers;
+
+        return sortSwimmers(swimmers);
+    }
+
+    private ArrayList<SwimmerModel> sortSwimmers(ArrayList<SwimmerModel> swimmersUnSort) {
+        ArrayList<SwimmerModel> swimmersSort = new ArrayList<SwimmerModel>();
+        while (swimmersUnSort.size() > 1) {
+            int indexToMove = 0;
+            for (int i = 1; i < swimmersUnSort.size(); i++) {
+                if (swimmersUnSort.get(indexToMove).getName().compareTo(swimmersUnSort.get(i).getName()) > 0) {
+                    indexToMove = i;
+                }
+            }
+            swimmersSort.add(swimmersUnSort.get(indexToMove));
+            swimmersUnSort.remove(indexToMove);
+        }
+        if (swimmersUnSort.size() == 1) {
+            swimmersSort.add(swimmersUnSort.get(0));
+            swimmersUnSort.remove(0);
+        }
+        return swimmersSort;
     }
 
     public HashMap<Integer, String> getRacesBySwimmers() {
@@ -200,6 +220,24 @@ public class MeetingModel {
                 resultsForSwimmer.add(allResults.get(indexResult));
             }
         }
-        return resultsForSwimmer;
+        return sortResultsByRaceId(resultsForSwimmer);
+    }
+    private ArrayList<ResultModel> sortResultsByRaceId(ArrayList<ResultModel> resultsUnSort){
+        ArrayList<ResultModel> resultsSort = new ArrayList<ResultModel>();
+        while (resultsUnSort.size() > 1) {
+            int indexToMove = 0;
+            for (int i = 1; i < resultsUnSort.size(); i++) {
+                if (resultsUnSort.get(indexToMove).getEventModel().getRaceModel().getId()>resultsUnSort.get(i).getEventModel().getRaceModel().getId()) {
+                    indexToMove = i;
+                }
+            }
+            resultsSort.add(resultsUnSort.get(indexToMove));
+            resultsUnSort.remove(indexToMove);
+        }
+        if (resultsUnSort.size() == 1) {
+            resultsSort.add(resultsUnSort.get(0));
+            resultsUnSort.remove(0);
+        }
+        return resultsSort;
     }
 }

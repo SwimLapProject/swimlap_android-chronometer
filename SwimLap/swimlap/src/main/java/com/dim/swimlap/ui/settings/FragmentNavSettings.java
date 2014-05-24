@@ -32,7 +32,7 @@ public class FragmentNavSettings extends Fragment implements View.OnClickListene
     private Button buttonScan;
     private String fileNameToParse;
     private MeetingModel meetingModel;
-    private CommunicationFragments communication;
+    private CommunicationFragments comm;
     private static int
             VIEW_MENU = 0,
             VIEW_LAP = 1,
@@ -48,19 +48,19 @@ public class FragmentNavSettings extends Fragment implements View.OnClickListene
         View view = inflater.inflate(R.layout.fragment_nav_settings, container, false);
         buttonScan = (Button) view.findViewById(R.id.id_button_scan_ffnex);
         buttonScan.setOnClickListener(this);
-        communication = (CommunicationFragments) this.getActivity();
+        comm = (CommunicationFragments) this.getActivity();
         return view;
     }
 
     @Override
     public void onClick(View view) {
+        comm.changeVisiblilityOfProgressBar(true);
+
         if (view.getId() == R.id.id_button_scan_ffnex) {
             Button btn = (Button) view;
             btn.setTextColor(getResources().getColor(R.color.bluesea));
-
-            Toast.makeText(getActivity(), "Start parsing", Toast.LENGTH_SHORT).show();
             doParsing();
-            communication.changeFragment(VIEW_MEETING);
+            comm.changeFragment(VIEW_MEETING);
         }
     }
 
@@ -79,8 +79,6 @@ public class FragmentNavSettings extends Fragment implements View.OnClickListene
                 for (int indexFile = 0; indexFile < files.length; indexFile++) {
                     fileNameToParse = files[indexFile];
 
-                    Toast.makeText(getActivity(), "Find " + fileNameToParse, Toast.LENGTH_SHORT).show();
-
                     File fileToParse = ffnexGetter.getFFNexFile(fileNameToParse);
                     String stringXMLToParse = ffnexGetter.transformFileToString(fileToParse);
                     meetingModel = ffnexGetter.getResultOfParsing(stringXMLToParse, getActivity());
@@ -90,19 +88,23 @@ public class FragmentNavSettings extends Fragment implements View.OnClickListene
                     boolean hasBeenFoundInDb = ffnexGetter.recordParsingHasBeenDone(meetingModel.getId(), getActivity());
 
                     if (hasBeenRecorded && hasBeenFoundInDb) {
-                        ffnexGetter.moveFFNexParsed(fileNameToParse);
+                        comm.verifyMeetingOfTheDayAfterParsing();
                         Toast.makeText(getActivity(), "MEETING !\n" + meetingModel.getName() + "\nHAS BEEN RECORDED IN PHONE", Toast.LENGTH_SHORT).show();
                     } else if (!hasBeenRecorded && hasBeenFoundInDb) {
                         Toast.makeText(getActivity(), "MEETING !\n" + meetingModel.getName() + "\nALREADY EXISTS", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getActivity(), "A PROBLEM OCCURS DURING PARSING", Toast.LENGTH_SHORT).show();
                     }
+                    ffnexGetter.moveFFNexParsed(fileNameToParse);
                 }
             }
         } catch (IOException e) {
             Toast.makeText(getActivity(), "A problem occured: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         } catch (XmlPullParserException e) {
             e.printStackTrace();
+        } finally {
+            comm.changeVisiblilityOfProgressBar(false);
+
         }
     }
 }

@@ -7,16 +7,13 @@
 
 package com.dim.swimlap.data;
 
-
-import com.dim.swimlap.models.RaceModel;
-
 import java.util.HashMap;
 
 public class RaceData {
     private HashMap<Integer, String> styles;
     private HashMap<Integer, Integer> distances;
     private HashMap<Integer, String> genders;
-    private HashMap<Integer,Integer> nbRelayers;
+    private HashMap<Integer, Integer> nbRelayers;
 
     public RaceData() {
         styles = new HashMap<Integer, String>();
@@ -38,25 +35,25 @@ public class RaceData {
         return genders.get(raceId);
     }
 
-    public int giveNbRelayer(int raceId){
-        int nbToReturn=1;
-        if(nbRelayers.containsKey(raceId)){
+    public int giveNbRelayer(int raceId) {
+        int nbToReturn = 1;
+        if (nbRelayers.containsKey(raceId)) {
             nbToReturn = nbRelayers.get(raceId);
         }
         return nbToReturn;
     }
 
-    public boolean raceIdExists(int raceId){
-        boolean raceIdExists=false;
-        if(distances.containsKey(raceId)){
+    public boolean raceIdExists(int raceId) {
+        boolean raceIdExists = false;
+        if (distances.containsKey(raceId)) {
             raceIdExists = true;
         }
         return raceIdExists;
     }
 
-    public boolean isRelay(int raceId){
-        boolean isRelay=false;
-        if(nbRelayers.containsKey(raceId)){
+    public boolean isRelay(int raceId) {
+        boolean isRelay = false;
+        if (nbRelayers.containsKey(raceId)) {
             isRelay = true;
         }
         return isRelay;
@@ -345,7 +342,7 @@ public class RaceData {
         genders.put(41, "F");
 
         distances.put(91, 200);
-        styles.put(91, "IM");  
+        styles.put(91, "IM");
         genders.put(91, "M");
 
         distances.put(241, 200);
@@ -367,199 +364,198 @@ public class RaceData {
 
         distances.put(8, 100);
         styles.put(8, "4x25_FRE");
-        nbRelayers.put(8,4);
+        nbRelayers.put(8, 4);
         genders.put(8, "F");
 
         distances.put(58, 100);
         styles.put(58, "4x25_FRE");
-        nbRelayers.put(58,4);
+        nbRelayers.put(58, 4);
         genders.put(58, "M");
 
         distances.put(86, 100);
         styles.put(86, "4x25_FRE");
-        nbRelayers.put(86,4);
+        nbRelayers.put(86, 4);
         genders.put(86, "MIXED");
 
         distances.put(47, 100);
         styles.put(47, "4x50_FRE");
-        nbRelayers.put(47,4);
+        nbRelayers.put(47, 4);
         genders.put(47, "F");
 
         distances.put(97, 200);
         styles.put(97, "4x50_FRE");
-        nbRelayers.put(97,4);
+        nbRelayers.put(97, 4);
         genders.put(97, "M");
 
         distances.put(87, 200);
         styles.put(87, "4x50_FRE");
-        nbRelayers.put(87,4);
+        nbRelayers.put(87, 4);
         genders.put(87, "MIXED");
 
         distances.put(43, 400);
         styles.put(43, "4x100_FRE");
-        nbRelayers.put(43,4);
+        nbRelayers.put(43, 4);
         genders.put(43, "F");
 
         distances.put(93, 400);
         styles.put(93, "4x100_FRE");
-        nbRelayers.put(93,4);
+        nbRelayers.put(93, 4);
         genders.put(93, "M");
 
         distances.put(88, 400);
         styles.put(88, "4x100_FRE");
-        nbRelayers.put(88,4);
+        nbRelayers.put(88, 4);
         genders.put(88, "MIXED");
-
 
 
         distances.put(44, 800);
         styles.put(44, "4x200_FRE");
-        nbRelayers.put(44,4);
+        nbRelayers.put(44, 4);
         genders.put(44, "F");
 
         distances.put(94, 800);
         styles.put(94, "4x200_FREE");
-        nbRelayers.put(94,4);
+        nbRelayers.put(94, 4);
         genders.put(94, "M");
 
         distances.put(34, 800);
         styles.put(34, "4x200_FREE");
-        nbRelayers.put(34,4);
+        nbRelayers.put(34, 4);
         genders.put(34, "MIXED");
 
         distances.put(111, 200);
         styles.put(111, "4x50_BACK");
-        nbRelayers.put(111,4);
+        nbRelayers.put(111, 4);
         genders.put(111, "F");
 
         distances.put(161, 200);
         styles.put(161, "4x50_BACK");
-        nbRelayers.put(161,4);
+        nbRelayers.put(161, 4);
         genders.put(161, "M");
 
         distances.put(39, 100);
         styles.put(39, "4x25_MED");
-        nbRelayers.put(39,4);
+        nbRelayers.put(39, 4);
         genders.put(39, "F");
 
         distances.put(89, 100);
         styles.put(89, "4x25_MED");
-        nbRelayers.put(89,4);
+        nbRelayers.put(89, 4);
         genders.put(89, "M");
 
         distances.put(38, 100);
         styles.put(38, "4x25_MED");
-        nbRelayers.put(38,4);
+        nbRelayers.put(38, 4);
         genders.put(38, "MIXED");
 
         distances.put(121, 200);
         styles.put(121, "4x50_BRE");
-        nbRelayers.put(121,4);
+        nbRelayers.put(121, 4);
         genders.put(121, "F");
 
         distances.put(171, 200);
         styles.put(171, "4x50_BRE");
-        nbRelayers.put(171,4);
+        nbRelayers.put(171, 4);
         genders.put(171, "M");
 
         distances.put(48, 200);
         styles.put(48, "4x50_MED");
-        nbRelayers.put(48,4);
+        nbRelayers.put(48, 4);
         genders.put(48, "F");
 
         distances.put(98, 200);
         styles.put(98, "4x50_MED");
-        nbRelayers.put(98,4);
+        nbRelayers.put(98, 4);
         genders.put(98, "M");
 
         distances.put(37, 200);
         styles.put(37, "4x50_MED");
-        nbRelayers.put(37,4);
+        nbRelayers.put(37, 4);
         genders.put(37, "MIXED");
 
         distances.put(131, 200);
         styles.put(131, "4x50_FLY");
-        nbRelayers.put(131,4);
+        nbRelayers.put(131, 4);
         genders.put(131, "F");
 
         distances.put(181, 200);
         styles.put(181, "4x50_FLY");
-        nbRelayers.put(181,4);
+        nbRelayers.put(181, 4);
         genders.put(181, "M");
 
         distances.put(49, 300);
         styles.put(49, "6x50_FRE");
-        nbRelayers.put(49,6);
+        nbRelayers.put(49, 6);
         genders.put(49, "F");
 
         distances.put(99, 300);
         styles.put(99, "6x50_FRE");
-        nbRelayers.put(99,6);
+        nbRelayers.put(99, 6);
         genders.put(99, "M");
 
         distances.put(35, 300);
         styles.put(35, "6x50_FRE");
-        nbRelayers.put(35,6);
+        nbRelayers.put(35, 6);
         genders.put(35, "MIXED");
 
         distances.put(46, 400);
         styles.put(46, "4x100_MED");
-        nbRelayers.put(46,4);
+        nbRelayers.put(46, 4);
         genders.put(46, "F");
 
         distances.put(96, 400);
         styles.put(96, "4x100_MED");
-        nbRelayers.put(96,4);
+        nbRelayers.put(96, 4);
         genders.put(96, "M");
 
         distances.put(36, 400);
         styles.put(36, "4x100_MED");
-        nbRelayers.put(36,4);
+        nbRelayers.put(36, 4);
         genders.put(36, "MIXED");
 
         distances.put(9, 500);
         styles.put(9, "10x50_FRE");
-        nbRelayers.put(9,10);
+        nbRelayers.put(9, 10);
         genders.put(9, "F");
 
         distances.put(59, 500);
         styles.put(59, "10x50_FRE");
-        nbRelayers.put(59,500);
+        nbRelayers.put(59, 500);
         genders.put(59, "M");
 
         distances.put(84, 500);
         styles.put(84, "10x50_FRE");
-        nbRelayers.put(84,10);
+        nbRelayers.put(84, 10);
         genders.put(84, "MIXED");
 
         distances.put(14, 800);
         styles.put(14, "8x100_FRE");
-        nbRelayers.put(14,8);
+        nbRelayers.put(14, 8);
         genders.put(14, "F");
 
         distances.put(64, 800);
         styles.put(64, "8x100_FRE");
-        nbRelayers.put(64,8);
+        nbRelayers.put(64, 8);
         genders.put(64, "M");
 
         distances.put(214, 800);
         styles.put(214, "8x100_FRE");
-        nbRelayers.put(217,8);
+        nbRelayers.put(217, 8);
         genders.put(214, "MIXED");
 
         distances.put(45, 1000);
         styles.put(45, "10x100_FRE");
-        nbRelayers.put(45,10);
+        nbRelayers.put(45, 10);
         genders.put(45, "F");
 
         distances.put(95, 1000);
         styles.put(95, "10x100_FRE");
-        nbRelayers.put(95,10);
+        nbRelayers.put(95, 10);
         genders.put(95, "M");
 
         distances.put(85, 1000);
         styles.put(85, "10x100_FRE");
-        nbRelayers.put(85,10);
+        nbRelayers.put(85, 10);
         genders.put(85, "MIXED");
     }
 }

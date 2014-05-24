@@ -45,4 +45,6 @@ public interface CommunicationFragments {
     public void clickFromSimpleLap(View view);
 
     public void removeAllSimpleLaps();
+
+    public void verifyMeetingOfTheDayAfterParsing();
 }
