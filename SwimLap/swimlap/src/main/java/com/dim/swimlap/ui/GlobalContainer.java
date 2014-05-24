@@ -21,7 +21,6 @@ import android.widget.Toast;
 import com.dim.swimlap.R;
 import com.dim.swimlap.models.EventModel;
 import com.dim.swimlap.models.MeetingModel;
-import com.dim.swimlap.models.ResultModel;
 import com.dim.swimlap.models.SwimmerModel;
 import com.dim.swimlap.objects.Singleton;
 import com.dim.swimlap.ui.lap.FragmentDataLap;
@@ -69,7 +68,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     private FragmentNavSettings fragmentNavSettings;
     private FragmentDataSettings fragmentDataSettings;
 
-    private int currentView, lastView;
+    private ArrayList<Integer> historyOfViews;
     private Singleton singleton;
     private ProgressBar progressBar;
     private RelativeLayout layout;
@@ -89,6 +88,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
 
     public GlobalContainer() {
+        historyOfViews = new ArrayList<Integer>();
         titles = new HashMap<Integer, String>();
         titles.put(VIEW_MENU, "SwimLap");
         titles.put(VIEW_SIMPLE, "Simple Chronometer");
@@ -153,12 +153,14 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         transaction.add(R.id.id_IN_fragment_title, fragmentTitle);
         transaction.add(R.id.id_IN_fragment_nav, fragmentNavMenu);
         transaction.replace(R.id.id_IN_fragment_data, fragmentDataMenu);
-        currentView = VIEW_MENU;
+        historyOfViews.add(VIEW_MENU);
         transaction.commit();
     }
 
     @Override
     public void onBackPressed() {
+        int indexOfCurrentView = historyOfViews.size() - 1;
+        int currentView = historyOfViews.get(indexOfCurrentView);
 
         if (currentView == VIEW_MENU) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -178,12 +180,11 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             alert.show();
         } else if (currentView != VIEW_LAP) {
             changeVisiblilityOfProgressBar(true);
-            fragmentTitle.setTitle(titles.get(lastView));
+            fragmentTitle.setTitle(titles.get(historyOfViews.get(currentView-1)));
             if (singleton.isThereMeetingToday()) {
-                fragmentDirect.changeButtonDirect(lastView);
+                fragmentDirect.changeButtonDirect(historyOfViews.get(currentView-1));
             }
-            currentView = lastView;
-            lastView = VIEW_MENU;
+            historyOfViews.remove(indexOfCurrentView);
             super.onBackPressed();
         }
 
@@ -191,6 +192,10 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
     @Override
     public void changeFragment(int code) {
+        int indexOfCurrentView = historyOfViews.size() - 1;
+        int currentView = historyOfViews.get(indexOfCurrentView);
+        boolean thereIsMeetingToday = true;
+
         if (currentView != code) {
             changeVisiblilityOfProgressBar(true);
 
@@ -233,18 +238,16 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
                 } else {
                     Toast.makeText(getApplicationContext(), "No meeting Today.\nUse Simple Chronometer.", Toast.LENGTH_SHORT).show();
                     changeVisiblilityOfProgressBar(false);
-                    // FOLLOWING PERMITS TO NOT  CHANGE currentView WHEN THERE IS NO MEETING OF THE DAY AND SOMEONE CLICK ON LAP_VIEW
-                    // OTHERWISE YOU CAN'T GET OUT FROM OTHER VIEW WITH BACK BUTTON BECAUSE LAST VIEW BECOMES VIEW_LAP
-                    code = currentView;
-                    currentView = lastView;
+                    thereIsMeetingToday = false;
                 }
             } else {
                 Toast.makeText(this.getApplicationContext(), "A problem appear to get the good fragment", Toast.LENGTH_SHORT).show();
             }
 
             fragmentDirect.changeButtonStartStop();
-            lastView = currentView;
-            currentView = code;
+            if (thereIsMeetingToday) {
+                historyOfViews.add(code);
+            }
             fragmentDirect.changeButtonDirect(code);
             newTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             newTransaction.commit();
@@ -305,6 +308,9 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
     @Override
     public void inverseButtonsInLap() {
+        int indexOfCurrentView = historyOfViews.size() - 1;
+        int currentView = historyOfViews.get(indexOfCurrentView);
+
         FragmentDataLap fragmentDataLap = mapOfFragmentLap.get(singleton.getCurrentRaceId());
         if (currentView == VIEW_LAP) {
             fragmentDataLap.changeButtonLap();
@@ -319,8 +325,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction newTransaction = manager.beginTransaction();
-        lastView = currentView;
-        currentView = VIEW_MEETING_DETAILS;
+
+        historyOfViews.add(VIEW_MEETING_DETAILS);
 
         FragmentNavMeetingDetails fragmentNav = new FragmentNavMeetingDetails(meetingToDetails);
         FragmentDataMeetingDetails fragmentData = new FragmentDataMeetingDetails(meetingToDetails);
@@ -338,8 +344,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         changeVisiblilityOfProgressBar(true);
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction newTransaction = manager.beginTransaction();
-        lastView = currentView;
-        currentView = VIEW_SWIMMER_DETAILS;
+
+        historyOfViews.add(VIEW_SWIMMER_DETAILS);
 
         FragmentNavSwimmerDetails fragmentNav = new FragmentNavSwimmerDetails(swimmerToDetails);
         FragmentDataSwimmerDetail fragmentData = new FragmentDataSwimmerDetail(swimmerToDetails);

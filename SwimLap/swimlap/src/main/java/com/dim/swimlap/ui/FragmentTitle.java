@@ -27,8 +27,11 @@ public class FragmentTitle extends Fragment implements View.OnClickListener {
     private Button buttonLink;
     private CommunicationFragments communication;
     private int VIEW_RANKING = 6;
-    private String title = "";
+    private String title;
 
+    public FragmentTitle(){
+        title = "SwimLap";
+    }
     public FragmentTitle(String title) {
         this.title = title;
     }
