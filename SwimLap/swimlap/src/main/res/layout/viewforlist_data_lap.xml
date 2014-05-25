@@ -116,7 +116,7 @@
             <TextView
                 android:id="@+id/id_textview_all_laps"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/lap_textview_all_laps_heigh"
+                android:layout_height="wrap_content"
                 android:text="all laps : "
                 android:textSize="@dimen/lap_textview_all_laps_font"
                 android:textColor="#000000"
