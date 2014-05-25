@@ -13,6 +13,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -180,9 +183,9 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             alert.show();
         } else if (currentView != VIEW_LAP) {
             changeVisiblilityOfProgressBar(true);
-            fragmentTitle.setTitle(titles.get(historyOfViews.get(indexOfCurrentView-1)));
+            fragmentTitle.setTitle(titles.get(historyOfViews.get(indexOfCurrentView - 1)));
             if (singleton.isThereMeetingToday()) {
-                fragmentDirect.changeButtonDirect(historyOfViews.get(indexOfCurrentView-1));
+                fragmentDirect.changeButtonDirect(historyOfViews.get(indexOfCurrentView - 1));
             }
             historyOfViews.remove(indexOfCurrentView);
             super.onBackPressed();
@@ -405,10 +408,44 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             }
         }
     }
+
     @Override
-    public void verifyMeetingOfTheDayAfterParsing(){
+    public void verifyMeetingOfTheDayAfterParsing() {
         singleton.buildMeetingOfTheDay(getApplicationContext());
         buildFragmentsForLapData();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.layout.menu_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.id_menu_goto_menu:
+                changeFragment(VIEW_MENU);
+                return true;
+            case R.id.id_menu_goto_ranking:
+                changeFragment(VIEW_RANKING);
+                return true;
+            case R.id.id_menu_goto_setting:
+                changeFragment(VIEW_SETTING);
+                return true;
+            case R.id.id_menu_goto_simple:
+                changeFragment(VIEW_SIMPLE);
+                return true;
+            case R.id.id_menu_goto_meeting:
+                changeFragment(VIEW_MEETING);
+                return true;
+            case R.id.id_menu_goto_swimmer:
+                changeFragment(VIEW_SWIMMER);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }
