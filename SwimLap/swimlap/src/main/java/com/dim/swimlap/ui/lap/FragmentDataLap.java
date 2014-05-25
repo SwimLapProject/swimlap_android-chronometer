@@ -34,6 +34,10 @@ public class FragmentDataLap extends Fragment {
     private CommunicationFragments comm;
     private Vibrator vibrator;
 
+    public FragmentDataLap(){
+        // NOT USED BUT DO NOT REMOVE BECAUSE EXCEPTION THROWN SOMETIMES AT BEGINING
+    }
+
     public FragmentDataLap(int raceId) {
         raceIdOfThisFragment = raceId;
         singleton = Singleton.getInstance();

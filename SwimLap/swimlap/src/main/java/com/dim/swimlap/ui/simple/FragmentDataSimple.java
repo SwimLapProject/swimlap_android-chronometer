@@ -32,8 +32,8 @@ public class FragmentDataSimple extends Fragment {
     private HashMap<String, ArrayList<Float>> lapForRace;
     private Vibrator vibrator;
 
-    public FragmentDataSimple() {
-
+    public FragmentDataSimple(){
+        // NOT USED BUT DO NOT REMOVE BECAUSE EXCEPTION THROWN SOMETIMES AT BEGINING
     }
 
     @Override

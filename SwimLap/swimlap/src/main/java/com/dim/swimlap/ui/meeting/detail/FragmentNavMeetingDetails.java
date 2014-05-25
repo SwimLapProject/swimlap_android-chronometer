@@ -24,6 +24,10 @@ public class FragmentNavMeetingDetails extends Fragment implements View.OnClickL
     private Button buttonExportFFNex;
     private MeetingModel meeting;
 
+    public FragmentNavMeetingDetails(){
+        // NOT USED BUT DO NOT REMOVE BECAUSE EXCEPTION THROWN SOMETIMES AT BEGINING
+    }
+
     public FragmentNavMeetingDetails(MeetingModel meeting) {
         this.meeting = meeting;
     }

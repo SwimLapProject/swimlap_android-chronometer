@@ -32,6 +32,10 @@ public class FragmentDataMeetingDetails extends Fragment {
     private ListView swimmersListView;
     private CommunicationFragments comm;
 
+    public FragmentDataMeetingDetails(){
+        // NOT USED BUT DO NOT REMOVE BECAUSE EXCEPTION THROWN SOMETIMES AT BEGINING
+    }
+
     public FragmentDataMeetingDetails(MeetingModel meeting) {
         this.meeting = meeting;
     }
