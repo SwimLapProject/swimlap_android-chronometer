@@ -205,27 +205,33 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction newTransaction = manager.beginTransaction();
             if (code == VIEW_MENU) {
+                fragmentTitle.setTitle(titles.get(VIEW_MENU));
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavMenu);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataMenu);
                 newTransaction.addToBackStack(null);
             } else if (code == VIEW_SIMPLE) {
+                fragmentTitle.setTitle(titles.get(VIEW_SIMPLE));
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSimple);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSimple);
                 newTransaction.addToBackStack(null);
             } else if (code == VIEW_MEETING) {
+                fragmentTitle.setTitle(titles.get(VIEW_MEETING));
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavMeetingList);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataMeetingList);
                 newTransaction.addToBackStack(null);
             } else if (code == VIEW_SWIMMER) {
+                fragmentTitle.setTitle(titles.get(VIEW_SWIMMER));
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSwimmer);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSwimmer);
                 newTransaction.addToBackStack(null);
 
             } else if (code == VIEW_SETTING) {
+                fragmentTitle.setTitle(titles.get(VIEW_SETTING));
                 newTransaction.replace(R.id.id_IN_fragment_nav, fragmentNavSettings);
                 newTransaction.replace(R.id.id_IN_fragment_data, fragmentDataSettings);
                 newTransaction.addToBackStack(null);
             } else if (code == VIEW_RANKING) {
+                fragmentTitle.setTitle(titles.get(VIEW_RANKING));
                 FragmentNavRanking fragmentNavRanking = new FragmentNavRanking();
                 FragmentDataRanking fragmentDataRanking = new FragmentDataRanking();
 
@@ -248,7 +254,6 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
             fragmentDirect.changeButtonStartStop();
             if (thereIsMeetingToday) {
-                fragmentTitle.setTitle(titles.get(code));
                 historyOfViews.add(code);
             }
             fragmentDirect.changeButtonDirect(code);
