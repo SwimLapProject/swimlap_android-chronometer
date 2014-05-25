@@ -8,6 +8,7 @@
 package com.dim.swimlap.ui.lap;
 
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,7 @@ public class FragmentDataLap extends Fragment {
     private Singleton singleton;
     private int raceIdOfThisFragment;
     private CommunicationFragments comm;
+    private Vibrator vibrator;
 
     public FragmentDataLap(int raceId) {
         raceIdOfThisFragment = raceId;
@@ -42,6 +44,8 @@ public class FragmentDataLap extends Fragment {
         View view = inflater.inflate(R.layout.fragment_data_lap, container, false);
         comm = (CommunicationFragments) getActivity();
         boolean meetingOfTheDayIsBuilt = singleton.buildMeetingOfTheDay(getActivity());
+        vibrator = (Vibrator) getActivity().getSystemService(getActivity().VIBRATOR_SERVICE);
+
 
         listViewForLap = (ListView) view.findViewById(R.id.id_listview_lap);
         textViewNoMeetingInLap = (TextView) view.findViewById(R.id.id_textview_no_meeting_in_lap);
@@ -73,6 +77,7 @@ public class FragmentDataLap extends Fragment {
 
         int nbSplitRemaining = resultInSingleton.getnbSplitRemaining();
         if (nbSplitRemaining > 0) {
+            vibrator.vibrate(500);
             resultInSingleton.checkLap(lapInMilli);
             if (nbSplitRemaining == 1) {
                 resultInSingleton.setSwimTime(lapInMilli);

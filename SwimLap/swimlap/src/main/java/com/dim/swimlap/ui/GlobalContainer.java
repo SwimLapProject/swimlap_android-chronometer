@@ -10,9 +10,11 @@ package com.dim.swimlap.ui;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -75,6 +77,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     private Singleton singleton;
     private ProgressBar progressBar;
     private RelativeLayout layout;
+//    private Vibrator vibrator;
+
 
     private static int
             VIEW_MENU = 0,
@@ -107,6 +111,8 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_global_container);
+
+//        vibrator = (Vibrator) getApplicationContext().getSystemService(getApplicationContext().VIBRATOR_SERVICE);
 
         /* PROGRESS BAR */
         layout = (RelativeLayout) findViewById(R.id.id_global_container);
@@ -279,6 +285,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
 
     @Override
     public void getGlobalLap(View view) {
+//        vibrator.vibrate(500);
         float lapInMilli = fragmentDirect.getMillisecondsLap();
 
         String[] tag = String.valueOf(view.getTag()).split("_");
@@ -384,6 +391,7 @@ public class GlobalContainer extends FragmentActivity implements CommunicationFr
         int position = Integer.valueOf(tag[1]);
 
         if (view.getId() == R.id.id_button_simple_takelap) {
+//            vibrator.vibrate(500);
             float lap = fragmentNavSimple.getMillisecondsSimpleLap();
             fragmentDataSimple.takeLap(lap, position);
         } else if (view.getId() == R.id.id_button_simple_unlap) {

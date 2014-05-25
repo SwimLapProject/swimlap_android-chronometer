@@ -8,6 +8,7 @@
 package com.dim.swimlap.ui.simple;
 
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,7 @@ public class FragmentDataSimple extends Fragment {
     private CommunicationFragments comm;
     private ArrayList<String> raceNames;
     private HashMap<String, ArrayList<Float>> lapForRace;
+    private Vibrator vibrator;
 
     public FragmentDataSimple() {
 
@@ -37,6 +39,7 @@ public class FragmentDataSimple extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_data_lap, container, false);
+        vibrator = (Vibrator) getActivity().getSystemService(getActivity().VIBRATOR_SERVICE);
 
         comm = (CommunicationFragments) getActivity();
 
@@ -49,7 +52,6 @@ public class FragmentDataSimple extends Fragment {
         adapter = new SimpleLapAdapter(this.getActivity(), raceNames, lapForRace);
         listViewForSimpleLap.setAdapter(adapter);
 
-
         return view;
     }
 
@@ -60,6 +62,7 @@ public class FragmentDataSimple extends Fragment {
     }
 
     public void takeLap(float lap, int position) {
+        vibrator.vibrate(500);
         lapForRace.get(raceNames.get(position)).add(lap);
         adapter.notifyDataSetChanged();
 

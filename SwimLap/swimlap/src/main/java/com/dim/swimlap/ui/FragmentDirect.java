@@ -9,6 +9,7 @@ package com.dim.swimlap.ui;
 
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
     private Chronometer chronometer;
     private CommunicationFragments communicationFragments;
     private Singleton singleton;
+    private Vibrator vibrator;
     private static int
             VIEW_MENU = 0,
             VIEW_LAP = 1;
@@ -34,6 +36,7 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_direct, container, false);
+        vibrator = (Vibrator) getActivity().getSystemService(getActivity().VIBRATOR_SERVICE);
 
         buttonDirect = (Button) view.findViewById(R.id.id_button_direct_to_lap);
         buttonDirect.setOnClickListener(this);
@@ -67,18 +70,17 @@ public class FragmentDirect extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.id_button_start) {
+            vibrator.vibrate(500);
             chronometer.setBase(SystemClock.elapsedRealtime());
             chronometer.start();
             singleton.setChronoIsStarted(true);
             changeButtonStartStop();
             communicationFragments.inverseButtonsInLap();
-            Toast.makeText(getActivity(), "START", Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.id_button_stop) {
             chronometer.stop();
             singleton.setChronoIsStarted(false);
             changeButtonStartStop();
             communicationFragments.inverseButtonsInLap();
-            Toast.makeText(getActivity(), "STOP", Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.id_button_direct_to_lap) {
             communicationFragments.changeFragment(VIEW_LAP);
             changeButtonDirect(VIEW_LAP);
