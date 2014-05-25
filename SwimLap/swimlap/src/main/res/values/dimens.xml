@@ -28,6 +28,7 @@
     <dimen name="direct_chrono_font">50dp</dimen>
 
     <!-- VIEW TITLE -->
+    <dimen name="title_imageview_side">60dp</dimen>
     <dimen name="title_button_goto_ranking_heigh">30dp</dimen>
     <dimen name="title_button_goto_ranking_font">15dp</dimen>
     <dimen name="title_textview_font">20dp</dimen>

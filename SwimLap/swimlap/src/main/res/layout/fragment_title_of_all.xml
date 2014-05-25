@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="wrap_content"
               android:layout_marginBottom="@dimen/global_padding_or_margin_medium"
               android:layout_marginTop="@dimen/global_padding_or_margin_medium"
     >
@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/id_imageview_logo_swimlap"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="@dimen/title_imageview_side"
+            android:layout_height="@dimen/title_imageview_side"
             android:src="@drawable/logo_swimlap_color"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
@@ -34,10 +34,15 @@
         <TextView
             android:id="@+id/id_textview_title"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:text="SwimLAp"
             style="@style/titleContent"
-            />
+            android:layout_centerVertical="true"
+            android:textAlignment="center"
+            android:paddingTop="@dimen/global_padding_or_margin_large"
+            android:paddingBottom="@dimen/global_padding_or_margin_large"/>
+
+        />
     </HorizontalScrollView>
 
     <RelativeLayout
@@ -57,8 +62,8 @@
             android:text="Rankings"
             android:textColor="@color/bluesea"
             android:textSize="@dimen/title_button_goto_ranking_font"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
 
     </RelativeLayout>
 
