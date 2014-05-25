@@ -26,6 +26,12 @@ Vous pourrez toutefois nous faire part ultérieurement à tous moment, de votre 
 
 Nous vous rappelons que vous disposez d’un droit d’accès, de modification, de rectification et de suppression des données qui vous concernent (art. 34 de la loi « Informatique et Libertés » du 06 janvier 1978). Pour exercer ce droit, adressez-vous à la Fédération Française de Natation 148 avenue Gambetta 75980 PARIS CEDEX 20 ou à juridique@ffnatation.fr.
     </string>
-
+    <string name="menu_menu">Menu</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_ranking">Ranking</string>
+    <string name="menu_simple">Simple Chronometer</string>
+    <string name="menu_meetings">Meetings</string>
+    <string name="menu_swimmers">Swimmers</string>
+    <string name="menu_lap">Lap</string>
 
 </resources>

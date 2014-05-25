@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/id_menu_goto_setting"
-        android:title="Setting"
+        android:title="Settings"
         android:showAsAction="always|withText"
         />
 
@@ -30,13 +30,13 @@
 
     <item
         android:id="@+id/id_menu_goto_meeting"
-        android:title="Meeting"
+        android:title="Meetings"
         android:showAsAction="always|withText"
         />
 
     <item
         android:id="@+id/id_menu_goto_swimmer"
-        android:title="Swimmer"
+        android:title="Swimmers"
         android:showAsAction="always|withText"
         />
 </menu>
