@@ -149,7 +149,7 @@ public class GetMeetingsForLists {
         meetingToFill.setSeasonModel(seasonOfMeeting);
     }
 
-    public ArrayList<ResultModel> getAllMeetingForSwimmerId(int swimmerId) {
+    public ArrayList<ResultModel> getAllResultsForSwimmerId(int swimmerId) {
         ArrayList<ResultModel> resultsBySwimmer = null;
         DbUtilitiesBuilder db = new DbUtilitiesBuilder(context);
 
@@ -178,5 +178,22 @@ public class GetMeetingsForLists {
             db.close();
         }
         return meetingName;
+    }
+
+    public MeetingModel getMeetingWithId(int meetingId){
+        MeetingModel meetingToReturn = null;
+        DbUtilitiesBuilder db = new DbUtilitiesBuilder(context);
+        try {
+            db.open();
+            meetingToReturn = db.getMeetingUtilities().getOneMeetingById_FromDb(meetingId);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            db.close();
+        }
+        fillMeetingWithResult(meetingToReturn);
+        fillMeetingWithSeason(meetingToReturn);
+        return meetingToReturn;
     }
 }

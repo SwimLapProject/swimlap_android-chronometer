@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -25,14 +26,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class FragmentDataMeetingDetails extends Fragment {
+public class FragmentDataMeetingDetails extends Fragment implements AdapterView.OnItemClickListener {
 
     private MeetingModel meeting;
     private TextView tvName, tvCity, tvStartdate, tvStopdate, tvPoolsize;
     private ListView swimmersListView;
     private CommunicationFragments comm;
+    private ArrayList<SwimmerModel> swimmers;
 
-    public FragmentDataMeetingDetails(){
+    public FragmentDataMeetingDetails() {
         // NOT USED BUT DO NOT REMOVE BECAUSE EXCEPTION THROWN SOMETIMES AT BEGINING
     }
 
@@ -59,10 +61,11 @@ public class FragmentDataMeetingDetails extends Fragment {
         tvStartdate.setText("FROM: " + meeting.getStartDate());
         tvStopdate.setText("TO: " + meeting.getStopDate());
 
-        ArrayList<SwimmerModel> swimmers = meeting.getAllSortedSwimmersInMeetting();
+        swimmers = meeting.getAllSortedSwimmersInMeetting();
         HashMap<Integer, String> racesBySwimmer = meeting.getRacesBySwimmers();
 
         swimmersListView = (ListView) view.findViewById(R.id.id_listview_meeting_details_swimmers);
+        swimmersListView.setOnItemClickListener(this);
         MeetingsSwimInSwimmerAdapter adapter = new MeetingsSwimInSwimmerAdapter(getActivity(), swimmers, racesBySwimmer);
         swimmersListView.setAdapter(adapter);
 
@@ -73,5 +76,10 @@ public class FragmentDataMeetingDetails extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         comm.changeVisiblilityOfProgressBar(false);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        comm.replaceFragmentSwimmerToDetails(swimmers.get(position));
     }
 }
