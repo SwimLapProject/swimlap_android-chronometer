@@ -57,10 +57,10 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/title_button_goto_ranking_heigh"
 
-            android:background="@drawable/button_ranking_clickable"
+            android:background="@drawable/button_ranking_with_shadow"
 
             android:text="Rankings"
-            android:textColor="@color/bluesea"
+            android:textColor="@color/white"
             android:textSize="@dimen/title_button_goto_ranking_font"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"/>
