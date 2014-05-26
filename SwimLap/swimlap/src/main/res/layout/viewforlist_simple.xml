@@ -1,65 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
+              android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="100dp">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:layout_weight="4"
-        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="@dimen/simple_textview_race_name_font"
+            android:layout_weight="2"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/id_textview_lap_simple_race_name"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:text="NAME"
+                android:textSize="@dimen/simple_textview_race_name_font"
+                android:textColor="@color/bluesea"
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/id_textview_lap_simple_race_name"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="NAME"
-                        android:textSize="@dimen/simple_textview_race_name_font"
-                        android:textColor="@color/bluesea"
-
-                        android:layout_weight="6"/>
+                android:layout_weight="6"/>
 
 
-                    <TextView
-                        android:id="@+id/id_textview__simple_last_lap"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="LAST : 0:00.00 "
-                        android:textSize="@dimen/simple_textview_last_lap_font"
-                        android:textColor="@color/redstop"
-                        android:textStyle="bold"
-                        android:layout_margin="@dimen/global_padding_or_margin_small"
-                        android:layout_weight="4"/>
+            <TextView
+                android:id="@+id/id_textview__simple_last_lap"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:text="LAST : 0:00.00 "
+                android:textSize="@dimen/simple_textview_last_lap_font"
+                android:textColor="@color/redstop"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/global_padding_or_margin_small"
+                android:layout_weight="4"/>
 
-                </LinearLayout>
-
-            </LinearLayout>
         </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/simple_textview_all_laps_heigh">
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="2">
+
+            <Button
+                android:id="@+id/id_button_simple_unlap"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+
+                android:background="@drawable/button_clickable"
+                android:text="Unlap"
+                android:onClick="clickFromSimpleLap"
+                android:textSize="@dimen/simple_button_unlap_font"
+                android:layout_gravity="center_horizontal|bottom"
+                android:textColor="@color/white"
+                android:padding="@dimen/global_padding_or_margin_medium"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+        </RelativeLayout>
 
         <ScrollView
             android:id="@+id/id_scrollview_simple_all_laps"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:background="@drawable/lap_content_scrollview_with_border"
-            >
+            android:layout_weight="7">
 
             <TextView
                 android:id="@+id/id_textview_simple_all_laps"
@@ -72,45 +83,25 @@
                 />
         </ScrollView>
 
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="3">
+
+            <Button
+                android:id="@+id/id_button_simple_takelap"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/button_clickable"
+                android:text="Lap"
+                android:onClick="clickFromSimpleLap"
+                android:layout_gravity="center_horizontal|bottom"
+                android:textColor="@color/white"
+                android:textSize="@dimen/simple_button_lap_font"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:layout_weight="1">
-
-        <Button
-            android:id="@+id/id_button_simple_takelap"
-            android:layout_width="@dimen/simple_button_lap_width"
-            android:layout_height="@dimen/simple_button_lap_heigh"
-            android:background="@drawable/button_clickable"
-            android:text="Lap"
-            android:onClick="clickFromSimpleLap"
-
-
-            android:layout_gravity="center_horizontal|bottom"
-            android:textColor="@color/white"
-            android:textSize="@dimen/simple_button_lap_font"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
-
-        <Button
-            android:id="@+id/id_button_simple_unlap"
-
-            android:layout_width="@dimen/simple_button_unlap_width"
-            android:layout_height="@dimen/simple_button_unlap_heigh"
-
-            android:background="@drawable/button_clickable"
-            android:text="Undo lap"
-            android:onClick="clickFromSimpleLap"
-            android:textSize="@dimen/simple_button_unlap_font"
-            android:layout_gravity="right"
-            android:textColor="@color/white"
-            android:layout_weight="1"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_above="@+id/id_button_simple_takelap"/>
-    </RelativeLayout>
 </LinearLayout>

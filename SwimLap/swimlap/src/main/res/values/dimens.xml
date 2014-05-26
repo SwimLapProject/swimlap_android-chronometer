@@ -58,14 +58,13 @@
     <dimen name="simple_button_start_stop_side">50dp</dimen>
     <dimen name="simple_textview_race_name_font">20dp</dimen>
     <dimen name="simple_button_unlap_font">@dimen/global_button_font_small</dimen>
-    <dimen name="simple_button_unlap_width">@dimen/global_button_side_basic</dimen>
-    <dimen name="simple_button_unlap_heigh">@dimen/global_button_side_small</dimen>
+    <dimen name="simple_button_unlap_width">@dimen/global_button_side_small</dimen>
     <dimen name="simple_button_lap_font">@dimen/global_button_font_basic</dimen>
     <dimen name="simple_button_lap_heigh">@dimen/global_button_side_basic</dimen>
     <dimen name="simple_button_lap_width">@dimen/global_button_side_basic</dimen>
     <dimen name="simple_textview_all_laps_font">12dp</dimen>
     <dimen name="simple_textview_all_laps_heigh">80dp</dimen>
-    <dimen name="simple_textview_last_lap_font">14dp</dimen>
+    <dimen name="simple_textview_last_lap_font">18dp</dimen>
 
     <!-- VIEW RANKING -->
     <dimen name="ranking_textview_no_ranking_font">20dp</dimen>
@@ -107,7 +106,13 @@
     <dimen name="lap_textview_all_laps_font">12dp</dimen>
     <dimen name="lap_textview_all_laps_heigh">80dp</dimen>
     <dimen name="lap_textview_last_lap_font">14dp</dimen>
+
     <dimen name="lap_layout_row">120dp</dimen>
+    <dimen name="lap_scrollview_all_laps_heigh">80dp</dimen>
+    <dimen name="lap_textview_in_row">20dp</dimen>
+
+
+
     <!--button in row-->
     <dimen name="lap_button_unlap_font">@dimen/global_button_font_small</dimen>
     <dimen name="lap_button_unlap_width">50dp</dimen>
@@ -117,6 +122,7 @@
     <dimen name="lap_button_lap_width">100dp</dimen>
     <dimen name="lap_button_rec_or_res_side">@dimen/global_button_side_medium</dimen>
     <dimen name="lap_button_rec_or_res_font">@dimen/global_button_font_small</dimen>
+
     <!--no lap-->
     <dimen name="lap_textview_no_lap">20dp</dimen>
 
